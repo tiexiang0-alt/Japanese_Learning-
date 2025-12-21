@@ -93,6 +93,8 @@
                         class="text-gray-600 hover:text-brand-orange font-medium transition hover:-translate-y-0.5">元音详解</a>
                     <a href="#grammar"
                         class="text-gray-600 hover:text-brand-orange font-medium transition hover:-translate-y-0.5">发音规则</a>
+                    <a href="#detailed-notes"
+                        class="text-gray-600 hover:text-brand-orange font-medium transition hover:-translate-y-0.5">课堂笔记</a>
                     <button
                         class="bg-gray-900 text-white px-5 py-2 rounded-full font-bold text-sm hover:bg-brand-orange hover:shadow-lg transition transform hover:scale-105">
                         开始学习
@@ -142,59 +144,164 @@
         </div>
     </header>
 
-    <!-- 50 Sound Chart Overview -->
+    <!-- 50 Sound Chart Overview (Visual CSS Grid) -->
     <section id="chart" class="py-20 bg-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="w-full md:w-1/2">
+            <div class="text-center mb-12">
+                <span
+                    class="bg-blue-100 text-blue-600 px-4 py-1 rounded-full text-sm font-bold uppercase tracking-widest">The
+                    Map</span>
+                <h2 class="text-4xl font-black text-gray-900 mt-4 font-rounded">50音图全览</h2>
+                <p class="text-gray-500 mt-2">日语世界的“元素周期表”</p>
+            </div>
+
+            <div class="flex flex-col xl:flex-row gap-12 items-start">
+                <!-- The Grid (Mobile scrollable, Desktop fixed) -->
+                <div
+                    class="w-full xl:w-2/3 bg-gray-50 rounded-3xl p-6 border border-gray-100 shadow-inner overflow-x-auto">
+                    <!-- Column Headers -->
                     <div
-                        class="relative group rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform transition hover:scale-[1.02] duration-500">
-                        <img src="assets/images/50_sound_chart.png" alt="50 Sound Chart"
-                            class="w-full h-auto object-cover">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
-                            <p class="text-white font-bold text-lg">清音表 (Seion Chart)</p>
+                        class="grid grid-cols-6 gap-2 min-w-[600px] mb-4 text-center text-gray-400 text-xs font-bold uppercase tracking-wider">
+                        <div>Vowel</div>
+                        <div>K-Row</div>
+                        <div>S-Row</div>
+                        <div>T-Row</div>
+                        <div>N-Row</div>
+                        <div>H-Row</div>
+                    </div>
+
+                    <!-- The 5 Rows -->
+                    <div class="space-y-3 min-w-[600px]">
+                        <!-- Row A (Active) -->
+                        <div class="grid grid-cols-6 gap-3">
+                            <!-- A -->
+                            <div
+                                class="relative group bg-white border-2 border-brand-orange rounded-xl p-3 shadow-lg transform hover:-translate-y-1 transition-all cursor-pointer">
+                                <div
+                                    class="absolute -top-3 -right-3 bg-brand-orange text-white text-xs font-bold px-2 py-1 rounded-full animate-bounce">
+                                    Start!</div>
+                                <div class="text-center">
+                                    <div
+                                        class="text-3xl font-black text-gray-900 group-hover:text-brand-orange transition-colors">
+                                        あ</div>
+                                    <div class="text-xs text-gray-400 mt-1">ア / a</div>
+                                </div>
+                            </div>
+                            <!-- Consonants (Placeholders for perspective) -->
+                            <div
+                                class="opacity-50 grayscale bg-white border border-gray-200 rounded-xl p-3 text-center">
+                                <div class="text-2xl font-bold text-gray-400">か</div>
+                                <div class="text-[10px] text-gray-300">ka</div>
+                            </div>
+                            <div
+                                class="opacity-50 grayscale bg-white border border-gray-200 rounded-xl p-3 text-center">
+                                <div class="text-2xl font-bold text-gray-400">さ</div>
+                                <div class="text-[10px] text-gray-300">sa</div>
+                            </div>
+                            <div
+                                class="opacity-50 grayscale bg-white border border-gray-200 rounded-xl p-3 text-center">
+                                <div class="text-2xl font-bold text-gray-400">た</div>
+                                <div class="text-[10px] text-gray-300">ta</div>
+                            </div>
+                            <div
+                                class="opacity-50 grayscale bg-white border border-gray-200 rounded-xl p-3 text-center">
+                                <div class="text-2xl font-bold text-gray-400">な</div>
+                                <div class="text-[10px] text-gray-300">na</div>
+                            </div>
+                            <div
+                                class="opacity-50 grayscale bg-white border border-gray-200 rounded-xl p-3 text-center">
+                                <div class="text-2xl font-bold text-gray-400">は</div>
+                                <div class="text-[10px] text-gray-300">ha</div>
+                            </div>
+                        </div>
+
+                        <!-- Row I -->
+                        <div class="grid grid-cols-6 gap-3">
+                            <div
+                                class="bg-white border-2 border-blue-400 rounded-xl p-3 shadow-md hover:shadow-lg transition cursor-pointer">
+                                <div class="text-center">
+                                    <div class="text-3xl font-black text-gray-900">い</div>
+                                    <div class="text-xs text-gray-400 mt-1">イ / i</div>
+                                </div>
+                            </div>
+                            <div class="opacity-30 bg-gray-100 rounded-xl p-2"></div>
+                            <div class="opacity-30 bg-gray-100 rounded-xl p-2"></div>
+                            <!-- Visual filler for other rows -->
+                            <div
+                                class="col-span-3 flex items-center justify-center text-gray-300 text-sm italic tracking-widest">
+                                ... Other Rows (Future Lessons) ...
+                            </div>
+                        </div>
+
+                        <!-- Row U -->
+                        <div class="grid grid-cols-6 gap-3">
+                            <div
+                                class="bg-white border-2 border-green-400 rounded-xl p-3 shadow-md hover:shadow-lg transition cursor-pointer">
+                                <div class="text-center">
+                                    <div class="text-3xl font-black text-gray-900">う</div>
+                                    <div class="text-xs text-gray-400 mt-1">ウ / u</div>
+                                </div>
+                            </div>
+                            <div
+                                class="col-span-5 border-b-2 border-dashed border-gray-200 h-full w-full transform translate-y-[-50%]">
+                            </div>
+                        </div>
+
+                        <!-- Row E -->
+                        <div class="grid grid-cols-6 gap-3">
+                            <div
+                                class="bg-white border-2 border-red-400 rounded-xl p-3 shadow-md hover:shadow-lg transition cursor-pointer">
+                                <div class="text-center">
+                                    <div class="text-3xl font-black text-gray-900">え</div>
+                                    <div class="text-xs text-gray-400 mt-1">エ / e</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row O -->
+                        <div class="grid grid-cols-6 gap-3">
+                            <div
+                                class="bg-white border-2 border-purple-400 rounded-xl p-3 shadow-md hover:shadow-lg transition cursor-pointer">
+                                <div class="text-center">
+                                    <div class="text-3xl font-black text-gray-900">お</div>
+                                    <div class="text-xs text-gray-400 mt-1">オ / o</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="w-full md:w-1/2 space-y-8">
-                    <h2 class="text-4xl font-bold text-gray-900 font-rounded">全览：50音图</h2>
-                    <p class="text-lg text-gray-600 leading-relaxed">
-                        日语的字母叫做“假名”(Kana)。<br>
-                        就像英语的字母表一样，日语有<span class="font-bold text-brand-orange">5段 x 10行</span>。
-                    </p>
 
-                    <!-- Feature Grid -->
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-orange-50 p-4 rounded-2xl border border-orange-100">
-                            <span class="text-3xl mb-2 block">🎎</span>
-                            <h3 class="font-bold text-gray-900">平假名 (Hiragana)</h3>
-                            <p class="text-sm text-gray-500 mt-1">圆润草书风格<br>用于大部分单词</p>
+                <!-- Concept Explainer -->
+                <div class="w-full xl:w-1/3 space-y-6">
+                    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-lg">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-brand-orange flex items-center justify-center text-2xl">
+                                🎎</div>
+                            <div>
+                                <h3 class="font-bold text-gray-900">平假名 (Hiragana)</h3>
+                                <p class="text-xs text-gray-500">Curvy • For Native Words</p>
+                            </div>
                         </div>
-                        <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100">
-                            <span class="text-3xl mb-2 block">🤖</span>
-                            <h3 class="font-bold text-gray-900">片假名 (Katakana)</h3>
-                            <p class="text-sm text-gray-500 mt-1">方正楷书风格<br>用于外来语 (Loanwords)</p>
+                        <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-brand-orange w-3/4"></div>
                         </div>
+                        <p class="text-right text-xs text-brand-orange font-bold mt-1">Used 70% of the time</p>
                     </div>
 
-                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200">
-                        <h3 class="font-bold text-gray-800 mb-2 flex items-center">
-                            <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
-                            本课重点：あ行 (元音)
-                        </h3>
-                        <div class="flex justify-between text-2xl font-black text-gray-900 font-rounded mt-4 px-4">
-                            <span
-                                class="hover:text-brand-orange cursor-pointer transition transform hover:scale-125">あ</span>
-                            <span
-                                class="hover:text-brand-orange cursor-pointer transition transform hover:scale-125">い</span>
-                            <span
-                                class="hover:text-brand-orange cursor-pointer transition transform hover:scale-125">う</span>
-                            <span
-                                class="hover:text-brand-orange cursor-pointer transition transform hover:scale-125">え</span>
-                            <span
-                                class="hover:text-brand-orange cursor-pointer transition transform hover:scale-125">お</span>
+                    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-lg">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-2xl">🤖
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900">片假名 (Katakana)</h3>
+                                <p class="text-xs text-gray-500">Angular • For Foreign Words</p>
+                            </div>
                         </div>
+                        <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-blue-500 w-1/4"></div>
+                        </div>
+                        <p class="text-right text-xs text-blue-500 font-bold mt-1">Used 30% of the time</p>
                     </div>
                 </div>
             </div>
@@ -401,9 +508,8 @@
         </div>
     </section>
 
-    <!-- Grammar & Rules Section -->
+    <!-- Grammar & Rules Section (Visual CSS Replacement) -->
     <section id="grammar" class="py-20 bg-gray-900 text-white overflow-hidden relative">
-        <!-- Background accents -->
         <div
             class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-blue rounded-full mix-blend-overlay filter blur-[100px] opacity-20">
         </div>
@@ -416,63 +522,368 @@
 
             <!-- Tone & Aspiration Grid -->
             <div class="grid lg:grid-cols-2 gap-12">
-                <!-- Tones -->
+
+                <!-- Tones (Pure CSS Visualization) -->
                 <div class="bg-gray-800/50 backdrop-blur-md rounded-3xl p-8 border border-gray-700">
                     <h3 class="text-2xl font-bold mb-6 flex items-center">
                         <span
                             class="bg-brand-orange text-white w-10 h-10 rounded-lg flex items-center justify-center mr-3 text-sm">01</span>
                         音调 (Intonation)
                     </h3>
-                    <p class="text-gray-400 mb-6">日语只有高低音，没有复杂的四声。</p>
 
-                    <div class="grid grid-cols-2 gap-4 mb-6">
-                        <img src="assets/images/tone_graph.png" class="w-full rounded-xl border border-gray-600"
-                            alt="Tone Graph 0">
-                        <img src="assets/images/tone_table.png" class="w-full rounded-xl border border-gray-600"
-                            alt="Tone Table">
-                    </div>
+                    <!-- Interactive Tone Graph Container -->
+                    <div class="space-y-4">
 
-                    <div class="space-y-3">
-                        <div class="flex items-center text-sm">
-                            <span class="w-20 font-bold text-brand-yellow">0调</span>
-                            <span class="text-gray-300">平板型 (Low -> High -> High...)</span>
+                        <!-- 0 Tone -->
+                        <div
+                            class="bg-gray-900 rounded-xl p-4 border border-gray-700 hover:border-brand-yellow transition group">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-brand-yellow">Type 0 (平板)</span>
+                                <span class="text-xs text-gray-500">Low → High...</span>
+                            </div>
+                            <div class="h-12 relative flex items-center px-2">
+                                <!-- The Line -->
+                                <div
+                                    class="absolute h-1 bg-brand-yellow w-full top-1/2 transform -translate-y-1/2 rounded-full overflow-hidden">
+                                    <div class="w-[10%] bg-gray-600 h-full absolute left-0"></div> <!-- Low start -->
+                                </div>
+                                <!-- The Dots -->
+                                <div class="w-full flex justify-between relative z-10">
+                                    <div class="w-3 h-3 rounded-full bg-gray-500 mt-4"></div> <!-- Low -->
+                                    <div class="w-3 h-3 rounded-full bg-brand-yellow mb-4"></div> <!-- High -->
+                                    <div class="w-3 h-3 rounded-full bg-brand-yellow mb-4"></div> <!-- High -->
+                                    <div
+                                        class="w-3 h-3 rounded-full bg-brand-yellow mb-4 group-hover:scale-150 transition-transform">
+                                    </div> <!-- High (Particle) -->
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex items-center text-sm">
-                            <span class="w-20 font-bold text-green-400">1调</span>
-                            <span class="text-gray-300">头高型 (High -> Low -> Low...)</span>
+
+                        <!-- 1 Tone -->
+                        <div
+                            class="bg-gray-900 rounded-xl p-4 border border-gray-700 hover:border-green-400 transition group">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-green-400">Type 1 (头高)</span>
+                                <span class="text-xs text-gray-500">High → Low...</span>
+                            </div>
+                            <div class="h-12 relative flex items-center px-2">
+                                <!-- The Line -->
+                                <div
+                                    class="absolute h-1 bg-gray-600 w-full top-1/2 transform -translate-y-1/2 rounded-full">
+                                    <div class="w-[20%] bg-green-400 h-full absolute left-0"></div> <!-- High start -->
+                                </div>
+                                <!-- The Dots -->
+                                <div class="w-full flex justify-between relative z-10">
+                                    <div
+                                        class="w-3 h-3 rounded-full bg-green-400 mb-4 group-hover:scale-125 transition">
+                                    </div> <!-- High -->
+                                    <div class="w-3 h-3 rounded-full bg-gray-500 mt-4"></div> <!-- Low -->
+                                    <div class="w-3 h-3 rounded-full bg-gray-500 mt-4"></div> <!-- Low -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2 Tone -->
+                        <div
+                            class="bg-gray-900 rounded-xl p-4 border border-gray-700 hover:border-purple-400 transition group">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-purple-400">Type 2 (中高)</span>
+                                <span class="text-xs text-gray-500">Low → High → Low</span>
+                            </div>
+                            <div class="h-12 relative flex items-center px-2">
+                                <div
+                                    class="absolute h-1 bg-gray-600 w-full top-1/2 transform -translate-y-1/2 rounded-full">
+                                    <div class="w-[40%] bg-purple-400 h-full absolute left-[10%]"></div>
+                                </div>
+                                <div class="w-full flex justify-between relative z-10">
+                                    <div class="w-3 h-3 rounded-full bg-gray-500 mt-4"></div> <!-- Low -->
+                                    <div class="w-3 h-3 rounded-full bg-purple-400 mb-4"></div> <!-- High -->
+                                    <div
+                                        class="w-3 h-3 rounded-full bg-gray-500 mt-4 group-hover:bg-red-500 transition-colors">
+                                    </div> <!-- Drop! -->
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Aspiration -->
+                <!-- Aspiration (Concept Cards) -->
                 <div class="bg-gray-800/50 backdrop-blur-md rounded-3xl p-8 border border-gray-700">
                     <h3 class="text-2xl font-bold mb-6 flex items-center">
                         <span
                             class="bg-pink-500 text-white w-10 h-10 rounded-lg flex items-center justify-center mr-3 text-sm">02</span>
                         送气音 (Aspiration)
                     </h3>
-                    <div class="bg-pink-500/10 rounded-xl p-4 border border-pink-500/20 mb-6">
-                        <p class="font-bold text-pink-300 mb-2">黄金法则：</p>
+
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <!-- Concept Card: Aspirated -->
+                        <div class="bg-gray-900 p-4 rounded-2xl border border-gray-700 text-center">
+                            <div class="text-3xl mb-2">🌬️</div>
+                            <h4 class="font-bold text-white mb-1">送气 (Strong Air)</h4>
+                            <p class="text-xs text-gray-400">Start of Word</p>
+                            <div class="mt-3 bg-gray-800 rounded px-2 py-1 text-pink-300 font-mono">Ka / Ta / Pa</div>
+                        </div>
+                        <!-- Concept Card: Unaspirated -->
+                        <div
+                            class="bg-gray-900 p-4 rounded-2xl border border-pink-900/50 text-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-pink-500/10"></div>
+                            <div class="text-3xl mb-2 relative z-10">😶</div>
+                            <h4 class="font-bold text-white mb-1 relative z-10">不送气 (Soft)</h4>
+                            <p class="text-xs text-gray-400 relative z-10">Middle / End</p>
+                            <div class="mt-3 bg-gray-800 rounded px-2 py-1 text-pink-300 font-mono relative z-10">~ga /
+                                ~da / ~ba</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-900 rounded-xl p-6 relative overflow-hidden">
+                        <div class="absolute right-0 top-0 text-[100px] opacity-5 select-none">hand</div>
+                        <p class="font-bold text-pink-300 mb-2">👋 The Hand Test</p>
                         <p class="text-gray-300 text-sm leading-relaxed">
-                            <span class="font-bold text-white">ka, ta, pa</span> 行假名，位于单词的<span
-                                class="underline">中间</span>或<span class="underline">末尾</span>时，可以读作“不送气音” (听起来像浊音，更柔和)。
+                            Place your hand in front of your mouth.<br>
+                            <span class="text-white font-bold">Word Start:</span> Feel the wind.<br>
+                            <span class="text-white font-bold">Word Middle:</span> No wind.
                         </p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <img src="assets/images/aspiration_rule.png" class="w-full rounded-xl border border-gray-600 mb-6"
-                        alt="Aspiration Rule">
+    <!-- Detailed Classroom Notes (New Section) -->
+    <section id="detailed-notes" class="py-24 bg-amber-50 relative overflow-hidden">
+        <!-- Decoration -->
+        <div
+            class="absolute top-0 left-0 w-full h-4 bg-gradient-to-r from-brand-orange via-red-500 to-brand-orange opacity-30">
+        </div>
 
-                    <div class="bg-gray-900 rounded-xl p-4 flex justify-between items-center">
-                        <div>
-                            <p class="text-gray-400 text-xs uppercase font-bold tracking-wider">Example</p>
-                            <p class="text-xl font-bold mt-1">あなた (Anata)</p>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <span
+                    class="bg-brand-orange text-white px-4 py-1 rounded-full text-sm font-bold uppercase tracking-widest">Deep
+                    Dive</span>
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mt-4 font-rounded">盾盾老师的课堂笔记 (完整版)</h2>
+                <p class="text-xl text-gray-600 mt-4">汇集本课所有核心知识点，建议配合视频背诵！📚</p>
+            </div>
+
+            <!-- Note Book Container -->
+            <div class="bg-white rounded-xl shadow-xl border-l-8 border-brand-orange p-8 md:p-12 space-y-16 relative">
+                <!-- Paper Line Pattern -->
+                <div class="absolute inset-0 opacity-[0.03] pointer-events-none"
+                    style="background-image: linear-gradient(#000 1px, transparent 1px); background-size: 100% 2rem;">
+                </div>
+
+                <!-- 0. Intro & Chart Logic -->
+                <article class="prose prose-lg prose-orange max-w-none">
+                    <h3 class="flex items-center text-2xl font-bold text-gray-900 mb-6">
+                        <span
+                            class="w-8 h-8 bg-gray-900 text-white rounded-lg flex items-center justify-center text-sm mr-3">00</span>
+                        50音图的底层逻辑
+                    </h3>
+                    <div class="bg-orange-50/50 p-6 rounded-xl border border-orange-100 text-sm">
+                        <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                            <li><strong>真的是50个吗？</strong> 并不是。结构是 5段 x 10行 = 50格。但其中有5个是空缺/重复的，加上一个特殊的“拨音 (n)”，实际发音只有
+                                <strong>46个</strong>。</li>
+                            <li><strong>元音 (Vowels) 的地位：</strong> 第一行 (あ行) 是元音。就像拼音一样，后面所有的假名 (Fa, Ka, Sa...) 都是由 <span
+                                    class="font-bold text-brand-orange">辅音 + 元音</span> 拼出来的。学好元音，就等于学会了90%的发音！</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- 1. Word Composition -->
+                <article class="prose prose-lg prose-orange max-w-none">
+                    <h3 class="flex items-center text-2xl font-bold text-gray-900 mb-6">
+                        <span
+                            class="w-8 h-8 bg-gray-900 text-white rounded-lg flex items-center justify-center text-sm mr-3">01</span>
+                        日语单词是怎么组成的？
+                    </h3>
+                    <div class="bg-blue-50/50 p-6 rounded-xl border border-blue-100">
+                        <ul class="list-none space-y-4 text-gray-700">
+                            <li>
+                                <span class="font-bold text-blue-800 text-lg block mb-1">1. 汉字词 (Kanji Words) - 占
+                                    60-70%</span>
+                                <span class="text-sm">源自中国。记这类词效率极高：<br>
+                                    ✅ <strong>不用记写法</strong> (跟中文基本一样)<br>
+                                    ✅ <strong>不用背意思</strong> (跟中文基本一样)<br>
+                                    🔥 <strong>只记发音！</strong> (省去2/3的时间)
+                                </span>
+                            </li>
+                            <li class="border-t border-blue-200 pt-3">
+                                <span class="font-bold text-blue-800 text-lg block mb-1">2. 固有词 (Native Words)</span>
+                                <span class="text-sm">日本本土创造的词汇。有三种形式：
+                                    <ul class="list-circle pl-5 mt-1 space-y-1 text-gray-600">
+                                        <li><strong>纯假名：</strong> 如「はい」(Yes)、「いいえ」(No)。</li>
+                                        <li><strong>汉字+假名：</strong> 如「お父さん」(Father)。</li>
+                                        <li><strong>汉字 (意不同)：</strong> 如「娘」(Musume = 女儿，不是娘亲)。</li>
+                                    </ul>
+                                </span>
+                            </li>
+                            <li class="border-t border-blue-200 pt-3">
+                                <span class="font-bold text-blue-800 text-lg block mb-1">3. 外来词 (Loanwords) - <
+                                        5%</span>
+                                        <span class="text-sm">95%来自英语。全部用<strong>片假名</strong>书写。只要你会读，基本能猜出意思 (e.g., Bus
+                                            -> Basu)。</span>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- 2. Mnemonics (Details) -->
+                <article class="prose prose-lg prose-orange max-w-none">
+                    <h3 class="flex items-center text-2xl font-bold text-gray-900 mb-6">
+                        <span
+                            class="w-8 h-8 bg-gray-900 text-white rounded-lg flex items-center justify-center text-sm mr-3">02</span>
+                        元音联想记忆法 (字源)
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm">
+                        <!-- A -->
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <h4 class="font-black text-xl text-brand-orange mb-1">あ / ア (a)</h4>
+                            <p class="mb-2"><strong>源自汉字：</strong>平「安」/ 片「阿」</p>
+                            <p class="text-gray-600 italic">"天【安】门好雄伟【啊】！"</p>
                         </div>
-                        <div class="text-right">
-                            <p class="text-gray-400 text-xs uppercase font-bold tracking-wider">Pronunciation</p>
-                            <p class="text-xl text-pink-400 font-bold mt-1">A-na-da</p>
+                        <!-- I -->
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <h4 class="font-black text-xl text-brand-orange mb-1">い / イ (i)</h4>
+                            <p class="mb-2"><strong>源自汉字：</strong>平「以」/ 片「伊」(人字旁)</p>
+                            <p class="text-gray-600 italic">"我【以】为你【依】然一个人。"</p>
+                        </div>
+                        <!-- U -->
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <h4 class="font-black text-xl text-brand-orange mb-1">う / ウ (u)</h4>
+                            <p class="mb-2"><strong>源自汉字：</strong>平「宇」/ 片「宇」(的宝盖头)</p>
+                            <p class="text-gray-600 italic">"【宇】宙无限大！" (注意：嘴巴平，不要撅嘴)</p>
+                        </div>
+                        <!-- E -->
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <h4 class="font-black text-xl text-brand-orange mb-1">え / エ (e)</h4>
+                            <p class="mb-2"><strong>源自汉字：</strong>平「衣」/ 片「工」</p>
+                            <p class="text-gray-600 italic">"【诶】？！元旦也要【工】作？"</p>
+                        </div>
+                        <!-- O -->
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <h4 class="font-black text-xl text-brand-orange mb-1">お / オ (o)</h4>
+                            <p class="mb-2"><strong>源自汉字：</strong>平「於」/ 片「於」(的方旁/才)</p>
+                            <p class="text-gray-600 italic">"我是艺术天【才】(哦)！"</p>
                         </div>
                     </div>
-                </div>
+                </article>
+
+                <!-- 3. Practice Methods -->
+                <article class="prose prose-lg prose-orange max-w-none">
+                    <h3 class="flex items-center text-2xl font-bold text-gray-900 mb-6">
+                        <span
+                            class="w-8 h-8 bg-gray-900 text-white rounded-lg flex items-center justify-center text-sm mr-3">03</span>
+                        独家练习法 (Breaking Memory)
+                    </h3>
+                    <p class="text-gray-600 mb-4">为了防止你只记住了“顺序”而没记住“字”，请务必进行以下练习：</p>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-blue-50 p-5 rounded-xl border border-blue-100">
+                            <h4 class="font-bold text-blue-800 mb-2">1. 顺读</h4>
+                            <p class="text-sm text-gray-600">あ い う え お<br>(建立初步语感)</p>
+                        </div>
+                        <div class="bg-pink-50 p-5 rounded-xl border border-pink-100">
+                            <h4 class="font-bold text-pink-800 mb-2">2. 逆读 (关键!)</h4>
+                            <p class="text-sm text-gray-600">お え う い あ<br>(打破序列记忆，拼单词必练)</p>
+                        </div>
+                        <div class="bg-green-50 p-5 rounded-xl border border-green-100">
+                            <h4 class="font-bold text-green-800 mb-2">3. 点读 (大师级)</h4>
+                            <p class="text-sm text-gray-600">随机指读。看到就能读，不看罗马音也能反应。</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 4. Tone Details (Deep Dive) -->
+                <article class="prose prose-lg prose-orange max-w-none">
+                    <h3 class="flex items-center text-2xl font-bold text-gray-900 mb-6">
+                        <span
+                            class="w-8 h-8 bg-gray-900 text-white rounded-lg flex items-center justify-center text-sm mr-3">04</span>
+                        音调完全手册 (Tones)
+                    </h3>
+                    <p class="text-gray-600">记住规律：<strong>一调降，二三四后降，零调不降反升。</strong></p>
+                    <div class="overflow-x-auto">
+                        <table
+                            class="min-w-full text-sm text-left text-gray-600 mt-4 border border-gray-200 rounded-lg overflow-hidden">
+                            <thead class="bg-gray-100 text-gray-900 font-bold">
+                                <tr>
+                                    <th class="px-6 py-3">调型</th>
+                                    <th class="px-6 py-3">核心规律</th>
+                                    <th class="px-6 py-3">经典例子</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 bg-white">
+                                <tr>
+                                    <td class="px-6 py-4 font-bold text-brand-blue">0调 (平板)</td>
+                                    <td class="px-6 py-4">第1音低，第2音开始高，<strong>助词也高</strong> (没有下降)。</td>
+                                    <td class="px-6 py-4">
+                                        上 (Ue)<br>日本語 (Nihongo)<br>宇宙 (Uchuu)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 font-bold text-green-600">1调 (头高)</td>
+                                    <td class="px-6 py-4">第1音高，<strong>第2音立即下降</strong>。</td>
+                                    <td class="px-6 py-4">
+                                        愛 (Ai)<br>留学生 (Ryugakusei) - *注:有些教材标4
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 font-bold text-purple-600">2调 (中高)</td>
+                                    <td class="px-6 py-4">第1音低，<strong>第2音后下降</strong> (第3音变低)。</td>
+                                    <td class="px-6 py-4">
+                                        家 (Ie)<br>二年生 (Ninensei)<br>青い (Aoi)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 font-bold text-purple-600">3调 (中高)</td>
+                                    <td class="px-6 py-4">第1音低，<strong>第3音后下降</strong>。</td>
+                                    <td class="px-6 py-4">
+                                        新入生 (Shinnyuusei)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 font-bold text-purple-600">4调 (中高)</td>
+                                    <td class="px-6 py-4">第1音低，<strong>第4音后下降</strong>。</td>
+                                    <td class="px-6 py-4">
+                                        中国人 (Chuugokujin)<br>留学生 (Ryugakusei)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <!-- 5. Aspiration -->
+                <article class="prose prose-lg prose-orange max-w-none">
+                    <h3 class="flex items-center text-2xl font-bold text-gray-900 mb-6">
+                        <span
+                            class="w-8 h-8 bg-gray-900 text-white rounded-lg flex items-center justify-center text-sm mr-3">05</span>
+                        送气 vs 不送气 (必须掌握!)
+                    </h3>
+                    <div class="bg-gray-900 text-white p-6 rounded-xl shadow-lg">
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-xl font-bold text-brand-yellow mb-2">👋 The Hand Test (手掌测试)</h4>
+                                <ul class="list-disc pl-5 space-y-2 text-gray-300 text-sm">
+                                    <li><strong>词首 (Start):</strong> 气流强，冲手心。 <br><span class="text-pink-400">私
+                                            (Wa-ta-shi)</span> 的 Ta 在中间，所以...</li>
+                                    <li><strong>词中/词尾 (Middle/End):</strong> 气流弱，憋在嘴里。听起来很像浊音，但不要读成浊音！</li>
+                                </ul>
+                            </div>
+                            <div class="border-l border-gray-700 pl-8">
+                                <h4 class="text-xl font-bold text-brand-yellow mb-2">黄金法则</h4>
+                                <p class="text-sm text-gray-300 mb-2">仅限 <strong>Ka, Ta, Pa</strong> 行。</p>
+                                <div class="bg-gray-800 p-3 rounded-lg">
+                                    <p class="text-white font-mono">あなた (Anata)</p>
+                                    <p class="text-gray-400 text-xs mt-1">听起来像: Anada (但不振动声带)</p>
+                                </div>
+                                <div class="bg-gray-800 p-3 rounded-lg mt-2">
+                                    <p class="text-white font-mono">わたし (Watashi)</p>
+                                    <p class="text-gray-400 text-xs mt-1">听起来像: Wadashi</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
             </div>
         </div>
     </section>
