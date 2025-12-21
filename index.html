@@ -338,44 +338,29 @@
                             </div>
                         </div>
 
-                        <!-- Right: Interactive Mnemonic Card -->
+                        <!-- Right: Mnemonic Card (Static) -->
                         <div class="lg:w-2/3">
-                            <div class="card-perspective h-full min-h-[400px]">
-                                <div class="relative w-full h-full group cursor-pointer">
-                                    <div class="flip-card-inner w-full h-full relative">
-                                        <!-- Front -->
-                                        <div
-                                            class="flip-card-front absolute w-full h-full bg-orange-50 rounded-2xl border-2 border-dashed border-orange-200 flex flex-col items-center justify-center p-8">
-                                            <div class="text-6xl mb-6">🏛️</div>
-                                            <h3 class="text-2xl font-bold text-gray-800 mb-2">如何记忆？</h3>
-                                            <p class="text-gray-500">点击查看“联想记忆法”</p>
+                            <div
+                                class="bg-gray-50 rounded-3xl p-8 border border-gray-100 h-full flex flex-col justify-center">
+                                <div class="flex flex-col md:flex-row items-center gap-8">
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-2 mb-4">
+                                            <span
+                                                class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-bold uppercase">Mnemonic</span>
+                                            <span class="text-2xl">🏛️</span>
                                         </div>
-                                        <!-- Back -->
-                                        <div
-                                            class="flip-card-back absolute w-full h-full bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 p-6 flex flex-col">
-                                            <div class="flex items-center justify-between mb-4">
-                                                <span
-                                                    class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-bold uppercase">Mnemonic</span>
-                                                <button class="text-gray-400 hover:text-gray-600">
-                                                    <svg class="w-6 h-6" fill="none" stroke="currentColor"
-                                                        viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z">
-                                                        </path>
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                            <img src="assets/images/mnemonic_a.png"
-                                                class="w-full h-48 object-cover rounded-lg mb-4 hover:scale-105 transition-transform duration-500"
-                                                alt="Tiananmen Square">
-                                            <h4 class="text-xl font-bold text-gray-900 mb-2">天【安】门好雄伟【啊】！</h4>
-                                            <p class="text-gray-600 text-sm">
-                                                Hiragana comes from the cursive form of "An" (安).<br>
-                                                Pronounced like "Ah" in "Father".
-                                            </p>
-                                        </div>
+                                        <h3 class="text-3xl font-bold text-gray-900 mb-4">天【<span
+                                                class="text-red-600">安</span>】门好雄伟【<span class="text-red-600">啊</span>】！
+                                        </h3>
+                                        <p class="text-gray-600 mb-4 text-lg">
+                                            Hiragana <strong>あ</strong> comes from the cursive form of
+                                            <strong>安</strong> (An).<br>
+                                            Think of the majestic <strong>Tiananmen</strong>!
+                                        </p>
                                     </div>
+                                    <img src="assets/images/mnemonic_a.png"
+                                        class="w-full md:w-1/2 h-64 object-cover rounded-2xl shadow-lg hover:scale-105 transition-transform duration-500"
+                                        alt="Tiananmen Square">
                                 </div>
                             </div>
                         </div>
@@ -404,24 +389,26 @@
                         </div>
                         <!-- Mnemonic -->
                         <div class="lg:w-2/3">
-                            <div class="bg-gray-50 rounded-3xl p-8 border border-gray-100 h-full">
-                                <div class="flex items-start gap-6">
-                                    <img src="assets/images/mnemonic_i.png"
-                                        class="w-1/3 rounded-2xl shadow-md transform -rotate-3 hover:rotate-0 transition-transform duration-300"
-                                        alt="Alone at Sunset">
-                                    <div>
-                                        <h3 class="text-2xl font-bold text-gray-900 mb-4">我<span
-                                                class="text-blue-600">【以】</span>为...</h3>
-                                        <p class="text-gray-600 mb-4 leading-relaxed">
-                                            Hiragana <strong>い</strong> comes from the left side of the character
-                                            <strong>以</strong> (Yi/I).<br>
-                                            Looks like two people standing side by side.
-                                        </p>
-                                        <div
-                                            class="bg-blue-100 text-blue-800 px-4 py-2 rounded-lg inline-block text-sm font-bold">
-                                            Vocabulary: 愛 (Ai) = Love ❤️
+                            <div
+                                class="bg-gray-50 rounded-3xl p-8 border border-gray-100 h-full flex flex-col justify-center">
+                                <div class="flex flex-col md:flex-row items-center gap-8">
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-2 mb-4">
+                                            <span
+                                                class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-bold uppercase">Mnemonic</span>
+                                            <span class="text-2xl">💔</span>
                                         </div>
+                                        <h3 class="text-3xl font-bold text-gray-900 mb-4">我【<span
+                                                class="text-blue-600">以</span>】为您【<span
+                                                class="text-blue-600">依</span>】然一个人...</h3>
+                                        <p class="text-gray-600 mb-4 text-lg">
+                                            Hiragana <strong>い</strong> comes from <strong>以</strong> (Yi/I).<br>
+                                            Two people standing side by side (Human radical definition).
+                                        </p>
                                     </div>
+                                    <img src="assets/images/mnemonic_i.png"
+                                        class="w-full md:w-1/2 h-64 object-cover rounded-2xl shadow-lg hover:scale-105 transition-transform duration-500"
+                                        alt="Alone at Sunset">
                                 </div>
                             </div>
                         </div>
