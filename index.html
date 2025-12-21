@@ -147,22 +147,18 @@
     <!-- 50 Sound Chart Overview (Visual CSS Grid) -->
     <section id="chart" class="py-20 bg-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <span
-                    class="bg-blue-100 text-blue-600 px-4 py-1 rounded-full text-sm font-bold uppercase tracking-widest">The
-                    Map</span>
-                <h2 class="text-4xl font-black text-gray-900 mt-4 font-rounded">50音图全览</h2>
-                <p class="text-gray-500 mt-2">日语世界的“元素周期表”</p>
-            </div>
-
             <div class="flex flex-col xl:flex-row gap-12 items-start">
-                <!-- The Grid (Mobile scrollable, Desktop fixed) -->
+
+                <!-- Main Chart (Grid System) -->
                 <div
-                    class="w-full xl:w-2/3 bg-gray-50 rounded-3xl p-6 border border-gray-100 shadow-inner overflow-x-auto">
-                    <!-- Column Headers -->
+                    class="w-full xl:w-2/3 bg-white rounded-[2rem] shadow-2xl p-6 md:p-8 border border-gray-100 relative overflow-hidden">
+                    <!-- Background Decoration -->
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-gray-50 rounded-bl-full -z-0"></div>
+
+                    <!-- Grid Header -->
                     <div
-                        class="grid grid-cols-6 gap-2 min-w-[600px] mb-4 text-center text-gray-400 text-xs font-bold uppercase tracking-wider">
-                        <div>Vowel</div>
+                        class="grid grid-cols-6 gap-2 md:gap-4 mb-6 text-center text-xs font-bold text-gray-400 uppercase tracking-widest relative z-10">
+                        <div class="text-brand-orange">Vowel</div>
                         <div>K-Row</div>
                         <div>S-Row</div>
                         <div>T-Row</div>
@@ -170,138 +166,200 @@
                         <div>H-Row</div>
                     </div>
 
-                    <!-- The 5 Rows -->
-                    <div class="space-y-3 min-w-[600px]">
-                        <!-- Row A (Active) -->
-                        <div class="grid grid-cols-6 gap-3">
-                            <!-- A -->
-                            <div
-                                class="relative group bg-white border-2 border-brand-orange rounded-xl p-3 shadow-lg transform hover:-translate-y-1 transition-all cursor-pointer">
+                    <!-- Scrollable Container for Mobile -->
+                    <div class="overflow-x-auto pb-4">
+                        <div class="min-w-[600px] space-y-3">
+
+                            <!-- Row A (Active) -->
+                            <div class="grid grid-cols-6 gap-3">
+                                <!-- A (Active) -->
                                 <div
-                                    class="absolute -top-3 -right-3 bg-brand-orange text-white text-xs font-bold px-2 py-1 rounded-full animate-bounce">
-                                    Start!</div>
-                                <div class="text-center">
+                                    class="bg-white border-2 border-brand-orange rounded-2xl p-3 shadow-[0_4px_14px_rgba(255,140,0,0.3)] transform hover:-translate-y-1 transition cursor-pointer relative overflow-hidden group">
                                     <div
-                                        class="text-3xl font-black text-gray-900 group-hover:text-brand-orange transition-colors">
-                                        あ</div>
-                                    <div class="text-xs text-gray-400 mt-1">ア / a</div>
+                                        class="absolute top-0 right-0 bg-brand-orange text-white text-[10px] font-bold px-2 py-0.5 rounded-bl-lg">
+                                        Start!</div>
+                                    <div class="text-center relative z-10">
+                                        <div
+                                            class="text-4xl font-black text-gray-900 group-hover:scale-110 transition-transform">
+                                            あ</div>
+                                        <div class="text-xs font-bold text-brand-orange mt-1">ア / a</div>
+                                    </div>
+                                </div>
+                                <!-- Ka (Locked) -->
+                                <div
+                                    class="bg-gray-50 border border-gray-200 rounded-xl p-3 flex flex-col items-center justify-center opacity-70 grayscale">
+                                    <div class="text-2xl font-bold text-gray-300">か</div>
+                                    <div class="text-[10px] text-gray-300 mt-1">ka</div>
+                                </div>
+                                <!-- Sa (Locked) -->
+                                <div
+                                    class="bg-gray-50 border border-gray-200 rounded-xl p-3 flex flex-col items-center justify-center opacity-70 grayscale">
+                                    <div class="text-2xl font-bold text-gray-300">さ</div>
+                                    <div class="text-[10px] text-gray-300 mt-1">sa</div>
+                                </div>
+                                <!-- Ta (Locked) -->
+                                <div
+                                    class="bg-gray-50 border border-gray-200 rounded-xl p-3 flex flex-col items-center justify-center opacity-70 grayscale">
+                                    <div class="text-2xl font-bold text-gray-300">た</div>
+                                    <div class="text-[10px] text-gray-300 mt-1">ta</div>
+                                </div>
+                                <!-- Na (Locked) -->
+                                <div
+                                    class="bg-gray-50 border border-gray-200 rounded-xl p-3 flex flex-col items-center justify-center opacity-70 grayscale">
+                                    <div class="text-2xl font-bold text-gray-300">な</div>
+                                    <div class="text-[10px] text-gray-300 mt-1">na</div>
+                                </div>
+                                <!-- Ha (Locked) -->
+                                <div
+                                    class="bg-gray-50 border border-gray-200 rounded-xl p-3 flex flex-col items-center justify-center opacity-70 grayscale">
+                                    <div class="text-2xl font-bold text-gray-300">は</div>
+                                    <div class="text-[10px] text-gray-300 mt-1">ha</div>
                                 </div>
                             </div>
-                            <!-- Consonants (Placeholders for perspective) -->
-                            <div
-                                class="opacity-50 grayscale bg-white border border-gray-200 rounded-xl p-3 text-center">
-                                <div class="text-2xl font-bold text-gray-400">か</div>
-                                <div class="text-[10px] text-gray-300">ka</div>
-                            </div>
-                            <div
-                                class="opacity-50 grayscale bg-white border border-gray-200 rounded-xl p-3 text-center">
-                                <div class="text-2xl font-bold text-gray-400">さ</div>
-                                <div class="text-[10px] text-gray-300">sa</div>
-                            </div>
-                            <div
-                                class="opacity-50 grayscale bg-white border border-gray-200 rounded-xl p-3 text-center">
-                                <div class="text-2xl font-bold text-gray-400">た</div>
-                                <div class="text-[10px] text-gray-300">ta</div>
-                            </div>
-                            <div
-                                class="opacity-50 grayscale bg-white border border-gray-200 rounded-xl p-3 text-center">
-                                <div class="text-2xl font-bold text-gray-400">な</div>
-                                <div class="text-[10px] text-gray-300">na</div>
-                            </div>
-                            <div
-                                class="opacity-50 grayscale bg-white border border-gray-200 rounded-xl p-3 text-center">
-                                <div class="text-2xl font-bold text-gray-400">は</div>
-                                <div class="text-[10px] text-gray-300">ha</div>
-                            </div>
-                        </div>
 
-                        <!-- Row I -->
-                        <div class="grid grid-cols-6 gap-3">
-                            <div
-                                class="bg-white border-2 border-blue-400 rounded-xl p-3 shadow-md hover:shadow-lg transition cursor-pointer">
-                                <div class="text-center">
-                                    <div class="text-3xl font-black text-gray-900">い</div>
-                                    <div class="text-xs text-gray-400 mt-1">イ / i</div>
+                            <!-- Row I -->
+                            <div class="grid grid-cols-6 gap-3">
+                                <div
+                                    class="bg-white border-2 border-blue-400 rounded-2xl p-3 shadow-md hover:shadow-lg hover:-translate-y-1 transition cursor-pointer">
+                                    <div class="text-center">
+                                        <div class="text-3xl font-black text-gray-900">い</div>
+                                        <div class="text-xs font-bold text-blue-500 mt-1">イ / i</div>
+                                    </div>
+                                </div>
+                                <!-- Locked Columns -->
+                                <div
+                                    class="col-span-5 bg-gray-50/50 rounded-xl border border-dashed border-gray-200 flex items-center justify-center relative">
+                                    <div
+                                        class="absolute inset-0 flex items-center justify-center opacity-10 space-x-8 text-2xl font-bold text-gray-400 select-none">
+                                        <span>ki</span><span>shi</span><span>chi</span><span>ni</span><span>hi</span>
+                                    </div>
+                                    <span
+                                        class="text-xs text-gray-400 font-medium bg-gray-50 px-3 py-1 rounded-full border border-gray-200">🔒
+                                        Coming Soon</span>
                                 </div>
                             </div>
-                            <div class="opacity-30 bg-gray-100 rounded-xl p-2"></div>
-                            <div class="opacity-30 bg-gray-100 rounded-xl p-2"></div>
-                            <!-- Visual filler for other rows -->
-                            <div
-                                class="col-span-3 flex items-center justify-center text-gray-300 text-sm italic tracking-widest">
-                                ... Other Rows (Future Lessons) ...
-                            </div>
-                        </div>
 
-                        <!-- Row U -->
-                        <div class="grid grid-cols-6 gap-3">
-                            <div
-                                class="bg-white border-2 border-green-400 rounded-xl p-3 shadow-md hover:shadow-lg transition cursor-pointer">
-                                <div class="text-center">
-                                    <div class="text-3xl font-black text-gray-900">う</div>
-                                    <div class="text-xs text-gray-400 mt-1">ウ / u</div>
+                            <!-- Row U -->
+                            <div class="grid grid-cols-6 gap-3">
+                                <div
+                                    class="bg-white border-2 border-green-400 rounded-2xl p-3 shadow-md hover:shadow-lg hover:-translate-y-1 transition cursor-pointer">
+                                    <div class="text-center">
+                                        <div class="text-3xl font-black text-gray-900">う</div>
+                                        <div class="text-xs font-bold text-green-500 mt-1">ウ / u</div>
+                                    </div>
+                                </div>
+                                <!-- Locked Columns -->
+                                <div class="col-span-5 bg-gray-50/50 rounded-xl border border-dashed border-gray-200">
                                 </div>
                             </div>
-                            <div
-                                class="col-span-5 border-b-2 border-dashed border-gray-200 h-full w-full transform translate-y-[-50%]">
-                            </div>
-                        </div>
 
-                        <!-- Row E -->
-                        <div class="grid grid-cols-6 gap-3">
-                            <div
-                                class="bg-white border-2 border-red-400 rounded-xl p-3 shadow-md hover:shadow-lg transition cursor-pointer">
-                                <div class="text-center">
-                                    <div class="text-3xl font-black text-gray-900">え</div>
-                                    <div class="text-xs text-gray-400 mt-1">エ / e</div>
+                            <!-- Row E -->
+                            <div class="grid grid-cols-6 gap-3">
+                                <div
+                                    class="bg-white border-2 border-red-400 rounded-2xl p-3 shadow-md hover:shadow-lg hover:-translate-y-1 transition cursor-pointer">
+                                    <div class="text-center">
+                                        <div class="text-3xl font-black text-gray-900">え</div>
+                                        <div class="text-xs font-bold text-red-500 mt-1">エ / e</div>
+                                    </div>
+                                </div>
+                                <!-- Locked Columns -->
+                                <div class="col-span-5 bg-gray-50/50 rounded-xl border border-dashed border-gray-200">
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Row O -->
-                        <div class="grid grid-cols-6 gap-3">
-                            <div
-                                class="bg-white border-2 border-purple-400 rounded-xl p-3 shadow-md hover:shadow-lg transition cursor-pointer">
-                                <div class="text-center">
-                                    <div class="text-3xl font-black text-gray-900">お</div>
-                                    <div class="text-xs text-gray-400 mt-1">オ / o</div>
+                            <!-- Row O -->
+                            <div class="grid grid-cols-6 gap-3">
+                                <div
+                                    class="bg-white border-2 border-purple-400 rounded-2xl p-3 shadow-md hover:shadow-lg hover:-translate-y-1 transition cursor-pointer">
+                                    <div class="text-center">
+                                        <div class="text-3xl font-black text-gray-900">お</div>
+                                        <div class="text-xs font-bold text-purple-500 mt-1">オ / o</div>
+                                    </div>
+                                </div>
+                                <!-- Locked Columns -->
+                                <div class="col-span-5 bg-gray-50/50 rounded-xl border border-dashed border-gray-200">
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div
+                        class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center text-sm text-gray-400">
+                        <span>Total: 46 Basic Sounds</span>
+                        <span class="flex items-center gap-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div> Live Lesson: Vowels
+                        </span>
                     </div>
                 </div>
 
-                <!-- Concept Explainer -->
+                <!-- Concept Explainer (Sidebar) -->
                 <div class="w-full xl:w-1/3 space-y-6">
-                    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-lg">
+                    <div
+                        class="bg-white/80 backdrop-blur-xl p-6 rounded-[2rem] border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-lg transition-shadow">
                         <div class="flex items-center gap-4 mb-4">
                             <div
-                                class="w-12 h-12 rounded-full bg-brand-orange flex items-center justify-center text-2xl">
-                                🎎</div>
+                                class="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-orange to-red-400 flex items-center justify-center text-3xl shadow-lg shadow-orange-200">
+                                🎎
+                            </div>
                             <div>
-                                <h3 class="font-bold text-gray-900">平假名 (Hiragana)</h3>
-                                <p class="text-xs text-gray-500">Curvy • For Native Words</p>
+                                <h3 class="font-bold text-xl text-gray-900">平假名 (Hiragana)</h3>
+                                <p class="text-xs font-medium text-gray-400 uppercase tracking-wide">Native & Grammar
+                                </p>
                             </div>
                         </div>
-                        <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
-                            <div class="h-full bg-brand-orange w-3/4"></div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm font-bold text-gray-600">
+                                <span>Frequency</span>
+                                <span>~70%</span>
+                            </div>
+                            <div class="h-3 bg-gray-100 rounded-full overflow-hidden">
+                                <div
+                                    class="h-full bg-gradient-to-r from-brand-orange to-red-400 w-[70%] rounded-full shadow-sm">
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-right text-xs text-brand-orange font-bold mt-1">Used 70% of the time</p>
+                        <p class="mt-4 text-sm text-gray-500 leading-relaxed">
+                            草书演变而来，线条圆润。用于<span class="font-bold text-gray-800">固有词</span>和<span
+                                class="font-bold text-gray-800">语法助词</span>。
+                        </p>
                     </div>
 
-                    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-lg">
+                    <div
+                        class="bg-white/80 backdrop-blur-xl p-6 rounded-[2rem] border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-lg transition-shadow">
                         <div class="flex items-center gap-4 mb-4">
-                            <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-2xl">🤖
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-3xl shadow-lg shadow-blue-200">
+                                🤖
                             </div>
                             <div>
-                                <h3 class="font-bold text-gray-900">片假名 (Katakana)</h3>
-                                <p class="text-xs text-gray-500">Angular • For Foreign Words</p>
+                                <h3 class="font-bold text-xl text-gray-900">片假名 (Katakana)</h3>
+                                <p class="text-xs font-medium text-gray-400 uppercase tracking-wide">Foreign & Emphasis
+                                </p>
                             </div>
                         </div>
-                        <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
-                            <div class="h-full bg-blue-500 w-1/4"></div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm font-bold text-gray-600">
+                                <span>Frequency</span>
+                                <span>~30%</span>
+                            </div>
+                            <div class="h-3 bg-gray-100 rounded-full overflow-hidden">
+                                <div
+                                    class="h-full bg-gradient-to-r from-blue-400 to-indigo-500 w-[30%] rounded-full shadow-sm">
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-right text-xs text-blue-500 font-bold mt-1">Used 30% of the time</p>
+                        <p class="mt-4 text-sm text-gray-500 leading-relaxed">
+                            楷书偏旁演变而来，方方正正。用于<span class="font-bold text-gray-800">外来语</span>(Coffee, Bus)和强调。
+                        </p>
+                    </div>
+
+                    <!-- Fun Fact Card -->
+                    <div
+                        class="bg-gradient-to-br from-brand-yellow to-yellow-200 p-6 rounded-[2rem] shadow-lg text-yellow-900">
+                        <h4 class="font-bold text-lg mb-2 flex items-center gap-2">💡 Did You Know?</h4>
+                        <p class="text-sm opacity-90 leading-relaxed">
+                            Japanese has **no tones** like Chinese! It uses **Pitch Accent** (high/low) instead.
+                        </p>
                     </div>
                 </div>
             </div>
