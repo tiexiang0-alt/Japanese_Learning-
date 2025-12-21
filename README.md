@@ -1,5 +1,7 @@
 # 盾盾日语教室 (Dun Dun Japanese Classroom) - Lesson 1
 
+> **Japanese_Learning-**: All through journey Japan
+
 Welcome to the **Japanese Lesson 1** website project! This project is a standalone, interactive web experience designed to teach the Japanese 50-sound table (starting with the Vowels: A-I-U-E-O).
 
 ## Features
@@ -29,6 +31,6 @@ japanese-learning-web/
 1. Simply open `index.html` in any modern web browser.
 2. No build step required (Tailwind CSS is loaded via CDN for simplicity).
 
-## content Source
+## Content Source
 
 Content is based on the "Dun Dun Teaches Japanese" (盾盾教你学日语) lecture notes and slides.
