@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 1: Mastery Workbook (Portrait) – 盾盾日语</title>
+    <title>Chapter 1: AI Handwriting Workbook – 盾盾日语</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=ZCOOL+XiaoWei&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         :root {
             --paper-width: 210mm;
@@ -48,13 +50,11 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
         }
 
-        /* Portrait A4 Page */
         .test-page {
             width: var(--paper-width);
             height: var(--paper-height);
             background: white;
             padding: 20mm;
-            /* Standard margin */
             margin-bottom: 60px;
             box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
             position: relative;
@@ -104,19 +104,38 @@
         .question-box {
             border: 1px solid #e2e8f0;
             border-radius: 12px;
-            padding: 0.8rem;
+            padding: 0.5rem;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             background: #fff;
-            transition: all 0.2s;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .question-box.checking {
+            border-color: #fbbf24;
+            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.3);
+        }
+
+        .question-box.correct-ai {
+            border-color: #22c55e;
+            background-color: #f0fdf4;
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+        }
+
+        .question-box.incorrect-ai {
+            border-color: #ef4444;
+            background-color: #fef2f2;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
         }
 
         .question-box.wide {
             flex-direction: row;
             justify-content: space-between;
-            padding: 0.8rem 1.5rem;
+            align-items: center;
+            padding: 0.5rem 1.5rem;
         }
 
         .label {
@@ -124,6 +143,7 @@
             font-weight: 600;
             color: #64748b;
             margin-bottom: 0.5rem;
+            z-index: 10;
         }
 
         .question-box.wide .label {
@@ -138,8 +158,9 @@
             text-align: center;
             font-size: 1.2rem;
             outline: none;
-            transition: border-color 0.2s;
             font-family: 'Noto Sans JP', sans-serif;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .question-box.wide input {
@@ -148,7 +169,39 @@
 
         input:focus {
             border-color: #6366f1;
-            background: #f8fafc;
+        }
+
+        /* Canvas & AI Overlay */
+        canvas.handwriting-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 15;
+            cursor: crosshair;
+            touch-action: none;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .ghost-answer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Yuji Syuku', serif;
+            font-size: 2.5rem;
+            color: #ef4444;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 5;
+            transition: opacity 0.5s;
+        }
+
+        .question-box.wide .ghost-answer {
+            left: 75%;
+            font-size: 2rem;
         }
 
         .page-number {
@@ -168,8 +221,7 @@
                 padding: 0;
             }
 
-            .glass-nav,
-            #score-display {
+            .glass-nav {
                 display: none !important;
             }
 
@@ -177,25 +229,63 @@
                 box-shadow: none;
                 margin: 0;
                 page-break-after: always;
-                border: none;
                 width: 100%;
                 height: 100%;
             }
+
+            input {
+                border: none;
+                border-bottom: 1px solid #000;
+            }
         }
 
-        .correct {
-            background-color: #dcfce7 !important;
-            border-color: #22c55e !important;
+        /* Mode Switching */
+        body.mode-handwriting input {
+            display: none;
         }
 
-        .incorrect {
-            background-color: #fee2e2 !important;
-            border-color: #ef4444 !important;
+        body.mode-handwriting canvas {
+            display: block;
+        }
+
+        body.mode-handwriting .question-box {
+            border: 1px dashed #cbd5e1;
+            height: 100px;
+        }
+
+        body.mode-handwriting .question-box.wide {
+            height: auto;
+            min-height: 80px;
+        }
+
+        /* Spinner */
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #6366f1;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        #ai-status-loader {
+            display: none;
         }
     </style>
 </head>
 
-<body>
+<body class="mode-typing">
 
     <nav class="glass-nav no-print">
         <div class="flex items-center gap-4">
@@ -203,17 +293,43 @@
                 class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg hover:scale-105 transition">←</a>
             <div>
                 <h2 class="text-sm font-bold text-slate-800 m-0 border-none p-0 mt-0">Chapter 1 Workbook</h2>
-                <span class="text-[10px] text-slate-500 uppercase tracking-widest">Portrait Edition</span>
+                <span class="text-[10px] text-slate-500 uppercase tracking-widest">AI Edition</span>
             </div>
         </div>
-        <div class="flex items-center gap-4">
-            <div class="hidden md:block px-4 py-2 bg-indigo-50 text-indigo-700 rounded-full font-bold text-sm">Score:
-                <span id="nav-score">0</span></div>
+
+        <div class="flex items-center gap-3 bg-white/50 px-4 py-2 rounded-full border border-white/60 shadow-sm">
+            <span class="text-xs font-bold text-slate-500 uppercase">Input:</span>
+            <button onclick="setMode('typing')" id="btn-typing"
+                class="px-3 py-1 rounded-lg text-sm font-bold bg-indigo-100 text-indigo-700 transition">⌨️ Type</button>
+            <button onclick="setMode('handwriting')" id="btn-writing"
+                class="px-3 py-1 rounded-lg text-sm font-bold text-slate-400 hover:text-slate-600 transition">✍️
+                Write</button>
+        </div>
+
+        <div class="flex items-center gap-2">
+            <!-- Visual Check (Instant) -->
+            <button onclick="gradeVisual()"
+                class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-full font-bold text-sm transition"
+                title="Show Ghost Answer (Red)">
+                👀 Visual
+            </button>
+
+            <!-- AI Check (Gemini) -->
+            <button onclick="gradeWithAI()"
+                class="px-5 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-full font-bold shadow-lg flex items-center gap-2 transition text-sm">
+                <span id="ai-icon">✨</span> AI Check
+                <div id="ai-status-loader" class="spinner w-4 h-4 border-2"></div>
+            </button>
+
             <button onclick="window.print()"
-                class="px-6 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-full font-bold shadow-lg flex items-center gap-2 transition text-sm">🖨️
-                Print</button>
+                class="w-10 h-10 rounded-full bg-slate-800 text-white flex items-center justify-center hover:bg-slate-700">🖨️</button>
         </div>
     </nav>
+
+    <div id="ai-message"
+        class="hidden fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-black/80 text-white px-6 py-3 rounded-full shadow-2xl z-50 text-sm font-bold animate-pulse">
+        🤖 AI is analyzing your handwriting...
+    </div>
 
     <form id="test-form">
 
@@ -221,64 +337,112 @@
         <article class="test-page">
             <h1>Hiragana Part 1</h1>
             <p class="text-center text-slate-400 mb-8">A - Na Rows</p>
-
             <div class="flex-grow flex flex-col gap-6">
                 <!-- A Row -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">A</span><input type="text" data-answer="あ"></div>
-                    <div class="question-box"><span class="label">I</span><input type="text" data-answer="い"></div>
-                    <div class="question-box"><span class="label">U</span><input type="text" data-answer="う"></div>
-                    <div class="question-box"><span class="label">E</span><input type="text" data-answer="え"></div>
-                    <div class="question-box"><span class="label">O</span><input type="text" data-answer="お"></div>
+                    <div class="question-box" data-answer="あ"><span class="label">A</span><input type="text">
+                        <div class="ghost-answer">あ</div>
+                    </div>
+                    <div class="question-box" data-answer="い"><span class="label">I</span><input type="text">
+                        <div class="ghost-answer">い</div>
+                    </div>
+                    <div class="question-box" data-answer="う"><span class="label">U</span><input type="text">
+                        <div class="ghost-answer">う</div>
+                    </div>
+                    <div class="question-box" data-answer="え"><span class="label">E</span><input type="text">
+                        <div class="ghost-answer">え</div>
+                    </div>
+                    <div class="question-box" data-answer="お"><span class="label">O</span><input type="text">
+                        <div class="ghost-answer">お</div>
+                    </div>
                 </div>
-
                 <!-- Ka Row -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">Ka</span><input type="text" data-answer="か"></div>
-                    <div class="question-box"><span class="label">Ki</span><input type="text" data-answer="き"></div>
-                    <div class="question-box"><span class="label">Ku</span><input type="text" data-answer="く"></div>
-                    <div class="question-box"><span class="label">Ke</span><input type="text" data-answer="け"></div>
-                    <div class="question-box"><span class="label">Ko</span><input type="text" data-answer="こ"></div>
+                    <div class="question-box" data-answer="か"><span class="label">Ka</span><input type="text">
+                        <div class="ghost-answer">か</div>
+                    </div>
+                    <div class="question-box" data-answer="き"><span class="label">Ki</span><input type="text">
+                        <div class="ghost-answer">き</div>
+                    </div>
+                    <div class="question-box" data-answer="く"><span class="label">Ku</span><input type="text">
+                        <div class="ghost-answer">く</div>
+                    </div>
+                    <div class="question-box" data-answer="け"><span class="label">Ke</span><input type="text">
+                        <div class="ghost-answer">け</div>
+                    </div>
+                    <div class="question-box" data-answer="こ"><span class="label">Ko</span><input type="text">
+                        <div class="ghost-answer">こ</div>
+                    </div>
                 </div>
-
                 <!-- Sa Row -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">Sa</span><input type="text" data-answer="さ"></div>
-                    <div class="question-box"><span class="label">Shi</span><input type="text" data-answer="し"></div>
-                    <div class="question-box"><span class="label">Su</span><input type="text" data-answer="す"></div>
-                    <div class="question-box"><span class="label">Se</span><input type="text" data-answer="せ"></div>
-                    <div class="question-box"><span class="label">So</span><input type="text" data-answer="そ"></div>
+                    <div class="question-box" data-answer="さ"><span class="label">Sa</span><input type="text">
+                        <div class="ghost-answer">さ</div>
+                    </div>
+                    <div class="question-box" data-answer="し"><span class="label">Shi</span><input type="text">
+                        <div class="ghost-answer">し</div>
+                    </div>
+                    <div class="question-box" data-answer="す"><span class="label">Su</span><input type="text">
+                        <div class="ghost-answer">す</div>
+                    </div>
+                    <div class="question-box" data-answer="せ"><span class="label">Se</span><input type="text">
+                        <div class="ghost-answer">せ</div>
+                    </div>
+                    <div class="question-box" data-answer="そ"><span class="label">So</span><input type="text">
+                        <div class="ghost-answer">そ</div>
+                    </div>
                 </div>
-
                 <!-- Ta Row -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">Ta</span><input type="text" data-answer="た"></div>
-                    <div class="question-box"><span class="label">Chi</span><input type="text" data-answer="ち"></div>
-                    <div class="question-box"><span class="label">Tsu</span><input type="text" data-answer="つ"></div>
-                    <div class="question-box"><span class="label">Te</span><input type="text" data-answer="て"></div>
-                    <div class="question-box"><span class="label">To</span><input type="text" data-answer="と"></div>
+                    <div class="question-box" data-answer="た"><span class="label">Ta</span><input type="text">
+                        <div class="ghost-answer">た</div>
+                    </div>
+                    <div class="question-box" data-answer="ち"><span class="label">Chi</span><input type="text">
+                        <div class="ghost-answer">ち</div>
+                    </div>
+                    <div class="question-box" data-answer="つ"><span class="label">Tsu</span><input type="text">
+                        <div class="ghost-answer">つ</div>
+                    </div>
+                    <div class="question-box" data-answer="て"><span class="label">Te</span><input type="text">
+                        <div class="ghost-answer">て</div>
+                    </div>
+                    <div class="question-box" data-answer="と"><span class="label">To</span><input type="text">
+                        <div class="ghost-answer">と</div>
+                    </div>
                 </div>
-
                 <!-- Na Row -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">Na</span><input type="text" data-answer="な"></div>
-                    <div class="question-box"><span class="label">Ni</span><input type="text" data-answer="に"></div>
-                    <div class="question-box"><span class="label">Nu</span><input type="text" data-answer="ぬ"></div>
-                    <div class="question-box"><span class="label">Ne</span><input type="text" data-answer="ね"></div>
-                    <div class="question-box"><span class="label">No</span><input type="text" data-answer="の"></div>
+                    <div class="question-box" data-answer="な"><span class="label">Na</span><input type="text">
+                        <div class="ghost-answer">な</div>
+                    </div>
+                    <div class="question-box" data-answer="に"><span class="label">Ni</span><input type="text">
+                        <div class="ghost-answer">に</div>
+                    </div>
+                    <div class="question-box" data-answer="ぬ"><span class="label">Nu</span><input type="text">
+                        <div class="ghost-answer">ぬ</div>
+                    </div>
+                    <div class="question-box" data-answer="ね"><span class="label">Ne</span><input type="text">
+                        <div class="ghost-answer">ね</div>
+                    </div>
+                    <div class="question-box" data-answer="の"><span class="label">No</span><input type="text">
+                        <div class="ghost-answer">の</div>
+                    </div>
                 </div>
-
+                <!-- Construction -->
                 <div class="mt-auto border-t pt-4">
                     <h3>Construction</h3>
                     <div class="grid-2">
-                        <div class="question-box wide"><span class="label">A + O (Blue)</span><input type="text"
-                                data-answer="あお"></div>
-                        <div class="question-box wide"><span class="label">U + E (Up)</span><input type="text"
-                                data-answer="うえ"></div>
+                        <div class="question-box wide" data-answer="あお"><span class="label">A + O (Blue)</span><input
+                                type="text">
+                            <div class="ghost-answer">あお</div>
+                        </div>
+                        <div class="question-box wide" data-answer="うえ"><span class="label">U + E (Up)</span><input
+                                type="text">
+                            <div class="ghost-answer">うえ</div>
+                        </div>
                     </div>
                 </div>
             </div>
-
             <div class="page-number">1 / 8</div>
         </article>
 
@@ -286,64 +450,103 @@
         <article class="test-page">
             <h1>Hiragana Part 2</h1>
             <p class="text-center text-slate-400 mb-8">Ha - N Rows</p>
-
             <div class="flex-grow flex flex-col gap-6">
                 <!-- Ha Row -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">Ha</span><input type="text" data-answer="は"></div>
-                    <div class="question-box"><span class="label">Hi</span><input type="text" data-answer="ひ"></div>
-                    <div class="question-box"><span class="label">Fu</span><input type="text" data-answer="ふ"></div>
-                    <div class="question-box"><span class="label">He</span><input type="text" data-answer="へ"></div>
-                    <div class="question-box"><span class="label">Ho</span><input type="text" data-answer="ほ"></div>
+                    <div class="question-box" data-answer="は"><span class="label">Ha</span><input type="text">
+                        <div class="ghost-answer">は</div>
+                    </div>
+                    <div class="question-box" data-answer="ひ"><span class="label">Hi</span><input type="text">
+                        <div class="ghost-answer">ひ</div>
+                    </div>
+                    <div class="question-box" data-answer="ふ"><span class="label">Fu</span><input type="text">
+                        <div class="ghost-answer">ふ</div>
+                    </div>
+                    <div class="question-box" data-answer="へ"><span class="label">He</span><input type="text">
+                        <div class="ghost-answer">へ</div>
+                    </div>
+                    <div class="question-box" data-answer="ほ"><span class="label">Ho</span><input type="text">
+                        <div class="ghost-answer">ほ</div>
+                    </div>
                 </div>
-
                 <!-- Ma Row -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">Ma</span><input type="text" data-answer="ま"></div>
-                    <div class="question-box"><span class="label">Mi</span><input type="text" data-answer="み"></div>
-                    <div class="question-box"><span class="label">Mu</span><input type="text" data-answer="む"></div>
-                    <div class="question-box"><span class="label">Me</span><input type="text" data-answer="め"></div>
-                    <div class="question-box"><span class="label">Mo</span><input type="text" data-answer="も"></div>
+                    <div class="question-box" data-answer="ま"><span class="label">Ma</span><input type="text">
+                        <div class="ghost-answer">ま</div>
+                    </div>
+                    <div class="question-box" data-answer="み"><span class="label">Mi</span><input type="text">
+                        <div class="ghost-answer">み</div>
+                    </div>
+                    <div class="question-box" data-answer="む"><span class="label">Mu</span><input type="text">
+                        <div class="ghost-answer">む</div>
+                    </div>
+                    <div class="question-box" data-answer="め"><span class="label">Me</span><input type="text">
+                        <div class="ghost-answer">め</div>
+                    </div>
+                    <div class="question-box" data-answer="も"><span class="label">Mo</span><input type="text">
+                        <div class="ghost-answer">も</div>
+                    </div>
                 </div>
-
                 <!-- Ya Row -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">Ya</span><input type="text" data-answer="や"></div>
+                    <div class="question-box" data-answer="や"><span class="label">Ya</span><input type="text">
+                        <div class="ghost-answer">や</div>
+                    </div>
                     <div class="question-box bg-slate-50 border-none shadow-none"></div>
-                    <div class="question-box"><span class="label">Yu</span><input type="text" data-answer="ゆ"></div>
+                    <div class="question-box" data-answer="ゆ"><span class="label">Yu</span><input type="text">
+                        <div class="ghost-answer">ゆ</div>
+                    </div>
                     <div class="question-box bg-slate-50 border-none shadow-none"></div>
-                    <div class="question-box"><span class="label">Yo</span><input type="text" data-answer="よ"></div>
+                    <div class="question-box" data-answer="よ"><span class="label">Yo</span><input type="text">
+                        <div class="ghost-answer">よ</div>
+                    </div>
                 </div>
-
                 <!-- Ra Row -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">Ra</span><input type="text" data-answer="ら"></div>
-                    <div class="question-box"><span class="label">Ri</span><input type="text" data-answer="り"></div>
-                    <div class="question-box"><span class="label">Ru</span><input type="text" data-answer="る"></div>
-                    <div class="question-box"><span class="label">Re</span><input type="text" data-answer="れ"></div>
-                    <div class="question-box"><span class="label">Ro</span><input type="text" data-answer="ろ"></div>
+                    <div class="question-box" data-answer="ら"><span class="label">Ra</span><input type="text">
+                        <div class="ghost-answer">ら</div>
+                    </div>
+                    <div class="question-box" data-answer="り"><span class="label">Ri</span><input type="text">
+                        <div class="ghost-answer">り</div>
+                    </div>
+                    <div class="question-box" data-answer="る"><span class="label">Ru</span><input type="text">
+                        <div class="ghost-answer">る</div>
+                    </div>
+                    <div class="question-box" data-answer="れ"><span class="label">Re</span><input type="text">
+                        <div class="ghost-answer">れ</div>
+                    </div>
+                    <div class="question-box" data-answer="ろ"><span class="label">Ro</span><input type="text">
+                        <div class="ghost-answer">ろ</div>
+                    </div>
                 </div>
-
                 <!-- Wa Row & N -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">Wa</span><input type="text" data-answer="わ"></div>
+                    <div class="question-box" data-answer="わ"><span class="label">Wa</span><input type="text">
+                        <div class="ghost-answer">わ</div>
+                    </div>
                     <div class="question-box bg-slate-50 border-none shadow-none"></div>
-                    <div class="question-box"><span class="label">Wo</span><input type="text" data-answer="を"></div>
+                    <div class="question-box" data-answer="を"><span class="label">Wo</span><input type="text">
+                        <div class="ghost-answer">を</div>
+                    </div>
                     <div class="question-box bg-slate-50 border-none shadow-none"></div>
-                    <div class="question-box"><span class="label">N</span><input type="text" data-answer="ん"></div>
+                    <div class="question-box" data-answer="ん"><span class="label">N</span><input type="text">
+                        <div class="ghost-answer">ん</div>
+                    </div>
                 </div>
-
                 <div class="mt-auto border-t pt-4">
                     <h3>Particles</h3>
                     <div class="grid-2">
-                        <div class="question-box wide"><span class="label">Topic (Wa)</span><input type="text"
-                                data-answer="は"></div>
-                        <div class="question-box wide"><span class="label">Object (O)</span><input type="text"
-                                data-answer="を"></div>
+                        <div class="question-box wide" data-answer="は"><span class="label">Topic (Wa)</span><input
+                                type="text">
+                            <div class="ghost-answer">は</div>
+                        </div>
+                        <div class="question-box wide" data-answer="を"><span class="label">Object (O)</span><input
+                                type="text">
+                            <div class="ghost-answer">を</div>
+                        </div>
                     </div>
                 </div>
             </div>
-
             <div class="page-number">2 / 8</div>
         </article>
 
@@ -351,133 +554,220 @@
         <article class="test-page">
             <h1>Katakana Part 1</h1>
             <p class="text-center text-slate-400 mb-8">Hiragana -> Katakana (A - No)</p>
-
             <div class="flex-grow flex flex-col gap-6">
                 <!-- A Row -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">あ</span><input type="text" data-answer="ア"></div>
-                    <div class="question-box"><span class="label">い</span><input type="text" data-answer="イ"></div>
-                    <div class="question-box"><span class="label">う</span><input type="text" data-answer="ウ"></div>
-                    <div class="question-box"><span class="label">え</span><input type="text" data-answer="エ"></div>
-                    <div class="question-box"><span class="label">お</span><input type="text" data-answer="オ"></div>
+                    <div class="question-box" data-answer="ア"><span class="label">あ</span><input type="text">
+                        <div class="ghost-answer">ア</div>
+                    </div>
+                    <div class="question-box" data-answer="イ"><span class="label">い</span><input type="text">
+                        <div class="ghost-answer">イ</div>
+                    </div>
+                    <div class="question-box" data-answer="ウ"><span class="label">う</span><input type="text">
+                        <div class="ghost-answer">ウ</div>
+                    </div>
+                    <div class="question-box" data-answer="エ"><span class="label">え</span><input type="text">
+                        <div class="ghost-answer">エ</div>
+                    </div>
+                    <div class="question-box" data-answer="オ"><span class="label">お</span><input type="text">
+                        <div class="ghost-answer">オ</div>
+                    </div>
                 </div>
-
                 <!-- Ka Row -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">か</span><input type="text" data-answer="カ"></div>
-                    <div class="question-box"><span class="label">き</span><input type="text" data-answer="キ"></div>
-                    <div class="question-box"><span class="label">く</span><input type="text" data-answer="ク"></div>
-                    <div class="question-box"><span class="label">け</span><input type="text" data-answer="ケ"></div>
-                    <div class="question-box"><span class="label">こ</span><input type="text" data-answer="コ"></div>
+                    <div class="question-box" data-answer="カ"><span class="label">か</span><input type="text">
+                        <div class="ghost-answer">カ</div>
+                    </div>
+                    <div class="question-box" data-answer="キ"><span class="label">き</span><input type="text">
+                        <div class="ghost-answer">キ</div>
+                    </div>
+                    <div class="question-box" data-answer="ク"><span class="label">く</span><input type="text">
+                        <div class="ghost-answer">ク</div>
+                    </div>
+                    <div class="question-box" data-answer="ケ"><span class="label">け</span><input type="text">
+                        <div class="ghost-answer">ケ</div>
+                    </div>
+                    <div class="question-box" data-answer="コ"><span class="label">こ</span><input type="text">
+                        <div class="ghost-answer">コ</div>
+                    </div>
                 </div>
-
                 <!-- Sa Row -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">さ</span><input type="text" data-answer="サ"></div>
-                    <div class="question-box"><span class="label">し</span><input type="text" data-answer="シ"></div>
-                    <div class="question-box"><span class="label">す</span><input type="text" data-answer="ス"></div>
-                    <div class="question-box"><span class="label">せ</span><input type="text" data-answer="セ"></div>
-                    <div class="question-box"><span class="label">そ</span><input type="text" data-answer="ソ"></div>
+                    <div class="question-box" data-answer="サ"><span class="label">さ</span><input type="text">
+                        <div class="ghost-answer">サ</div>
+                    </div>
+                    <div class="question-box" data-answer="シ"><span class="label">し</span><input type="text">
+                        <div class="ghost-answer">シ</div>
+                    </div>
+                    <div class="question-box" data-answer="ス"><span class="label">す</span><input type="text">
+                        <div class="ghost-answer">ス</div>
+                    </div>
+                    <div class="question-box" data-answer="セ"><span class="label">せ</span><input type="text">
+                        <div class="ghost-answer">セ</div>
+                    </div>
+                    <div class="question-box" data-answer="ソ"><span class="label">そ</span><input type="text">
+                        <div class="ghost-answer">ソ</div>
+                    </div>
                 </div>
-
                 <!-- Ta Row -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">た</span><input type="text" data-answer="タ"></div>
-                    <div class="question-box"><span class="label">ち</span><input type="text" data-answer="チ"></div>
-                    <div class="question-box"><span class="label">つ</span><input type="text" data-answer="ツ"></div>
-                    <div class="question-box"><span class="label">て</span><input type="text" data-answer="テ"></div>
-                    <div class="question-box"><span class="label">と</span><input type="text" data-answer="ト"></div>
+                    <div class="question-box" data-answer="タ"><span class="label">た</span><input type="text">
+                        <div class="ghost-answer">タ</div>
+                    </div>
+                    <div class="question-box" data-answer="チ"><span class="label">ち</span><input type="text">
+                        <div class="ghost-answer">チ</div>
+                    </div>
+                    <div class="question-box" data-answer="ツ"><span class="label">つ</span><input type="text">
+                        <div class="ghost-answer">ツ</div>
+                    </div>
+                    <div class="question-box" data-answer="テ"><span class="label">て</span><input type="text">
+                        <div class="ghost-answer">テ</div>
+                    </div>
+                    <div class="question-box" data-answer="ト"><span class="label">と</span><input type="text">
+                        <div class="ghost-answer">ト</div>
+                    </div>
                 </div>
-
                 <!-- Na Row -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">な</span><input type="text" data-answer="ナ"></div>
-                    <div class="question-box"><span class="label">に</span><input type="text" data-answer="ニ"></div>
-                    <div class="question-box"><span class="label">ぬ</span><input type="text" data-answer="ヌ"></div>
-                    <div class="question-box"><span class="label">ね</span><input type="text" data-answer="ネ"></div>
-                    <div class="question-box"><span class="label">の</span><input type="text" data-answer="ノ"></div>
+                    <div class="question-box" data-answer="ナ"><span class="label">な</span><input type="text">
+                        <div class="ghost-answer">ナ</div>
+                    </div>
+                    <div class="question-box" data-answer="ニ"><span class="label">に</span><input type="text">
+                        <div class="ghost-answer">ニ</div>
+                    </div>
+                    <div class="question-box" data-answer="ヌ"><span class="label">ぬ</span><input type="text">
+                        <div class="ghost-answer">ヌ</div>
+                    </div>
+                    <div class="question-box" data-answer="ネ"><span class="label">ね</span><input type="text">
+                        <div class="ghost-answer">ネ</div>
+                    </div>
+                    <div class="question-box" data-answer="ノ"><span class="label">の</span><input type="text">
+                        <div class="ghost-answer">ノ</div>
+                    </div>
                 </div>
-
                 <div class="mt-auto border-t pt-4">
                     <h3>Speed Check</h3>
                     <div class="grid-2">
-                        <div class="question-box wide"><span class="label">Kana for 'A'</span><input type="text"
-                                data-answer="ア"></div>
-                        <div class="question-box wide"><span class="label">Kana for 'Shi'</span><input type="text"
-                                data-answer="シ"></div>
+                        <div class="question-box wide" data-answer="ア"><span class="label">Kana for 'A'</span><input
+                                type="text">
+                            <div class="ghost-answer">ア</div>
+                        </div>
+                        <div class="question-box wide" data-answer="シ"><span class="label">Kana for 'Shi'</span><input
+                                type="text">
+                            <div class="ghost-answer">シ</div>
+                        </div>
                     </div>
                 </div>
             </div>
-
             <div class="page-number">3 / 8</div>
         </article>
 
-        <!-- PAGE 4: KATAKANA HA-N + LOANS -->
+        <!-- PAGE 4: KATAKANA HANDWRITING II -->
         <article class="test-page">
             <h1>Katakana Part 2</h1>
             <p class="text-center text-slate-400 mb-8">Hiragana -> Katakana (Ha - N)</p>
-
             <div class="flex-grow flex flex-col gap-6">
                 <!-- Ha Row -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">は</span><input type="text" data-answer="ハ"></div>
-                    <div class="question-box"><span class="label">ひ</span><input type="text" data-answer="ヒ"></div>
-                    <div class="question-box"><span class="label">ふ</span><input type="text" data-answer="フ"></div>
-                    <div class="question-box"><span class="label">へ</span><input type="text" data-answer="ヘ"></div>
-                    <div class="question-box"><span class="label">ほ</span><input type="text" data-answer="ホ"></div>
+                    <div class="question-box" data-answer="ハ"><span class="label">は</span><input type="text">
+                        <div class="ghost-answer">ハ</div>
+                    </div>
+                    <div class="question-box" data-answer="ヒ"><span class="label">ひ</span><input type="text">
+                        <div class="ghost-answer">ヒ</div>
+                    </div>
+                    <div class="question-box" data-answer="フ"><span class="label">ふ</span><input type="text">
+                        <div class="ghost-answer">フ</div>
+                    </div>
+                    <div class="question-box" data-answer="ヘ"><span class="label">へ</span><input type="text">
+                        <div class="ghost-answer">ヘ</div>
+                    </div>
+                    <div class="question-box" data-answer="ホ"><span class="label">ほ</span><input type="text">
+                        <div class="ghost-answer">ホ</div>
+                    </div>
                 </div>
 
                 <!-- Ma Row -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">ま</span><input type="text" data-answer="マ"></div>
-                    <div class="question-box"><span class="label">み</span><input type="text" data-answer="ミ"></div>
-                    <div class="question-box"><span class="label">む</span><input type="text" data-answer="ム"></div>
-                    <div class="question-box"><span class="label">め</span><input type="text" data-answer="メ"></div>
-                    <div class="question-box"><span class="label">も</span><input type="text" data-answer="モ"></div>
+                    <div class="question-box" data-answer="マ"><span class="label">ま</span><input type="text">
+                        <div class="ghost-answer">マ</div>
+                    </div>
+                    <div class="question-box" data-answer="ミ"><span class="label">み</span><input type="text">
+                        <div class="ghost-answer">ミ</div>
+                    </div>
+                    <div class="question-box" data-answer="ム"><span class="label">む</span><input type="text">
+                        <div class="ghost-answer">ム</div>
+                    </div>
+                    <div class="question-box" data-answer="メ"><span class="label">め</span><input type="text">
+                        <div class="ghost-answer">メ</div>
+                    </div>
+                    <div class="question-box" data-answer="モ"><span class="label">も</span><input type="text">
+                        <div class="ghost-answer">モ</div>
+                    </div>
                 </div>
 
                 <!-- Ya Row -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">や</span><input type="text" data-answer="ヤ"></div>
+                    <div class="question-box" data-answer="ヤ"><span class="label">や</span><input type="text">
+                        <div class="ghost-answer">ヤ</div>
+                    </div>
                     <div class="question-box bg-slate-50 border-none shadow-none"></div>
-                    <div class="question-box"><span class="label">ゆ</span><input type="text" data-answer="ユ"></div>
+                    <div class="question-box" data-answer="ユ"><span class="label">ゆ</span><input type="text">
+                        <div class="ghost-answer">ユ</div>
+                    </div>
                     <div class="question-box bg-slate-50 border-none shadow-none"></div>
-                    <div class="question-box"><span class="label">よ</span><input type="text" data-answer="ヨ"></div>
+                    <div class="question-box" data-answer="ヨ"><span class="label">よ</span><input type="text">
+                        <div class="ghost-answer">ヨ</div>
+                    </div>
                 </div>
 
                 <!-- Ra Row -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">ら</span><input type="text" data-answer="ラ"></div>
-                    <div class="question-box"><span class="label">り</span><input type="text" data-answer="リ"></div>
-                    <div class="question-box"><span class="label">る</span><input type="text" data-answer="ル"></div>
-                    <div class="question-box"><span class="label">れ</span><input type="text" data-answer="レ"></div>
-                    <div class="question-box"><span class="label">ろ</span><input type="text" data-answer="ロ"></div>
+                    <div class="question-box" data-answer="ラ"><span class="label">ら</span><input type="text">
+                        <div class="ghost-answer">ラ</div>
+                    </div>
+                    <div class="question-box" data-answer="リ"><span class="label">り</span><input type="text">
+                        <div class="ghost-answer">リ</div>
+                    </div>
+                    <div class="question-box" data-answer="ル"><span class="label">る</span><input type="text">
+                        <div class="ghost-answer">ル</div>
+                    </div>
+                    <div class="question-box" data-answer="レ"><span class="label">れ</span><input type="text">
+                        <div class="ghost-answer">レ</div>
+                    </div>
+                    <div class="question-box" data-answer="ロ"><span class="label">ろ</span><input type="text">
+                        <div class="ghost-answer">ロ</div>
+                    </div>
                 </div>
 
                 <!-- Wa Row & N -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">わ</span><input type="text" data-answer="ワ"></div>
+                    <div class="question-box" data-answer="ワ"><span class="label">わ</span><input type="text">
+                        <div class="ghost-answer">ワ</div>
+                    </div>
                     <div class="question-box bg-slate-50 border-none shadow-none"></div>
-                    <div class="question-box"><span class="label">を</span><input type="text" data-answer="ヲ"></div>
+                    <div class="question-box" data-answer="ヲ"><span class="label">を</span><input type="text">
+                        <div class="ghost-answer">ヲ</div>
+                    </div>
                     <div class="question-box bg-slate-50 border-none shadow-none"></div>
-                    <div class="question-box"><span class="label">ん</span><input type="text" data-answer="ン"></div>
+                    <div class="question-box" data-answer="ン"><span class="label">ん</span><input type="text">
+                        <div class="ghost-answer">ン</div>
+                    </div>
                 </div>
 
                 <div class="mt-auto border-t pt-4">
                     <h3>Loan Words (Katakana)</h3>
                     <div class="grid-2">
-                        <div class="question-box wide"><span class="label">Ko-hi- (Coffee)</span><input type="text"
-                                data-answer="コーヒー"></div>
-                        <div class="question-box wide"><span class="label">Bi-ru (Beer)</span><input type="text"
-                                data-answer="ビール"></div>
-                        <div class="question-box wide"><span class="label">Te-bu-ru (Table)</span><input type="text"
-                                data-answer="テーブル"></div>
-                        <div class="question-box wide"><span class="label">Sakka- (Soccer)</span><input type="text"
-                                data-answer="サッカー"></div>
+                        <div class="question-box wide" data-answer="コーヒー"><span class="label">Ko-hi-
+                                (Coffee)</span><input type="text">
+                            <div class="ghost-answer">コーヒー</div>
+                        </div>
+                        <div class="question-box wide" data-answer="ビール"><span class="label">Bi-ru (Beer)</span><input
+                                type="text">
+                            <div class="ghost-answer">ビール</div>
+                        </div>
                     </div>
                 </div>
             </div>
-
             <div class="page-number">4 / 8</div>
         </article>
 
@@ -485,175 +775,238 @@
         <article class="test-page">
             <h1>Dakuon (Voiced)</h1>
             <p class="text-center text-slate-400 mb-8">Ga, Za, Da, Ba, Pa</p>
-
             <div class="flex-grow flex flex-col gap-6">
-                <!-- G -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">Ga</span><input type="text" data-answer="が"></div>
-                    <div class="question-box"><span class="label">Gi</span><input type="text" data-answer="ぎ"></div>
-                    <div class="question-box"><span class="label">Gu</span><input type="text" data-answer="ぐ"></div>
-                    <div class="question-box"><span class="label">Ge</span><input type="text" data-answer="げ"></div>
-                    <div class="question-box"><span class="label">Go</span><input type="text" data-answer="ご"></div>
+                    <div class="question-box" data-answer="が"><span class="label">Ga</span><input type="text">
+                        <div class="ghost-answer">が</div>
+                    </div>
+                    <div class="question-box" data-answer="ぎ"><span class="label">Gi</span><input type="text">
+                        <div class="ghost-answer">ぎ</div>
+                    </div>
+                    <div class="question-box" data-answer="ぐ"><span class="label">Gu</span><input type="text">
+                        <div class="ghost-answer">ぐ</div>
+                    </div>
+                    <div class="question-box" data-answer="げ"><span class="label">Ge</span><input type="text">
+                        <div class="ghost-answer">げ</div>
+                    </div>
+                    <div class="question-box" data-answer="ご"><span class="label">Go</span><input type="text">
+                        <div class="ghost-answer">ご</div>
+                    </div>
                 </div>
                 <!-- Z -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">Za</span><input type="text" data-answer="ざ"></div>
-                    <div class="question-box"><span class="label">Ji</span><input type="text" data-answer="じ"></div>
-                    <div class="question-box"><span class="label">Zu</span><input type="text" data-answer="ず"></div>
-                    <div class="question-box"><span class="label">Ze</span><input type="text" data-answer="ぜ"></div>
-                    <div class="question-box"><span class="label">Zo</span><input type="text" data-answer="ぞ"></div>
+                    <div class="question-box" data-answer="ざ"><span class="label">Za</span><input type="text">
+                        <div class="ghost-answer">ざ</div>
+                    </div>
+                    <div class="question-box" data-answer="じ"><span class="label">Ji</span><input type="text">
+                        <div class="ghost-answer">じ</div>
+                    </div>
+                    <div class="question-box" data-answer="ず"><span class="label">Zu</span><input type="text">
+                        <div class="ghost-answer">ず</div>
+                    </div>
+                    <div class="question-box" data-answer="ぜ"><span class="label">Ze</span><input type="text">
+                        <div class="ghost-answer">ぜ</div>
+                    </div>
+                    <div class="question-box" data-answer="ぞ"><span class="label">Zo</span><input type="text">
+                        <div class="ghost-answer">ぞ</div>
+                    </div>
                 </div>
                 <!-- D -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">Da</span><input type="text" data-answer="だ"></div>
-                    <div class="question-box"><span class="label">Ji (Di)</span><input type="text" data-answer="ぢ">
+                    <div class="question-box" data-answer="だ"><span class="label">Da</span><input type="text">
+                        <div class="ghost-answer">だ</div>
                     </div>
-                    <div class="question-box"><span class="label">Zu (Du)</span><input type="text" data-answer="づ">
+                    <div class="question-box" data-answer="ぢ"><span class="label">Ji</span><input type="text">
+                        <div class="ghost-answer">ぢ</div>
                     </div>
-                    <div class="question-box"><span class="label">De</span><input type="text" data-answer="で"></div>
-                    <div class="question-box"><span class="label">Do</span><input type="text" data-answer="ど"></div>
+                    <div class="question-box" data-answer="づ"><span class="label">Zu</span><input type="text">
+                        <div class="ghost-answer">づ</div>
+                    </div>
+                    <div class="question-box" data-answer="で"><span class="label">De</span><input type="text">
+                        <div class="ghost-answer">で</div>
+                    </div>
+                    <div class="question-box" data-answer="ど"><span class="label">Do</span><input type="text">
+                        <div class="ghost-answer">ど</div>
+                    </div>
                 </div>
                 <!-- B -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">Ba</span><input type="text" data-answer="ば"></div>
-                    <div class="question-box"><span class="label">Bi</span><input type="text" data-answer="び"></div>
-                    <div class="question-box"><span class="label">Bu</span><input type="text" data-answer="ぶ"></div>
-                    <div class="question-box"><span class="label">Be</span><input type="text" data-answer="べ"></div>
-                    <div class="question-box"><span class="label">Bo</span><input type="text" data-answer="ぼ"></div>
+                    <div class="question-box" data-answer="ば"><span class="label">Ba</span><input type="text">
+                        <div class="ghost-answer">ば</div>
+                    </div>
+                    <div class="question-box" data-answer="び"><span class="label">Bi</span><input type="text">
+                        <div class="ghost-answer">び</div>
+                    </div>
+                    <div class="question-box" data-answer="ぶ"><span class="label">Bu</span><input type="text">
+                        <div class="ghost-answer">ぶ</div>
+                    </div>
+                    <div class="question-box" data-answer="べ"><span class="label">Be</span><input type="text">
+                        <div class="ghost-answer">べ</div>
+                    </div>
+                    <div class="question-box" data-answer="ぼ"><span class="label">Bo</span><input type="text">
+                        <div class="ghost-answer">ぼ</div>
+                    </div>
                 </div>
                 <!-- P -->
                 <div class="grid-5">
-                    <div class="question-box"><span class="label">Pa</span><input type="text" data-answer="ぱ"></div>
-                    <div class="question-box"><span class="label">Pi</span><input type="text" data-answer="ぴ"></div>
-                    <div class="question-box"><span class="label">Pu</span><input type="text" data-answer="ぷ"></div>
-                    <div class="question-box"><span class="label">Pe</span><input type="text" data-answer="ぺ"></div>
-                    <div class="question-box"><span class="label">Po</span><input type="text" data-answer="ぽ"></div>
-                </div>
-            </div>
-
-            <div class="page-number">5 / 8</div>
-        </article>
-
-        <!-- PAGE 6: YOON & SOKUON -->
-        <article class="test-page">
-            <h1>Yoon & Sokuon</h1>
-            <p class="text-center text-slate-400 mb-8">Combined & Double Consonants</p>
-
-            <div class="flex-grow flex flex-col gap-6">
-                <!-- KYA -->
-                <div class="grid-5">
-                    <div class="question-box"><span class="label">Kya</span><input type="text" data-answer="きゃ"></div>
-                    <div class="question-box"><span class="label">Kyu</span><input type="text" data-answer="きゅ"></div>
-                    <div class="question-box"><span class="label">Kyo</span><input type="text" data-answer="きょ"></div>
-                    <div class="col-span-2"></div>
-                </div>
-                <!-- SHA -->
-                <div class="grid-5">
-                    <div class="question-box"><span class="label">Sha</span><input type="text" data-answer="しゃ"></div>
-                    <div class="question-box"><span class="label">Shu</span><input type="text" data-answer="しゅ"></div>
-                    <div class="question-box"><span class="label">Sho</span><input type="text" data-answer="しょ"></div>
-                    <div class="col-span-2"></div>
-                </div>
-                <!-- CHA -->
-                <div class="grid-5">
-                    <div class="question-box"><span class="label">Cha</span><input type="text" data-answer="ちゃ"></div>
-                    <div class="question-box"><span class="label">Chu</span><input type="text" data-answer="ちゅ"></div>
-                    <div class="question-box"><span class="label">Cho</span><input type="text" data-answer="ちょ"></div>
-                    <div class="col-span-2"></div>
-                </div>
-                <!-- NYA -->
-                <div class="grid-5">
-                    <div class="question-box"><span class="label">Nya</span><input type="text" data-answer="にゃ"></div>
-                    <div class="question-box"><span class="label">Nyu</span><input type="text" data-answer="にゅ"></div>
-                    <div class="question-box"><span class="label">Nyo</span><input type="text" data-answer="にょ"></div>
-                    <div class="col-span-2"></div>
-                </div>
-
-                <div class="mt-auto border-t pt-4">
-                    <h3>Double Consonant (Small Tsu)</h3>
-                    <div class="grid-2">
-                        <div class="question-box wide"><span class="label">Kip-pu</span><input type="text"
-                                data-answer="きっぷ"></div>
-                        <div class="question-box wide"><span class="label">Sak-ka</span><input type="text"
-                                data-answer="さっか"></div>
-                        <div class="question-box wide"><span class="label">Gak-kou</span><input type="text"
-                                data-answer="がっこう"></div>
-                        <div class="question-box wide"><span class="label">Zas-shi</span><input type="text"
-                                data-answer="ざっし"></div>
+                    <div class="question-box" data-answer="ぱ"><span class="label">Pa</span><input type="text">
+                        <div class="ghost-answer">ぱ</div>
+                    </div>
+                    <div class="question-box" data-answer="ぴ"><span class="label">Pi</span><input type="text">
+                        <div class="ghost-answer">ぴ</div>
+                    </div>
+                    <div class="question-box" data-answer="ぷ"><span class="label">Pu</span><input type="text">
+                        <div class="ghost-answer">ぷ</div>
+                    </div>
+                    <div class="question-box" data-answer="ぺ"><span class="label">Pe</span><input type="text">
+                        <div class="ghost-answer">ぺ</div>
+                    </div>
+                    <div class="question-box" data-answer="ぽ"><span class="label">Po</span><input type="text">
+                        <div class="ghost-answer">ぽ</div>
                     </div>
                 </div>
             </div>
+            <div class="page-number">5 / 8</div>
+        </article>
 
+        <!-- PAGE 6: YOO & SOKUON -->
+        <article class="test-page">
+            <h1>Yoon & Sokuon</h1>
+            <p class="text-center text-slate-400 mb-8">Combined & Double Consonants</p>
+            <div class="flex-grow flex flex-col gap-6">
+                <!-- Ky- -->
+                <div class="grid-5">
+                    <div class="question-box" data-answer="きゃ"><span class="label">Kya</span><input type="text">
+                        <div class="ghost-answer">きゃ</div>
+                    </div>
+                    <div class="question-box" data-answer="きゅ"><span class="label">Kyu</span><input type="text">
+                        <div class="ghost-answer">きゅ</div>
+                    </div>
+                    <div class="question-box" data-answer="きょ"><span class="label">Kyo</span><input type="text">
+                        <div class="ghost-answer">きょ</div>
+                    </div>
+                    <div class="col-span-2"></div>
+                </div>
+                <!-- Sh- -->
+                <div class="grid-5">
+                    <div class="question-box" data-answer="しゃ"><span class="label">Sha</span><input type="text">
+                        <div class="ghost-answer">しゃ</div>
+                    </div>
+                    <div class="question-box" data-answer="しゅ"><span class="label">Shu</span><input type="text">
+                        <div class="ghost-answer">しゅ</div>
+                    </div>
+                    <div class="question-box" data-answer="しょ"><span class="label">Sho</span><input type="text">
+                        <div class="ghost-answer">しょ</div>
+                    </div>
+                    <div class="col-span-2"></div>
+                </div>
+                <!-- Ch- -->
+                <div class="grid-5">
+                    <div class="question-box" data-answer="ちゃ"><span class="label">Cha</span><input type="text">
+                        <div class="ghost-answer">ちゃ</div>
+                    </div>
+                    <div class="question-box" data-answer="ちゅ"><span class="label">Chu</span><input type="text">
+                        <div class="ghost-answer">ちゅ</div>
+                    </div>
+                    <div class="question-box" data-answer="ちょ"><span class="label">Cho</span><input type="text">
+                        <div class="ghost-answer">ちょ</div>
+                    </div>
+                    <div class="col-span-2"></div>
+                </div>
+                <!-- Ny- -->
+                <div class="grid-5">
+                    <div class="question-box" data-answer="にゃ"><span class="label">Nya</span><input type="text">
+                        <div class="ghost-answer">にゃ</div>
+                    </div>
+                    <div class="question-box" data-answer="にゅ"><span class="label">Nyu</span><input type="text">
+                        <div class="ghost-answer">にゅ</div>
+                    </div>
+                    <div class="question-box" data-answer="にょ"><span class="label">Nyo</span><input type="text">
+                        <div class="ghost-answer">にょ</div>
+                    </div>
+                    <div class="col-span-2"></div>
+                </div>
+                <div class="mt-auto border-t pt-4">
+                    <h3>Double Consonant</h3>
+                    <div class="grid-2">
+                        <div class="question-box wide" data-answer="きっぷ"><span class="label">Kip-pu</span><input
+                                type="text">
+                            <div class="ghost-answer">きっぷ</div>
+                        </div>
+                        <div class="question-box wide" data-answer="がっこう"><span class="label">Gak-kou</span><input
+                                type="text">
+                            <div class="ghost-answer">がっこう</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="page-number">6 / 8</div>
         </article>
 
         <!-- PAGE 7: VOCABULARY -->
         <article class="test-page">
             <h1>Vocabulary</h1>
-            <p class="text-center text-slate-400 mb-8">Japanese -> English & English -> Japanese</p>
-
+            <p class="text-center text-slate-400 mb-8">Hiragana <-> English</p>
             <div class="grid-2 w-full gap-4">
                 <!-- Column 1 -->
                 <div class="flex flex-col gap-2">
-                    <div class="question-box wide"><span class="label">あい</span><input type="text" data-answer="love">
+                    <div class="question-box wide" data-answer="love"><span class="label">あい</span><input type="text">
+                        <div class="ghost-answer">love</div>
                     </div>
-                    <div class="question-box wide"><span class="label">あおい</span><input type="text" data-answer="blue">
+                    <div class="question-box wide" data-answer="blue"><span class="label">あおい</span><input type="text">
+                        <div class="ghost-answer">blue</div>
                     </div>
-                    <div class="question-box wide"><span class="label">うえ</span><input type="text" data-answer="up">
+                    <div class="question-box wide" data-answer="up"><span class="label">うえ</span><input type="text">
+                        <div class="ghost-answer">up</div>
                     </div>
-                    <div class="question-box wide"><span class="label">いいえ</span><input type="text" data-answer="no">
+                    <div class="question-box wide" data-answer="no"><span class="label">いいえ</span><input type="text">
+                        <div class="ghost-answer">no</div>
                     </div>
-                    <div class="question-box wide"><span class="label">はい</span><input type="text" data-answer="yes">
+                    <div class="question-box wide" data-answer="yes"><span class="label">はい</span><input type="text">
+                        <div class="ghost-answer">yes</div>
                     </div>
-                    <div class="question-box wide"><span class="label">かお</span><input type="text" data-answer="face">
+                    <div class="question-box wide" data-answer="face"><span class="label">かお</span><input type="text">
+                        <div class="ghost-answer">face</div>
                     </div>
-                    <div class="question-box wide"><span class="label">きく</span><input type="text" data-answer="listen">
+                    <div class="question-box wide" data-answer="listen"><span class="label">きく</span><input type="text">
+                        <div class="ghost-answer">listen</div>
                     </div>
-                    <div class="question-box wide"><span class="label">さけ</span><input type="text" data-answer="sake">
-                    </div>
-                    <div class="question-box wide"><span class="label">すし</span><input type="text" data-answer="sushi">
-                    </div>
-                    <div class="question-box wide"><span class="label">ちかてつ</span><input type="text"
-                            data-answer="subway"></div>
                 </div>
-
                 <!-- Column 2 -->
                 <div class="flex flex-col gap-2">
-                    <div class="question-box wide"><span class="label">White</span><input type="text" data-answer="しろ">
+                    <div class="question-box wide" data-answer="しろ"><span class="label">White</span><input type="text">
+                        <div class="ghost-answer">しろ</div>
                     </div>
-                    <div class="question-box wide"><span class="label">Red</span><input type="text" data-answer="あか">
+                    <div class="question-box wide" data-answer="あか"><span class="label">Red</span><input type="text">
+                        <div class="ghost-answer">あか</div>
                     </div>
-                    <div class="question-box wide"><span class="label">Read</span><input type="text" data-answer="よむ">
+                    <div class="question-box wide" data-answer="よむ"><span class="label">Read</span><input type="text">
+                        <div class="ghost-answer">よむ</div>
                     </div>
-                    <div class="question-box wide"><span class="label">Dog</span><input type="text" data-answer="いぬ">
+                    <div class="question-box wide" data-answer="いぬ"><span class="label">Dog</span><input type="text">
+                        <div class="ghost-answer">いぬ</div>
                     </div>
-                    <div class="question-box wide"><span class="label">Bird</span><input type="text" data-answer="とり">
+                    <div class="question-box wide" data-answer="とり"><span class="label">Bird</span><input type="text">
+                        <div class="ghost-answer">とり</div>
                     </div>
-                    <div class="question-box wide"><span class="label">Winter</span><input type="text" data-answer="ふゆ">
+                    <div class="question-box wide" data-answer="ふゆ"><span class="label">Winter</span><input type="text">
+                        <div class="ghost-answer">ふゆ</div>
                     </div>
-                    <div class="question-box wide"><span class="label">Cloud</span><input type="text" data-answer="くも">
+                    <div class="question-box wide" data-answer="くも"><span class="label">Cloud</span><input type="text">
+                        <div class="ghost-answer">くも</div>
                     </div>
-                    <div class="question-box wide"><span class="label">Dream</span><input type="text" data-answer="ゆめ">
-                    </div>
-                    <div class="question-box wide"><span class="label">Room</span><input type="text" data-answer="へや">
-                    </div>
-                    <div class="question-box wide"><span class="label">Mountain</span><input type="text"
-                            data-answer="やま"></div>
                 </div>
             </div>
-
             <div class="page-number">7 / 8</div>
         </article>
 
-        <!-- PAGE 8: MASTERY -->
+        <!-- PAGE 8: MASTERY + PARTICLES -->
         <article class="test-page">
             <h1>Final Mastery</h1>
-            <p class="text-center text-slate-400 mb-8">Particles & Sentence Order</p>
-
+            <p class="text-center text-slate-400 mb-8">Particles & Final Check</p>
             <div class="flex-grow flex flex-col justify-center items-center gap-12">
                 <div class="w-full bg-slate-50 p-6 rounded-2xl border border-slate-200">
                     <h3 class="text-center mb-6">Fill in the correct particle (Wa / Wo / He)</h3>
-
                     <div class="flex flex-col gap-4">
                         <div class="flex items-center justify-center gap-2 text-xl">
                             <span>わたし</span>
@@ -661,28 +1014,21 @@
                             <span>がくせい です。</span>
                         </div>
                         <div class="text-center text-sm text-slate-400">(I am a student)</div>
-
                         <div class="flex items-center justify-center gap-2 text-xl mt-4">
                             <span>これ</span>
                             <input type="text" data-answer="を" class="!w-12 border-b-2 border-slate-300">
                             <span>ください。</span>
                         </div>
                         <div class="text-center text-sm text-slate-400">(This please)</div>
-
-                        <div class="flex items-center justify-center gap-2 text-xl mt-4">
-                            <span>アメリカ</span>
-                            <input type="text" data-answer="へ" class="!w-12 border-b-2 border-slate-300">
-                            <span>いきます。</span>
-                        </div>
-                        <div class="text-center text-sm text-slate-400">(Go to America)</div>
                     </div>
                 </div>
 
                 <div class="text-center">
                     <h2 class="border-none mb-4">Complete Chapter 1</h2>
-                    <button type="submit" onclick="gradeTest(); event.preventDefault();"
+
+                    <button onclick="gradeVisual(); window.print();"
                         class="px-10 py-4 bg-indigo-600 text-white font-bold rounded-full shadow-xl hover:scale-105 transition no-print text-lg">
-                        Submit Final Exam
+                        Submit & Print
                     </button>
 
                     <div id="final-result"
@@ -691,44 +1037,177 @@
                     </div>
                 </div>
             </div>
-
             <div class="page-number">8 / 8</div>
         </article>
 
     </form>
 
     <script>
-        function gradeTest() {
-            let score = 0;
-            const inputs = document.querySelectorAll('input[data-answer]');
-            
-            if(inputs.length === 0) return;
-            const pointsPerQuestion = 100 / inputs.length;
-            
-            inputs.forEach(input => {
-                const userAnswer = input.value.trim().toLowerCase();
-                const validAnswers = input.dataset.answer.toLowerCase().split('|');
-                
-                input.classList.remove('correct', 'incorrect');
-                
-                if (validAnswers.includes(userAnswer)) {
-                    input.classList.add('correct');
-                    score += pointsPerQuestion;
-                } else {
-                    input.classList.add('incorrect');
-                }
-            });
+        const API_KEY = "AIzaSyANEpdPzKlnII7-Xzp2bJvBFJitPD1AEdY";
+        let currentMode = 'typing';
+        const body = document.body;
+        const btnTyping = document.getElementById('btn-typing');
+        const btnWriting = document.getElementById('btn-writing');
 
-            const finalScore = Math.round(score);
-            const resultBox = document.getElementById('final-result');
-            const scoreSpan = document.getElementById('display-score');
-            const navScore = document.getElementById('nav-score');
+        function setMode(mode) {
+            currentMode = mode;
+            body.className = 'mode-' + mode;
+            if(mode === 'typing') {
+                btnTyping.className = "px-3 py-1 rounded-lg text-sm font-bold bg-indigo-100 text-indigo-700 transition";
+                btnWriting.className = "px-3 py-1 rounded-lg text-sm font-bold text-slate-400 hover:text-slate-600 transition";
+            } else {
+                btnWriting.className = "px-3 py-1 rounded-lg text-sm font-bold bg-indigo-100 text-indigo-700 transition";
+                btnTyping.className = "px-3 py-1 rounded-lg text-sm font-bold text-slate-400 hover:text-slate-600 transition";
+                document.querySelectorAll('.question-box').forEach(box => {
+                    if(!box.querySelector('canvas')) createCanvas(box);
+                });
+            }
+        }
+        
+        function createCanvas(container) {
+            if(container.classList.contains('border-none') || !container.dataset.answer) return;
+            const canvas = document.createElement('canvas');
+            canvas.className = 'handwriting-canvas';
+            container.appendChild(canvas);
+            requestAnimationFrame(() => resizeCanvas(canvas));
             
-            resultBox.classList.remove('hidden');
-            scoreSpan.textContent = finalScore;
-            navScore.textContent = finalScore;
+            const ctx = canvas.getContext('2d');
+            let isDrawing = false, lastX = 0, lastY = 0;
             
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            const startDraw = (e) => {
+                isDrawing = true;
+                const {x, y} = getPos(e, canvas);
+                lastX = x; lastY = y;
+                canvas.dataset.hasDrawing = "true";
+            };
+            const draw = (e) => {
+                if(!isDrawing) return;
+                e.preventDefault();
+                const {x, y} = getPos(e, canvas);
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(x, y);
+                ctx.strokeStyle = '#000';
+                ctx.lineWidth = 3;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                ctx.stroke();
+                lastX = x; lastY = y;
+            };
+            const stopDraw = () => isDrawing = false;
+            
+            canvas.addEventListener('mousedown', startDraw);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDraw);
+            canvas.addEventListener('mouseout', stopDraw);
+            canvas.addEventListener('touchstart', startDraw, {passive: false});
+            canvas.addEventListener('touchmove', draw, {passive: false});
+            canvas.addEventListener('touchend', stopDraw);
+        }
+        
+        function getPos(e, canvas) {
+            const rect = canvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            return { x: clientX - rect.left, y: clientY - rect.top };
+        }
+        
+        function resizeCanvas(canvas) {
+            const container = canvas.parentElement;
+            canvas.width = container.clientWidth;
+            canvas.height = container.clientHeight;
+        }
+
+        // --- VISUAL GRADING ---
+        function gradeVisual() {
+            if(currentMode === 'typing') {
+                // Typing text grading
+                let score = 0;
+                let count = 0;
+                document.querySelectorAll('input').forEach(input => {
+                    const box = input.closest('.question-box');
+                    if(!box || !box.dataset.answer) return;
+                    count++;
+                    const val = input.value.trim().toLowerCase();
+                    const expected = box.dataset.answer.toLowerCase();
+                    if(val === expected) { box.classList.add('correct-bg'); score++; }
+                    else { box.classList.add('incorrect-bg'); }
+                });
+                alert(`Typing Score: ${score} / ${count}`);
+            } else {
+                // Visual Check: Reveal Ghost
+                document.querySelectorAll('.ghost-answer').forEach(ghost => {
+                    ghost.style.opacity = '1';
+                    ghost.style.color = 'rgba(239, 68, 68, 0.4)';
+                });
+                alert("Visual Check: Red characters revealed behind your writing.");
+            }
+        }
+
+        // --- GEMINI AI GRADING ---
+        async function gradeWithAI() {
+            if (currentMode !== 'handwriting') {
+                alert("Please switch to 'Write' mode and draw characters first.");
+                return;
+            }
+            
+            const loader = document.getElementById('ai-status-loader');
+            const aiMsg = document.getElementById('ai-message');
+            loader.style.display = 'block';
+            aiMsg.classList.remove('hidden');
+            
+            const canvases = document.querySelectorAll('canvas.handwriting-canvas');
+            let promises = [];
+            
+            for(let canvas of canvases) {
+                if(canvas.dataset.hasDrawing !== "true") continue;
+                
+                const box = canvas.closest('.question-box');
+                const expectedChar = box.dataset.answer;
+                const base64Image = canvas.toDataURL('image/png').split(',')[1];
+                
+                // Add visual loading state to box
+                box.classList.add('checking');
+                
+                // Prepare API Request
+                const p = fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [
+                                { text: `Does this image look like the Japanese character '${expectedChar}'? If it is reasonably close, answer YES. If it is completely different or illegible, answer NO. Answer with ONLY one word.` },
+                                { inline_data: { mime_type: "image/png", data: base64Image } }
+                            ]
+                        }]
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    box.classList.remove('checking');
+                    const text = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim().toUpperCase();
+                    if(text && text.includes("YES")) {
+                        box.classList.add('correct-ai');
+                    } else {
+                        box.classList.add('incorrect-ai');
+                    }
+                })
+                .catch(err => {
+                    console.error("AI Error:", err);
+                    box.classList.remove('checking');
+                });
+                
+                promises.push(p);
+                
+                // Rate limit spacing (essential to avoid 429 errors on free tier)
+                await new Promise(r => setTimeout(r, 600)); // 1.5 requests per second approx
+            }
+            
+            await Promise.allSettled(promises);
+            
+            loader.style.display = 'none';
+            aiMsg.classList.add('hidden');
+            alert("AI Grading Complete!");
         }
     </script>
 </body>
