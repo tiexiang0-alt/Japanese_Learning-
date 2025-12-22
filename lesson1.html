@@ -11,14 +11,46 @@
         rel="stylesheet">
     <style>
         :root {
-            --brand-orange: #f97316;
-            --brand-yellow: #eab308;
-            --brand-dark: #1e293b;
+            --brand-color: #f97316;
+            --brand-accent: #fb923c;
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --glass-surface: rgba(255, 255, 255, 0.65);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
         }
 
         body {
-            font-family: 'Noto Sans JP', sans-serif;
-            background-color: #fff7ed;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #fff1eb 0%, #ace0f9 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #1d1d1f;
+        }
+
+        /* iOS-style Glassmorphism */
+        .glass {
+            background: var(--glass-surface);
+            -webkit-backdrop-filter: blur(24px);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+            border-radius: 24px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.45);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 32px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+            border-color: rgba(255, 255, 255, 0.9);
         }
 
         .handwriting {
@@ -29,25 +61,55 @@
             font-family: 'ZCOOL XiaoWei', serif;
         }
 
-        .glass {
-            background: rgba(255, 255, 255, 0.9);
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        /* Smooth Typography */
+        h1,
+        h2,
+        h3,
+        h4 {
+            letter-spacing: -0.02em;
         }
 
-        .font-hand {
-            font-family: 'Klee One', cursive;
+        /* Vivid Gradients for Text */
+        .text-gradient {
+            background: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .kana-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        /* Floating Animation */
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(1deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
         }
 
-        .kana-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+
+        .delay-1000 {
+            animation-delay: 1s;
+        }
+
+        .delay-1500 {
+            animation-delay: 1.5s;
+        }
+
+        .delay-2000 {
+            animation-delay: 2s;
         }
     </style>
 </head>
@@ -55,11 +117,11 @@
 <body class="text-slate-800">
 
     <!-- Sticky Navigation -->
-    <nav class="sticky top-0 z-50 glass border-b border-orange-200">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <nav class="sticky top-4 z-50 mx-4">
+        <div class="glass max-w-7xl mx-auto px-6 py-4 flex justify-between items-center bg-white/60">
             <div class="flex items-center gap-3">
                 <a href="index.html"
-                    class="w-10 h-10 bg-brand-orange rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg">盾</a>
+                    class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg">盾</a>
                 <div>
                     <h1 class="font-black text-slate-900 leading-none">盾盾日语</h1>
                     <span class="text-[10px] text-orange-600 font-bold uppercase tracking-widest">Mastering
@@ -79,7 +141,7 @@
         <!-- Lesson Header -->
         <header class="mb-20 text-center">
             <h2 class="text-5xl md:text-6xl font-black text-slate-900 mb-6 leading-tight">
-                第1课 – <span class="text-brand-orange">五十音的起源</span>
+                第1课 – <span class="text-orange-600">五十音的起源</span>
             </h2>
             <p class="text-xl text-slate-500 max-w-2xl mx-auto">
                 “一切的开始。掌握这5个元音（A, I, U, E, O），你就掌握了日语发音的50%。”
@@ -88,7 +150,7 @@
 
         <!-- Intro Section -->
         <section id="intro" class="mb-20">
-            <div class="bg-white rounded-[2.5rem] p-10 border border-orange-100 shadow-xl">
+            <div class="glass-card p-10 shadow-xl">
                 <div class="flex items-center gap-4 mb-8">
                     <span
                         class="px-4 py-1 bg-slate-800 text-white rounded-full font-bold text-sm tracking-widest uppercase">Overview</span>
@@ -133,103 +195,145 @@
         <section id="vowels" class="mb-32">
             <div class="flex items-center gap-4 mb-12">
                 <span
-                    class="px-4 py-1 bg-brand-orange text-white rounded-full font-bold text-sm tracking-widest uppercase">A-Row</span>
+                    class="px-4 py-1 bg-orange-500 text-white rounded-full font-bold text-sm tracking-widest uppercase">A-Row</span>
                 <h3 class="text-4xl font-black text-slate-900">元音行：开口发声</h3>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- A -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-brand-orange">
+                <!-- A -->
+                <div class="glass-card p-10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-orange-200/40 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none">
+                    </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="text-7xl font-black text-orange-600 handwriting">あ</div>
+                        <div class="text-8xl font-black text-orange-500 handwriting floating">あ</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-orange-300">ア</div>
-                            <div class="text-sm font-mono text-orange-400">a</div>
+                            <div
+                                class="text-4xl font-bold text-slate-400 group-hover:text-orange-400 transition-colors">
+                                ア</div>
+                            <div class="text-lg font-mono text-orange-400/80 font-bold">a</div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-sm">
-                        <p><strong>口型：</strong>自然张大，像看牙医就在“啊”。</p>
-                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
-                            “天<span class="text-red-600 font-bold">安</span>门好雄伟<span
-                                class="text-red-600 font-bold">啊</span>！平假名像安，片假名像耳朵旁(阝)。”
+                    <div class="space-y-4 text-sm relative z-10">
+                        <p class="font-medium text-slate-600"><strong>口型：</strong>自然张大，像看牙医就在“啊”。</p>
+                        <div class="bg-orange-50/80 p-4 rounded-2xl border border-orange-100/50 backdrop-blur-sm">
+                            <span
+                                class="text-[10px] font-bold text-orange-400 tracking-widest uppercase mb-1 block">Mnemonic</span>
+                            <p class="font-bold text-slate-700 italic">
+                                “天<span class="text-orange-600">安</span>门好雄伟<span
+                                    class="text-orange-600">啊</span>！平假名像安，片假名像耳朵旁(阝)。”
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- I -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-brand-orange">
+                <div class="glass-card p-10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-blue-200/40 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none">
+                    </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="text-7xl font-black text-orange-600 handwriting">い</div>
+                        <div class="text-8xl font-black text-blue-500 handwriting floating delay-500">い</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-orange-300">イ</div>
-                            <div class="text-sm font-mono text-orange-400">i</div>
+                            <div class="text-4xl font-bold text-slate-400 group-hover:text-blue-400 transition-colors">イ
+                            </div>
+                            <div class="text-lg font-mono text-blue-400/80 font-bold">i</div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-sm">
-                        <p><strong>口型：</strong>嘴角向两边拉开，微笑。</p>
-                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
-                            “我<span class="text-blue-600 font-bold">以</span>为您<span
-                                class="text-blue-600 font-bold">依</span>然<span
-                                class="text-blue-600 font-bold">一</span>个人。片假名是单人旁。”
+                    <div class="space-y-4 text-sm relative z-10">
+                        <p class="font-medium text-slate-600"><strong>口型：</strong>嘴角向两边拉开，微笑。</p>
+                        <div class="bg-blue-50/80 p-4 rounded-2xl border border-blue-100/50 backdrop-blur-sm">
+                            <span
+                                class="text-[10px] font-bold text-blue-400 tracking-widest uppercase mb-1 block">Mnemonic</span>
+                            <p class="font-bold text-slate-700 italic">
+                                “我<span class="text-blue-600">以</span>为您<span class="text-blue-600">依</span>然<span
+                                    class="text-blue-600">一</span>个人。片假名是单人旁。”
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- U -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-brand-orange">
+                <div class="glass-card p-10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-green-200/40 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none">
+                    </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="text-7xl font-black text-orange-600 handwriting">う</div>
+                        <div class="text-8xl font-black text-green-500 handwriting floating delay-1000">う</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-orange-300">ウ</div>
-                            <div class="text-sm font-mono text-orange-400">u</div>
+                            <div class="text-4xl font-bold text-slate-400 group-hover:text-green-400 transition-colors">
+                                ウ</div>
+                            <div class="text-lg font-mono text-green-400/80 font-bold">u</div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-sm">
-                        <p><strong>重点：</strong>不要撅嘴！嘴唇放平，轻轻发声。</p>
-                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
-                            “<span class="text-green-600 font-bold">宇</span>宙无限大。片假名完全就是宝盖头。”
+                    <div class="space-y-4 text-sm relative z-10">
+                        <p class="font-medium text-slate-600"><strong>重点：</strong>不要撅嘴！嘴唇放平，轻轻发声。</p>
+                        <div class="bg-green-50/80 p-4 rounded-2xl border border-green-100/50 backdrop-blur-sm">
+                            <span
+                                class="text-[10px] font-bold text-green-400 tracking-widest uppercase mb-1 block">Mnemonic</span>
+                            <p class="font-bold text-slate-700 italic">
+                                “<span class="text-green-600">宇</span>宙无限大。片假名完全就是宝盖头。”
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- E -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-brand-orange">
+                <div class="glass-card p-10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-purple-200/40 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none">
+                    </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="text-7xl font-black text-orange-600 handwriting">え</div>
+                        <div class="text-8xl font-black text-purple-500 handwriting floating delay-1500">え</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-orange-300">エ</div>
-                            <div class="text-sm font-mono text-orange-400">e</div>
+                            <div
+                                class="text-4xl font-bold text-slate-400 group-hover:text-purple-400 transition-colors">
+                                エ</div>
+                            <div class="text-lg font-mono text-purple-400/80 font-bold">e</div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-sm">
-                        <p><strong>口型：</strong>自然张开。</p>
-                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
-                            “<span class="text-purple-600 font-bold">诶</span>？元旦还要<span
-                                class="text-purple-600 font-bold">工</span>作？平假名是元，片假名是工。”
+                    <div class="space-y-4 text-sm relative z-10">
+                        <p class="font-medium text-slate-600"><strong>口型：</strong>自然张开。</p>
+                        <div class="bg-purple-50/80 p-4 rounded-2xl border border-purple-100/50 backdrop-blur-sm">
+                            <span
+                                class="text-[10px] font-bold text-purple-400 tracking-widest uppercase mb-1 block">Mnemonic</span>
+                            <p class="font-bold text-slate-700 italic">
+                                “<span class="text-purple-600">诶</span>？元旦还要<span
+                                    class="text-purple-600">工</span>作？平假名是元，片假名是工。”
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- O -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-brand-orange">
+                <div class="glass-card p-10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-amber-200/40 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none">
+                    </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="text-7xl font-black text-orange-600 handwriting">お</div>
+                        <div class="text-8xl font-black text-amber-500 handwriting floating delay-2000">お</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-orange-300">オ</div>
-                            <div class="text-sm font-mono text-orange-400">o</div>
+                            <div class="text-4xl font-bold text-slate-400 group-hover:text-amber-400 transition-colors">
+                                オ</div>
+                            <div class="text-lg font-mono text-amber-400/80 font-bold">o</div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-sm">
-                        <p><strong>口型：</strong>嘴巴呈圆形。</p>
-                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
-                            “我是艺术天<span class="text-amber-600 font-bold">才 (o)</span>！片假名就是‘才’。”
+                    <div class="space-y-4 text-sm relative z-10">
+                        <p class="font-medium text-slate-600"><strong>口型：</strong>嘴巴呈圆形。</p>
+                        <div class="bg-amber-50/80 p-4 rounded-2xl border border-amber-100/50 backdrop-blur-sm">
+                            <span
+                                class="text-[10px] font-bold text-amber-400 tracking-widest uppercase mb-1 block">Mnemonic</span>
+                            <p class="font-bold text-slate-700 italic">
+                                “我是艺术天<span class="text-amber-600">才 (o)</span>！片假名就是‘才’。”
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Vocab -->
-            <div class="bg-orange-50 rounded-3xl p-8 border border-orange-100 mt-12">
-                <h4 class="text-2xl font-black mb-6 text-orange-900">核心词汇</h4>
+            <div class="glass-card p-10 mt-12">
+                <h4 class="text-2xl font-black mb-6 text-slate-900">核心词汇 (Core Vocab)</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div class="bg-white p-6 rounded-2xl shadow-sm">
                         <div class="flex justify-between items-start">
@@ -258,9 +362,9 @@
 
         <!-- Vocabulary / Grammar Notes (Restored) -->
         <section id="grammar" class="mb-32">
-            <div class="bg-white rounded-[2.5rem] p-10 border border-orange-100 shadow-xl">
+            <div class="glass-card p-10 shadow-xl">
                 <div class="text-center mb-16">
-                    <span class="text-brand-orange font-bold uppercase tracking-widest text-sm">Pronunciation
+                    <span class="text-orange-600 font-bold uppercase tracking-widest text-sm">Pronunciation
                         Secrets</span>
                     <h2 class="text-4xl font-black text-slate-900 mt-2">盾盾老师的“发音黑魔法”</h2>
                 </div>
@@ -284,7 +388,7 @@
                                 </div>
                                 <div class="flex items-end gap-1 h-8">
                                     <div
-                                        class="w-8 h-6 bg-brand-orange rounded-t-md text-[10px] text-white flex items-center justify-center">
+                                        class="w-8 h-6 bg-orange-500 rounded-t-md text-[10px] text-white flex items-center justify-center">
                                         a</div>
                                     <div
                                         class="w-8 h-2 bg-slate-300 rounded-t-md text-[10px] text-slate-500 flex items-center justify-center">
@@ -304,7 +408,7 @@
                                         class="w-8 h-2 bg-slate-300 rounded-t-md text-[10px] text-slate-500 flex items-center justify-center">
                                         a</div>
                                     <div
-                                        class="w-8 h-6 bg-brand-orange rounded-t-md text-[10px] text-white flex items-center justify-center">
+                                        class="w-8 h-6 bg-orange-500 rounded-t-md text-[10px] text-white flex items-center justify-center">
                                         o</div>
                                     <div
                                         class="w-8 h-2 bg-slate-300 rounded-t-md text-[10px] text-slate-500 flex items-center justify-center">
@@ -324,10 +428,10 @@
                                         class="w-8 h-2 bg-slate-300 rounded-t-md text-[10px] text-slate-500 flex items-center justify-center">
                                         u</div>
                                     <div
-                                        class="w-8 h-6 bg-brand-orange rounded-t-md text-[10px] text-white flex items-center justify-center">
+                                        class="w-8 h-6 bg-orange-500 rounded-t-md text-[10px] text-white flex items-center justify-center">
                                         e</div>
                                     <div
-                                        class="w-8 h-6 bg-brand-orange rounded-t-md text-[10px] text-white flex items-center justify-center">
+                                        class="w-8 h-6 bg-orange-500 rounded-t-md text-[10px] text-white flex items-center justify-center">
                                         ~</div>
                                 </div>
                                 <p class="text-xs text-slate-500 mt-2">第一低，后面全高（助词也高）。最平缓。</p>
@@ -350,7 +454,7 @@
                                 <div class="flex justify-center items-center gap-4 text-sm">
                                     <div class="opacity-50 line-through">Wa-ta-shi (强送气)</div>
                                     <div>➡</div>
-                                    <div class="font-bold text-brand-orange">Wa-da-shi (不送气)</div>
+                                    <div class="font-bold text-orange-600">Wa-da-shi (不送气)</div>
                                 </div>
                                 <p class="text-xs text-slate-400 mt-2">当 k/t/p 出现在词中/尾时，气流减弱，听感像 g/d/b。</p>
                             </div>
@@ -359,15 +463,15 @@
                                 <div class="flex justify-center items-center gap-4 text-sm">
                                     <div class="opacity-50 line-through">A-na-ta (强送气)</div>
                                     <div>➡</div>
-                                    <div class="font-bold text-brand-orange">A-na-da (不送气)</div>
+                                    <div class="font-bold text-orange-600">A-na-da (不送气)</div>
                                 </div>
                                 <p class="text-xs text-slate-400 mt-2">稍微收住一点气流，不要读得太夸张。</p>
                             </div>
                         </div>
 
-                        <div class="mt-6 p-4 bg-brand-orange/10 rounded-xl border border-brand-orange/20">
-                            <p class="text-xs text-brand-orange font-bold">🎮 练习策略：</p>
-                            <ul class="text-xs text-brand-orange/80 list-disc list-inside mt-2 space-y-1">
+                        <div class="mt-6 p-4 bg-orange-500/10 rounded-xl border border-orange-500/20">
+                            <p class="text-xs text-orange-600 font-bold">🎮 练习策略：</p>
+                            <ul class="text-xs text-orange-600/80 list-disc list-inside mt-2 space-y-1">
                                 <li>顺读：A I U E O</li>
                                 <li>倒读：O E U I A (防止背顺序)</li>
                                 <li>串读：A-I-U-E-O-E-U-I-A (像绕口令)</li>
@@ -381,16 +485,18 @@
 
     </main>
 
-    <footer class="bg-slate-50 py-20 border-t border-slate-200 text-center">
+    <footer class="bg-white/30 backdrop-blur-xl py-20 border-t border-white/20 text-center">
         <h4 class="font-bold text-slate-900 mb-4">第一步已经迈出！</h4>
         <p class="text-slate-500 text-sm mb-8 max-w-lg mx-auto">
             元音是所有日语发音的基础。所有的辅音（K, S, T...）都是为了辅助元音而存在的。
         </p>
-        <a href="lesson2.html"
-            class="inline-block px-12 py-4 bg-brand-orange text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition transform mb-8">
-            进入下一课：Lesson 2 (Ka-Ta) ->
-        </a>
-        <p class="text-[10px] text-slate-300 uppercase tracking-widest font-bold">© 2025 盾盾日语全覆盖教学笔记</p>
+        <div class="mb-10">
+            <a href="lesson2.html"
+                class="inline-block px-12 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition transform">
+                进入下一课：Lesson 2 (Ka-Ta) ->
+            </a>
+        </div>
+        <p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">© 2025 盾盾日语全覆盖教学笔记</p>
     </footer>
 
 </body>

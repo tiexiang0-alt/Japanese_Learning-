@@ -19,11 +19,16 @@
             /* Lime */
             --n-main: #475569;
             /* Slate */
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --glass-surface: rgba(255, 255, 255, 0.65);
         }
 
         body {
-            font-family: 'Noto Sans JP', sans-serif;
-            background-color: #f8fafc;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #e0e7ff 0%, #ccfbf1 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #1d1d1f;
         }
 
         .handwriting {
@@ -35,11 +40,28 @@
         }
 
         .glass {
-            background: rgba(255, 255, 255, 0.9);
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+            background: var(--glass-surface);
+            -webkit-backdrop-filter: blur(24px);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.45);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 32px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.6);
+            border-color: rgba(255, 255, 255, 0.8);
         }
 
         .mnemonic-tag {
@@ -50,15 +72,6 @@
         .teacher-tip {
             border-left: 4px solid #8b5cf6;
             background-color: #f3e8ff;
-        }
-
-        .kana-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .kana-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
         }
     </style>
 </head>
@@ -122,11 +135,11 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                 <!-- や -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-violet-500">
+                <div class="glass-card rounded-[2rem] p-8 border-l-4 border-l-violet-500">
                     <div class="flex justify-between items-start mb-6">
                         <div class="text-7xl font-black text-violet-600 handwriting">や</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-violet-200">ヤ</div>
+                            <div class="text-3xl font-bold text-slate-500 text-violet-200">ヤ</div>
                             <div class="text-sm font-mono text-violet-400">ya</div>
                         </div>
                     </div>
@@ -139,11 +152,11 @@
                 </div>
 
                 <!-- ゆ -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-violet-500">
+                <div class="glass-card rounded-[2rem] p-8 border-l-4 border-l-violet-500">
                     <div class="flex justify-between items-start mb-6">
                         <div class="text-7xl font-black text-violet-600 handwriting">ゆ</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-violet-200">ユ</div>
+                            <div class="text-3xl font-bold text-slate-500 text-violet-200">ユ</div>
                             <div class="text-sm font-mono text-violet-400">yu</div>
                         </div>
                     </div>
@@ -156,11 +169,11 @@
                 </div>
 
                 <!-- よ -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-violet-500">
+                <div class="glass-card rounded-[2rem] p-8 border-l-4 border-l-violet-500">
                     <div class="flex justify-between items-start mb-6">
                         <div class="text-7xl font-black text-violet-600 handwriting">よ</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-violet-200">ヨ</div>
+                            <div class="text-3xl font-bold text-slate-500 text-violet-200">ヨ</div>
                             <div class="text-sm font-mono text-violet-400">yo</div>
                         </div>
                     </div>
@@ -174,31 +187,31 @@
             </div>
 
             <!-- Ya-Row Vocabulary -->
-            <div class="bg-violet-50 rounded-3xl p-8 border border-violet-100">
+            <div class="glass rounded-3xl p-8 mb-12 border border-violet-100">
                 <h4 class="text-2xl font-black mb-6 text-violet-900">や行 核心词汇</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="bg-white/40 p-6 rounded-2xl shadow-sm">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">やおや (yaoya)</span>
                             <span class="text-xs bg-violet-100 text-violet-700 px-2 py-1 rounded font-bold">八百屋</span>
                         </div>
                         <p class="text-xs text-slate-400 mt-2">蔬菜水果店（不是800元店哦）。</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="bg-white/40 p-6 rounded-2xl shadow-sm">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">ゆき (yuki)</span>
                             <span class="text-xs bg-violet-100 text-violet-700 px-2 py-1 rounded font-bold">雪</span>
                         </div>
                         <p class="text-xs text-slate-400 mt-2">②型（低高低）。Yuki 很美。</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="bg-white/40 p-6 rounded-2xl shadow-sm">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">ゆめ (yume)</span>
                             <span class="text-xs bg-violet-100 text-violet-700 px-2 py-1 rounded font-bold">梦</span>
                         </div>
                         <p class="text-xs text-slate-400 mt-2">美梦。②型。</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="bg-white/40 p-6 rounded-2xl shadow-sm">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">やくそく (yakusoku)</span>
                             <span class="text-xs bg-violet-100 text-violet-700 px-2 py-1 rounded font-bold">约定</span>
@@ -227,11 +240,11 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                 <!-- ら -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-cyan-500">
+                <div class="glass-card rounded-[2rem] p-8 border-l-4 border-l-cyan-500">
                     <div class="flex justify-between items-start mb-6">
                         <div class="text-7xl font-black text-cyan-600 handwriting">ら</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-cyan-200">ラ</div>
+                            <div class="text-3xl font-bold text-slate-500 text-cyan-200">ラ</div>
                             <div class="text-sm font-mono text-cyan-400">ra</div>
                         </div>
                     </div>
@@ -244,11 +257,11 @@
                 </div>
 
                 <!-- り -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-cyan-500">
+                <div class="glass-card rounded-[2rem] p-8 border-l-4 border-l-cyan-500">
                     <div class="flex justify-between items-start mb-6">
                         <div class="text-7xl font-black text-cyan-600 handwriting">り</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-cyan-200">リ</div>
+                            <div class="text-3xl font-bold text-slate-500 text-cyan-200">リ</div>
                             <div class="text-sm font-mono text-cyan-400">ri</div>
                         </div>
                     </div>
@@ -261,11 +274,11 @@
                 </div>
 
                 <!-- る -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-cyan-500">
+                <div class="glass-card rounded-[2rem] p-8 border-l-4 border-l-cyan-500">
                     <div class="flex justify-between items-start mb-6">
                         <div class="text-7xl font-black text-cyan-600 handwriting">る</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-cyan-200">ル</div>
+                            <div class="text-3xl font-bold text-slate-500 text-cyan-200">ル</div>
                             <div class="text-sm font-mono text-cyan-400">ru</div>
                         </div>
                     </div>
@@ -278,11 +291,11 @@
                 </div>
 
                 <!-- れ -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-cyan-500">
+                <div class="glass-card rounded-[2rem] p-8 border-l-4 border-l-cyan-500">
                     <div class="flex justify-between items-start mb-6">
                         <div class="text-7xl font-black text-cyan-600 handwriting">れ</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-cyan-200">レ</div>
+                            <div class="text-3xl font-bold text-slate-500 text-cyan-200">レ</div>
                             <div class="text-sm font-mono text-cyan-400">re</div>
                         </div>
                     </div>
@@ -295,11 +308,11 @@
                 </div>
 
                 <!-- ろ -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-cyan-500">
+                <div class="glass-card rounded-[2rem] p-8 border-l-4 border-l-cyan-500">
                     <div class="flex justify-between items-start mb-6">
                         <div class="text-7xl font-black text-cyan-600 handwriting">ろ</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-cyan-200">ロ</div>
+                            <div class="text-3xl font-bold text-slate-500 text-cyan-200">ロ</div>
                             <div class="text-sm font-mono text-cyan-400">ro</div>
                         </div>
                     </div>
@@ -313,31 +326,31 @@
             </div>
 
             <!-- Ra-Row Vocabulary -->
-            <div class="bg-cyan-50 rounded-3xl p-8 border border-cyan-100">
+            <div class="glass rounded-3xl p-8 mb-12 border border-cyan-100">
                 <h4 class="text-2xl font-black mb-6 text-cyan-900">ら行 核心词汇</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="bg-white/40 p-6 rounded-2xl shadow-sm">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">さくら (sakura)</span>
                             <span class="text-xs bg-cyan-100 text-cyan-700 px-2 py-1 rounded font-bold">桜</span>
                         </div>
                         <p class="text-xs text-slate-400 mt-2">樱花。0型音（平调）。</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="bg-white/40 p-6 rounded-2xl shadow-sm">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">とり (tori)</span>
                             <span class="text-xs bg-cyan-100 text-cyan-700 px-2 py-1 rounded font-bold">鸟</span>
                         </div>
                         <p class="text-xs text-slate-400 mt-2">烧鸟 (Yakitori)。</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="bg-white/40 p-6 rounded-2xl shadow-sm">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">カメラ (kamera)</span>
                             <span class="text-xs bg-cyan-100 text-cyan-700 px-2 py-1 rounded font-bold">Camera</span>
                         </div>
                         <p class="text-xs text-slate-400 mt-2">照相机。①型。</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="bg-white/40 p-6 rounded-2xl shadow-sm">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">トトロ (totoro)</span>
                             <span class="text-xs bg-cyan-100 text-cyan-700 px-2 py-1 rounded font-bold">龙猫</span>
@@ -358,11 +371,11 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                 <!-- わ -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-lime-500">
+                <div class="glass-card rounded-[2rem] p-8 border-l-4 border-l-lime-500">
                     <div class="flex justify-between items-start mb-6">
                         <div class="text-7xl font-black text-lime-600 handwriting">わ</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-lime-200">ワ</div>
+                            <div class="text-3xl font-bold text-slate-500 text-lime-200">ワ</div>
                             <div class="text-sm font-mono text-lime-400">wa</div>
                         </div>
                     </div>
@@ -375,11 +388,11 @@
                 </div>
 
                 <!-- を -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-lime-500">
+                <div class="glass-card rounded-[2rem] p-8 border-l-4 border-l-lime-500">
                     <div class="flex justify-between items-start mb-6">
                         <div class="text-7xl font-black text-lime-600 handwriting">を</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-lime-200">ヲ</div>
+                            <div class="text-3xl font-bold text-slate-500 text-lime-200">ヲ</div>
                             <div class="text-sm font-mono text-lime-400">o (wo)</div>
                         </div>
                     </div>
@@ -394,24 +407,24 @@
                 </div>
             </div>
             <!-- Wa-Row Vocabulary -->
-            <div class="bg-lime-50 rounded-3xl p-8 border border-lime-100">
+            <div class="glass rounded-3xl p-8 mb-12 border border-lime-100">
                 <h4 class="text-2xl font-black mb-6 text-lime-900">わ行 核心词汇</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="bg-white/40 p-6 rounded-2xl shadow-sm">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">わたし (watashi)</span>
                             <span class="text-xs bg-lime-100 text-lime-700 px-2 py-1 rounded font-bold">私</span>
                         </div>
                         <p class="text-xs text-slate-400 mt-2">我。最常用的第一人称。</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="bg-white/40 p-6 rounded-2xl shadow-sm">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">かわいい (kawaii)</span>
                             <span class="text-xs bg-lime-100 text-lime-700 px-2 py-1 rounded font-bold">可爱</span>
                         </div>
                         <p class="text-xs text-slate-400 mt-2">一定要读长音！卡哇伊。</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="bg-white/40 p-6 rounded-2xl shadow-sm">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">おちゃをのむ</span>
                             <span class="text-xs bg-lime-100 text-lime-700 px-2 py-1 rounded font-bold">喝茶</span>
@@ -441,11 +454,11 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                 <!-- ん -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-slate-500">
+                <div class="glass-card rounded-[2rem] p-8 border-l-4 border-l-slate-500">
                     <div class="flex justify-between items-start mb-6">
                         <div class="text-7xl font-black text-slate-600 handwriting">ん</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-slate-400">ン</div>
+                            <div class="text-3xl font-bold text-slate-500 text-slate-400">ン</div>
                             <div class="text-sm font-mono text-slate-400">n</div>
                         </div>
                     </div>
@@ -459,17 +472,17 @@
             </div>
 
             <!-- N-Row Vocabulary -->
-            <div class="bg-gray-50 rounded-3xl p-8 border border-gray-200">
+            <div class="glass rounded-3xl p-8 mb-12 border border-slate-200">
                 <h4 class="text-2xl font-black mb-6 text-slate-900">ん 核心词汇</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="bg-white/40 p-6 rounded-2xl shadow-sm">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">しんかんせん</span>
                             <span class="text-xs bg-slate-200 text-slate-700 px-2 py-1 rounded font-bold">新干线</span>
                         </div>
                         <p class="text-xs text-slate-400 mt-2">Shin-kan-sen。充满拨音的词。</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="bg-white/40 p-6 rounded-2xl shadow-sm">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">ワイン (wain)</span>
                             <span class="text-xs bg-slate-200 text-slate-700 px-2 py-1 rounded font-bold">红酒</span>

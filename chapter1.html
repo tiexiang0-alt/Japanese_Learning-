@@ -10,307 +10,344 @@
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=ZCOOL+XiaoWei&display=swap"
         rel="stylesheet">
     <style>
+        :root {
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --glass-surface: rgba(255, 255, 255, 0.65);
+        }
+
         body {
-            font-family: 'Noto Sans JP', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #e0e7ff 0%, #fae8ff 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #1d1d1f;
         }
 
         .font-hand {
             font-family: 'ZCOOL XiaoWei', serif;
         }
+
+        .glass {
+            background: var(--glass-surface);
+            -webkit-backdrop-filter: blur(24px);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+            border-radius: 40px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.45);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.6);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
     </style>
 </head>
 
-<body class="bg-slate-900 text-white min-h-screen">
+<body>
 
     <!-- Navigation -->
-    <nav class="border-b border-slate-800">
+    <nav class="sticky top-0 z-50 nav-glass">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <a href="index.html"
-                    class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg">盾</a>
+                    class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg hover:scale-105 transition">盾</a>
                 <div>
-                    <h1 class="font-black leading-none">盾盾日语</h1>
-                    <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-widest">Chapter 1 Map</span>
+                    <h1 class="font-black leading-none text-slate-800">盾盾日语</h1>
+                    <span class="text-[10px] text-indigo-500 font-bold uppercase tracking-widest">Chapter 1 Map</span>
                 </div>
             </div>
-            <a href="index.html" class="text-sm font-bold text-slate-400 hover:text-white transition">退出学习 (Exit)</a>
+            <a href="index.html" class="text-sm font-bold text-slate-500 hover:text-indigo-600 transition">退出学习
+                (Exit)</a>
         </div>
     </nav>
 
-    <main class="py-12">
-        <div class="max-w-7xl mx-auto px-6">
+    <main class="py-12 px-6">
+        <div class="max-w-7xl mx-auto">
             <header class="text-center mb-16">
-                <h2 class="text-xs font-bold text-indigo-400 tracking-[0.3em] uppercase mb-4">Chapter 01</h2>
-                <h1 class="text-4xl md:text-6xl font-black mb-6 font-hand">五十音全地图</h1>
-                <p class="text-slate-400 max-w-2xl mx-auto">
+                <h2 class="text-xs font-bold text-indigo-500 tracking-[0.3em] uppercase mb-4">Chapter 01</h2>
+                <h1 class="text-5xl md:text-7xl font-black mb-6 font-hand text-slate-900">五十音全地图</h1>
+                <p class="text-slate-500 max-w-2xl mx-auto text-lg">
                     这里是你的作战指挥室。每一节课都是一块拼图，<br>完成所有5节课，你将解锁所有的清音、浊音和半浊音。
                 </p>
             </header>
 
-            <!-- Progress Dashboard (Conceptual) -->
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-16">
-                <a href="lesson1.html"
-                    class="group relative overflow-hidden bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-orange-500 transition-all hover:-translate-y-1">
+            <!-- Lesson Progress Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-6 mb-16">
+                <a href="lesson1.html" class="glass-card p-6 group relative overflow-hidden block">
                     <div
-                        class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition text-6xl font-black text-orange-500">
+                        class="absolute -right-4 -top-4 text-8xl font-black text-orange-200 opacity-20 group-hover:opacity-40 transition group-hover:scale-110">
                         あ</div>
-                    <div class="text-xs font-bold text-orange-500 uppercase tracking-widest mb-2">Lesson 01</div>
-                    <h3 class="text-xl font-bold mb-2">元音觉醒</h3>
-                    <p class="text-xs text-slate-400">A - I - U - E - O</p>
-                    <div class="mt-4 w-full bg-slate-700 h-1 rounded-full overflow-hidden">
+                    <div class="text-xs font-bold text-orange-600 uppercase tracking-widest mb-3">Lesson 01</div>
+                    <h3 class="text-xl font-bold mb-2 text-slate-800">元音觉醒</h3>
+                    <p class="text-xs text-slate-500 mb-4">A - I - U - E - O</p>
+                    <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
                         <div class="bg-orange-500 h-full w-full"></div>
                     </div>
                 </a>
 
-                <a href="lesson2.html"
-                    class="group relative overflow-hidden bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-indigo-500 transition-all hover:-translate-y-1">
+                <a href="lesson2.html" class="glass-card p-6 group relative overflow-hidden block">
                     <div
-                        class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition text-6xl font-black text-indigo-500">
+                        class="absolute -right-4 -top-4 text-8xl font-black text-indigo-200 opacity-20 group-hover:opacity-40 transition group-hover:scale-110">
                         か</div>
-                    <div class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-2">Lesson 02</div>
-                    <h3 class="text-xl font-bold mb-2">清音进阶 I</h3>
-                    <p class="text-xs text-slate-400">Ka - Sa - Ta</p>
-                    <div class="mt-4 w-full bg-slate-700 h-1 rounded-full overflow-hidden">
+                    <div class="text-xs font-bold text-indigo-600 uppercase tracking-widest mb-3">Lesson 02</div>
+                    <h3 class="text-xl font-bold mb-2 text-slate-800">清音进阶 I</h3>
+                    <p class="text-xs text-slate-500 mb-4">Ka - Sa - Ta</p>
+                    <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
                         <div class="bg-indigo-500 h-full w-full"></div>
                     </div>
                 </a>
 
-                <a href="lesson3.html"
-                    class="group relative overflow-hidden bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-emerald-500 transition-all hover:-translate-y-1">
+                <a href="lesson3.html" class="glass-card p-6 group relative overflow-hidden block">
                     <div
-                        class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition text-6xl font-black text-emerald-500">
+                        class="absolute -right-4 -top-4 text-8xl font-black text-emerald-200 opacity-20 group-hover:opacity-40 transition group-hover:scale-110">
                         な</div>
-                    <div class="text-xs font-bold text-emerald-500 uppercase tracking-widest mb-2">Lesson 03</div>
-                    <h3 class="text-xl font-bold mb-2">清音进阶 II</h3>
-                    <p class="text-xs text-slate-400">Na - Ha - Ma</p>
-                    <div class="mt-4 w-full bg-slate-700 h-1 rounded-full overflow-hidden">
+                    <div class="text-xs font-bold text-emerald-600 uppercase tracking-widest mb-3">Lesson 03</div>
+                    <h3 class="text-xl font-bold mb-2 text-slate-800">清音进阶 II</h3>
+                    <p class="text-xs text-slate-500 mb-4">Na - Ha - Ma</p>
+                    <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
                         <div class="bg-emerald-500 h-full w-full"></div>
                     </div>
                 </a>
 
-                <a href="lesson4.html"
-                    class="group relative overflow-hidden bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-violet-500 transition-all hover:-translate-y-1">
+                <a href="lesson4.html" class="glass-card p-6 group relative overflow-hidden block">
                     <div
-                        class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition text-6xl font-black text-violet-500">
+                        class="absolute -right-4 -top-4 text-8xl font-black text-violet-200 opacity-20 group-hover:opacity-40 transition group-hover:scale-110">
                         ら</div>
-                    <div class="text-xs font-bold text-violet-500 uppercase tracking-widest mb-2">Lesson 04</div>
-                    <h3 class="text-xl font-bold mb-2">收官之战</h3>
-                    <p class="text-xs text-slate-400">Ya - Ra - Wa - N</p>
-                    <div class="mt-4 w-full bg-slate-700 h-1 rounded-full overflow-hidden">
+                    <div class="text-xs font-bold text-violet-600 uppercase tracking-widest mb-3">Lesson 04</div>
+                    <h3 class="text-xl font-bold mb-2 text-slate-800">收官之战</h3>
+                    <p class="text-xs text-slate-500 mb-4">Ya - Ra - Wa - N</p>
+                    <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
                         <div class="bg-violet-500 h-full w-full"></div>
                     </div>
                 </a>
 
-                <a href="lesson5.html"
-                    class="group relative overflow-hidden bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-pink-500 transition-all hover:-translate-y-1">
+                <a href="lesson5.html" class="glass-card p-6 group relative overflow-hidden block">
                     <div
-                        class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition text-6xl font-black text-pink-500">
+                        class="absolute -right-4 -top-4 text-8xl font-black text-pink-200 opacity-20 group-hover:opacity-40 transition group-hover:scale-110">
                         が</div>
-                    <div class="text-xs font-bold text-pink-500 uppercase tracking-widest mb-2">Lesson 05</div>
-                    <h3 class="text-xl font-bold mb-2">浊音世界</h3>
-                    <p class="text-xs text-slate-400">Ga...Ba + Pa</p>
-                    <div class="mt-4 w-full bg-slate-700 h-1 rounded-full overflow-hidden">
+                    <div class="text-xs font-bold text-pink-600 uppercase tracking-widest mb-3">Lesson 05</div>
+                    <h3 class="text-xl font-bold mb-2 text-slate-800">浊音世界</h3>
+                    <p class="text-xs text-slate-500 mb-4">Ga...Ba + Pa</p>
+                    <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
                         <div class="bg-pink-500 h-full w-full"></div>
                     </div>
                 </a>
             </div>
 
-            <!-- THE MAP (Extracted from old Index) -->
-            <div class="bg-slate-800 rounded-[2.5rem] p-8 md:p-12 shadow-2xl overflow-x-auto border border-slate-700">
+            <!-- THE MAP -->
+            <div class="glass p-8 md:p-12 overflow-x-auto">
 
                 <!-- Header -->
                 <div
-                    class="grid grid-cols-11 gap-4 mb-6 text-center text-xs font-bold text-slate-500 uppercase tracking-widest min-w-[800px]">
-                    <div class="text-white bg-slate-700 rounded py-1">A</div>
-                    <div class="text-indigo-400">K</div>
-                    <div class="text-blue-400">S</div>
-                    <div class="text-red-400">T</div>
-                    <div class="text-emerald-400">N</div>
-                    <div class="text-amber-400">H</div>
-                    <div class="text-pink-400">M</div>
-                    <div class="text-violet-400">Y</div>
-                    <div class="text-cyan-400">R</div>
-                    <div class="text-lime-400">W</div>
-                    <div class="text-slate-400">N</div>
+                    class="grid grid-cols-11 gap-4 mb-6 text-center text-xs font-bold text-slate-400 uppercase tracking-widest min-w-[800px]">
+                    <div class="text-slate-600 bg-white/50 rounded py-1 border border-white">A</div>
+                    <div class="text-indigo-500">K</div>
+                    <div class="text-blue-500">S</div>
+                    <div class="text-red-500">T</div>
+                    <div class="text-emerald-500">N</div>
+                    <div class="text-amber-500">H</div>
+                    <div class="text-pink-500">M</div>
+                    <div class="text-violet-500">Y</div>
+                    <div class="text-cyan-500">R</div>
+                    <div class="text-lime-500">W</div>
+                    <div class="text-slate-500">N</div>
                 </div>
 
                 <!-- Row 1: A -->
                 <div class="grid grid-cols-11 gap-4 mb-4 min-w-[800px]">
                     <a href="lesson1.html#vowels"
-                        class="bg-orange-600 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-orange-500 transition group cursor-pointer shadow-lg shadow-orange-900/50">
-                        <div class="text-2xl font-bold text-white">あ</div>
-                        <div class="text-[10px] text-orange-200">a</div>
+                        class="bg-orange-500 text-white p-4 rounded-2xl flex flex-col items-center justify-center hover:scale-105 hover:shadow-lg transition group cursor-pointer shadow-orange-500/30">
+                        <div class="text-2xl font-bold">あ</div>
+                        <div class="text-[10px] opacity-80 font-bold uppercase">a</div>
                     </a>
                     <a href="lesson2.html#ka-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-indigo-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">か</div>
-                        <div class="text-[10px] text-slate-500 group-hover:text-indigo-200">ka</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-indigo-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-indigo-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">か</div>
+                        <div class="text-[10px] text-slate-400 group-hover:text-indigo-100 uppercase">ka</div>
                     </a>
                     <a href="lesson2.html#sa-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-blue-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">さ</div>
-                        <div class="text-[10px] text-slate-500 group-hover:text-blue-200">sa</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-blue-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-blue-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">さ</div>
+                        <div class="text-[10px] text-slate-400 group-hover:text-blue-100 uppercase">sa</div>
                     </a>
                     <a href="lesson2.html#ta-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-red-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">た</div>
-                        <div class="text-[10px] text-slate-500 group-hover:text-red-200">ta</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-red-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-red-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">た</div>
+                        <div class="text-[10px] text-slate-400 group-hover:text-red-100 uppercase">ta</div>
                     </a>
                     <a href="lesson3.html#na-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-emerald-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">な</div>
-                        <div class="text-[10px] text-slate-500 group-hover:text-emerald-200">na</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-emerald-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-emerald-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">な</div>
+                        <div class="text-[10px] text-slate-400 group-hover:text-emerald-100 uppercase">na</div>
                     </a>
                     <a href="lesson3.html#ha-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-amber-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">は</div>
-                        <div class="text-[10px] text-slate-500 group-hover:text-amber-200">ha</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-amber-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-amber-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">は</div>
+                        <div class="text-[10px] text-slate-400 group-hover:text-amber-100 uppercase">ha</div>
                     </a>
                     <a href="lesson3.html#ma-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-pink-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">ま</div>
-                        <div class="text-[10px] text-slate-500 group-hover:text-pink-200">ma</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-pink-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-pink-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">ま</div>
+                        <div class="text-[10px] text-slate-400 group-hover:text-pink-100 uppercase">ma</div>
                     </a>
                     <a href="lesson4.html#ya-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-violet-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">や</div>
-                        <div class="text-[10px] text-slate-500 group-hover:text-violet-200">ya</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-violet-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-violet-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">や</div>
+                        <div class="text-[10px] text-slate-400 group-hover:text-violet-100 uppercase">ya</div>
                     </a>
                     <a href="lesson4.html#ra-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-cyan-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">ら</div>
-                        <div class="text-[10px] text-slate-500 group-hover:text-cyan-200">ra</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-cyan-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-cyan-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">ら</div>
+                        <div class="text-[10px] text-slate-400 group-hover:text-cyan-100 uppercase">ra</div>
                     </a>
                     <a href="lesson4.html#wa-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-lime-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">わ</div>
-                        <div class="text-[10px] text-slate-500 group-hover:text-lime-200">wa</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-lime-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-lime-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">わ</div>
+                        <div class="text-[10px] text-slate-400 group-hover:text-lime-100 uppercase">wa</div>
                     </a>
                     <a href="lesson4.html#n-row"
-                        class="row-span-3 bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-slate-500 transition group cursor-pointer border border-slate-600">
-                        <div class="text-4xl font-bold text-slate-300 group-hover:text-white">ん</div>
-                        <div class="text-sm text-slate-500 group-hover:text-slate-200">n</div>
+                        class="row-span-3 bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-slate-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-slate-500/50">
+                        <div class="text-4xl font-bold text-slate-700 group-hover:text-white">ん</div>
+                        <div class="text-sm text-slate-500 group-hover:text-slate-100 uppercase">n</div>
                     </a>
                 </div>
 
                 <!-- Row 2: I -->
                 <div class="grid grid-cols-11 gap-4 mb-4 min-w-[800px]">
                     <a href="lesson1.html#vowels"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-orange-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">い</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-orange-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-orange-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">い</div>
                     </a>
                     <a href="lesson2.html#ka-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-indigo-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">き</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-indigo-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-indigo-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">き</div>
                     </a>
                     <a href="lesson2.html#sa-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-blue-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">し</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-blue-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-blue-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">し</div>
                     </a>
                     <a href="lesson2.html#ta-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-red-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">ち</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-red-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-red-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">ち</div>
                     </a>
                     <a href="lesson3.html#na-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-emerald-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">に</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-emerald-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-emerald-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">に</div>
                     </a>
                     <a href="lesson3.html#ha-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-amber-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">ひ</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-amber-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-amber-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">ひ</div>
                     </a>
                     <a href="lesson3.html#ma-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-pink-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">み</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-pink-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-pink-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">み</div>
                     </a>
-                    <div class="bg-slate-800/50 p-4 rounded-xl"></div> <!-- Empty Ya -->
+                    <div class="bg-white/20 p-4 rounded-2xl border border-white/20"></div> <!-- Empty Ya -->
                     <a href="lesson4.html#ra-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-cyan-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">り</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-cyan-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-cyan-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">り</div>
                     </a>
-                    <div class="bg-slate-800/50 p-4 rounded-xl"></div> <!-- Empty Wa -->
+                    <div class="bg-white/20 p-4 rounded-2xl border border-white/20"></div> <!-- Empty Wa -->
                 </div>
 
                 <!-- Row 3: U -->
                 <div class="grid grid-cols-11 gap-4 mb-4 min-w-[800px]">
                     <a href="lesson1.html#vowels"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-orange-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">う</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-orange-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-orange-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">う</div>
                     </a>
                     <a href="lesson2.html#ka-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-indigo-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">く</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-indigo-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-indigo-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">く</div>
                     </a>
                     <a href="lesson2.html#sa-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-blue-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">す</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-blue-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-blue-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">す</div>
                     </a>
                     <a href="lesson2.html#ta-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-red-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">つ</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-red-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-red-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">つ</div>
                     </a>
                     <a href="lesson3.html#na-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-emerald-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">ぬ</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-emerald-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-emerald-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">ぬ</div>
                     </a>
                     <a href="lesson3.html#ha-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-amber-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">ふ</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-amber-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-amber-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">ふ</div>
                     </a>
                     <a href="lesson3.html#ma-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-pink-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">む</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-pink-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-pink-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">む</div>
                     </a>
                     <a href="lesson4.html#ya-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-violet-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">ゆ</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-violet-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-violet-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">ゆ</div>
                     </a>
                     <a href="lesson4.html#ra-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-cyan-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">る</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-cyan-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-cyan-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">る</div>
                     </a>
-                    <div class="bg-slate-800/50 p-4 rounded-xl"></div>
+                    <div class="bg-white/20 p-4 rounded-2xl border border-white/20"></div>
                 </div>
 
                 <!-- Row 4: E -->
                 <div class="grid grid-cols-11 gap-4 mb-4 min-w-[800px]">
                     <a href="lesson1.html#vowels"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-orange-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">え</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-orange-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-orange-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">え</div>
                     </a>
                     <a href="lesson2.html#ka-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-indigo-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">け</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-indigo-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-indigo-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">け</div>
                     </a>
                     <a href="lesson2.html#sa-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-blue-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">せ</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-blue-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-blue-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">せ</div>
                     </a>
                     <a href="lesson2.html#ta-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-red-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">て</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-red-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-red-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">て</div>
                     </a>
                     <a href="lesson3.html#na-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-emerald-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">ね</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-emerald-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-emerald-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">ね</div>
                     </a>
                     <a href="lesson3.html#ha-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-amber-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">へ</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-amber-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-amber-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">へ</div>
                     </a>
                     <a href="lesson3.html#ma-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-pink-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">め</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-pink-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-pink-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">め</div>
                     </a>
-                    <div class="bg-slate-800/50 p-4 rounded-xl"></div>
+                    <div class="bg-white/20 p-4 rounded-2xl border border-white/20"></div>
                     <a href="lesson4.html#ra-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-cyan-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">れ</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-cyan-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-cyan-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">れ</div>
                     </a>
-                    <div class="bg-slate-800/50 p-4 rounded-xl"></div>
+                    <div class="bg-white/20 p-4 rounded-2xl border border-white/20"></div>
                     <!-- New Dakuon Link -->
                     <a href="lesson5.html"
-                        class="row-span-2 bg-gradient-to-br from-emerald-600 to-teal-800 p-4 rounded-xl flex flex-col items-center justify-center hover:scale-105 transition group cursor-pointer shadow-lg border border-teal-500">
+                        class="row-span-2 bg-gradient-to-br from-emerald-500 to-teal-500 p-4 rounded-2xl flex flex-col items-center justify-center hover:scale-105 transition group cursor-pointer shadow-lg border border-teal-400/50">
                         <div class="text-xl font-bold text-white text-center">浊音<br><span
                                 class="text-xs opacity-70">Dakuon</span></div>
                     </a>
@@ -319,44 +356,44 @@
                 <!-- Row 5: O -->
                 <div class="grid grid-cols-11 gap-4 min-w-[800px]">
                     <a href="lesson1.html#vowels"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-orange-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">お</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-orange-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-orange-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">お</div>
                     </a>
                     <a href="lesson2.html#ka-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-indigo-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">こ</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-indigo-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-indigo-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">こ</div>
                     </a>
                     <a href="lesson2.html#sa-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-blue-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">そ</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-blue-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-blue-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">そ</div>
                     </a>
                     <a href="lesson2.html#ta-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-red-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">と</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-red-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-red-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">と</div>
                     </a>
                     <a href="lesson3.html#na-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-emerald-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">の</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-emerald-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-emerald-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">の</div>
                     </a>
                     <a href="lesson3.html#ha-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-amber-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">ほ</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-amber-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-amber-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">ほ</div>
                     </a>
                     <a href="lesson3.html#ma-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-pink-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">も</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-pink-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-pink-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">も</div>
                     </a>
                     <a href="lesson4.html#ya-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-violet-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">よ</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-violet-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-violet-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">よ</div>
                     </a>
                     <a href="lesson4.html#ra-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-cyan-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">ろ</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-cyan-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-cyan-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">ろ</div>
                     </a>
                     <a href="lesson4.html#wa-row"
-                        class="bg-slate-700 p-4 rounded-xl flex flex-col items-center justify-center hover:bg-lime-600 transition group cursor-pointer">
-                        <div class="text-2xl font-bold text-slate-300 group-hover:text-white">を</div>
+                        class="bg-white/60 p-4 rounded-2xl flex flex-col items-center justify-center hover:bg-lime-500 hover:text-white transition group cursor-pointer border border-white/50 hover:border-lime-500/50">
+                        <div class="text-2xl font-bold text-slate-700 group-hover:text-white">を</div>
                     </a>
                 </div>
             </div>
@@ -364,7 +401,7 @@
         </div>
     </main>
 
-    <footer class="border-t border-slate-800 py-12 text-center text-slate-500 text-sm">
+    <footer class="border-t border-slate-200 py-12 text-center text-slate-500 text-sm">
         <p>盾盾日语 - Japanese Learning Roadmap</p>
     </footer>
 

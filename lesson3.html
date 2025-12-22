@@ -17,69 +17,94 @@
             --na-main: #10b981;
             --ha-main: #f59e0b;
             --ma-main: #ec4899;
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --glass-surface: rgba(255, 255, 255, 0.65);
         }
 
         body {
-            font-family: 'Noto Sans JP', sans-serif;
-            background-color: #f8fafc;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #d1fae5 0%, #fce7f3 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #1d1d1f;
+        }
+
+        .glass {
+            background: var(--glass-surface);
+            -webkit-backdrop-filter: blur(24px);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+            border-radius: 24px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.45);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 32px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.6);
+            border-color: rgba(255, 255, 255, 0.8);
         }
 
         .handwriting {
             font-family: 'Klee One', cursive;
         }
 
-        .quote {
-            font-family: 'ZCOOL XiaoWei', serif;
+        .floating {
+            animation: float 6s ease-in-out infinite;
         }
 
-        .glass {
-            background: rgba(255, 255, 255, 0.9);
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(2deg);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
-        .pitch-graph {
-            height: 40px;
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+
+        .delay-1000 {
+            animation-delay: 1s;
+        }
+
+        .delay-1500 {
+            animation-delay: 1.5s;
+        }
+
+        .delay-2000 {
+            animation-delay: 2s;
+        }
+
+        .kana-box {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
             display: flex;
             align-items: center;
-            gap: 4px;
-        }
-
-        .pitch-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-        }
-
-        .pitch-high {
-            background-color: #ef4444;
-            transform: translateY(-10px);
-        }
-
-        .pitch-low {
-            background-color: #94a3b8;
-            transform: translateY(10px);
-        }
-
-        .mnemonic-tag {
-            background: linear-gradient(135deg, #ffedd5 0%, #fed7aa 100%);
-            color: #9a3412;
-        }
-
-        .teacher-tip {
-            border-left: 4px solid #f59e0b;
-            background-color: #fffbeb;
-        }
-
-        .kana-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .kana-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            border-width: 1px;
+            transition: all 0.2s;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -87,27 +112,25 @@
 <body class="text-slate-800">
 
     <!-- Sticky Navigation -->
-    <nav class="sticky top-0 z-50 glass border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <nav class="sticky top-4 z-50 mx-4">
+        <div class="glass max-w-7xl mx-auto px-6 py-4 flex justify-between items-center bg-white/60">
             <div class="flex items-center gap-3">
-                <a href="chapter1.html"
-                    class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg">盾</a>
+                <a href="index.html"
+                    class="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg">盾</a>
                 <div>
                     <h1 class="font-black text-slate-900 leading-none">盾盾日语</h1>
-                    <span class="text-[10px] text-indigo-500 font-bold uppercase tracking-widest">Mastering
+                    <span class="text-[10px] text-emerald-600 font-bold uppercase tracking-widest">Mastering
                         Consonants II</span>
                 </div>
             </div>
             <div class="hidden md:flex gap-6 text-sm font-bold">
-                <a href="chapter1.html" class="text-slate-400 hover:text-indigo-600 transition"><- 回到章节地图 (Chapter
-                        1)</a>
-                        <a href="lesson2.html" class="text-slate-400 hover:text-indigo-600 transition"><- 上一课
-                                (Ka-Ta)</a>
-                                <a href="#na-row" class="text-emerald-600 hover:opacity-70 transition">な行</a>
-                                <a href="#ha-row" class="text-amber-600 hover:opacity-70 transition">は行</a>
-                                <a href="#ma-row" class="text-pink-600 hover:opacity-70 transition">ま行</a>
-                                <a href="lesson4.html" class="text-violet-600 hover:opacity-70 transition">下一课 (Ya-N)
-                                    -></a>
+                <a href="lesson2.html" class="text-slate-500 hover:text-indigo-600 transition"><- 上一课 (Ka-Ta)</a>
+                        <a href="#na-row" class="text-emerald-600 hover:opacity-70 transition">な行</a>
+                        <a href="#ha-row" class="text-amber-600 hover:opacity-70 transition">は行</a>
+                        <a href="#ma-row" class="text-pink-600 hover:opacity-70 transition">ま行</a>
+                        <a href="lesson4.html" class="text-violet-600 hover:opacity-70 transition">下一课 (Ya-N)
+                            -></a>
+                        <a href="#game" class="text-slate-600 hover:opacity-70 transition">乱序挑战</a>
             </div>
         </div>
     </nav>
@@ -132,7 +155,7 @@
                 <h3 class="text-4xl font-black text-slate-900">な行：鼻音 [ n ] 的共鸣</h3>
             </div>
 
-            <div class="teacher-tip p-6 rounded-2xl mb-12 border-l-emerald-500 bg-emerald-50">
+            <div class="glass-card p-6 mb-12 border-l-4 border-emerald-500">
                 <p class="font-bold text-emerald-900 mb-2">🎓 老师的重点提示：</p>
                 <p class="text-emerald-800 text-sm">
                     这一行都带有<strong>鼻音</strong>。拼读时感觉声音在鼻腔共鸣。<br>
@@ -140,124 +163,175 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 text-slate-800">
                 <!-- な -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-emerald-500">
+                <div class="glass-card p-10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-emerald-200/40 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none">
+                    </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="text-7xl font-black text-emerald-600 handwriting">な</div>
+                        <div class="text-8xl font-black text-emerald-500 handwriting floating">な</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-emerald-200">ナ</div>
-                            <div class="text-sm font-mono text-emerald-400">na</div>
+                            <div
+                                class="text-4xl font-bold text-slate-500 group-hover:text-emerald-400 transition-colors">
+                                ナ</div>
+                            <div class="text-lg font-mono text-emerald-400/80 font-bold">na</div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-sm">
-                        <p><strong>书写：</strong>源自汉字「奈」。前两笔（横、撇）完全一样。第三笔一点，第四笔一个圈。</p>
-                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
-                            “那（na）可真是『无奈』(奈) 呀！平假名是有个圈的无奈，片假名是刚开始无奈（前两笔）。”
+                    <div class="space-y-4 text-sm relative z-10">
+                        <p class="font-medium text-slate-600"><strong>书写：</strong>源自汉字「奈」。前两笔（横、撇）完全一样。第三笔一点，第四笔一个圈。</p>
+                        <div class="bg-emerald-50/80 p-4 rounded-2xl border border-emerald-100/50 backdrop-blur-sm">
+                            <span
+                                class="text-[10px] font-bold text-emerald-400 tracking-widest uppercase mb-1 block">Mnemonic</span>
+                            <p class="font-bold text-slate-700 italic">
+                                “<span class="text-emerald-600">那 (na)</span> 可真是『无奈』(奈) 呀！平假名是有个圈的无奈，片假名是刚开始无奈（前两笔）。”
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- に -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-emerald-500">
+                <div class="glass-card p-10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-emerald-200/40 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none">
+                    </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="text-7xl font-black text-emerald-600 handwriting">に</div>
+                        <div class="text-8xl font-black text-emerald-500 handwriting floating delay-500">に</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-emerald-200">ニ</div>
-                            <div class="text-sm font-mono text-emerald-400">ni</div>
+                            <div
+                                class="text-4xl font-bold text-slate-500 group-hover:text-emerald-400 transition-colors">
+                                ニ</div>
+                            <div class="text-lg font-mono text-emerald-400/80 font-bold">ni</div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-sm">
-                        <p><strong>书写：</strong>平假名像“1”个人有点“2”。片假名就是汉字“二”。</p>
-                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
-                            “你（ni）这个人真『二』！”
+                    <div class="space-y-4 text-sm relative z-10">
+                        <p class="font-medium text-slate-600"><strong>书写：</strong>平假名像“1”个人有点“2”。片假名就是汉字“二”。</p>
+                        <div class="bg-emerald-50/80 p-4 rounded-2xl border border-emerald-100/50 backdrop-blur-sm">
+                            <span
+                                class="text-[10px] font-bold text-emerald-400 tracking-widest uppercase mb-1 block">Mnemonic</span>
+                            <p class="font-bold text-slate-700 italic">
+                                “<span class="text-emerald-600">你 (ni)</span> 这个人真『二』！”
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- ぬ -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-emerald-500">
+                <div class="glass-card p-10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-emerald-200/40 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none">
+                    </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="text-7xl font-black text-emerald-600 handwriting">ぬ</div>
+                        <div class="text-8xl font-black text-emerald-500 handwriting floating delay-1000">ぬ</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-emerald-200">ヌ</div>
-                            <div class="text-sm font-mono text-emerald-400">nu</div>
+                            <div
+                                class="text-4xl font-bold text-slate-500 group-hover:text-emerald-400 transition-colors">
+                                ヌ</div>
+                            <div class="text-lg font-mono text-emerald-400/80 font-bold">nu</div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-sm">
-                        <p><strong>书写：</strong>源自汉字「奴」。平假名左边是女，右边是又+圈。片假名是“又”字（不出头）。</p>
-                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
-                            “又（片假）来了一个房奴（nu）。左女右又（奴）。”
+                    <div class="space-y-4 text-sm relative z-10">
+                        <p class="font-medium text-slate-600"><strong>书写：</strong>源自汉字「奴」。平假名左边是女，右边是又+圈。片假名是“又”字（不出头）。
+                        </p>
+                        <div class="bg-emerald-50/80 p-4 rounded-2xl border border-emerald-100/50 backdrop-blur-sm">
+                            <span
+                                class="text-[10px] font-bold text-emerald-400 tracking-widest uppercase mb-1 block">Mnemonic</span>
+                            <p class="font-bold text-slate-700 italic">
+                                “又（片假）来了一个房<span class="text-emerald-600">奴 (nu)</span>。左女右又（奴）。”
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- ね -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-emerald-500">
+                <div class="glass-card p-10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-emerald-200/40 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none">
+                    </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="text-7xl font-black text-emerald-600 handwriting">ね</div>
+                        <div class="text-8xl font-black text-emerald-500 handwriting floating delay-1500">ね</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-emerald-200">ネ</div>
-                            <div class="text-sm font-mono text-emerald-400">ne</div>
+                            <div
+                                class="text-4xl font-bold text-slate-500 group-hover:text-emerald-400 transition-colors">
+                                ネ</div>
+                            <div class="text-lg font-mono text-emerald-400/80 font-bold">ne</div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-sm">
-                        <p><strong>书写：</strong>源自汉字「权」。平假名左木右又+圈。片假名是一点加个“不”（不完全像）。</p>
-                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
-                            “手握大权（ne），但一点都不（片假）嚣张呢。”
+                    <div class="space-y-4 text-sm relative z-10">
+                        <p class="font-medium text-slate-600"><strong>书写：</strong>源自汉字「权」。平假名左木右又+圈。片假名是一点加个“不”（不完全像）。
+                        </p>
+                        <div class="bg-emerald-50/80 p-4 rounded-2xl border border-emerald-100/50 backdrop-blur-sm">
+                            <span
+                                class="text-[10px] font-bold text-emerald-400 tracking-widest uppercase mb-1 block">Mnemonic</span>
+                            <p class="font-bold text-slate-700 italic">
+                                “手握大权（ne），但一点都不（片假）嚣张<span class="text-emerald-600">呢 (ne)</span>。”
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- の -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-emerald-500">
+                <div class="glass-card p-10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-emerald-200/40 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none">
+                    </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="text-7xl font-black text-emerald-600 handwriting">の</div>
+                        <div class="text-8xl font-black text-emerald-500 handwriting floating delay-2000">の</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-emerald-200">ノ</div>
-                            <div class="text-sm font-mono text-emerald-400">no</div>
+                            <div
+                                class="text-4xl font-bold text-slate-500 group-hover:text-emerald-400 transition-colors">
+                                ノ</div>
+                            <div class="text-lg font-mono text-emerald-400/80 font-bold">no</div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-sm">
-                        <p><strong>书写：</strong>平假名一个圈。片假名一撇。</p>
-                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
-                            “这是卷心蛋糕（no），请你吃（递叉子/片假）。”
+                    <div class="space-y-4 text-sm relative z-10">
+                        <p class="font-medium text-slate-600"><strong>书写：</strong>平假名一个圈。片假名一撇。</p>
+                        <div class="bg-emerald-50/80 p-4 rounded-2xl border border-emerald-100/50 backdrop-blur-sm">
+                            <span
+                                class="text-[10px] font-bold text-emerald-400 tracking-widest uppercase mb-1 block">Mnemonic</span>
+                            <p class="font-bold text-slate-700 italic">
+                                “这是卷心蛋糕（no），请你吃（递叉子/片假）<span class="text-emerald-600">喏 (no)</span>。”
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Na-Row Vocabulary -->
-            <div class="bg-emerald-50 rounded-3xl p-8 border border-emerald-100">
-                <h4 class="text-2xl font-black mb-6 text-emerald-900">な行 核心词汇</h4>
+            <div class="glass-card p-10">
+                <h4 class="text-2xl font-black mb-6 text-slate-900">な行 核心词汇</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div
+                        class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-white/40 hover:scale-105 transition-transform">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">なな (nana)</span>
                             <span class="text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded font-bold">七</span>
                         </div>
-                        <p class="text-xs text-slate-400 mt-2">数字7。①型降调。</p>
+                        <p class="text-xs text-slate-500 mt-2">数字7。①型降调。</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div
+                        class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-white/40 hover:scale-105 transition-transform">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">なに (nani)</span>
                             <span class="text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded font-bold">什么</span>
                         </div>
-                        <p class="text-xs text-slate-400 mt-2">日剧神词。"纳尼"？①型。</p>
+                        <p class="text-xs text-slate-500 mt-2">日剧神词。"纳尼"？①型。</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div
+                        class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-white/40 hover:scale-105 transition-transform">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">いぬ (inu)</span>
                             <span class="text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded font-bold">狗</span>
                         </div>
-                        <p class="text-xs text-slate-400 mt-2">②型。低高。汪狗(wanko)是小狗。</p>
+                        <p class="text-xs text-slate-500 mt-2">②型。低高。汪狗(wanko)是小狗。</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div
+                        class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-white/40 hover:scale-105 transition-transform">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">ねこ (neko)</span>
                             <span class="text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded font-bold">猫</span>
                         </div>
-                        <p class="text-xs text-slate-400 mt-2">①型降调。Ne-Ko。</p>
+                        <p class="text-xs text-slate-500 mt-2">①型降调。Ne-Ko。</p>
                     </div>
                 </div>
             </div>
@@ -273,115 +347,161 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                 <!-- は -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-amber-500">
+                <div class="glass-card p-10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-amber-200/40 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none">
+                    </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="text-7xl font-black text-amber-600 handwriting">は</div>
+                        <div class="text-8xl font-black text-amber-500 handwriting floating">は</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-amber-200">ハ</div>
-                            <div class="text-sm font-mono text-amber-400">ha</div>
+                            <div class="text-4xl font-bold text-slate-500 group-hover:text-amber-400 transition-colors">
+                                ハ</div>
+                            <div class="text-lg font-mono text-amber-400/80 font-bold">ha</div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-sm">
-                        <p><strong>书写：</strong>平假名左竖右“十”加圈。片假名是汉字“八”。</p>
-                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
-                            “一条哈（ha）巴狗，跑了十圈(平)，哈哈哈(八)。”
+                    <div class="space-y-4 text-sm relative z-10">
+                        <p class="font-medium text-slate-600"><strong>书写：</strong>平假名左竖右“十”加圈。片假名是汉字“八”。</p>
+                        <div class="bg-amber-50/80 p-4 rounded-2xl border border-amber-100/50 backdrop-blur-sm">
+                            <span
+                                class="text-[10px] font-bold text-amber-400 tracking-widest uppercase mb-1 block">Mnemonic</span>
+                            <p class="font-bold text-slate-700 italic">
+                                “一条<span class="text-amber-600">哈 (ha)</span> 巴狗，跑了十圈(平)，哈哈哈(八)。”
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- ひ -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-amber-500">
+                <div class="glass-card p-10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-amber-200/40 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none">
+                    </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="text-7xl font-black text-amber-600 handwriting">ひ</div>
+                        <div class="text-8xl font-black text-amber-500 handwriting floating delay-500">ひ</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-amber-200">ヒ</div>
-                            <div class="text-sm font-mono text-amber-400">hi</div>
+                            <div class="text-4xl font-bold text-slate-500 group-hover:text-amber-400 transition-colors">
+                                ヒ</div>
+                            <div class="text-lg font-mono text-amber-400/80 font-bold">hi</div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-sm">
-                        <p><strong>书写：</strong>平假名像英文字母U或大鼻子。片假名是“匕首”的匕。</p>
-                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
-                            “大鼻子坏人拿着匕（片）首，嘿（hi）嘿笑。”
+                    <div class="space-y-4 text-sm relative z-10">
+                        <p class="font-medium text-slate-600"><strong>书写：</strong>平假名像英文字母U或大鼻子。片假名是“匕首”的匕。</p>
+                        <div class="bg-amber-50/80 p-4 rounded-2xl border border-amber-100/50 backdrop-blur-sm">
+                            <span
+                                class="text-[10px] font-bold text-amber-400 tracking-widest uppercase mb-1 block">Mnemonic</span>
+                            <p class="font-bold text-slate-700 italic">
+                                “大鼻子坏人拿着<span class="text-amber-600">匕</span>（片）首，<span class="text-amber-600">嘿
+                                    (hi)</span> 嘿笑。”
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- ふ -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-amber-500">
+                <div class="glass-card p-10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-amber-200/40 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none">
+                    </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="text-7xl font-black text-amber-600 handwriting">ふ</div>
+                        <div class="text-8xl font-black text-amber-500 handwriting floating delay-1000">ふ</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-amber-200">フ</div>
-                            <div class="text-sm font-mono text-amber-400">fu</div>
+                            <div class="text-4xl font-bold text-slate-500 group-hover:text-amber-400 transition-colors">
+                                フ</div>
+                            <div class="text-lg font-mono text-amber-400/80 font-bold">fu</div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-sm">
-                        <p><strong>发音：</strong>Hu/Fu之间。吹气音，不要咬唇。<strong>书写：</strong>平假名像数字3加两点。片假名不完全的7。</p>
-                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
-                            “在玩呼（fu）啦圈，左右摇摆。转了7（片）圈。”
+                    <div class="space-y-4 text-sm relative z-10">
+                        <p class="font-medium text-slate-600">
+                            <strong>发音：</strong>Hu/Fu之间。吹气音，不要咬唇。<strong>书写：</strong>平假名像数字3加两点。片假名不完全的7。
+                        </p>
+                        <div class="bg-amber-50/80 p-4 rounded-2xl border border-amber-100/50 backdrop-blur-sm">
+                            <span
+                                class="text-[10px] font-bold text-amber-400 tracking-widest uppercase mb-1 block">Mnemonic</span>
+                            <p class="font-bold text-slate-700 italic">
+                                “在玩<span class="text-amber-600">呼 (fu)</span> 啦圈，左右摇摆。转了7（片）圈。”
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- へ -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-amber-500">
+                <div class="glass-card p-10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-amber-200/40 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none">
+                    </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="text-7xl font-black text-amber-600 handwriting">へ</div>
+                        <div class="text-8xl font-black text-amber-500 handwriting floating delay-1500">へ</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-amber-200">ヘ</div>
-                            <div class="text-sm font-mono text-amber-400">he</div>
+                            <div class="text-4xl font-bold text-slate-500 group-hover:text-amber-400 transition-colors">
+                                ヘ</div>
+                            <div class="text-lg font-mono text-amber-400/80 font-bold">he</div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-sm">
-                        <p><strong>注意：</strong>平片假名几乎一样！像小山丘。</p>
-                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
-                            “下山的时候天黑（he）了。”
+                    <div class="space-y-4 text-sm relative z-10">
+                        <p class="font-medium text-slate-600"><strong>注意：</strong>平片假名几乎一样！像小山丘。</p>
+                        <div class="bg-amber-50/80 p-4 rounded-2xl border border-amber-100/50 backdrop-blur-sm">
+                            <span
+                                class="text-[10px] font-bold text-amber-400 tracking-widest uppercase mb-1 block">Mnemonic</span>
+                            <p class="font-bold text-slate-700 italic">
+                                “下山的时候天<span class="text-amber-600">黑 (he)</span> 了。”
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- ほ -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-amber-500">
+                <div class="glass-card p-10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-amber-200/40 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none">
+                    </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="text-7xl font-black text-amber-600 handwriting">ほ</div>
+                        <div class="text-8xl font-black text-amber-500 handwriting floating delay-2000">ほ</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-amber-200">ホ</div>
-                            <div class="text-sm font-mono text-amber-400">ho</div>
+                            <div class="text-4xl font-bold text-slate-500 group-hover:text-amber-400 transition-colors">
+                                ホ</div>
+                            <div class="text-lg font-mono text-amber-400/80 font-bold">ho</div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-sm">
-                        <p><strong>书写：</strong>平假名像“哈”但多一横，右边是“二十”加圈。片假名像“木”字不连笔。</p>
-                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
-                            “18（片木拆开）岁开始，每天跑20（平右）圈，为了活（ho）得健康。”
+                    <div class="space-y-4 text-sm relative z-10">
+                        <p class="font-medium text-slate-600"><strong>书写：</strong>平假名像“哈”但多一横，右边是“二十”加圈。片假名像“木”字不连笔。</p>
+                        <div class="bg-amber-50/80 p-4 rounded-2xl border border-amber-100/50 backdrop-blur-sm">
+                            <span
+                                class="text-[10px] font-bold text-amber-400 tracking-widest uppercase mb-1 block">Mnemonic</span>
+                            <p class="font-bold text-slate-700 italic">
+                                “18（片木拆开）岁开始，每天跑20（平右）圈，为了<span class="text-amber-600">活 (ho)</span> 得健康。”
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Ha-Row Vocabulary -->
-            <div class="bg-amber-50 rounded-3xl p-8 border border-amber-100">
-                <h4 class="text-2xl font-black mb-6 text-amber-900">は行 核心词汇</h4>
+            <div class="glass-card p-10">
+                <h4 class="text-2xl font-black mb-6 text-slate-900">は行 核心词汇</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div
+                        class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-white/40 hover:scale-105 transition-transform">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">はし (hashi)</span>
                             <span class="text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded font-bold">桥/筷子</span>
                         </div>
-                        <p class="text-xs text-slate-400 mt-2">声调不同意思不同。桥是②型（低高）。</p>
+                        <p class="text-xs text-slate-500 mt-2">声调不同意思不同。桥是②型（低高）。</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div
+                        class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-white/40 hover:scale-105 transition-transform">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">ふたり (futari)</span>
                             <span class="text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded font-bold">两个人</span>
                         </div>
-                        <p class="text-xs text-slate-400 mt-2">双胞胎叫Futago。</p>
+                        <p class="text-xs text-slate-500 mt-2">双胞胎叫Futago。</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div
+                        class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-white/40 hover:scale-105 transition-transform">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">へた (heta)</span>
                             <span class="text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded font-bold">不擅长</span>
                         </div>
-                        <p class="text-xs text-slate-400 mt-2">笨拙。字源“下图”。</p>
+                        <p class="text-xs text-slate-500 mt-2">笨拙。字源“下图”。</p>
                     </div>
                 </div>
             </div>
@@ -397,122 +517,166 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                 <!-- ま -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-pink-500">
+                <div class="glass-card p-10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-pink-200/40 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none">
+                    </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="text-7xl font-black text-pink-500 handwriting">ま</div>
+                        <div class="text-8xl font-black text-pink-500 handwriting floating">ま</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-pink-200">マ</div>
-                            <div class="text-sm font-mono text-pink-400">ma</div>
+                            <div class="text-4xl font-bold text-slate-500 group-hover:text-pink-400 transition-colors">マ
+                            </div>
+                            <div class="text-lg font-mono text-pink-400/80 font-bold">ma</div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-sm">
-                        <p><strong>书写：</strong>两横穿过打圈。片假名横折+点。</p>
-                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
-                            “妈（ma）妈在织毛衣（两横像棒针）。片假名是『马』字头。”
+                    <div class="space-y-4 text-sm relative z-10">
+                        <p class="font-medium text-slate-600"><strong>书写：</strong>两横穿过打圈。片假名横折+点。</p>
+                        <div class="bg-pink-50/80 p-4 rounded-2xl border border-pink-100/50 backdrop-blur-sm">
+                            <span
+                                class="text-[10px] font-bold text-pink-400 tracking-widest uppercase mb-1 block">Mnemonic</span>
+                            <p class="font-bold text-slate-700 italic">
+                                “<span class="text-pink-600">妈 (ma)</span> 妈在织毛衣（两横像棒针）。片假名是『马』字头。”
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- み -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-pink-500">
+                <div class="glass-card p-10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-pink-200/40 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none">
+                    </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="text-7xl font-black text-pink-500 handwriting">み</div>
+                        <div class="text-8xl font-black text-pink-500 handwriting floating delay-500">み</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-pink-200">ミ</div>
-                            <div class="text-sm font-mono text-pink-400">mi</div>
+                            <div class="text-4xl font-bold text-slate-500 group-hover:text-pink-400 transition-colors">ミ
+                            </div>
+                            <div class="text-lg font-mono text-pink-400/80 font-bold">mi</div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-sm">
-                        <p><strong>书写：</strong>平假名像21。片假名是三点（川字横过来）。</p>
-                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
-                            “21（平）岁养了一只猫咪（mi），有三根胡须（片）。”
+                    <div class="space-y-4 text-sm relative z-10">
+                        <p class="font-medium text-slate-600"><strong>书写：</strong>平假名像21。片假名是三点（川字横过来）。</p>
+                        <div class="bg-pink-50/80 p-4 rounded-2xl border border-pink-100/50 backdrop-blur-sm">
+                            <span
+                                class="text-[10px] font-bold text-pink-400 tracking-widest uppercase mb-1 block">Mnemonic</span>
+                            <p class="font-bold text-slate-700 italic">
+                                “21（平）岁养了一只猫<span class="text-pink-600">咪 (mi)</span>，有三根胡须（片）。”
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- む -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-pink-500">
+                <div class="glass-card p-10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-pink-200/40 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none">
+                    </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="text-7xl font-black text-pink-500 handwriting">む</div>
+                        <div class="text-8xl font-black text-pink-500 handwriting floating delay-1000">む</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-pink-200">ム</div>
-                            <div class="text-sm font-mono text-pink-400">mu</div>
+                            <div class="text-4xl font-bold text-slate-500 group-hover:text-pink-400 transition-colors">ム
+                            </div>
+                            <div class="text-lg font-mono text-pink-400/80 font-bold">mu</div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-sm">
-                        <p><strong>书写：</strong>平假名像@符号+点。片假名是三角形不封口（牟的上半部分）。</p>
-                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
-                            “@了你十次，么（mu）么哒！”
+                    <div class="space-y-4 text-sm relative z-10">
+                        <p class="font-medium text-slate-600"><strong>书写：</strong>平假名像@符号+点。片假名是三角形不封口（牟的上半部分）。</p>
+                        <div class="bg-pink-50/80 p-4 rounded-2xl border border-pink-100/50 backdrop-blur-sm">
+                            <span
+                                class="text-[10px] font-bold text-pink-400 tracking-widest uppercase mb-1 block">Mnemonic</span>
+                            <p class="font-bold text-slate-700 italic">
+                                “@了你十次，<span class="text-pink-600">么 (mu)</span> 么哒！”
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- め -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-pink-500">
+                <div class="glass-card p-10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-pink-200/40 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none">
+                    </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="text-7xl font-black text-pink-500 handwriting">め</div>
+                        <div class="text-8xl font-black text-pink-500 handwriting floating delay-1500">め</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-pink-200">メ</div>
-                            <div class="text-sm font-mono text-pink-400">me</div>
+                            <div class="text-4xl font-bold text-slate-500 group-hover:text-pink-400 transition-colors">メ
+                            </div>
+                            <div class="text-lg font-mono text-pink-400/80 font-bold">me</div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-sm">
-                        <p><strong>书写：</strong>源自汉字「女」。跟Nu（ぬ）很像但没有圈！</p>
-                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
-                            “美（me）女喜欢玫（片）瑰。没有圈的是美女，有圈的是房奴（Nu）！”
+                    <div class="space-y-4 text-sm relative z-10">
+                        <p class="font-medium text-slate-600"><strong>书写：</strong>源自汉字「女」。跟Nu（ぬ）很像但没有圈！</p>
+                        <div class="bg-pink-50/80 p-4 rounded-2xl border border-pink-100/50 backdrop-blur-sm">
+                            <span
+                                class="text-[10px] font-bold text-pink-400 tracking-widest uppercase mb-1 block">Mnemonic</span>
+                            <p class="font-bold text-slate-700 italic">
+                                “<span class="text-pink-600">美 (me)</span> 女喜欢玫（片）瑰。没有圈的是美女，有圈的是房奴（Nu）！”
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- も -->
-                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-pink-500">
+                <div class="glass-card p-10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-pink-200/40 rounded-full blur-[40px] -mr-10 -mt-10 pointer-events-none">
+                    </div>
                     <div class="flex justify-between items-start mb-6">
-                        <div class="text-7xl font-black text-pink-500 handwriting">も</div>
+                        <div class="text-8xl font-black text-pink-500 handwriting floating delay-2000">も</div>
                         <div class="text-right">
-                            <div class="text-3xl font-bold text-slate-300 text-pink-200">モ</div>
-                            <div class="text-sm font-mono text-pink-400">mo</div>
+                            <div class="text-4xl font-bold text-slate-500 group-hover:text-pink-400 transition-colors">モ
+                            </div>
+                            <div class="text-lg font-mono text-pink-400/80 font-bold">mo</div>
                         </div>
                     </div>
-                    <div class="space-y-4 text-sm">
-                        <p><strong>书写：</strong>源自汉字「毛」。长得很像。</p>
-                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
-                            “摸（mo）摸小狗的毛。”
+                    <div class="space-y-4 text-sm relative z-10">
+                        <p class="font-medium text-slate-600"><strong>书写：</strong>源自汉字「毛」。长得很像。</p>
+                        <div class="bg-pink-50/80 p-4 rounded-2xl border border-pink-100/50 backdrop-blur-sm">
+                            <span
+                                class="text-[10px] font-bold text-pink-400 tracking-widest uppercase mb-1 block">Mnemonic</span>
+                            <p class="font-bold text-slate-700 italic">
+                                “<span class="text-pink-600">摸 (mo)</span> 摸小狗的毛。”
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Ma-Row Vocabulary -->
-            <div class="bg-pink-50 rounded-3xl p-8 border border-pink-100">
-                <h4 class="text-2xl font-black mb-6 text-pink-900">ま行 核心词汇</h4>
+            <div class="glass-card p-10">
+                <h4 class="text-2xl font-black mb-6 text-slate-900">ま行 核心词汇</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div
+                        class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-white/40 hover:scale-105 transition-transform">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">まほう (mahou)</span>
                             <span class="text-xs bg-pink-100 text-pink-700 px-2 py-1 rounded font-bold">魔法</span>
                         </div>
-                        <p class="text-xs text-slate-400 mt-2">哈利波特！"马猴烧酒"（魔法少女）。</p>
+                        <p class="text-xs text-slate-500 mt-2">哈利波特！"马猴烧酒"（魔法少女）。</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div
+                        class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-white/40 hover:scale-105 transition-transform">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">みみ (mimi)</span>
                             <span class="text-xs bg-pink-100 text-pink-700 px-2 py-1 rounded font-bold">耳朵</span>
                         </div>
-                        <p class="text-xs text-slate-400 mt-2">"Mimi"听起来就很像耳朵。</p>
+                        <p class="text-xs text-slate-500 mt-2">"Mimi"听起来就很像耳朵。</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div
+                        class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-white/40 hover:scale-105 transition-transform">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">むし (mushi)</span>
                             <span class="text-xs bg-pink-100 text-pink-700 px-2 py-1 rounded font-bold">虫子</span>
                         </div>
-                        <p class="text-xs text-slate-400 mt-2">无戏(mushi)可唱，被虫吃了。</p>
+                        <p class="text-xs text-slate-500 mt-2">无戏(mushi)可唱，被虫吃了。</p>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div
+                        class="bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-white/40 hover:scale-105 transition-transform">
                         <div class="flex justify-between items-start">
                             <span class="text-2xl font-black italic">もも (momo)</span>
                             <span class="text-xs bg-pink-100 text-pink-700 px-2 py-1 rounded font-bold">桃子/大腿</span>
                         </div>
-                        <p class="text-xs text-slate-400 mt-2">上升是桃子，下降是大腿。</p>
+                        <p class="text-xs text-slate-500 mt-2">上升是桃子，下降是大腿。</p>
                     </div>
                 </div>
             </div>
@@ -590,21 +754,7 @@
                 </div>
             </div>
 
-            <style>
-                .kana-box {
-                    width: 3rem;
-                    height: 3rem;
-                    border-radius: 0.75rem;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-weight: 700;
-                    font-size: 1.25rem;
-                    border-width: 1px;
-                    transition: all 0.2s;
-                    cursor: pointer;
-                }
-            </style>
+
         </section>
     </main>
 

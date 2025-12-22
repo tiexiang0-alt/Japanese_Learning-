@@ -10,98 +10,132 @@
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=ZCOOL+XiaoWei&display=swap"
         rel="stylesheet">
     <style>
+        :root {
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --glass-surface: rgba(255, 255, 255, 0.65);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #e0e7ff 0%, #fae8ff 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #1d1d1f;
+        }
+
         .font-hand {
             font-family: 'ZCOOL XiaoWei', serif;
+        }
+
+        .glass {
+            background: var(--glass-surface);
+            -webkit-backdrop-filter: blur(24px);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+            border-radius: 40px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.45);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 32px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.6);
+            border-color: rgba(255, 255, 255, 0.8);
         }
     </style>
 </head>
 
-<body class="bg-slate-50 text-slate-900 font-sans">
+<body class="p-6 md:p-12 flex flex-col items-center justify-center min-h-screen">
 
-    <div class="min-h-screen flex flex-col">
-        <!-- Hero Section -->
-        <header
-            class="flex-grow flex flex-col items-center justify-center text-center px-6 py-20 bg-slate-900 text-white relative overflow-hidden">
-            <!-- Background Decoration -->
-            <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-                <div class="text-[20rem] font-bold absolute -top-20 -left-20 text-slate-700 select-none">あ</div>
-                <div class="text-[20rem] font-bold absolute bottom-0 right-0 text-slate-700 select-none">ん</div>
+    <div class="glass max-w-6xl w-full mx-auto p-12 relative overflow-hidden">
+
+        <!-- Decoration -->
+        <div
+            class="absolute -top-40 -left-40 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-[80px] opacity-30 animate-blob">
+        </div>
+        <div
+            class="absolute -top-40 -right-40 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-[80px] opacity-30 animate-blob animation-delay-2000">
+        </div>
+        <div
+            class="absolute -bottom-40 left-20 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-[80px] opacity-30 animate-blob animation-delay-4000">
+        </div>
+
+        <div class="relative z-10 text-center mb-16">
+            <div
+                class="inline-flex items-center gap-2 bg-white/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/60 mb-8 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+                <span class="text-indigo-600 text-xs font-bold tracking-widest uppercase">New: Chapter 1
+                    Available</span>
             </div>
 
-            <div class="relative z-10 max-w-4xl mx-auto">
+            <h1
+                class="text-7xl md:text-9xl font-black mb-6 leading-tight tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 filter drop-shadow-sm">
+                盾盾日语
+            </h1>
+
+            <p class="text-2xl md:text-3xl text-slate-500 mb-12 max-w-3xl mx-auto font-hand leading-relaxed">
+                “零基础到精通的每一步。从五十音图开始，解锁语言的无限可能。”
+            </p>
+
+            <a href="chapter1.html"
+                class="inline-flex items-center gap-3 px-10 py-5 bg-slate-900 text-white font-bold text-xl rounded-full shadow-2xl hover:bg-indigo-600 hover:scale-105 transition-all duration-300 group">
+                <span>Start Learning</span>
+                <svg class="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                        d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-card p-8">
                 <div
-                    class="mb-6 inline-flex items-center gap-2 bg-indigo-600/20 backdrop-blur px-4 py-2 rounded-full border border-indigo-500/30">
-                    <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
-                    <span class="text-indigo-200 text-xs font-bold tracking-widest uppercase">New: Chapter 1
-                        Available</span>
+                    class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm">
+                    🎯
                 </div>
-
-                <h1 class="text-6xl md:text-8xl font-black mb-8 leading-tight tracking-tight">
-                    盾盾<span class="text-indigo-500">日语</span>
-                </h1>
-
-                <p class="text-xl md:text-2xl text-slate-400 mb-12 max-w-2xl mx-auto font-hand leading-relaxed">
-                    “零基础到精通的每一步。从五十音图开始，解锁语言的无限可能。”
+                <h3 class="text-xl font-bold mb-3 text-slate-800">目标清晰</h3>
+                <p class="text-slate-500 font-medium leading-relaxed">
+                    课程分为清晰的章节（Chapters），每一课都有具体的学习目标，绝不迷路。
                 </p>
-
-                <div class="flex flex-col md:flex-row gap-6 justify-center">
-                    <a href="chapter1.html"
-                        class="px-10 py-5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xl rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-3">
-                        <span>开始学习 (Chapter 1)</span>
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
-                    </a>
-                </div>
             </div>
-        </header>
-
-        <!-- Course Syllabus / Preview -->
-        <section class="py-24 px-6 bg-white">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl font-black mb-4">为什么选择盾盾日语？</h2>
-                    <p class="text-slate-500">Structured, Visual, and Comprehensive.</p>
+            <div class="glass-card p-8">
+                <div
+                    class="w-14 h-14 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm">
+                    🧠
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                    <div
-                        class="p-8 bg-slate-50 rounded-[2rem] border border-slate-100 hover:border-indigo-200 transition">
-                        <div class="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center text-3xl mb-6">
-                            🎯</div>
-                        <h3 class="text-xl font-bold mb-3">目标清晰</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed">
-                            课程分为清晰的章节（Chapters），每一课都有具体的学习目标，绝不迷路。
-                        </p>
-                    </div>
-                    <div
-                        class="p-8 bg-slate-50 rounded-[2rem] border border-slate-100 hover:border-indigo-200 transition">
-                        <div class="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center text-3xl mb-6">
-                            🧠</div>
-                        <h3 class="text-xl font-bold mb-3">科学记忆</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed">
-                            结合字源记忆法、联想记忆法（The "Tiananmen" Mnemonic），让你过目不忘。
-                        </p>
-                    </div>
-                    <div
-                        class="p-8 bg-slate-50 rounded-[2rem] border border-slate-100 hover:border-indigo-200 transition">
-                        <div class="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center text-3xl mb-6">
-                            ✨</div>
-                        <h3 class="text-xl font-bold mb-3">视觉盛宴</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed">
-                            精心设计的 UI，Glassmorphism 风格，让学习过程本身成为一种享受。
-                        </p>
-                    </div>
-                </div>
+                <h3 class="text-xl font-bold mb-3 text-slate-800">科学记忆</h3>
+                <p class="text-slate-500 font-medium leading-relaxed">
+                    结合字源记忆法、联想记忆法（The "Tiananmen" Mnemonic），让你过目不忘。
+                </p>
             </div>
-        </section>
+            <div class="glass-card p-8">
+                <div
+                    class="w-14 h-14 bg-pink-100 text-pink-600 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm">
+                    ✨
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-slate-800">视觉盛宴</h3>
+                <p class="text-slate-500 font-medium leading-relaxed">
+                    精心设计的 UI，Glassmorphism 风格，让学习过程本身成为一种享受。
+                </p>
+            </div>
+        </div>
 
-        <footer class="bg-slate-900 border-t border-slate-800 py-12 text-center text-slate-500 text-sm">
-            <p>© 2025 盾盾日语 (Dundun Japanese). All rights reserved.</p>
+        <footer class="mt-20 pt-10 border-t border-slate-200/50 text-center">
+            <p class="text-slate-400 text-sm font-semibold tracking-wide">© 2025 盾盾日语 (Dundun Japanese)</p>
         </footer>
     </div>
-
 </body>
 
 </html>
