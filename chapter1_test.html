@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 1: Complete Mastery Workbook – 盾盾日语</title>
+    <title>Chapter 1: Mastery Workbook (Portrait) – 盾盾日语</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Shippori+Mincho&family=ZCOOL+XiaoWei&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=ZCOOL+XiaoWei&display=swap"
         rel="stylesheet">
     <style>
         :root {
@@ -18,14 +18,14 @@
         }
 
         body {
-            font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+            font-family: 'Noto Sans JP', sans-serif;
             background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
             min-height: 100vh;
             color: #1d1d1f;
-            overflow-x: auto;
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding-bottom: 50px;
         }
 
         .glass-nav {
@@ -48,100 +48,112 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
         }
 
+        /* Portrait A4 Page */
         .test-page {
             width: var(--paper-width);
             height: var(--paper-height);
             background: white;
             padding: 20mm;
+            /* Standard margin */
             margin-bottom: 60px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
             position: relative;
-            writing-mode: vertical-rl;
-            text-orientation: upright;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         h1 {
             font-family: 'ZCOOL XiaoWei', serif;
             font-size: 2.2rem;
-            border-left: 4px solid #1e293b;
-            padding-left: 1rem;
-            margin-left: 1rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            color: #1e293b;
         }
 
         h2 {
-            font-size: 1.4rem;
-            border-left: 2px solid #64748b;
-            padding-left: 0.5rem;
-            margin-top: 1.5rem;
-            margin-left: 1rem;
-            font-weight: 900;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-bottom: 2px solid #cbd5e1;
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #334155;
         }
 
         h3 {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-top: 1rem;
-            margin-left: 0.5rem;
-            color: #475569;
-        }
-
-        .romaji {
-            text-orientation: mixed;
-            font-family: -apple-system, sans-serif;
-            font-size: 0.8em;
+            font-size: 1rem;
+            font-weight: 600;
             color: #64748b;
-            margin-bottom: 4px;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
         }
 
-        .v-grid {
-            display: flex;
-            flex-wrap: wrap;
-            height: 85%;
-            align-content: flex-start;
-            gap: 6px;
+        .grid-5 {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
         }
 
         .question-box {
             border: 1px solid #e2e8f0;
-            padding: 0.3rem;
+            border-radius: 12px;
+            padding: 0.8rem;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            min-height: 100px;
-            width: 42px;
-            /* Condensed for full grid */
-            margin-left: 0.2rem;
-            border-radius: 4px;
+            justify-content: center;
+            background: #fff;
+            transition: all 0.2s;
         }
 
         .question-box.wide {
-            min-height: 140px;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0.8rem 1.5rem;
+        }
+
+        .label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+        }
+
+        .question-box.wide .label {
+            margin-bottom: 0;
         }
 
         input[type="text"] {
-            border: none;
-            border-right: 1px solid #cbd5e1;
-            background: none;
-            width: 1.5rem;
-            height: 100%;
-            writing-mode: vertical-rl;
-            font-family: 'Noto Serif JP', serif;
-            font-size: 1.2rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 0.5rem;
+            width: 100%;
             text-align: center;
+            font-size: 1.2rem;
             outline: none;
-            color: #0f172a;
+            transition: border-color 0.2s;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .question-box.wide input {
+            width: 50%;
         }
 
         input:focus {
-            border-right: 2px solid #6366f1;
+            border-color: #6366f1;
+            background: #f8fafc;
         }
 
         .page-number {
             position: absolute;
-            writing-mode: horizontal-tb;
-            bottom: 20px;
+            bottom: 15mm;
             left: 0;
             right: 0;
             text-align: center;
@@ -153,6 +165,7 @@
             body {
                 background: none;
                 display: block;
+                padding: 0;
             }
 
             .glass-nav,
@@ -165,6 +178,8 @@
                 margin: 0;
                 page-break-after: always;
                 border: none;
+                width: 100%;
+                height: 100%;
             }
         }
 
@@ -188,7 +203,7 @@
                 class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg hover:scale-105 transition">←</a>
             <div>
                 <h2 class="text-sm font-bold text-slate-800 m-0 border-none p-0 mt-0">Chapter 1 Workbook</h2>
-                <span class="text-[10px] text-slate-500 uppercase tracking-widest">Complete Expansion</span>
+                <span class="text-[10px] text-slate-500 uppercase tracking-widest">Portrait Edition</span>
             </div>
         </div>
         <div class="flex items-center gap-4">
@@ -202,438 +217,477 @@
 
     <form id="test-form">
 
-        <!-- PAGE 1: HIRAGANA FULL GRID I -->
+        <!-- PAGE 1: HIRAGANA GRID A-NA -->
         <article class="test-page">
-            <header style="height: 10%;">
-                <h1>平仮名　五十音図 (壱)</h1>
-                <p class="text-xs text-slate-500" style="font-family: sans-serif;">Full Grid: A, Ka, Sa, Ta, Na Rows</p>
-            </header>
-            <div class="v-grid">
+            <h1>Hiragana Part 1</h1>
+            <p class="text-center text-slate-400 mb-8">A - Na Rows</p>
+
+            <div class="flex-grow flex flex-col gap-6">
                 <!-- A Row -->
-                <div class="question-box"><span class="romaji">A</span><input type="text" data-answer="あ"></div>
-                <div class="question-box"><span class="romaji">I</span><input type="text" data-answer="い"></div>
-                <div class="question-box"><span class="romaji">U</span><input type="text" data-answer="う"></div>
-                <div class="question-box"><span class="romaji">E</span><input type="text" data-answer="え"></div>
-                <div class="question-box"><span class="romaji">O</span><input type="text" data-answer="お"></div>
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">A</span><input type="text" data-answer="あ"></div>
+                    <div class="question-box"><span class="label">I</span><input type="text" data-answer="い"></div>
+                    <div class="question-box"><span class="label">U</span><input type="text" data-answer="う"></div>
+                    <div class="question-box"><span class="label">E</span><input type="text" data-answer="え"></div>
+                    <div class="question-box"><span class="label">O</span><input type="text" data-answer="お"></div>
+                </div>
 
-                <div style="height: 10px;"></div>
                 <!-- Ka Row -->
-                <div class="question-box"><span class="romaji">Ka</span><input type="text" data-answer="か"></div>
-                <div class="question-box"><span class="romaji">Ki</span><input type="text" data-answer="き"></div>
-                <div class="question-box"><span class="romaji">Ku</span><input type="text" data-answer="く"></div>
-                <div class="question-box"><span class="romaji">Ke</span><input type="text" data-answer="け"></div>
-                <div class="question-box"><span class="romaji">Ko</span><input type="text" data-answer="こ"></div>
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">Ka</span><input type="text" data-answer="か"></div>
+                    <div class="question-box"><span class="label">Ki</span><input type="text" data-answer="き"></div>
+                    <div class="question-box"><span class="label">Ku</span><input type="text" data-answer="く"></div>
+                    <div class="question-box"><span class="label">Ke</span><input type="text" data-answer="け"></div>
+                    <div class="question-box"><span class="label">Ko</span><input type="text" data-answer="こ"></div>
+                </div>
 
-                <div style="height: 10px;"></div>
                 <!-- Sa Row -->
-                <div class="question-box"><span class="romaji">Sa</span><input type="text" data-answer="さ"></div>
-                <div class="question-box"><span class="romaji">Shi</span><input type="text" data-answer="し"></div>
-                <div class="question-box"><span class="romaji">Su</span><input type="text" data-answer="す"></div>
-                <div class="question-box"><span class="romaji">Se</span><input type="text" data-answer="せ"></div>
-                <div class="question-box"><span class="romaji">So</span><input type="text" data-answer="そ"></div>
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">Sa</span><input type="text" data-answer="さ"></div>
+                    <div class="question-box"><span class="label">Shi</span><input type="text" data-answer="し"></div>
+                    <div class="question-box"><span class="label">Su</span><input type="text" data-answer="す"></div>
+                    <div class="question-box"><span class="label">Se</span><input type="text" data-answer="せ"></div>
+                    <div class="question-box"><span class="label">So</span><input type="text" data-answer="そ"></div>
+                </div>
 
-                <div style="height: 10px;"></div>
                 <!-- Ta Row -->
-                <div class="question-box"><span class="romaji">Ta</span><input type="text" data-answer="た"></div>
-                <div class="question-box"><span class="romaji">Chi</span><input type="text" data-answer="ち"></div>
-                <div class="question-box"><span class="romaji">Tsu</span><input type="text" data-answer="つ"></div>
-                <div class="question-box"><span class="romaji">Te</span><input type="text" data-answer="て"></div>
-                <div class="question-box"><span class="romaji">To</span><input type="text" data-answer="と"></div>
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">Ta</span><input type="text" data-answer="た"></div>
+                    <div class="question-box"><span class="label">Chi</span><input type="text" data-answer="ち"></div>
+                    <div class="question-box"><span class="label">Tsu</span><input type="text" data-answer="つ"></div>
+                    <div class="question-box"><span class="label">Te</span><input type="text" data-answer="て"></div>
+                    <div class="question-box"><span class="label">To</span><input type="text" data-answer="と"></div>
+                </div>
 
-                <div style="height: 10px;"></div>
                 <!-- Na Row -->
-                <div class="question-box"><span class="romaji">Na</span><input type="text" data-answer="な"></div>
-                <div class="question-box"><span class="romaji">Ni</span><input type="text" data-answer="に"></div>
-                <div class="question-box"><span class="romaji">Nu</span><input type="text" data-answer="ぬ"></div>
-                <div class="question-box"><span class="romaji">Ne</span><input type="text" data-answer="ね"></div>
-                <div class="question-box"><span class="romaji">No</span><input type="text" data-answer="の"></div>
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">Na</span><input type="text" data-answer="な"></div>
+                    <div class="question-box"><span class="label">Ni</span><input type="text" data-answer="に"></div>
+                    <div class="question-box"><span class="label">Nu</span><input type="text" data-answer="ぬ"></div>
+                    <div class="question-box"><span class="label">Ne</span><input type="text" data-answer="ね"></div>
+                    <div class="question-box"><span class="label">No</span><input type="text" data-answer="の"></div>
+                </div>
 
-                <!-- Word Formation -->
-                <div style="height: 100%; border-left: 1px dashed #ccc; margin-left:10px; padding-left:10px;">
-                    <h3>Combination</h3>
-                    <div class="question-box wide"><span class="romaji" style="font-size:0.7em">A + O
-                            (Blue)</span><input type="text" data-answer="あお"></div>
-                    <div class="question-box wide"><span class="romaji" style="font-size:0.7em">U + E (Up)</span><input
-                            type="text" data-answer="うえ"></div>
+                <div class="mt-auto border-t pt-4">
+                    <h3>Construction</h3>
+                    <div class="grid-2">
+                        <div class="question-box wide"><span class="label">A + O (Blue)</span><input type="text"
+                                data-answer="あお"></div>
+                        <div class="question-box wide"><span class="label">U + E (Up)</span><input type="text"
+                                data-answer="うえ"></div>
+                    </div>
                 </div>
             </div>
+
             <div class="page-number">1 / 8</div>
         </article>
 
-        <!-- PAGE 2: HIRAGANA FULL GRID II -->
+        <!-- PAGE 2: HIRAGANA GRID HA-N -->
         <article class="test-page">
-            <header style="height: 10%;">
-                <h1>平仮名　五十音図 (弐)</h1>
-                <p class="text-xs text-slate-500" style="font-family: sans-serif;">Ha, Ma, Ya, Ra, Wa, N Rows</p>
-            </header>
-            <div class="v-grid">
+            <h1>Hiragana Part 2</h1>
+            <p class="text-center text-slate-400 mb-8">Ha - N Rows</p>
+
+            <div class="flex-grow flex flex-col gap-6">
                 <!-- Ha Row -->
-                <div class="question-box"><span class="romaji">Ha</span><input type="text" data-answer="は"></div>
-                <div class="question-box"><span class="romaji">Hi</span><input type="text" data-answer="ひ"></div>
-                <div class="question-box"><span class="romaji">Fu</span><input type="text" data-answer="ふ"></div>
-                <div class="question-box"><span class="romaji">He</span><input type="text" data-answer="へ"></div>
-                <div class="question-box"><span class="romaji">Ho</span><input type="text" data-answer="ほ"></div>
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">Ha</span><input type="text" data-answer="は"></div>
+                    <div class="question-box"><span class="label">Hi</span><input type="text" data-answer="ひ"></div>
+                    <div class="question-box"><span class="label">Fu</span><input type="text" data-answer="ふ"></div>
+                    <div class="question-box"><span class="label">He</span><input type="text" data-answer="へ"></div>
+                    <div class="question-box"><span class="label">Ho</span><input type="text" data-answer="ほ"></div>
+                </div>
 
-                <div style="height: 10px;"></div>
                 <!-- Ma Row -->
-                <div class="question-box"><span class="romaji">Ma</span><input type="text" data-answer="ま"></div>
-                <div class="question-box"><span class="romaji">Mi</span><input type="text" data-answer="み"></div>
-                <div class="question-box"><span class="romaji">Mu</span><input type="text" data-answer="む"></div>
-                <div class="question-box"><span class="romaji">Me</span><input type="text" data-answer="め"></div>
-                <div class="question-box"><span class="romaji">Mo</span><input type="text" data-answer="も"></div>
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">Ma</span><input type="text" data-answer="ま"></div>
+                    <div class="question-box"><span class="label">Mi</span><input type="text" data-answer="み"></div>
+                    <div class="question-box"><span class="label">Mu</span><input type="text" data-answer="む"></div>
+                    <div class="question-box"><span class="label">Me</span><input type="text" data-answer="め"></div>
+                    <div class="question-box"><span class="label">Mo</span><input type="text" data-answer="も"></div>
+                </div>
 
-                <div style="height: 10px;"></div>
                 <!-- Ya Row -->
-                <div class="question-box"><span class="romaji">Ya</span><input type="text" data-answer="や"></div>
-                <div class="question-box bg-slate-50 border-none"></div>
-                <div class="question-box"><span class="romaji">Yu</span><input type="text" data-answer="ゆ"></div>
-                <div class="question-box bg-slate-50 border-none"></div>
-                <div class="question-box"><span class="romaji">Yo</span><input type="text" data-answer="よ"></div>
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">Ya</span><input type="text" data-answer="や"></div>
+                    <div class="question-box bg-slate-50 border-none shadow-none"></div>
+                    <div class="question-box"><span class="label">Yu</span><input type="text" data-answer="ゆ"></div>
+                    <div class="question-box bg-slate-50 border-none shadow-none"></div>
+                    <div class="question-box"><span class="label">Yo</span><input type="text" data-answer="よ"></div>
+                </div>
 
-                <div style="height: 10px;"></div>
                 <!-- Ra Row -->
-                <div class="question-box"><span class="romaji">Ra</span><input type="text" data-answer="ら"></div>
-                <div class="question-box"><span class="romaji">Ri</span><input type="text" data-answer="り"></div>
-                <div class="question-box"><span class="romaji">Ru</span><input type="text" data-answer="る"></div>
-                <div class="question-box"><span class="romaji">Re</span><input type="text" data-answer="れ"></div>
-                <div class="question-box"><span class="romaji">Ro</span><input type="text" data-answer="ろ"></div>
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">Ra</span><input type="text" data-answer="ら"></div>
+                    <div class="question-box"><span class="label">Ri</span><input type="text" data-answer="り"></div>
+                    <div class="question-box"><span class="label">Ru</span><input type="text" data-answer="る"></div>
+                    <div class="question-box"><span class="label">Re</span><input type="text" data-answer="れ"></div>
+                    <div class="question-box"><span class="label">Ro</span><input type="text" data-answer="ろ"></div>
+                </div>
 
-                <div style="height: 10px;"></div>
                 <!-- Wa Row & N -->
-                <div class="question-box"><span class="romaji">Wa</span><input type="text" data-answer="わ"></div>
-                <div class="question-box"><span class="romaji">Wo</span><input type="text" data-answer="を"></div>
-                <div class="question-box"><span class="romaji">N</span><input type="text" data-answer="ん"></div>
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">Wa</span><input type="text" data-answer="わ"></div>
+                    <div class="question-box bg-slate-50 border-none shadow-none"></div>
+                    <div class="question-box"><span class="label">Wo</span><input type="text" data-answer="を"></div>
+                    <div class="question-box bg-slate-50 border-none shadow-none"></div>
+                    <div class="question-box"><span class="label">N</span><input type="text" data-answer="ん"></div>
+                </div>
 
-                <!-- Particle Check -->
-                <div style="height: 100%; border-left: 1px dashed #ccc; margin-left:10px; padding-left:10px;">
+                <div class="mt-auto border-t pt-4">
                     <h3>Particles</h3>
-                    <div class="question-box wide"><span class="romaji" style="font-size:0.6em">Topic (Wa)</span><input
-                            type="text" data-answer="は"></div>
-                    <div class="question-box wide"><span class="romaji" style="font-size:0.6em">Object (O)</span><input
-                            type="text" data-answer="を"></div>
-                    <div class="question-box wide"><span class="romaji" style="font-size:0.6em">Direction
-                            (E)</span><input type="text" data-answer="へ"></div>
+                    <div class="grid-2">
+                        <div class="question-box wide"><span class="label">Topic (Wa)</span><input type="text"
+                                data-answer="は"></div>
+                        <div class="question-box wide"><span class="label">Object (O)</span><input type="text"
+                                data-answer="を"></div>
+                    </div>
                 </div>
             </div>
+
             <div class="page-number">2 / 8</div>
         </article>
 
-        <!-- PAGE 3: KATAKANA CONVERSION (FULL) -->
+        <!-- PAGE 3: KATAKANA A-NO -->
         <article class="test-page">
-            <header style="height: 10%;">
-                <h1>片仮名　変換 (壱)</h1>
-                <p class="text-xs text-slate-500" style="font-family: sans-serif;">Hiragana -> Katakana (A-No)</p>
-            </header>
-            <div class="v-grid">
-                <!-- A - Ko -->
-                <div class="question-box"><span class="font-bold">あ</span><input type="text" data-answer="ア"></div>
-                <div class="question-box"><span class="font-bold">い</span><input type="text" data-answer="イ"></div>
-                <div class="question-box"><span class="font-bold">う</span><input type="text" data-answer="ウ"></div>
-                <div class="question-box"><span class="font-bold">え</span><input type="text" data-answer="エ"></div>
-                <div class="question-box"><span class="font-bold">お</span><input type="text" data-answer="オ"></div>
-                <div style="height:5px"></div>
-                <div class="question-box"><span class="font-bold">か</span><input type="text" data-answer="カ"></div>
-                <div class="question-box"><span class="font-bold">き</span><input type="text" data-answer="キ"></div>
-                <div class="question-box"><span class="font-bold">く</span><input type="text" data-answer="ク"></div>
-                <div class="question-box"><span class="font-bold">け</span><input type="text" data-answer="ケ"></div>
-                <div class="question-box"><span class="font-bold">こ</span><input type="text" data-answer="コ"></div>
+            <h1>Katakana Part 1</h1>
+            <p class="text-center text-slate-400 mb-8">Hiragana -> Katakana (A - No)</p>
 
-                <!-- Sa - To -->
-                <div style="height:10px"></div>
-                <div class="question-box"><span class="font-bold">さ</span><input type="text" data-answer="サ"></div>
-                <div class="question-box"><span class="font-bold">し</span><input type="text" data-answer="シ"></div>
-                <div class="question-box"><span class="font-bold">す</span><input type="text" data-answer="ス"></div>
-                <div class="question-box"><span class="font-bold">せ</span><input type="text" data-answer="セ"></div>
-                <div class="question-box"><span class="font-bold">そ</span><input type="text" data-answer="ソ"></div>
-                <div style="height:5px"></div>
-                <div class="question-box"><span class="font-bold">た</span><input type="text" data-answer="タ"></div>
-                <div class="question-box"><span class="font-bold">ち</span><input type="text" data-answer="チ"></div>
-                <div class="question-box"><span class="font-bold">つ</span><input type="text" data-answer="ツ"></div>
-                <div class="question-box"><span class="font-bold">て</span><input type="text" data-answer="テ"></div>
-                <div class="question-box"><span class="font-bold">と</span><input type="text" data-answer="ト"></div>
+            <div class="flex-grow flex flex-col gap-6">
+                <!-- A Row -->
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">あ</span><input type="text" data-answer="ア"></div>
+                    <div class="question-box"><span class="label">い</span><input type="text" data-answer="イ"></div>
+                    <div class="question-box"><span class="label">う</span><input type="text" data-answer="ウ"></div>
+                    <div class="question-box"><span class="label">え</span><input type="text" data-answer="エ"></div>
+                    <div class="question-box"><span class="label">お</span><input type="text" data-answer="オ"></div>
+                </div>
 
-                <!-- Na - No -->
-                <div style="height:10px"></div>
-                <div class="question-box"><span class="font-bold">な</span><input type="text" data-answer="ナ"></div>
-                <div class="question-box"><span class="font-bold">に</span><input type="text" data-answer="ニ"></div>
-                <div class="question-box"><span class="font-bold">ぬ</span><input type="text" data-answer="ヌ"></div>
-                <div class="question-box"><span class="font-bold">ね</span><input type="text" data-answer="ネ"></div>
-                <div class="question-box"><span class="font-bold">の</span><input type="text" data-answer="ノ"></div>
+                <!-- Ka Row -->
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">か</span><input type="text" data-answer="カ"></div>
+                    <div class="question-box"><span class="label">き</span><input type="text" data-answer="キ"></div>
+                    <div class="question-box"><span class="label">く</span><input type="text" data-answer="ク"></div>
+                    <div class="question-box"><span class="label">け</span><input type="text" data-answer="ケ"></div>
+                    <div class="question-box"><span class="label">こ</span><input type="text" data-answer="コ"></div>
+                </div>
 
-                <!-- Speed Match -->
-                <div style="height: 100%; border-left: 1px dashed #ccc; margin-left:10px; padding-left:10px;">
+                <!-- Sa Row -->
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">さ</span><input type="text" data-answer="サ"></div>
+                    <div class="question-box"><span class="label">し</span><input type="text" data-answer="シ"></div>
+                    <div class="question-box"><span class="label">す</span><input type="text" data-answer="ス"></div>
+                    <div class="question-box"><span class="label">せ</span><input type="text" data-answer="セ"></div>
+                    <div class="question-box"><span class="label">そ</span><input type="text" data-answer="ソ"></div>
+                </div>
+
+                <!-- Ta Row -->
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">た</span><input type="text" data-answer="タ"></div>
+                    <div class="question-box"><span class="label">ち</span><input type="text" data-answer="チ"></div>
+                    <div class="question-box"><span class="label">つ</span><input type="text" data-answer="ツ"></div>
+                    <div class="question-box"><span class="label">て</span><input type="text" data-answer="テ"></div>
+                    <div class="question-box"><span class="label">と</span><input type="text" data-answer="ト"></div>
+                </div>
+
+                <!-- Na Row -->
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">な</span><input type="text" data-answer="ナ"></div>
+                    <div class="question-box"><span class="label">に</span><input type="text" data-answer="ニ"></div>
+                    <div class="question-box"><span class="label">ぬ</span><input type="text" data-answer="ヌ"></div>
+                    <div class="question-box"><span class="label">ね</span><input type="text" data-answer="ネ"></div>
+                    <div class="question-box"><span class="label">の</span><input type="text" data-answer="ノ"></div>
+                </div>
+
+                <div class="mt-auto border-t pt-4">
                     <h3>Speed Check</h3>
-                    <div class="question-box wide"><span style="font-size:0.6em; text-orientation: mixed;">Kana for
-                            'A'</span><input type="text" data-answer="ア"></div>
-                    <div class="question-box wide"><span style="font-size:0.6em; text-orientation: mixed;">Kana for
-                            'Shi'</span><input type="text" data-answer="シ"></div>
+                    <div class="grid-2">
+                        <div class="question-box wide"><span class="label">Kana for 'A'</span><input type="text"
+                                data-answer="ア"></div>
+                        <div class="question-box wide"><span class="label">Kana for 'Shi'</span><input type="text"
+                                data-answer="シ"></div>
+                    </div>
                 </div>
             </div>
+
             <div class="page-number">3 / 8</div>
         </article>
 
-        <!-- PAGE 4: KATAKANA (HA-N) + LOAN WORDS -->
+        <!-- PAGE 4: KATAKANA HA-N + LOANS -->
         <article class="test-page">
-            <header style="height: 10%;">
-                <h1>片仮名　変換 (弐)</h1>
-                <p class="text-xs text-slate-500" style="font-family: sans-serif;">Ha-N & Loan Words</p>
-            </header>
-            <div class="v-grid">
-                <!-- Ha - Mo -->
-                <div class="question-box"><span class="font-bold">は</span><input type="text" data-answer="ハ"></div>
-                <div class="question-box"><span class="font-bold">ひ</span><input type="text" data-answer="ヒ"></div>
-                <div class="question-box"><span class="font-bold">ふ</span><input type="text" data-answer="フ"></div>
-                <div class="question-box"><span class="font-bold">へ</span><input type="text" data-answer="ヘ"></div>
-                <div class="question-box"><span class="font-bold">ほ</span><input type="text" data-answer="ホ"></div>
-                <div style="height:5px"></div>
-                <div class="question-box"><span class="font-bold">ま</span><input type="text" data-answer="マ"></div>
-                <div class="question-box"><span class="font-bold">み</span><input type="text" data-answer="ミ"></div>
-                <div class="question-box"><span class="font-bold">む</span><input type="text" data-answer="ム"></div>
-                <div class="question-box"><span class="font-bold">め</span><input type="text" data-answer="メ"></div>
-                <div class="question-box"><span class="font-bold">も</span><input type="text" data-answer="モ"></div>
+            <h1>Katakana Part 2</h1>
+            <p class="text-center text-slate-400 mb-8">Hiragana -> Katakana (Ha - N)</p>
 
-                <!-- Ya - N -->
-                <div style="height:10px"></div>
-                <div class="question-box"><span class="font-bold">や</span><input type="text" data-answer="ヤ"></div>
-                <div class="question-box"><span class="font-bold">ゆ</span><input type="text" data-answer="ユ"></div>
-                <div class="question-box"><span class="font-bold">よ</span><input type="text" data-answer="ヨ"></div>
-                <div style="height:5px"></div>
-                <div class="question-box"><span class="font-bold">ら</span><input type="text" data-answer="ラ"></div>
-                <div class="question-box"><span class="font-bold">り</span><input type="text" data-answer="リ"></div>
-                <div class="question-box"><span class="font-bold">る</span><input type="text" data-answer="ル"></div>
-                <div class="question-box"><span class="font-bold">れ</span><input type="text" data-answer="レ"></div>
-                <div class="question-box"><span class="font-bold">ろ</span><input type="text" data-answer="ロ"></div>
-                <div style="height:5px"></div>
-                <div class="question-box"><span class="font-bold">わ</span><input type="text" data-answer="ワ"></div>
-                <div class="question-box"><span class="font-bold">を</span><input type="text" data-answer="ヲ"></div>
-                <div class="question-box"><span class="font-bold">ん</span><input type="text" data-answer="ン"></div>
+            <div class="flex-grow flex flex-col gap-6">
+                <!-- Ha Row -->
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">は</span><input type="text" data-answer="ハ"></div>
+                    <div class="question-box"><span class="label">ひ</span><input type="text" data-answer="ヒ"></div>
+                    <div class="question-box"><span class="label">ふ</span><input type="text" data-answer="フ"></div>
+                    <div class="question-box"><span class="label">へ</span><input type="text" data-answer="ヘ"></div>
+                    <div class="question-box"><span class="label">ほ</span><input type="text" data-answer="ホ"></div>
+                </div>
 
-                <!-- Loan Words (Challenging) -->
-                <div style="height: 100%; border-left: 1px dashed #ccc; margin-left:10px; padding-left:10px;">
-                    <h3>Loan Words</h3>
-                    <div class="question-box wide"><span style="font-size:0.6em; text-orientation: mixed;">Ko-hi-
-                            (Coffee)</span><input type="text" data-answer="コーヒー"></div>
-                    <div class="question-box wide"><span style="font-size:0.6em; text-orientation: mixed;">Bi-ru
-                            (Beer)</span><input type="text" data-answer="ビール"></div>
-                    <div class="question-box wide"><span style="font-size:0.6em; text-orientation: mixed;">Te-bu-ru
-                            (Table)</span><input type="text" data-answer="テーブル"></div>
+                <!-- Ma Row -->
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">ま</span><input type="text" data-answer="マ"></div>
+                    <div class="question-box"><span class="label">み</span><input type="text" data-answer="ミ"></div>
+                    <div class="question-box"><span class="label">む</span><input type="text" data-answer="ム"></div>
+                    <div class="question-box"><span class="label">め</span><input type="text" data-answer="メ"></div>
+                    <div class="question-box"><span class="label">も</span><input type="text" data-answer="モ"></div>
+                </div>
+
+                <!-- Ya Row -->
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">や</span><input type="text" data-answer="ヤ"></div>
+                    <div class="question-box bg-slate-50 border-none shadow-none"></div>
+                    <div class="question-box"><span class="label">ゆ</span><input type="text" data-answer="ユ"></div>
+                    <div class="question-box bg-slate-50 border-none shadow-none"></div>
+                    <div class="question-box"><span class="label">よ</span><input type="text" data-answer="ヨ"></div>
+                </div>
+
+                <!-- Ra Row -->
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">ら</span><input type="text" data-answer="ラ"></div>
+                    <div class="question-box"><span class="label">り</span><input type="text" data-answer="リ"></div>
+                    <div class="question-box"><span class="label">る</span><input type="text" data-answer="ル"></div>
+                    <div class="question-box"><span class="label">れ</span><input type="text" data-answer="レ"></div>
+                    <div class="question-box"><span class="label">ろ</span><input type="text" data-answer="ロ"></div>
+                </div>
+
+                <!-- Wa Row & N -->
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">わ</span><input type="text" data-answer="ワ"></div>
+                    <div class="question-box bg-slate-50 border-none shadow-none"></div>
+                    <div class="question-box"><span class="label">を</span><input type="text" data-answer="ヲ"></div>
+                    <div class="question-box bg-slate-50 border-none shadow-none"></div>
+                    <div class="question-box"><span class="label">ん</span><input type="text" data-answer="ン"></div>
+                </div>
+
+                <div class="mt-auto border-t pt-4">
+                    <h3>Loan Words (Katakana)</h3>
+                    <div class="grid-2">
+                        <div class="question-box wide"><span class="label">Ko-hi- (Coffee)</span><input type="text"
+                                data-answer="コーヒー"></div>
+                        <div class="question-box wide"><span class="label">Bi-ru (Beer)</span><input type="text"
+                                data-answer="ビール"></div>
+                        <div class="question-box wide"><span class="label">Te-bu-ru (Table)</span><input type="text"
+                                data-answer="テーブル"></div>
+                        <div class="question-box wide"><span class="label">Sakka- (Soccer)</span><input type="text"
+                                data-answer="サッカー"></div>
+                    </div>
                 </div>
             </div>
+
             <div class="page-number">4 / 8</div>
         </article>
 
-        <!-- PAGE 5: DAKUON (FULL GRID) -->
+        <!-- PAGE 5: DAKUON FULL -->
         <article class="test-page">
-            <header style="height: 10%;">
-                <h1>濁音 (全)</h1>
-                <p class="text-xs text-slate-500" style="font-family: sans-serif;">Full Dakuon Grid</p>
-            </header>
-            <div class="v-grid">
-                <!-- G-Row -->
-                <div class="question-box"><span class="romaji">Ga</span><input type="text" data-answer="が"></div>
-                <div class="question-box"><span class="romaji">Gi</span><input type="text" data-answer="ぎ"></div>
-                <div class="question-box"><span class="romaji">Gu</span><input type="text" data-answer="ぐ"></div>
-                <div class="question-box"><span class="romaji">Ge</span><input type="text" data-answer="げ"></div>
-                <div class="question-box"><span class="romaji">Go</span><input type="text" data-answer="ご"></div>
+            <h1>Dakuon (Voiced)</h1>
+            <p class="text-center text-slate-400 mb-8">Ga, Za, Da, Ba, Pa</p>
 
-                <div style="height:10px"></div>
-                <!-- Z-Row -->
-                <div class="question-box"><span class="romaji">Za</span><input type="text" data-answer="ざ"></div>
-                <div class="question-box"><span class="romaji">Ji</span><input type="text" data-answer="じ"></div>
-                <div class="question-box"><span class="romaji">Zu</span><input type="text" data-answer="ず"></div>
-                <div class="question-box"><span class="romaji">Ze</span><input type="text" data-answer="ぜ"></div>
-                <div class="question-box"><span class="romaji">Zo</span><input type="text" data-answer="ぞ"></div>
-
-                <div style="height:10px"></div>
-                <!-- D-Row -->
-                <div class="question-box"><span class="romaji">Da</span><input type="text" data-answer="だ"></div>
-                <div class="question-box"><span class="romaji">Ji</span><input type="text" data-answer="ぢ"></div>
-                <div class="question-box"><span class="romaji">Zu</span><input type="text" data-answer="づ"></div>
-                <div class="question-box"><span class="romaji">De</span><input type="text" data-answer="で"></div>
-                <div class="question-box"><span class="romaji">Do</span><input type="text" data-answer="ど"></div>
-
-                <div style="height:10px"></div>
-                <!-- B-Row -->
-                <div class="question-box"><span class="romaji">Ba</span><input type="text" data-answer="ば"></div>
-                <div class="question-box"><span class="romaji">Bi</span><input type="text" data-answer="び"></div>
-                <div class="question-box"><span class="romaji">Bu</span><input type="text" data-answer="ぶ"></div>
-                <div class="question-box"><span class="romaji">Be</span><input type="text" data-answer="べ"></div>
-                <div class="question-box"><span class="romaji">Bo</span><input type="text" data-answer="ぼ"></div>
-
-                <div style="height:10px"></div>
-                <!-- P-Row (Handakuon) -->
-                <div class="question-box"><span class="romaji">Pa</span><input type="text" data-answer="ぱ"></div>
-                <div class="question-box"><span class="romaji">Pi</span><input type="text" data-answer="ぴ"></div>
-                <div class="question-box"><span class="romaji">Pu</span><input type="text" data-answer="ぷ"></div>
-                <div class="question-box"><span class="romaji">Pe</span><input type="text" data-answer="ぺ"></div>
-                <div class="question-box"><span class="romaji">Po</span><input type="text" data-answer="ぽ"></div>
+            <div class="flex-grow flex flex-col gap-6">
+                <!-- G -->
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">Ga</span><input type="text" data-answer="が"></div>
+                    <div class="question-box"><span class="label">Gi</span><input type="text" data-answer="ぎ"></div>
+                    <div class="question-box"><span class="label">Gu</span><input type="text" data-answer="ぐ"></div>
+                    <div class="question-box"><span class="label">Ge</span><input type="text" data-answer="げ"></div>
+                    <div class="question-box"><span class="label">Go</span><input type="text" data-answer="ご"></div>
+                </div>
+                <!-- Z -->
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">Za</span><input type="text" data-answer="ざ"></div>
+                    <div class="question-box"><span class="label">Ji</span><input type="text" data-answer="じ"></div>
+                    <div class="question-box"><span class="label">Zu</span><input type="text" data-answer="ず"></div>
+                    <div class="question-box"><span class="label">Ze</span><input type="text" data-answer="ぜ"></div>
+                    <div class="question-box"><span class="label">Zo</span><input type="text" data-answer="ぞ"></div>
+                </div>
+                <!-- D -->
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">Da</span><input type="text" data-answer="だ"></div>
+                    <div class="question-box"><span class="label">Ji (Di)</span><input type="text" data-answer="ぢ">
+                    </div>
+                    <div class="question-box"><span class="label">Zu (Du)</span><input type="text" data-answer="づ">
+                    </div>
+                    <div class="question-box"><span class="label">De</span><input type="text" data-answer="で"></div>
+                    <div class="question-box"><span class="label">Do</span><input type="text" data-answer="ど"></div>
+                </div>
+                <!-- B -->
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">Ba</span><input type="text" data-answer="ば"></div>
+                    <div class="question-box"><span class="label">Bi</span><input type="text" data-answer="び"></div>
+                    <div class="question-box"><span class="label">Bu</span><input type="text" data-answer="ぶ"></div>
+                    <div class="question-box"><span class="label">Be</span><input type="text" data-answer="べ"></div>
+                    <div class="question-box"><span class="label">Bo</span><input type="text" data-answer="ぼ"></div>
+                </div>
+                <!-- P -->
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">Pa</span><input type="text" data-answer="ぱ"></div>
+                    <div class="question-box"><span class="label">Pi</span><input type="text" data-answer="ぴ"></div>
+                    <div class="question-box"><span class="label">Pu</span><input type="text" data-answer="ぷ"></div>
+                    <div class="question-box"><span class="label">Pe</span><input type="text" data-answer="ぺ"></div>
+                    <div class="question-box"><span class="label">Po</span><input type="text" data-answer="ぽ"></div>
+                </div>
             </div>
+
             <div class="page-number">5 / 8</div>
         </article>
 
-        <!-- PAGE 6: YOO & SOKUON (FULL) -->
+        <!-- PAGE 6: YOON & SOKUON -->
         <article class="test-page">
-            <header style="height: 10%;">
-                <h1>拗音　一覧</h1>
-                <p class="text-xs text-slate-500" style="font-family: sans-serif;">Twisted Sounds & Double Consonants
-                </p>
-            </header>
-            <div class="v-grid">
-                <!-- Ky- -->
-                <div class="question-box wide"><span class="romaji">Kya</span><input type="text" data-answer="きゃ"></div>
-                <div class="question-box wide"><span class="romaji">Kyu</span><input type="text" data-answer="きゅ"></div>
-                <div class="question-box wide"><span class="romaji">Kyo</span><input type="text" data-answer="きょ"></div>
+            <h1>Yoon & Sokuon</h1>
+            <p class="text-center text-slate-400 mb-8">Combined & Double Consonants</p>
 
-                <!-- Sh- -->
-                <div style="height:10px"></div>
-                <div class="question-box wide"><span class="romaji">Sha</span><input type="text" data-answer="しゃ"></div>
-                <div class="question-box wide"><span class="romaji">Shu</span><input type="text" data-answer="しゅ"></div>
-                <div class="question-box wide"><span class="romaji">Sho</span><input type="text" data-answer="しょ"></div>
+            <div class="flex-grow flex flex-col gap-6">
+                <!-- KYA -->
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">Kya</span><input type="text" data-answer="きゃ"></div>
+                    <div class="question-box"><span class="label">Kyu</span><input type="text" data-answer="きゅ"></div>
+                    <div class="question-box"><span class="label">Kyo</span><input type="text" data-answer="きょ"></div>
+                    <div class="col-span-2"></div>
+                </div>
+                <!-- SHA -->
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">Sha</span><input type="text" data-answer="しゃ"></div>
+                    <div class="question-box"><span class="label">Shu</span><input type="text" data-answer="しゅ"></div>
+                    <div class="question-box"><span class="label">Sho</span><input type="text" data-answer="しょ"></div>
+                    <div class="col-span-2"></div>
+                </div>
+                <!-- CHA -->
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">Cha</span><input type="text" data-answer="ちゃ"></div>
+                    <div class="question-box"><span class="label">Chu</span><input type="text" data-answer="ちゅ"></div>
+                    <div class="question-box"><span class="label">Cho</span><input type="text" data-answer="ちょ"></div>
+                    <div class="col-span-2"></div>
+                </div>
+                <!-- NYA -->
+                <div class="grid-5">
+                    <div class="question-box"><span class="label">Nya</span><input type="text" data-answer="にゃ"></div>
+                    <div class="question-box"><span class="label">Nyu</span><input type="text" data-answer="にゅ"></div>
+                    <div class="question-box"><span class="label">Nyo</span><input type="text" data-answer="にょ"></div>
+                    <div class="col-span-2"></div>
+                </div>
 
-                <!-- Ch- -->
-                <div style="height:10px"></div>
-                <div class="question-box wide"><span class="romaji">Cha</span><input type="text" data-answer="ちゃ"></div>
-                <div class="question-box wide"><span class="romaji">Chu</span><input type="text" data-answer="ちゅ"></div>
-                <div class="question-box wide"><span class="romaji">Cho</span><input type="text" data-answer="ちょ"></div>
-
-                <!-- Ni- -->
-                <div style="height:10px"></div>
-                <div class="question-box wide"><span class="romaji">Nya</span><input type="text" data-answer="にゃ"></div>
-                <div class="question-box wide"><span class="romaji">Nyu</span><input type="text" data-answer="にゅ"></div>
-                <div class="question-box wide"><span class="romaji">Nyo</span><input type="text" data-answer="にょ"></div>
-
-                <!-- Double Consonants -->
-                <div style="height: 100%; border-left: 1px dashed #ccc; margin-left:10px; padding-left:10px;">
-                    <h3>Double Consonant</h3>
-                    <div class="question-box wide"><span
-                            style="font-size:0.6em; text-orientation: mixed;">Kip-pu</span><input type="text"
-                            data-answer="きっぷ"></div>
-                    <div class="question-box wide"><span
-                            style="font-size:0.6em; text-orientation: mixed;">Sak-ka</span><input type="text"
-                            data-answer="さっか"></div>
-                    <div class="question-box wide"><span
-                            style="font-size:0.6em; text-orientation: mixed;">Gak-kou</span><input type="text"
-                            data-answer="がっこう"></div>
+                <div class="mt-auto border-t pt-4">
+                    <h3>Double Consonant (Small Tsu)</h3>
+                    <div class="grid-2">
+                        <div class="question-box wide"><span class="label">Kip-pu</span><input type="text"
+                                data-answer="きっぷ"></div>
+                        <div class="question-box wide"><span class="label">Sak-ka</span><input type="text"
+                                data-answer="さっか"></div>
+                        <div class="question-box wide"><span class="label">Gak-kou</span><input type="text"
+                                data-answer="がっこう"></div>
+                        <div class="question-box wide"><span class="label">Zas-shi</span><input type="text"
+                                data-answer="ざっし"></div>
+                    </div>
                 </div>
             </div>
+
             <div class="page-number">6 / 8</div>
         </article>
 
-        <!-- PAGE 7: VOCABULARY (40 WORDS) -->
+        <!-- PAGE 7: VOCABULARY -->
         <article class="test-page">
-            <header style="height: 10%;">
-                <h1>語彙力 (40 Words)</h1>
-                <p class="text-xs text-slate-500" style="font-family: sans-serif;">Hiragana <-> English</p>
-            </header>
-            <div class="v-grid" style="gap:2px;">
-                <!-- Column 1: J -> E -->
-                <div class="question-box wide"><span style="font-size:0.8em">あい</span><input type="text"
-                        data-answer="love" style="writing-mode:horizontal-tb; height:1rem; width:80%;"></div>
-                <div class="question-box wide"><span style="font-size:0.8em">あおい</span><input type="text"
-                        data-answer="blue" style="writing-mode:horizontal-tb; height:1rem; width:80%;"></div>
-                <div class="question-box wide"><span style="font-size:0.8em">うえ</span><input type="text"
-                        data-answer="up" style="writing-mode:horizontal-tb; height:1rem; width:80%;"></div>
-                <div class="question-box wide"><span style="font-size:0.8em">いいえ</span><input type="text"
-                        data-answer="no" style="writing-mode:horizontal-tb; height:1rem; width:80%;"></div>
-                <div class="question-box wide"><span style="font-size:0.8em">はい</span><input type="text"
-                        data-answer="yes" style="writing-mode:horizontal-tb; height:1rem; width:80%;"></div>
-                <div class="question-box wide"><span style="font-size:0.8em">かお</span><input type="text"
-                        data-answer="face" style="writing-mode:horizontal-tb; height:1rem; width:80%;"></div>
-                <div class="question-box wide"><span style="font-size:0.8em">きく</span><input type="text"
-                        data-answer="listen" style="writing-mode:horizontal-tb; height:1rem; width:80%;"></div>
-                <div class="question-box wide"><span style="font-size:0.8em">さけ</span><input type="text"
-                        data-answer="sake" style="writing-mode:horizontal-tb; height:1rem; width:80%;"></div>
+            <h1>Vocabulary</h1>
+            <p class="text-center text-slate-400 mb-8">Japanese -> English & English -> Japanese</p>
 
-                <div style="height:10px"></div>
-                <!-- Column 2: J -> E -->
-                <div class="question-box wide"><span style="font-size:0.8em">すし</span><input type="text"
-                        data-answer="sushi" style="writing-mode:horizontal-tb; height:1rem; width:80%;"></div>
-                <div class="question-box wide"><span style="font-size:0.8em">ちかてつ</span><input type="text"
-                        data-answer="subway" style="writing-mode:horizontal-tb; height:1rem; width:80%;"></div>
-                <div class="question-box wide"><span style="font-size:0.8em">なに</span><input type="text"
-                        data-answer="what" style="writing-mode:horizontal-tb; height:1rem; width:80%;"></div>
-                <div class="question-box wide"><span style="font-size:0.8em">ねこ</span><input type="text"
-                        data-answer="cat" style="writing-mode:horizontal-tb; height:1rem; width:80%;"></div>
-                <div class="question-box wide"><span style="font-size:0.8em">ひと</span><input type="text"
-                        data-answer="person" style="writing-mode:horizontal-tb; height:1rem; width:80%;"></div>
-                <div class="question-box wide"><span style="font-size:0.8em">へや</span><input type="text"
-                        data-answer="room" style="writing-mode:horizontal-tb; height:1rem; width:80%;"></div>
-                <div class="question-box wide"><span style="font-size:0.8em">やま</span><input type="text"
-                        data-answer="mountain" style="writing-mode:horizontal-tb; height:1rem; width:80%;"></div>
-                <div class="question-box wide"><span style="font-size:0.8em">よる</span><input type="text"
-                        data-answer="night" style="writing-mode:horizontal-tb; height:1rem; width:80%;"></div>
+            <div class="grid-2 w-full gap-4">
+                <!-- Column 1 -->
+                <div class="flex flex-col gap-2">
+                    <div class="question-box wide"><span class="label">あい</span><input type="text" data-answer="love">
+                    </div>
+                    <div class="question-box wide"><span class="label">あおい</span><input type="text" data-answer="blue">
+                    </div>
+                    <div class="question-box wide"><span class="label">うえ</span><input type="text" data-answer="up">
+                    </div>
+                    <div class="question-box wide"><span class="label">いいえ</span><input type="text" data-answer="no">
+                    </div>
+                    <div class="question-box wide"><span class="label">はい</span><input type="text" data-answer="yes">
+                    </div>
+                    <div class="question-box wide"><span class="label">かお</span><input type="text" data-answer="face">
+                    </div>
+                    <div class="question-box wide"><span class="label">きく</span><input type="text" data-answer="listen">
+                    </div>
+                    <div class="question-box wide"><span class="label">さけ</span><input type="text" data-answer="sake">
+                    </div>
+                    <div class="question-box wide"><span class="label">すし</span><input type="text" data-answer="sushi">
+                    </div>
+                    <div class="question-box wide"><span class="label">ちかてつ</span><input type="text"
+                            data-answer="subway"></div>
+                </div>
 
-                <div style="height:10px"></div>
-                <!-- Column 3: E->J -->
-                <div class="question-box wide"><span
-                        style="font-size:0.8em; text-orientation: mixed;">White</span><input type="text"
-                        data-answer="しろ"></div>
-                <div class="question-box wide"><span style="font-size:0.8em; text-orientation: mixed;">Red</span><input
-                        type="text" data-answer="あか"></div>
-                <div class="question-box wide"><span style="font-size:0.8em; text-orientation: mixed;">Read</span><input
-                        type="text" data-answer="よむ"></div>
-                <div class="question-box wide"><span style="font-size:0.8em; text-orientation: mixed;">Dog</span><input
-                        type="text" data-answer="いぬ"></div>
-                <div class="question-box wide"><span style="font-size:0.8em; text-orientation: mixed;">Bird</span><input
-                        type="text" data-answer="とり"></div>
-                <div class="question-box wide"><span
-                        style="font-size:0.8em; text-orientation: mixed;">Winter</span><input type="text"
-                        data-answer="ふゆ"></div>
-                <div class="question-box wide"><span
-                        style="font-size:0.8em; text-orientation: mixed;">Cloud</span><input type="text"
-                        data-answer="くも"></div>
-                <div class="question-box wide"><span
-                        style="font-size:0.8em; text-orientation: mixed;">Dream</span><input type="text"
-                        data-answer="ゆめ"></div>
+                <!-- Column 2 -->
+                <div class="flex flex-col gap-2">
+                    <div class="question-box wide"><span class="label">White</span><input type="text" data-answer="しろ">
+                    </div>
+                    <div class="question-box wide"><span class="label">Red</span><input type="text" data-answer="あか">
+                    </div>
+                    <div class="question-box wide"><span class="label">Read</span><input type="text" data-answer="よむ">
+                    </div>
+                    <div class="question-box wide"><span class="label">Dog</span><input type="text" data-answer="いぬ">
+                    </div>
+                    <div class="question-box wide"><span class="label">Bird</span><input type="text" data-answer="とり">
+                    </div>
+                    <div class="question-box wide"><span class="label">Winter</span><input type="text" data-answer="ふゆ">
+                    </div>
+                    <div class="question-box wide"><span class="label">Cloud</span><input type="text" data-answer="くも">
+                    </div>
+                    <div class="question-box wide"><span class="label">Dream</span><input type="text" data-answer="ゆめ">
+                    </div>
+                    <div class="question-box wide"><span class="label">Room</span><input type="text" data-answer="へや">
+                    </div>
+                    <div class="question-box wide"><span class="label">Mountain</span><input type="text"
+                            data-answer="やま"></div>
+                </div>
             </div>
+
             <div class="page-number">7 / 8</div>
         </article>
 
-        <!-- PAGE 8: MASTERY + PARTICLES -->
+        <!-- PAGE 8: MASTERY -->
         <article class="test-page">
-            <header style="height: 10%;">
-                <h1>総合問題 (Mastery)</h1>
-                <p class="text-xs text-slate-500" style="font-family: sans-serif;">Constructing Sentences</p>
-            </header>
+            <h1>Final Mastery</h1>
+            <p class="text-center text-slate-400 mb-8">Particles & Sentence Order</p>
 
-            <div class="v-grid">
-                <div class="flex flex-col gap-4 p-4 border w-full h-[60%] justify-center items-center">
-                    <h2 style="font-size:1.5rem; margin-bottom:1rem; border:none; text-align:center;">Fill in the
-                        Particle</h2>
-                    <div class="flex gap-2 items-center" style="writing-mode: vertical-rl;">
-                        <span class="text-xl">わたし</span>
-                        <input type="text" data-answer="は" class="border-b border-black w-8">
-                        <span class="text-xl">がくせい</span>
-                        <span class="text-xl">です。</span>
-                        <span class="text-sm text-slate-500">(I am a student)</span>
-                    </div>
-                    <div style="width:20px;"></div>
-                    <div class="flex gap-2 items-center" style="writing-mode: vertical-rl;">
-                        <span class="text-xl">これ</span>
-                        <input type="text" data-answer="を" class="border-b border-black w-8">
-                        <span class="text-xl">ください。</span>
-                        <span class="text-sm text-slate-500">(This please)</span>
-                    </div>
-                    <div style="width:20px;"></div>
-                    <div class="flex gap-2 items-center" style="writing-mode: vertical-rl;">
-                        <span class="text-xl">アメリカ</span>
-                        <input type="text" data-answer="へ" class="border-b border-black w-8">
-                        <span class="text-xl">いきます。</span>
-                        <span class="text-sm text-slate-500">(Go to America)</span>
+            <div class="flex-grow flex flex-col justify-center items-center gap-12">
+                <div class="w-full bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h3 class="text-center mb-6">Fill in the correct particle (Wa / Wo / He)</h3>
+
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center justify-center gap-2 text-xl">
+                            <span>わたし</span>
+                            <input type="text" data-answer="は" class="!w-12 border-b-2 border-slate-300">
+                            <span>がくせい です。</span>
+                        </div>
+                        <div class="text-center text-sm text-slate-400">(I am a student)</div>
+
+                        <div class="flex items-center justify-center gap-2 text-xl mt-4">
+                            <span>これ</span>
+                            <input type="text" data-answer="を" class="!w-12 border-b-2 border-slate-300">
+                            <span>ください。</span>
+                        </div>
+                        <div class="text-center text-sm text-slate-400">(This please)</div>
+
+                        <div class="flex items-center justify-center gap-2 text-xl mt-4">
+                            <span>アメリカ</span>
+                            <input type="text" data-answer="へ" class="!w-12 border-b-2 border-slate-300">
+                            <span>いきます。</span>
+                        </div>
+                        <div class="text-center text-sm text-slate-400">(Go to America)</div>
                     </div>
                 </div>
 
-                <div
-                    class="flex flex-col gap-8 w-full h-[30%] items-center justify-center p-8 border-4 border-double border-slate-300 rounded mt-8">
-                    <div style="writing-mode: horizontal-tb; text-align: center;">
-                        <button type="submit" onclick="gradeTest(); event.preventDefault();"
-                            class="px-8 py-3 bg-red-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition no-print">
-                            Submit Final Exam
-                        </button>
-                        <div id="final-result"
-                            class="hidden mt-6 p-4 bg-indigo-50 text-indigo-900 rounded-xl text-xl font-bold border border-indigo-100">
-                            Score: <span id="display-score">0</span> / 100
-                        </div>
+                <div class="text-center">
+                    <h2 class="border-none mb-4">Complete Chapter 1</h2>
+                    <button type="submit" onclick="gradeTest(); event.preventDefault();"
+                        class="px-10 py-4 bg-indigo-600 text-white font-bold rounded-full shadow-xl hover:scale-105 transition no-print text-lg">
+                        Submit Final Exam
+                    </button>
+
+                    <div id="final-result"
+                        class="hidden mt-8 p-6 bg-green-50 text-green-800 rounded-2xl border border-green-200 text-2xl font-bold shadow-sm">
+                        Score: <span id="display-score">0</span> / 100
                     </div>
                 </div>
             </div>
@@ -647,16 +701,16 @@
         function gradeTest() {
             let score = 0;
             const inputs = document.querySelectorAll('input[data-answer]');
-
-            if (inputs.length === 0) return;
+            
+            if(inputs.length === 0) return;
             const pointsPerQuestion = 100 / inputs.length;
-
+            
             inputs.forEach(input => {
                 const userAnswer = input.value.trim().toLowerCase();
                 const validAnswers = input.dataset.answer.toLowerCase().split('|');
-
+                
                 input.classList.remove('correct', 'incorrect');
-
+                
                 if (validAnswers.includes(userAnswer)) {
                     input.classList.add('correct');
                     score += pointsPerQuestion;
@@ -669,11 +723,11 @@
             const resultBox = document.getElementById('final-result');
             const scoreSpan = document.getElementById('display-score');
             const navScore = document.getElementById('nav-score');
-
+            
             resultBox.classList.remove('hidden');
             scoreSpan.textContent = finalScore;
             navScore.textContent = finalScore;
-
+            
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
     </script>
