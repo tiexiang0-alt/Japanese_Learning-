@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 1: Final Test (Hard Mode) – 盾盾日语</title>
+    <title>Chapter 1: The 8-Page Mastery Test – 盾盾日语</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=ZCOOL+XiaoWei&display=swap"
@@ -31,335 +31,684 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
         }
 
+        .test-page {
+            max-width: 210mm;
+            /* A4 Width */
+            margin: 0 auto;
+            background: white;
+            padding: 20mm;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h2 {
+            border-bottom: 2px solid #334155;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: #0f172a;
+        }
+
+        .question-box {
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
         /* Print Styles */
         @media print {
             body {
                 background: white;
                 color: black;
-                font-size: 12pt;
+                font-size: 11pt;
             }
 
             .no-print {
                 display: none !important;
             }
 
-            .print-only {
-                display: block !important;
+            .test-page {
+                box-shadow: none;
+                margin: 0;
+                padding: 15mm;
+                max-width: none;
+                page-break-after: always;
+                /* KEY: Forces new page */
+                height: 100vh;
             }
 
-            .glass,
-            .glass-card {
-                background: none;
-                border: 1px solid #ccc;
-                box-shadow: none;
-                border-radius: 0;
+            .test-page:last-child {
+                page-break-after: auto;
             }
 
             input {
                 border: none;
                 border-bottom: 1px solid black;
                 background: none;
-                padding: 0;
-                margin: 0;
+                color: black;
             }
 
-            /* Ensure layout fits A4 */
-            main {
-                padding: 0;
-                margin: 0;
-                width: 100%;
-                max-width: none;
-            }
-
-            h2 {
-                border-bottom: 2px solid black;
-                padding-bottom: 5px;
+            .page-number {
+                position: absolute;
+                bottom: 10mm;
+                right: 15mm;
+                font-size: 9pt;
+                color: #64748b;
             }
         }
 
-        .print-only {
-            display: none;
-        }
-
-        /* Interactive Feedback */
         .correct {
-            border-color: #22c55e !important;
-            background-color: #f0fdf4 !important;
-            color: #15803d !important;
+            background-color: #dcfce7 !important;
+            border-color: #16a34a !important;
         }
 
         .incorrect {
-            border-color: #ef4444 !important;
-            background-color: #fef2f2 !important;
-            color: #b91c1c !important;
+            background-color: #fee2e2 !important;
+            border-color: #dc2626 !important;
         }
     </style>
 </head>
 
-<body class="p-4 md:p-8">
+<body class="p-8 print:p-0">
 
     <!-- Navigation (Hidden on Print) -->
-    <nav class="no-print sticky top-4 z-50 mb-8">
+    <nav class="no-print sticky top-4 z-50 mb-12">
         <div class="glass max-w-4xl mx-auto px-6 py-4 flex justify-between items-center bg-white/60">
             <div class="flex items-center gap-3">
                 <a href="chapter1.html" class="font-bold text-slate-700 hover:text-indigo-600 transition">← Back to
                     Map</a>
             </div>
             <div class="flex items-center gap-4">
+                <div class="text-xs font-bold text-slate-500 uppercase">8-Page Workbook</div>
                 <button onclick="window.print()"
                     class="px-4 py-2 bg-slate-800 text-white rounded-lg hover:bg-slate-700 shadow-lg text-sm font-bold flex items-center gap-2">
-                    🖨️ Print Test
+                    🖨️ Print Full Test
                 </button>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto bg-white p-8 md:p-16 rounded-[3rem] shadow-2xl print:shadow-none print:rounded-none">
+    <!-- SCORE DISPLAY (Online Only) -->
+    <div id="score-display"
+        class="no-print hidden max-w-2xl mx-auto mb-8 p-6 bg-slate-800 text-white rounded-2xl text-center shadow-2xl">
+        <h2 class="text-white border-none mb-2 text-3xl font-bold">Total Score</h2>
+        <div id="final-score" class="text-6xl font-black text-yellow-400 mb-2">0</div>
+        <p id="feedback-msg" class="text-slate-400 text-sm">Review your answers below.</p>
+    </div>
 
-        <!-- Header -->
-        <header class="text-center mb-12 print:mb-8 border-b-2 border-slate-900 pb-8">
-            <h1 class="text-4xl font-black text-slate-900 mb-2">JAPANESE CHAPTER 1 TEST</h1>
-            <p class="text-slate-500 font-bold uppercase tracking-[0.2em] mb-4">Final Assessment (Hard Mode)</p>
+    <form id="test-form" onsubmit="event.preventDefault(); gradeTest();">
 
-            <div class="print-only grid grid-cols-3 gap-8 mt-8 text-left text-sm">
-                <div>Name: ______________________</div>
-                <div>Date: ______________________</div>
-                <div>Score: ________ / 100</div>
-            </div>
-        </header>
+        <!-- ================= PAGE 1 ================= -->
+        <article class="test-page">
+            <header class="mb-8">
+                <h1 class="text-2xl font-black uppercase">Start Your Engine: Hiragana Part I</h1>
+                <div class="flex justify-between text-sm mt-4 border-b border-slate-300 pb-2">
+                    <span>Name: _________________</span>
+                    <span>Date: _________________</span>
+                </div>
+            </header>
 
-        <!-- SCORE DISPLAY (Online Only) -->
-        <div id="score-display" class="no-print hidden mb-8 p-6 bg-slate-800 text-white rounded-2xl text-center">
-            <h2 class="text-3xl font-bold mb-2">Test Result</h2>
-            <div id="final-score" class="text-5xl font-black text-yellow-400 mb-2">0</div>
-            <p id="feedback-msg" class="text-slate-400 text-sm">Keep practicing!</p>
-        </div>
-
-        <form id="test-form" onsubmit="event.preventDefault(); gradeTest();">
-
-            <!-- SECTION 1: HIRAGANA FROM HELL -->
-            <section class="mb-12">
-                <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                    <span
-                        class="bg-indigo-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm">I</span>
-                    The "Lookalike" Hiragana Challenge (20 pts)
-                </h2>
-                <p class="text-sm text-slate-500 mb-4 italic">Write the Romaji. Watch out for subtle differences!</p>
-
+            <section>
+                <h2>1. Basic Vowels (A-Row) & K/S/T/N Rows</h2>
+                <p class="text-sm mb-4">Write the **Hiragana** for each Romaji sound.</p>
                 <div class="grid grid-cols-5 gap-4">
-                    <!-- Q1: NU vs ME -->
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">ぬ</div>
-                        <input type="text" data-answer="nu"
-                            class="w-full text-center border-b-2 border-slate-200 focus:border-indigo-500 outline-none py-1 uppercase font-bold text-slate-600 placeholder-slate-300"
+                    <!-- A Row -->
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">A</div>
+                        <input type="text" data-answer="あ"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
                             placeholder="?">
                     </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">め</div>
-                        <input type="text" data-answer="me"
-                            class="w-full text-center border-b-2 border-slate-200 focus:border-indigo-500 outline-none py-1 uppercase font-bold text-slate-600 placeholder-slate-300"
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">I</div>
+                        <input type="text" data-answer="い"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
                             placeholder="?">
                     </div>
-                    <!-- Q2: NE vs RE vs WA -->
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">ね</div>
-                        <input type="text" data-answer="ne"
-                            class="w-full text-center border-b-2 border-slate-200 focus:border-indigo-500 outline-none py-1 uppercase font-bold text-slate-600 placeholder-slate-300"
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">U</div>
+                        <input type="text" data-answer="う"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
                             placeholder="?">
                     </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">れ</div>
-                        <input type="text" data-answer="re"
-                            class="w-full text-center border-b-2 border-slate-200 focus:border-indigo-500 outline-none py-1 uppercase font-bold text-slate-600 placeholder-slate-300"
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">E</div>
+                        <input type="text" data-answer="え"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
                             placeholder="?">
                     </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">わ</div>
-                        <input type="text" data-answer="wa"
-                            class="w-full text-center border-b-2 border-slate-200 focus:border-indigo-500 outline-none py-1 uppercase font-bold text-slate-600 placeholder-slate-300"
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">O</div>
+                        <input type="text" data-answer="お"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
+                            placeholder="?">
+                    </div>
+
+                    <!-- Break -->
+
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">Ka</div>
+                        <input type="text" data-answer="か"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
+                            placeholder="?">
+                    </div>
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">Ki</div>
+                        <input type="text" data-answer="き"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
+                            placeholder="?">
+                    </div>
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">Ku</div>
+                        <input type="text" data-answer="く"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
+                            placeholder="?">
+                    </div>
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">Ke</div>
+                        <input type="text" data-answer="け"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
+                            placeholder="?">
+                    </div>
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">Ko</div>
+                        <input type="text" data-answer="こ"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
+                            placeholder="?">
+                    </div>
+
+                    <!-- Skip some for brevity in grid, but representative -->
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">Sa</div>
+                        <input type="text" data-answer="さ"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
+                            placeholder="?">
+                    </div>
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">Shi</div>
+                        <input type="text" data-answer="し"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
+                            placeholder="?">
+                    </div>
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">Su</div>
+                        <input type="text" data-answer="す"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
+                            placeholder="?">
+                    </div>
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">Se</div>
+                        <input type="text" data-answer="せ"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
+                            placeholder="?">
+                    </div>
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">So</div>
+                        <input type="text" data-answer="そ"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
                             placeholder="?">
                     </div>
                 </div>
             </section>
 
-            <!-- SECTION 2: KATAKANA NIGHTMARE -->
-            <section class="mb-12">
-                <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                    <span
-                        class="bg-pink-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm">II</span>
-                    The "Smiley Face" Katakana Challenge (20 pts)
-                </h2>
-                <p class="text-sm text-slate-500 mb-4 italic">Stroke direction matters. Shi (シ) vs Tsu (ツ), So (ソ) vs N
-                    (ン).</p>
+            <div class="page-number">Page 1 / 8</div>
+        </article>
 
-                <div class="grid grid-cols-4 gap-4">
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">シ</div>
-                        <input type="text" data-answer="shi"
-                            class="w-full text-center border-b-2 border-slate-200 focus:border-pink-500 outline-none py-1 uppercase font-bold text-slate-600 placeholder-slate-300"
+        <!-- ================= PAGE 2 ================= -->
+        <article class="test-page">
+            <header class="mb-8">
+                <h1 class="text-xl font-bold uppercase text-slate-500">Hiragana Part II</h1>
+            </header>
+
+            <section>
+                <h2>2. Ha, Ma, Ya, Ra, Wa, N Rows</h2>
+                <p class="text-sm mb-4">Complete the missing Hiragana.</p>
+                <div class="grid grid-cols-5 gap-4">
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">Ha</div>
+                        <input type="text" data-answer="は"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
                             placeholder="?">
                     </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">ツ</div>
-                        <input type="text" data-answer="tsu"
-                            class="w-full text-center border-b-2 border-slate-200 focus:border-pink-500 outline-none py-1 uppercase font-bold text-slate-600 placeholder-slate-300"
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">Hi</div>
+                        <input type="text" data-answer="ひ"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
                             placeholder="?">
                     </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">ン</div>
-                        <input type="text" data-answer="n"
-                            class="w-full text-center border-b-2 border-slate-200 focus:border-pink-500 outline-none py-1 uppercase font-bold text-slate-600 placeholder-slate-300"
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">Fu</div>
+                        <input type="text" data-answer="ふ"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
                             placeholder="?">
                     </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2">ソ</div>
-                        <input type="text" data-answer="so"
-                            class="w-full text-center border-b-2 border-slate-200 focus:border-pink-500 outline-none py-1 uppercase font-bold text-slate-600 placeholder-slate-300"
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">He</div>
+                        <input type="text" data-answer="へ"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
+                            placeholder="?">
+                    </div>
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">Ho</div>
+                        <input type="text" data-answer="ほ"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
+                            placeholder="?">
+                    </div>
+
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">Ya</div>
+                        <input type="text" data-answer="や"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
+                            placeholder="?">
+                    </div>
+                    <div class="col-span-1 bg-slate-100 rounded"></div>
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">Yu</div>
+                        <input type="text" data-answer="ゆ"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
+                            placeholder="?">
+                    </div>
+                    <div class="col-span-1 bg-slate-100 rounded"></div>
+                    <div class="question-box">
+                        <div class="text-xs uppercase font-bold text-slate-400 mb-2">Yo</div>
+                        <input type="text" data-answer="よ"
+                            class="w-full text-center text-2xl font-bold outline-none border-b border-slate-300 focus:border-indigo-600"
                             placeholder="?">
                     </div>
                 </div>
+
+                <div class="mt-8">
+                    <h3>Challenge: Write specific characters</h3>
+                    <div class="grid grid-cols-2 gap-8 mt-4">
+                        <div class="flex justify-between items-center border-b p-2">
+                            <span>Particle "Wa" (Actually Ha):</span>
+                            <input type="text" data-answer="は" class="w-16 text-center font-bold text-xl"
+                                placeholder="?">
+                        </div>
+                        <div class="flex justify-between items-center border-b p-2">
+                            <span>Particle "O" (Object Marker):</span>
+                            <input type="text" data-answer="を" class="w-16 text-center font-bold text-xl"
+                                placeholder="?">
+                        </div>
+                    </div>
+                </div>
             </section>
+            <div class="page-number">Page 2 / 8</div>
+        </article>
 
-            <!-- SECTION 3: VOCABULARY & PITCH -->
-            <section class="mb-12">
-                <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                    <span
-                        class="bg-emerald-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm">III</span>
-                    Vocabulary & Meaning (30 pts)
-                </h2>
+        <!-- ================= PAGE 3 ================= -->
+        <article class="test-page">
+            <header class="mb-8">
+                <h1 class="text-xl font-bold uppercase text-slate-500">Katakana Part I (Conversion)</h1>
+            </header>
 
-                <div class="space-y-4">
-                    <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                        <div class="font-bold text-lg">1. ちかてつ (Chikatetsu)</div>
+            <section>
+                <h2>3. Convert Hiragana to Katakana</h2>
+                <p class="text-sm mb-4">Look at the **Hiragana** and write the corresponding **Katakana**.</p>
+
+                <div class="grid grid-cols-4 gap-6">
+                    <div class="question-box">
+                        <div class="text-3xl font-bold mb-2">あ</div>
+                        <input type="text" data-answer="ア"
+                            class="w-full text-center border-none border-b-2 border-slate-200 text-xl font-bold"
+                            placeholder="Katakana?">
+                    </div>
+                    <div class="question-box">
+                        <div class="text-3xl font-bold mb-2">い</div>
+                        <input type="text" data-answer="イ"
+                            class="w-full text-center border-none border-b-2 border-slate-200 text-xl font-bold"
+                            placeholder="Katakana?">
+                    </div>
+                    <div class="question-box">
+                        <div class="text-3xl font-bold mb-2">う</div>
+                        <input type="text" data-answer="ウ"
+                            class="w-full text-center border-none border-b-2 border-slate-200 text-xl font-bold"
+                            placeholder="Katakana?">
+                    </div>
+                    <div class="question-box">
+                        <div class="text-3xl font-bold mb-2">え</div>
+                        <input type="text" data-answer="エ"
+                            class="w-full text-center border-none border-b-2 border-slate-200 text-xl font-bold"
+                            placeholder="Katakana?">
+                    </div>
+
+                    <div class="question-box">
+                        <div class="text-3xl font-bold mb-2">か</div>
+                        <input type="text" data-answer="カ"
+                            class="w-full text-center border-none border-b-2 border-slate-200 text-xl font-bold"
+                            placeholder="Katakana?">
+                    </div>
+                    <div class="question-box">
+                        <div class="text-3xl font-bold mb-2">き</div>
+                        <input type="text" data-answer="キ"
+                            class="w-full text-center border-none border-b-2 border-slate-200 text-xl font-bold"
+                            placeholder="Katakana?">
+                    </div>
+                    <div class="question-box">
+                        <div class="text-3xl font-bold mb-2">く</div>
+                        <input type="text" data-answer="ク"
+                            class="w-full text-center border-none border-b-2 border-slate-200 text-xl font-bold"
+                            placeholder="Katakana?">
+                    </div>
+                    <div class="question-box">
+                        <div class="text-3xl font-bold mb-2">け</div>
+                        <input type="text" data-answer="ケ"
+                            class="w-full text-center border-none border-b-2 border-slate-200 text-xl font-bold"
+                            placeholder="Katakana?">
+                    </div>
+                </div>
+            </section>
+            <div class="page-number">Page 3 / 8</div>
+        </article>
+
+        <!-- ================= PAGE 4 ================= -->
+        <article class="test-page">
+            <header class="mb-8">
+                <h1 class="text-xl font-bold uppercase text-slate-500">Katakana Part II (Identification)</h1>
+            </header>
+
+            <section>
+                <h2>4. Romaji to Katakana Challenge</h2>
+                <p class="text-sm mb-4">Write the **Katakana** for the following sounds. Careful with Shi/Tsu/So/N!</p>
+
+                <div class="grid grid-cols-3 gap-8">
+                    <div class="flex items-center gap-4 border p-4 rounded-lg">
+                        <div class="font-bold w-8">SHI</div>
+                        <input type="text" data-answer="シ"
+                            class="flex-1 text-center font-bold text-2xl border-b border-slate-300" placeholder="?">
+                    </div>
+                    <div class="flex items-center gap-4 border p-4 rounded-lg">
+                        <div class="font-bold w-8">TSU</div>
+                        <input type="text" data-answer="ツ"
+                            class="flex-1 text-center font-bold text-2xl border-b border-slate-300" placeholder="?">
+                    </div>
+                    <div class="flex items-center gap-4 border p-4 rounded-lg">
+                        <div class="font-bold w-8">SO</div>
+                        <input type="text" data-answer="ソ"
+                            class="flex-1 text-center font-bold text-2xl border-b border-slate-300" placeholder="?">
+                    </div>
+
+                    <div class="flex items-center gap-4 border p-4 rounded-lg">
+                        <div class="font-bold w-8">N</div>
+                        <input type="text" data-answer="ン"
+                            class="flex-1 text-center font-bold text-2xl border-b border-slate-300" placeholder="?">
+                    </div>
+                    <div class="flex items-center gap-4 border p-4 rounded-lg">
+                        <div class="font-bold w-8">HE</div>
+                        <input type="text" data-answer="ヘ"
+                            class="flex-1 text-center font-bold text-2xl border-b border-slate-300" placeholder="?">
+                    </div>
+                    <div class="flex items-center gap-4 border p-4 rounded-lg">
+                        <div class="font-bold w-8">MO</div>
+                        <input type="text" data-answer="モ"
+                            class="flex-1 text-center font-bold text-2xl border-b border-slate-300" placeholder="?">
+                    </div>
+                </div>
+            </section>
+            <div class="page-number">Page 4 / 8</div>
+        </article>
+
+        <!-- ================= PAGE 5 ================= -->
+        <article class="test-page">
+            <header class="mb-8">
+                <h1 class="text-xl font-bold uppercase text-slate-500">Voiced Sounds (Dakuon)</h1>
+            </header>
+
+            <section>
+                <h2>5. Dakuon & Handakuon</h2>
+                <p class="text-sm mb-4">Add Tenten (゛) or Maru (゜) to create the correct sound.</p>
+
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b-2 border-slate-800">
+                            <th class="p-2">Base Sound</th>
+                            <th class="p-2">Target Sound</th>
+                            <th class="p-2">Your Answer (Hiragana)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-slate-200">
+                            <td class="p-4 text-xl">ka (か)</td>
+                            <td class="p-4 font-bold">ga</td>
+                            <td class="p-4"><input type="text" data-answer="が"
+                                    class="w-20 font-bold text-xl text-center border-b border-slate-300"></td>
+                        </tr>
+                        <tr class="border-b border-slate-200">
+                            <td class="p-4 text-xl">sa (さ)</td>
+                            <td class="p-4 font-bold">za</td>
+                            <td class="p-4"><input type="text" data-answer="ざ"
+                                    class="w-20 font-bold text-xl text-center border-b border-slate-300"></td>
+                        </tr>
+                        <tr class="border-b border-slate-200">
+                            <td class="p-4 text-xl">ta (た)</td>
+                            <td class="p-4 font-bold">da</td>
+                            <td class="p-4"><input type="text" data-answer="だ"
+                                    class="w-20 font-bold text-xl text-center border-b border-slate-300"></td>
+                        </tr>
+                        <tr class="border-b border-slate-200">
+                            <td class="p-4 text-xl">ha (は)</td>
+                            <td class="p-4 font-bold">ba (Voiced)</td>
+                            <td class="p-4"><input type="text" data-answer="ば"
+                                    class="w-20 font-bold text-xl text-center border-b border-slate-300"></td>
+                        </tr>
+                        <tr class="border-b border-slate-200">
+                            <td class="p-4 text-xl">ha (は)</td>
+                            <td class="p-4 font-bold">pa (Semi-Voiced)</td>
+                            <td class="p-4"><input type="text" data-answer="ぱ"
+                                    class="w-20 font-bold text-xl text-center border-b border-slate-300"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <div class="page-number">Page 5 / 8</div>
+        </article>
+
+        <!-- ================= PAGE 6 ================= -->
+        <article class="test-page">
+            <header class="mb-8">
+                <h1 class="text-xl font-bold uppercase text-slate-500">Twisted Sounds</h1>
+            </header>
+
+            <section>
+                <h2>6. Yoon (Combo) & Sokuon (Double Consonant)</h2>
+
+                <div class="mb-8">
+                    <h3>A. Combo Sounds (Small Ya/Yu/Yo)</h3>
+                    <div class="grid grid-cols-3 gap-4 mt-2">
+                        <div class="border p-4 rounded text-center">
+                            <div class="font-bold mb-2">Kya</div>
+                            <input type="text" data-answer="きゃ" class="w-full text-center text-xl font-bold border-b"
+                                placeholder="(Hiragana)">
+                        </div>
+                        <div class="border p-4 rounded text-center">
+                            <div class="font-bold mb-2">Shu</div>
+                            <input type="text" data-answer="しゅ" class="w-full text-center text-xl font-bold border-b"
+                                placeholder="(Hiragana)">
+                        </div>
+                        <div class="border p-4 rounded text-center">
+                            <div class="font-bold mb-2">Cho</div>
+                            <input type="text" data-answer="ちょ" class="w-full text-center text-xl font-bold border-b"
+                                placeholder="(Hiragana)">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3>B. Double Consonants (Small Tsu)</h3>
+                    <div class="grid grid-cols-2 gap-4 mt-2">
+                        <div class="border p-4 rounded text-center">
+                            <div class="font-bold mb-2">Sak-ka (Writer)</div>
+                            <input type="text" data-answer="さっか" class="w-full text-center text-xl font-bold border-b"
+                                placeholder="(Hiragana)">
+                        </div>
+                        <div class="border p-4 rounded text-center">
+                            <div class="font-bold mb-2">Kip-pu (Ticket)</div>
+                            <input type="text" data-answer="きっぷ" class="w-full text-center text-xl font-bold border-b"
+                                placeholder="(Hiragana)">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="page-number">Page 6 / 8</div>
+        </article>
+
+        <!-- ================= PAGE 7 ================= -->
+        <article class="test-page">
+            <header class="mb-8">
+                <h1 class="text-xl font-bold uppercase text-slate-500">Vocabulary Master</h1>
+            </header>
+
+            <section>
+                <h2>7. Word Translation</h2>
+                <p class="text-sm mb-6">Translate the Japanese words to English.</p>
+
+                <div class="grid grid-cols-2 gap-x-12 gap-y-6">
+                    <div class="flex justify-between border-b pb-1">
+                        <span>1. あい (Ai)</span>
+                        <input type="text" data-answer="love"
+                            class="w-32 text-right lowercase font-medium text-slate-600" placeholder="...">
+                    </div>
+                    <div class="flex justify-between border-b pb-1">
+                        <span>2. いえ (Ie)</span>
+                        <input type="text" data-answer="house"
+                            class="w-32 text-right lowercase font-medium text-slate-600" placeholder="...">
+                    </div>
+                    <div class="flex justify-between border-b pb-1">
+                        <span>3. うえ (Ue)</span>
+                        <input type="text" data-answer="up" class="w-32 text-right lowercase font-medium text-slate-600"
+                            placeholder="...">
+                    </div>
+                    <div class="flex justify-between border-b pb-1">
+                        <span>4. あおい (Aoi)</span>
+                        <input type="text" data-answer="blue"
+                            class="w-32 text-right lowercase font-medium text-slate-600" placeholder="...">
+                    </div>
+                    <div class="flex justify-between border-b pb-1">
+                        <span>5. かお (Kao)</span>
+                        <input type="text" data-answer="face"
+                            class="w-32 text-right lowercase font-medium text-slate-600" placeholder="...">
+                    </div>
+
+                    <div class="flex justify-between border-b pb-1">
+                        <span>6. しち (Shichi)</span>
+                        <input type="text" data-answer="seven"
+                            class="w-32 text-right lowercase font-medium text-slate-600" placeholder="...">
+                    </div>
+                    <div class="flex justify-between border-b pb-1">
+                        <span>7. ちかてつ</span>
                         <input type="text" data-answer="subway"
-                            class="w-32 text-right border-b-2 border-slate-200 focus:border-emerald-500 outline-none py-1 text-slate-600"
-                            placeholder="English?">
+                            class="w-32 text-right lowercase font-medium text-slate-600" placeholder="...">
                     </div>
-                    <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                        <div class="font-bold text-lg">2. ろく (Roku)</div>
-                        <input type="text" data-answer="six"
-                            class="w-32 text-right border-b-2 border-slate-200 focus:border-emerald-500 outline-none py-1 text-slate-600"
-                            placeholder="Number?">
-                    </div>
-                    <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                        <div class="font-bold text-lg">3. なに (Nani)</div>
+                    <div class="flex justify-between border-b pb-1">
+                        <span>8. なに (Nani)</span>
                         <input type="text" data-answer="what"
-                            class="w-32 text-right border-b-2 border-slate-200 focus:border-emerald-500 outline-none py-1 text-slate-600"
-                            placeholder="English?">
+                            class="w-32 text-right lowercase font-medium text-slate-600" placeholder="...">
                     </div>
-                    <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                        <div class="font-bold text-lg">4. くうき (Kuuki)</div>
-                        <input type="text" data-answer="air"
-                            class="w-32 text-right border-b-2 border-slate-200 focus:border-emerald-500 outline-none py-1 text-slate-600"
-                            placeholder="English?">
+                    <div class="flex justify-between border-b pb-1">
+                        <span>9. はな (Hana)</span>
+                        <input type="text" data-answer="flower"
+                            class="w-32 text-right lowercase font-medium text-slate-600" placeholder="...">
                     </div>
-                    <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                        <div class="font-bold text-lg">5. せかい (Sekai)</div>
-                        <input type="text" data-answer="world"
-                            class="w-32 text-right border-b-2 border-slate-200 focus:border-emerald-500 outline-none py-1 text-slate-600"
-                            placeholder="English?">
+                    <div class="flex justify-between border-b pb-1">
+                        <span>10. ほし (Hoshi)</span>
+                        <input type="text" data-answer="star"
+                            class="w-32 text-right lowercase font-medium text-slate-600" placeholder="...">
                     </div>
                 </div>
             </section>
+            <div class="page-number">Page 7 / 8</div>
+        </article>
 
-            <!-- SECTION 4: DAKUON TRAPS -->
-            <section class="mb-12">
-                <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                    <span
-                        class="bg-amber-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm">IV</span>
-                    Dakuon & Handakuon (30 pts)
-                </h2>
-                <p class="text-sm text-slate-500 mb-4 italic">Identify the Voiced (Tenten) vs Semi-Voiced (Maru) sounds.
-                </p>
+        <!-- ================= PAGE 8 ================= -->
+        <article class="test-page">
+            <header class="mb-8">
+                <h1 class="text-xl font-bold uppercase text-slate-500">Comprehensive Mastery</h1>
+            </header>
 
-                <div class="grid grid-cols-3 gap-6">
-                    <div class="rounded-xl border border-slate-200 p-4 text-center">
-                        <div class="text-2xl font-bold mb-2">ば</div>
-                        <input type="text" data-answer="ba"
-                            class="w-full text-center border-b-2 border-slate-200 focus:border-amber-500 outline-none py-1 uppercase text-slate-600"
-                            placeholder="Romaji?">
-                    </div>
-                    <div class="rounded-xl border border-slate-200 p-4 text-center">
-                        <div class="text-2xl font-bold mb-2">ぱ</div>
-                        <input type="text" data-answer="pa"
-                            class="w-full text-center border-b-2 border-slate-200 focus:border-amber-500 outline-none py-1 uppercase text-slate-600"
-                            placeholder="Romaji?">
-                    </div>
-                    <div class="rounded-xl border border-slate-200 p-4 text-center">
-                        <div class="text-2xl font-bold mb-2">ざ</div>
-                        <input type="text" data-answer="za"
-                            class="w-full text-center border-b-2 border-slate-200 focus:border-amber-500 outline-none py-1 uppercase text-slate-600"
-                            placeholder="Romaji?">
-                    </div>
-                    <div class="rounded-xl border border-slate-200 p-4 text-center">
-                        <div class="text-2xl font-bold mb-2">ど</div>
-                        <input type="text" data-answer="do"
-                            class="w-full text-center border-b-2 border-slate-200 focus:border-amber-500 outline-none py-1 uppercase text-slate-600"
-                            placeholder="Romaji?">
-                    </div>
-                    <div class="rounded-xl border border-slate-200 p-4 text-center">
-                        <div class="text-2xl font-bold mb-2">じ</div>
-                        <input type="text" data-answer="ji"
-                            class="w-full text-center border-b-2 border-slate-200 focus:border-amber-500 outline-none py-1 uppercase text-slate-600"
-                            placeholder="Romaji?">
-                    </div>
-                    <div class="rounded-xl border border-slate-200 p-4 text-center">
-                        <div class="text-2xl font-bold mb-2">づ</div>
-                        <input type="text" data-answer="zu"
-                            class="w-full text-center border-b-2 border-slate-200 focus:border-amber-500 outline-none py-1 uppercase text-slate-600"
-                            placeholder="Romaji?">
-                    </div>
+            <section>
+                <h2>8. Final Challenge</h2>
+
+                <!-- Greetings -->
+                <div class="mb-8">
+                    <h3>A. Greetings (Aisatsu)</h3>
+                    <table class="w-full mt-2 text-sm">
+                        <tr>
+                            <td class="py-2">Good Morning</td>
+                            <td><input type="text" data-answer="ohayou" class="border-b w-full" placeholder="Romaji">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="py-2">Good Afternoon</td>
+                            <td><input type="text" data-answer="konnichiwa" class="border-b w-full"
+                                    placeholder="Romaji"></td>
+                        </tr>
+                        <tr>
+                            <td class="py-2">Good Night</td>
+                            <td><input type="text" data-answer="oyasumi" class="border-b w-full" placeholder="Romaji">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Name Writing Info -->
+                <div class="mb-8 bg-slate-50 p-6 rounded-xl border border-dashed border-slate-300">
+                    <h3>B. Your Name</h3>
+                    <p class="mb-4 text-sm">Write your own name in Katakana (Self-Grade).</p>
+                    <div class="h-20 border-b-2 border-slate-800"></div>
+                </div>
+
+                <!-- Final Signoff -->
+                <div class="text-center mt-12 bg-slate-900 text-white p-8 rounded-2xl print:hidden">
+                    <h3 class="text-2xl font-bold mb-4">Exam Complete!</h3>
+                    <p class="mb-6">Click submit to see your autograded score for the online portion.</p>
+                    <button type="submit"
+                        class="px-8 py-3 bg-yellow-400 text-slate-900 font-bold rounded-lg hover:scale-105 transition">Submit
+                        Exam</button>
+                </div>
+
+                <div class="hidden print:block text-center mt-20 pt-10 border-t-2 border-black">
+                    <p class="font-bold">Teacher / Grader Signature</p>
                 </div>
             </section>
+            <div class="page-number">Page 8 / 8</div>
+        </article>
 
-            <!-- SUBMIT BUTTON (Hidden on Print) -->
-            <div class="no-print mt-12 text-center">
-                <button type="submit"
-                    class="inline-block px-12 py-5 bg-gradient-to-r from-slate-900 to-slate-800 text-white font-bold text-xl rounded-2xl shadow-xl hover:scale-105 hover:bg-slate-700 transition transform">
-                    Submit Test
-                </button>
-            </div>
-
-        </form>
-    </main>
-
-    <footer class="text-center text-slate-400 text-xs py-8 no-print">
-        © 2025 盾盾日语 - Final Test
-    </footer>
+    </form>
 
     <!-- Grading Script -->
     <script>
         function gradeTest() {
             let score = 0;
-            let total = 0;
-            const inputs = document.querySelectorAll('input');
+            const inputs = document.querySelectorAll('input:not([placeholder="(Self-Grade)"])');
+            if (inputs.length === 0) return;
 
-            // Total Questions:
-            // S1: 5 (4 pts each)
-            // S2: 4 (5 pts each)
-            // S3: 5 (6 pts each)
-            // S4: 6 (5 pts each)
+            // Calculate points per question dynamically
+            let totalQuestions = 0;
+            inputs.forEach(input => {
+                if (input.dataset.answer) totalQuestions++;
+            });
+
+            const pointsPerQuestion = 100 / totalQuestions;
 
             inputs.forEach(input => {
-                const userAnswer = input.value.trim().toLowerCase();
-                const correctAnswer = input.dataset.answer.toLowerCase();
+                if (!input.dataset.answer) return;
 
-                // Remove existing grades
+                const userAnswer = input.value.trim().toLowerCase();
+                const possibleAnswers = input.dataset.answer.toLowerCase().split('|'); // Support multiple answers if needed
+
                 input.classList.remove('correct', 'incorrect');
 
-                if (userAnswer === correctAnswer) {
+                if (possibleAnswers.includes(userAnswer)) {
                     input.classList.add('correct');
-                    // Simple point logic (approximate distribution)
-                    if (input.parentElement.parentElement.classList.contains('grid-cols-5')) score += 4; // Sec 1
-                    else if (input.parentElement.parentElement.classList.contains('grid-cols-4')) score += 5; // Sec 2
-                    else if (input.parentElement.classList.contains('justify-between')) score += 6; // Sec 3
-                    else score += 5; // Sec 4
+                    score += pointsPerQuestion;
                 } else {
                     input.classList.add('incorrect');
                 }
             });
 
-            // Cap score at 100 just in case logic is slightly off
+            // Round score
+            score = Math.round(score);
             if (score > 100) score = 100;
 
             // Show Result
@@ -370,10 +719,10 @@
             display.classList.remove('hidden');
             scoreText.textContent = score;
 
-            if (score === 100) msg.textContent = "Perfect! You are a master! 🏆";
-            else if (score >= 80) msg.textContent = "Great job! Almost there!";
-            else if (score >= 60) msg.textContent = "Passable, but keep reviewing!";
-            else msg.textContent = "Do not give up! Review Chapter 1 again.";
+            if (score === 100) msg.textContent = "Perfect! 🏆";
+            else if (score >= 80) msg.textContent = "Excellent Work!";
+            else if (score >= 60) msg.textContent = "Passable.";
+            else msg.textContent = "Please review Chapter 1.";
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
