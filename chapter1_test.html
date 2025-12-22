@@ -283,6 +283,26 @@
         #ai-status-loader {
             display: none;
         }
+
+        /* Result Icons */
+        .result-icon {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 1.5rem;
+            z-index: 25;
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 
@@ -314,8 +334,8 @@
         <div class="flex items-center gap-2">
             <button onclick="gradeVisual()"
                 class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-full font-bold text-sm transition"
-                title="Show Ghost Answer (Red)">
-                👀 Visual
+                title="Show Correct Answer">
+                👀 Answer
             </button>
 
             <button onclick="gradeWithAI()"
@@ -463,23 +483,23 @@
         ];
 
         const DAKUON_MIX = [
-             { a: 'が', l: 'Ga' }, { a: 'ぎ', l: 'Gi' }, { a: 'ぐ', l: 'Gu' }, { a: 'げ', l: 'Ge' }, { a: 'ご', l: 'Go' },
-             { a: 'ざ', l: 'Za' }, { a: 'じ', l: 'Ji' }, { a: 'ず', l: 'Zu' }, { a: 'ぜ', l: 'Ze' }, { a: 'ぞ', l: 'Zo' },
-             { a: 'だ', l: 'Da' }, { a: 'ぢ', l: 'Ji' }, { a: 'づ', l: 'Zu' }, { a: 'で', l: 'De' }, { a: 'ど', l: 'Do' },
-             { a: 'ば', l: 'Ba' }, { a: 'び', l: 'Bi' }, { a: 'ぶ', l: 'Bu' }, { a: 'べ', l: 'Be' }, { a: 'ぼ', l: 'Bo' },
-             { a: 'ぱ', l: 'Pa' }, { a: 'ぴ', l: 'Pi' }, { a: 'ぷ', l: 'Pu' }, { a: 'ぺ', l: 'Pe' }, { a: 'ぽ', l: 'Po' },
-             { a: 'ガ', l: 'Ga(K)' }, { a: 'ギ', l: 'Gi(K)' }, { a: 'グ', l: 'Gu(K)' }, { a: 'ゲ', l: 'Ge(K)' }, { a: 'ゴ', l: 'Go(K)' },
-             { a: 'ザ', l: 'Za(K)' }, { a: 'ジ', l: 'Ji(K)' }, { a: 'ズ', l: 'Zu(K)' }, { a: 'ゼ', l: 'Ze(K)' }, { a: 'ゾ', l: 'Zo(K)' }
+            { a: 'が', l: 'Ga' }, { a: 'ぎ', l: 'Gi' }, { a: 'ぐ', l: 'Gu' }, { a: 'げ', l: 'Ge' }, { a: 'ご', l: 'Go' },
+            { a: 'ざ', l: 'Za' }, { a: 'じ', l: 'Ji' }, { a: 'ず', l: 'Zu' }, { a: 'ぜ', l: 'Ze' }, { a: 'ぞ', l: 'Zo' },
+            { a: 'だ', l: 'Da' }, { a: 'ぢ', l: 'Ji' }, { a: 'づ', l: 'Zu' }, { a: 'で', l: 'De' }, { a: 'ど', l: 'Do' },
+            { a: 'ば', l: 'Ba' }, { a: 'び', l: 'Bi' }, { a: 'ぶ', l: 'Bu' }, { a: 'べ', l: 'Be' }, { a: 'ぼ', l: 'Bo' },
+            { a: 'ぱ', l: 'Pa' }, { a: 'ぴ', l: 'Pi' }, { a: 'ぷ', l: 'Pu' }, { a: 'ぺ', l: 'Pe' }, { a: 'ぽ', l: 'Po' },
+            { a: 'ガ', l: 'Ga(K)' }, { a: 'ギ', l: 'Gi(K)' }, { a: 'グ', l: 'Gu(K)' }, { a: 'ゲ', l: 'Ge(K)' }, { a: 'ゴ', l: 'Go(K)' },
+            { a: 'ザ', l: 'Za(K)' }, { a: 'ジ', l: 'Ji(K)' }, { a: 'ズ', l: 'Zu(K)' }, { a: 'ゼ', l: 'Ze(K)' }, { a: 'ゾ', l: 'Zo(K)' }
         ];
 
         const YOON_MIX = [
-             { a: 'きゃ', l: 'Kya' }, { a: 'きゅ', l: 'Kyu' }, { a: 'きょ', l: 'Kyo' },
-             { a: 'しゃ', l: 'Sha' }, { a: 'しゅ', l: 'Shu' }, { a: 'しょ', l: 'Sho' },
-             { a: 'ちゃ', l: 'Cha' }, { a: 'ちゅ', l: 'Chu' }, { a: 'ちょ', l: 'Cho' },
-             { a: 'にゃ', l: 'Nya' }, { a: 'にゅ', l: 'Nyu' }, { a: 'にょ', l: 'Nyo' },
-             { a: 'ひャ', l: 'Hya' }, { a: 'ひゅ', l: 'Hyu' }, { a: 'ひょ', l: 'Hyo' },
-             { a: 'みャ', l: 'Mya' }, { a: 'みゅ', l: 'Myu' }, { a: 'みょ', l: 'Myo' },
-             { a: 'りャ', l: 'Rya' }, { a: 'りゅ', l: 'Ryu' }, { a: 'りょ', l: 'Ryo' }
+            { a: 'きゃ', l: 'Kya' }, { a: 'きゅ', l: 'Kyu' }, { a: 'きょ', l: 'Kyo' },
+            { a: 'しゃ', l: 'Sha' }, { a: 'しゅ', l: 'Shu' }, { a: 'しょ', l: 'Sho' },
+            { a: 'ちゃ', l: 'Cha' }, { a: 'ちゅ', l: 'Chu' }, { a: 'ちょ', l: 'Cho' },
+            { a: 'にゃ', l: 'Nya' }, { a: 'にゅ', l: 'Nyu' }, { a: 'にょ', l: 'Nyo' },
+            { a: 'ひャ', l: 'Hya' }, { a: 'ひゅ', l: 'Hyu' }, { a: 'ひょ', l: 'Hyo' },
+            { a: 'みャ', l: 'Mya' }, { a: 'みゅ', l: 'Myu' }, { a: 'みょ', l: 'Myo' },
+            { a: 'りャ', l: 'Rya' }, { a: 'りゅ', l: 'Ryu' }, { a: 'りょ', l: 'Ryo' }
         ];
 
         const VOCAB_POOL = [
@@ -507,21 +527,21 @@
             return array;
         }
 
-        function createGrid(containerId, items, rows=5) {
+        function createGrid(containerId, items, rows = 5) {
             const container = document.getElementById(containerId);
             container.innerHTML = '';
-            
+
             // Chunk into rows of 5
             for (let i = 0; i < items.length; i += 5) {
                 const chunk = items.slice(i, i + 5);
                 const rowDiv = document.createElement('div');
                 rowDiv.className = 'grid-5';
-                
+
                 chunk.forEach(item => {
                     const box = document.createElement('div');
                     box.className = 'question-box';
                     box.dataset.answer = item.a;
-                    
+
                     box.innerHTML = `
                         <span class="label">${item.l}</span>
                         <input type="text">
@@ -529,31 +549,31 @@
                     `;
                     rowDiv.appendChild(box);
                 });
-                
+
                 // Fill remaining spots if last row is incomplete
-                while(rowDiv.children.length < 5) {
-                     const empty = document.createElement('div');
-                     empty.className = 'question-box bg-slate-50 border-none shadow-none';
-                     rowDiv.appendChild(empty);
+                while (rowDiv.children.length < 5) {
+                    const empty = document.createElement('div');
+                    empty.className = 'question-box bg-slate-50 border-none shadow-none';
+                    rowDiv.appendChild(empty);
                 }
-                
+
                 container.appendChild(rowDiv);
             }
         }
 
         function createVocabList(containerId, items) {
-             const container = document.getElementById(containerId);
-             container.innerHTML = '';
-             
-             // Split into 2 columns
-             const mid = Math.ceil(items.length / 2);
-             const col1 = items.slice(0, mid);
-             const col2 = items.slice(mid);
-             
-             [col1, col2].forEach(colItems => {
-                 const colDiv = document.createElement('div');
-                 colDiv.className = 'flex flex-col gap-2';
-                 colItems.forEach(item => {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+
+            // Split into 2 columns
+            const mid = Math.ceil(items.length / 2);
+            const col1 = items.slice(0, mid);
+            const col2 = items.slice(mid);
+
+            [col1, col2].forEach(colItems => {
+                const colDiv = document.createElement('div');
+                colDiv.className = 'flex flex-col gap-2';
+                colItems.forEach(item => {
                     const box = document.createElement('div');
                     box.className = 'question-box wide';
                     box.dataset.answer = item.a;
@@ -562,17 +582,17 @@
                          <input type="text">
                          <div class="ghost-answer">${item.a}</div>
                      `;
-                     colDiv.appendChild(box);
-                 });
-                 container.appendChild(colDiv);
-             });
+                    colDiv.appendChild(box);
+                });
+                container.appendChild(colDiv);
+            });
         }
 
         function createParticleQuestions(containerId, count) {
             const container = document.getElementById(containerId);
             container.innerHTML = '';
             const items = shuffle([...PARTICLES_POOL]).slice(0, count);
-            
+
             items.forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'flex items-center justify-center gap-2 text-xl w-full';
@@ -593,7 +613,7 @@
             // Page 1: Hiragana A-Na (25 random)
             const p1 = shuffle([...HIRAGANA_BASIC].slice(0, 25)).slice(0, 25);
             createGrid('page-1-content', p1);
-            
+
             // Page 2: Hiragana Ha-N (21 items + random fillers from first half to make 25)
             const remaining_h = HIRAGANA_BASIC.slice(25);
             const fillers_h = shuffle([...HIRAGANA_BASIC].slice(0, 25)).slice(0, 25 - remaining_h.length);
@@ -603,7 +623,7 @@
             // Page 3: Katakana A-No (25 random)
             const p3 = shuffle([...KATAKANA_BASIC].slice(0, 25)).slice(0, 25);
             createGrid('page-3-content', p3);
-            
+
             // Page 4: Katakana Ha-N (+ fillers)
             const remaining_k = KATAKANA_BASIC.slice(25);
             const fillers_k = shuffle([...KATAKANA_BASIC].slice(0, 25)).slice(0, 25 - remaining_k.length);
@@ -621,7 +641,7 @@
             // Page 7: Vocab
             const p7 = shuffle([...VOCAB_POOL]).slice(0, 14);
             createVocabList('page-7-content', p7);
-            
+
             // Page 8: Particles
             createParticleQuestions('page-8-content', 3);
 
@@ -638,7 +658,7 @@
         function setMode(mode) {
             currentMode = mode;
             body.className = 'mode-' + mode;
-            if(mode === 'typing') {
+            if (mode === 'typing') {
                 btnTyping.className = "px-3 py-1 rounded-lg text-sm font-bold bg-indigo-100 text-indigo-700 transition";
                 btnWriting.className = "px-3 py-1 rounded-lg text-sm font-bold text-slate-400 hover:text-slate-600 transition";
             } else {
@@ -647,27 +667,27 @@
                 // Delay slightly to allow DOM to settle if called immediately after generation
                 setTimeout(() => {
                     document.querySelectorAll('.question-box').forEach(box => {
-                        if(box.dataset.answer && !box.querySelector('canvas')) createCanvas(box);
+                        if (box.dataset.answer && !box.querySelector('canvas')) createCanvas(box);
                     });
                 }, 50);
             }
         }
-        
+
         function createCanvas(container) {
             // Avoid double creating or creating on fillers
-            if(container.classList.contains('border-none') || !container.dataset.answer || container.querySelector('canvas')) return;
-            
+            if (container.classList.contains('border-none') || !container.dataset.answer || container.querySelector('canvas')) return;
+
             const canvas = document.createElement('canvas');
             canvas.className = 'handwriting-canvas';
             container.appendChild(canvas);
-            
+
             // Ensure sizing is correct
             canvas.width = container.clientWidth;
             canvas.height = container.clientHeight;
-            
+
             const ctx = canvas.getContext('2d');
             let isDrawing = false, lastX = 0, lastY = 0;
-            
+
             const getPos = (e) => {
                 const rect = canvas.getBoundingClientRect();
                 const clientX = e.touches ? e.touches[0].clientX : e.clientX;
@@ -677,14 +697,14 @@
 
             const startDraw = (e) => {
                 isDrawing = true;
-                const {x, y} = getPos(e);
+                const { x, y } = getPos(e);
                 lastX = x; lastY = y;
                 canvas.dataset.hasDrawing = "true";
             };
             const draw = (e) => {
-                if(!isDrawing) return;
+                if (!isDrawing) return;
                 e.preventDefault(); // Stop scrolling on touch
-                const {x, y} = getPos(e);
+                const { x, y } = getPos(e);
                 ctx.beginPath();
                 ctx.moveTo(lastX, lastY);
                 ctx.lineTo(x, y);
@@ -696,24 +716,24 @@
                 lastX = x; lastY = y;
             };
             const stopDraw = () => isDrawing = false;
-            
+
             canvas.addEventListener('mousedown', startDraw);
             canvas.addEventListener('mousemove', draw);
             canvas.addEventListener('mouseup', stopDraw);
             canvas.addEventListener('mouseout', stopDraw);
-            canvas.addEventListener('touchstart', startDraw, {passive: false});
-            canvas.addEventListener('touchmove', draw, {passive: false});
+            canvas.addEventListener('touchstart', startDraw, { passive: false });
+            canvas.addEventListener('touchmove', draw, { passive: false });
             canvas.addEventListener('touchend', stopDraw);
         }
 
         function gradeVisual() {
-            if(currentMode === 'typing') {
+            if (currentMode === 'typing') {
                 let score = 0, count = 0;
                 document.querySelectorAll('input').forEach(input => {
                     const box = input.closest('.question-box');
-                    if(!box || !box.dataset.answer) return;
+                    if (!box || !box.dataset.answer) return;
                     count++;
-                    if(input.value.trim().toLowerCase() === box.dataset.answer.toLowerCase()) {
+                    if (input.value.trim().toLowerCase() === box.dataset.answer.toLowerCase()) {
                         box.classList.add('correct-ai');
                         score++;
                     } else {
@@ -738,17 +758,24 @@
             const aiMsg = document.getElementById('ai-message');
             loader.style.display = 'block';
             aiMsg.classList.remove('hidden');
-            
+
+            // Clear previous icons
+            document.querySelectorAll('.result-icon').forEach(el => el.remove());
+
             const canvases = document.querySelectorAll('canvas.handwriting-canvas');
-            
-            for(let canvas of canvases) {
-                if(canvas.dataset.hasDrawing !== "true") continue;
+            let correctCount = 0;
+            let totalChecked = 0;
+
+            for (let canvas of canvases) {
+                if (canvas.dataset.hasDrawing !== "true") continue;
+                totalChecked++;
                 const box = canvas.closest('.question-box');
                 const expected = box.dataset.answer;
                 const base64 = canvas.toDataURL('image/png').split(',')[1];
-                
+
                 box.classList.add('checking');
-                
+                box.classList.remove('correct-ai', 'incorrect-ai'); // Reset state
+
                 try {
                     const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
                         method: 'POST',
@@ -764,19 +791,45 @@
                     });
                     const data = await res.json();
                     box.classList.remove('checking');
+
                     const text = data.candidates?.[0]?.content?.parts?.[0]?.text?.toUpperCase() || "";
-                    if(text.includes("YES")) box.classList.add('correct-ai');
-                    else box.classList.add('incorrect-ai');
-                    
-                } catch(e) {
+
+                    // Create Icon
+                    const icon = document.createElement('div');
+                    icon.className = 'result-icon';
+
+                    if (text.includes("YES")) {
+                        box.classList.add('correct-ai');
+                        icon.innerText = '✅';
+                        correctCount++;
+                    } else {
+                        box.classList.add('incorrect-ai');
+                        icon.innerText = '❌';
+                        // Auto-Reveal Logic
+                        const ghost = box.querySelector('.ghost-answer');
+                        if (ghost) {
+                            ghost.style.opacity = '1';
+                            ghost.style.color = 'rgba(239, 68, 68, 0.4)';
+                        }
+                    }
+                    box.appendChild(icon);
+
+                } catch (e) {
                     console.error(e);
                     box.classList.remove('checking');
                 }
-                await new Promise(r => setTimeout(r, 600)); 
+
+                await new Promise(r => setTimeout(r, 600));
             }
-            
+
             loader.style.display = 'none';
             aiMsg.classList.add('hidden');
+
+            if (totalChecked > 0) {
+                setTimeout(() => alert(`AI Check Complete!\n✅ Correct: ${correctCount}\n❌ Incorrect: ${totalChecked - correctCount}`), 500);
+            } else {
+                alert("Please write something first!");
+            }
         }
 
         // Initialize
