@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1: Affirmative & Negative | Standard Japanese</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Outfit:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', 'Noto Sans SC', sans-serif;
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            min-height: 100vh;
+            color: #1e293b;
+        }
+
+        /* Glassmorphism */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 24px;
+        }
+
+        /* Tabs */
+        .tab-btn {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            color: #4f46e5;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 10%;
+            width: 80%;
+            height: 3px;
+            background: #4f46e5;
+            border-radius: 99px;
+        }
+
+        /* Chat Bubble */
+        .chat-bubble {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .chat-left {
+            background: white;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .chat-right {
+            background: #4f46e5;
+            color: white;
+            border-bottom-right-radius: 4px;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+    </style>
+</head>
+
+<body class="pb-20">
+
+    <!-- Navigation -->
+    <nav class="glass-nav px-6 py-4 mb-8">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <a href="chapter2.html"
+                    class="w-10 h-10 bg-white text-indigo-600 rounded-xl flex items-center justify-center font-bold shadow-sm hover:scale-105 transition"
+                    title="Back to Dashboard">←</a>
+                <div>
+                    <h1 class="text-lg font-bold text-slate-800">Lesson 1</h1>
+                    <p class="text-xs text-slate-500 font-medium tracking-wide">AFFIRMATIVE & NEGATIVE</p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex gap-2">
+                <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-bold">小李是中国人</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 md:px-6">
+
+        <!-- Tabs Navigation -->
+        <div
+            class="glass-panel p-2 flex justify-between md:justify-start gap-2 mb-8 overflow-x-auto sticky top-24 z-40 shadow-sm">
+            <button onclick="switchTab('vocab')" id="tab-vocab"
+                class="tab-btn active px-6 py-3 rounded-xl font-bold text-slate-600 hover:bg-white/50 whitespace-nowrap">
+                📚 单词 Vocabulary
+            </button>
+            <button onclick="switchTab('grammar')" id="tab-grammar"
+                class="tab-btn px-6 py-3 rounded-xl font-bold text-slate-600 hover:bg-white/50 whitespace-nowrap">
+                🧠 语法 Grammar
+            </button>
+            <button onclick="switchTab('text')" id="tab-text"
+                class="tab-btn px-6 py-3 rounded-xl font-bold text-slate-600 hover:bg-white/50 whitespace-nowrap">
+                💬 课文 Text
+            </button>
+            <button onclick="switchTab('culture')" id="tab-culture"
+                class="tab-btn px-6 py-3 rounded-xl font-bold text-slate-600 hover:bg-white/50 whitespace-nowrap">
+                🌸 文化 Culture
+            </button>
+        </div>
+
+        <!-- 1. Vocabulary Section -->
+        <div id="content-vocab" class="space-y-8">
+            <!-- Nationalities -->
+            <section>
+                <h3 class="text-xl font-bold text-slate-800 mb-4 pl-4 border-l-4 border-indigo-500">Nationalities &
+                    People</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="glass-panel p-4 hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-bold text-slate-800">中国人</span>
+                            <span class="px-2 py-1 bg-indigo-100 text-indigo-600 text-xs rounded-md font-bold">④</span>
+                        </div>
+                        <div class="text-indigo-600 font-medium mt-1">ちゅうごくじん</div>
+                        <div class="text-slate-400 text-sm mt-2">Chinese person</div>
+                    </div>
+                    <div class="glass-panel p-4 hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-bold text-slate-800">日本人</span>
+                            <span class="px-2 py-1 bg-indigo-100 text-indigo-600 text-xs rounded-md font-bold">④</span>
+                        </div>
+                        <div class="text-indigo-600 font-medium mt-1">にほんじん</div>
+                        <div class="text-slate-400 text-sm mt-2">Japanese person</div>
+                    </div>
+                    <div class="glass-panel p-4 hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-bold text-slate-800">韓国人</span>
+                            <span class="px-2 py-1 bg-indigo-100 text-indigo-600 text-xs rounded-md font-bold">④</span>
+                        </div>
+                        <div class="text-indigo-600 font-medium mt-1">かんこくじん</div>
+                        <div class="text-slate-400 text-sm mt-2">South Korean person</div>
+                    </div>
+                    <div class="glass-panel p-4 hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-lg font-bold text-slate-800">アメリカ人</span>
+                            <span class="px-2 py-1 bg-indigo-100 text-indigo-600 text-xs rounded-md font-bold">④</span>
+                        </div>
+                        <div class="text-indigo-600 font-medium mt-1">アメリカじん</div>
+                        <div class="text-slate-400 text-sm mt-2">American person</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Roles/Jobs -->
+            <section>
+                <h3 class="text-xl font-bold text-slate-800 mb-4 pl-4 border-l-4 border-emerald-500">Roles & Professions
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="glass-panel p-4 hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-bold text-slate-800">学生</span>
+                            <span
+                                class="px-2 py-1 bg-emerald-100 text-emerald-600 text-xs rounded-md font-bold">⓪</span>
+                        </div>
+                        <div class="text-emerald-600 font-medium mt-1">がくせい</div>
+                        <div class="text-slate-400 text-sm mt-2">Student</div>
+                    </div>
+                    <div class="glass-panel p-4 hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-bold text-slate-800">先生</span>
+                            <span
+                                class="px-2 py-1 bg-emerald-100 text-emerald-600 text-xs rounded-md font-bold">③</span>
+                        </div>
+                        <div class="text-emerald-600 font-medium mt-1">せんせい</div>
+                        <div class="text-slate-400 text-sm mt-2">Teacher / Master</div>
+                    </div>
+                    <div class="glass-panel p-4 hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-bold text-slate-800">留学生</span>
+                            <span
+                                class="px-2 py-1 bg-emerald-100 text-emerald-600 text-xs rounded-md font-bold">④</span>
+                        </div>
+                        <div class="text-emerald-600 font-medium mt-1">りゅうがくせい</div>
+                        <div class="text-slate-400 text-sm mt-2">International student</div>
+                    </div>
+                    <div class="glass-panel p-4 hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-bold text-slate-800">会社員</span>
+                            <span
+                                class="px-2 py-1 bg-emerald-100 text-emerald-600 text-xs rounded-md font-bold">③</span>
+                        </div>
+                        <div class="text-emerald-600 font-medium mt-1">かいしゃいん</div>
+                        <div class="text-slate-400 text-sm mt-2">Office worker</div>
+                    </div>
+                    <div class="glass-panel p-4 hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-bold text-slate-800">社員</span>
+                            <span
+                                class="px-2 py-1 bg-emerald-100 text-emerald-600 text-xs rounded-md font-bold">①</span>
+                        </div>
+                        <div class="text-emerald-600 font-medium mt-1">しゃいん</div>
+                        <div class="text-slate-400 text-sm mt-2">Employee (of specific company)</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 2. Grammar Section -->
+        <div id="content-grammar" class="hidden space-y-8">
+            <!-- Pattern 1 -->
+            <div class="glass-panel p-6 md:p-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <span
+                        class="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">1</span>
+                    <h2 class="text-2xl font-bold text-slate-800">Affirmative: A は B です</h2>
+                </div>
+
+                <div class="bg-indigo-50/50 rounded-xl p-6 border border-indigo-100 mb-6">
+                    <p class="text-lg text-slate-700 font-medium mb-2">Structure:</p>
+                    <div class="flex items-center gap-2 text-xl md:text-2xl font-bold flex-wrap">
+                        <span class="text-slate-800">Noun A</span>
+                        <span class="text-indigo-600">は (wa)</span>
+                        <span class="text-slate-800">Noun B</span>
+                        <span class="text-indigo-600">です (desu)</span>
+                    </div>
+                    <p class="text-slate-500 mt-2 text-sm">Meaning: "A is B"</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex gap-4 items-start">
+                        <span class="text-2xl">👤</span>
+                        <div>
+                            <p class="text-lg font-bold text-slate-800">
+                                わたし<span class="text-indigo-600">は</span>中国人<span class="text-indigo-600">です</span>。
+                            </p>
+                            <p class="text-slate-500">I am Chinese.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <span class="text-2xl">👨‍🏫</span>
+                        <div>
+                            <p class="text-lg font-bold text-slate-800">
+                                李さん<span class="text-indigo-600">は</span>先生<span class="text-indigo-600">です</span>。
+                            </p>
+                            <p class="text-slate-500">Mr. Li is a teacher.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pattern 2 -->
+            <div class="glass-panel p-6 md:p-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <span
+                        class="w-8 h-8 rounded-full bg-rose-500 text-white flex items-center justify-center font-bold">2</span>
+                    <h2 class="text-2xl font-bold text-slate-800">Negative: A は B ではありません</h2>
+                </div>
+
+                <div class="bg-rose-50/50 rounded-xl p-6 border border-rose-100 mb-6">
+                    <p class="text-lg text-slate-700 font-medium mb-2">Structure:</p>
+                    <div class="flex items-center gap-2 text-xl md:text-2xl font-bold flex-wrap">
+                        <span class="text-slate-800">Noun A</span>
+                        <span class="text-rose-500">は</span>
+                        <span class="text-slate-800">Noun B</span>
+                        <span class="text-rose-500">では ありません</span>
+                    </div>
+                    <p class="text-slate-500 mt-2 text-sm">Meaning: "A is NOT B"</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex gap-4 items-start">
+                        <span class="text-2xl">🙅‍♂️</span>
+                        <div>
+                            <p class="text-lg font-bold text-slate-800">
+                                山下さん<span class="text-rose-500">は</span>学生<span class="text-rose-500">ではありません</span>。
+                            </p>
+                            <p class="text-slate-500">Ms. Yamashita is not a student.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <span class="text-2xl">💭</span>
+                        <div>
+                            <p class="text-lg font-bold text-slate-800">
+                                わたしは田中<span class="text-rose-500">じゃ ありません</span>。
+                            </p>
+                            <p class="text-slate-500">I am not Tanaka. (Casual: *ja nai*)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pattern 3 -->
+            <div class="glass-panel p-6 md:p-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <span
+                        class="w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold">3</span>
+                    <h2 class="text-2xl font-bold text-slate-800">Question: A は B ですか</h2>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex gap-4 items-start">
+                        <span class="text-2xl">❓</span>
+                        <div>
+                            <p class="text-lg font-bold text-slate-800">
+                                王さんは留学生<span class="text-amber-500">ですか</span>。
+                            </p>
+                            <p class="text-slate-500">Is Mr. Wang an international student?</p>
+                        </div>
+                    </div>
+                    <div class="pl-12 space-y-2 border-l-2 border-slate-200 ml-3">
+                        <div class="flex gap-2 text-sm">
+                            <span class="font-bold text-emerald-600">Yes:</span>
+                            <span class="text-slate-700">はい、そうです。(Yes, that's right.)</span>
+                        </div>
+                        <div class="flex gap-2 text-sm">
+                            <span class="font-bold text-rose-600">No:</span>
+                            <span class="text-slate-700">いいえ、ちがいます。(No, that's wrong.)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 3. Text Section (Chat) -->
+        <div id="content-text" class="hidden max-w-2xl mx-auto">
+            <div class="glass-panel p-6 space-y-6">
+                <h3 class="text-center font-bold text-slate-400 uppercase tracking-widest text-xs mb-4">SCENE: AIRPORT
+                    ARRIVAL (出迎え)</h3>
+
+                <!-- Li -->
+                <div class="flex gap-4">
+                    <div
+                        class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-bold shrink-0">
+                        李</div>
+                    <div class="chat-bubble chat-left">
+                        <p class="font-bold text-lg mb-1">はい、李秀麗です。はじめまして。</p>
+                        <p class="text-xs text-slate-500">Yes, I am Li Xiuli. Nice to meet you.</p>
+                    </div>
+                </div>
+
+                <!-- Mori -->
+                <div class="flex gap-4 flex-row-reverse">
+                    <div
+                        class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold shrink-0">
+                        森</div>
+                    <div class="chat-bubble chat-right">
+                        <p class="font-bold text-lg mb-1">李さん、こんにちは。</p>
+                        <p class="text-xs text-indigo-100">Hello, Ms. Li.</p>
+                    </div>
+                </div>
+
+                <!-- Li -->
+                <div class="flex gap-4">
+                    <div
+                        class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-bold shrink-0">
+                        李</div>
+                    <div class="chat-bubble chat-left">
+                        <p class="font-bold text-lg mb-1">あっ、森さんですか。どうもすみません。</p>
+                        <p class="text-xs text-slate-500">Oh, are you Mr. Mori? I'm so sorry.</p>
+                    </div>
+                </div>
+
+                <!-- Mori -->
+                <div class="flex gap-4 flex-row-reverse">
+                    <div
+                        class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold shrink-0">
+                        森</div>
+                    <div class="chat-bubble chat-right">
+                        <p class="font-bold text-lg mb-1">いいえ、どうぞよろしく。</p>
+                        <p class="text-xs text-indigo-100">No (problem). Pleased to meet you.</p>
+                    </div>
+                </div>
+
+                <!-- Li -->
+                <div class="flex gap-4">
+                    <div
+                        class="w-10 h-10 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center font-bold shrink-0">
+                        李</div>
+                    <div class="chat-bubble chat-left">
+                        <p class="font-bold text-lg mb-1">李秀麗です。こちらこそ、よろしくおねがいします。</p>
+                        <p class="text-xs text-slate-500">I'm Li Xiuli. Likewise, please treat me well.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 4. Culture Section -->
+        <div id="content-culture" class="hidden space-y-6">
+            <div class="glass-panel p-6 flex flex-col md:flex-row gap-6 items-center">
+                <div class="w-full md:w-1/3 h-48 bg-slate-200 rounded-xl flex items-center justify-center text-4xl">
+                    ⛩️
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-2xl font-bold text-slate-800 mb-2">Tokyo University (Todai)</h3>
+                    <p class="text-slate-600 mb-4">
+                        Japan's most prestigious university. Famous landmarks include the <strong>Akamon (Red
+                            Gate)</strong> and the Yasuda Auditorium.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white/50 p-3 rounded-lg">
+                            <div class="font-bold text-slate-700">Central Cafeteria</div>
+                            <div class="text-xs text-slate-500">Open 11:00-21:00</div>
+                        </div>
+                        <div class="bg-white/50 p-3 rounded-lg">
+                            <div class="font-bold text-slate-700">Todai Manju</div>
+                            <div class="text-xs text-slate-500">Famous Souvenir Bun</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel p-6">
+                <h3 class="text-xl font-bold text-slate-800 mb-4">Common Surnames</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="p-3 bg-white/50 rounded-lg">
+                        <div class="text-2xl font-bold text-slate-800">森</div>
+                        <div class="text-sm text-slate-500">Mori</div>
+                    </div>
+                    <div class="p-3 bg-white/50 rounded-lg">
+                        <div class="text-2xl font-bold text-slate-800">林</div>
+                        <div class="text-sm text-slate-500">Hayashi</div>
+                    </div>
+                    <div class="p-3 bg-white/50 rounded-lg">
+                        <div class="text-2xl font-bold text-slate-800">田中</div>
+                        <div class="text-sm text-slate-500">Tanaka</div>
+                    </div>
+                    <div class="p-3 bg-white/50 rounded-lg">
+                        <div class="text-2xl font-bold text-slate-800">吉田</div>
+                        <div class="text-sm text-slate-500">Yoshida</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function switchTab(tabId) {
+            // Update Buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('tab-' + tabId).classList.add('active');
+
+            // Update Content
+            ['vocab', 'grammar', 'text', 'culture'].forEach(id => {
+                document.getElementById('content-' + id).classList.add('hidden');
+            });
+            document.getElementById('content-' + tabId).classList.remove('hidden');
+
+            // Scroll to top of content gently
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+
+</html>

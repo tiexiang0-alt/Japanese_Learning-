@@ -126,7 +126,13 @@
         lessons.forEach(lesson => {
             const card = document.createElement('div');
             card.className = 'lesson-card p-6 flex flex-col justify-between h-full group cursor-pointer';
-            card.onclick = () => alert(`Lesson ${lesson.id} is coming soon!`);
+            card.onclick = () => {
+                if (lesson.id === 1) {
+                    window.location.href = 'chapter2_lesson1.html';
+                } else {
+                    alert(`Lesson ${lesson.id} is coming soon!`);
+                }
+            };
 
             card.innerHTML = `
                 <div>
