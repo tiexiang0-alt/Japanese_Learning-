@@ -753,109 +753,129 @@
             if (currentMode !== 'handwriting') {
                 alert("Available in Handwriting Mode.");
                 return;
-                const loader = document.getElementById('ai-status-loader');
-                const aiMsg = document.getElementById('ai-message');
-                loader.style.display = 'block';
-                aiMsg.classList.remove('hidden');
-                aiMsg.innerText = "🤖 AI is being a lenient teacher...";
+            }
+            const loader = document.getElementById('ai-status-loader');
+            const aiMsg = document.getElementById('ai-message');
+            loader.style.display = 'block';
+            aiMsg.classList.remove('hidden');
+            aiMsg.innerText = "🤖 Ali AI is judging you...";
+            
+            // Clear previous icons and feedback
+            document.querySelectorAll('.result-icon').forEach(el => el.remove());
+            document.querySelectorAll('.ai-reason').forEach(el => el.remove());
+            
+            const canvases = document.querySelectorAll('canvas.handwriting-canvas');
+            let correctCount = 0;
+            let totalChecked = 0;
+            
+            // Ali AI (DashScope/Qwen) Configuration
+            const ALI_API_KEY = "sk-89914a06e57d465a841b92d1ea15cdf0";
+            const ALI_ENDPOINT = "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions";
 
-                // Clear previous icons and feedback
-                document.querySelectorAll('.result-icon').forEach(el => el.remove());
-                document.querySelectorAll('.ai-reason').forEach(el => el.remove());
-
-                const canvases = document.querySelectorAll('canvas.handwriting-canvas');
-                let correctCount = 0;
-                let totalChecked = 0;
-
-                for (let canvas of canvases) {
-                    if (canvas.dataset.hasDrawing !== "true") continue;
-                    totalChecked++;
-                    const box = canvas.closest('.question-box');
-                    const expected = box.dataset.answer;
-                    const base64 = canvas.toDataURL('image/png').split(',')[1];
-
-                    box.classList.add('checking');
-                    box.classList.remove('correct-ai', 'incorrect-ai');
-
-                    try {
-                        // Prompt engineered for leniency and specific feedback
-                        const prompt = `
-                        You are a Japanese teacher grading a beginner student.
-                        Look at this handwriting. The student attempted to write: ${expected}.
+            for(let canvas of canvases) {
+                if(canvas.dataset.hasDrawing !== "true") continue;
+                totalChecked++;
+                const box = canvas.closest('.question-box');
+                const expected = box.dataset.answer;
+                const base64 = canvas.toDataURL('image/png'); // Keep data header for OpenAI format
+                
+                box.classList.add('checking');
+                box.classList.remove('correct-ai', 'incorrect-ai'); 
+                
+                try {
+                     const prompt = `
+                        You are a lenient Japanese teacher.
+                        The student wrote the character: ${expected}.
                         
                         Rules:
-                        1. Be LENIENT. If it resembles the character, Pass it.
-                        2. Ignore stroke thickness, slight tilt, or wobbly lines.
-                        3. Only Fail if it is unreadable, completely wrong character, or missing major strokes.
+                        1. Pass if it resembles the character (ignore minor flaws).
+                        2. Only Fail if unreadable/wrong character.
                         
-                        Return a valid JSON object:
-                        {
-                            "pass": true/false,
-                            "reason": "If fail, short (max 5 words) reason why. If pass, 'Good'."
-                        }
+                        Return valid JSON:
+                        { "pass": true/false, "reason": "Short reason (max 5 words)" }
                     `;
 
-                        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                contents: [{
-                                    parts: [
-                                        { text: prompt },
-                                        { inline_data: { mime_type: "image/png", data: base64 } }
+                    const res = await fetch(ALI_ENDPOINT, {
+                        method: 'POST',
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${ALI_API_KEY}`
+                        },
+                        body: JSON.stringify({
+                            model: "qwen-vl-max",
+                            messages: [
+                                {
+                                    role: "user",
+                                    content: [
+                                        { type: "text", text: prompt },
+                                        { type: "image_url", image_url: { url: base64 } }
                                     ]
-                                }],
-                                generationConfig: { response_mime_type: "application/json" }
-                            })
-                        });
-                        const data = await res.json();
-                        box.classList.remove('checking');
-
-                        const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text || "{}";
-                        const result = JSON.parse(responseText);
-
-                        const icon = document.createElement('div');
-                        icon.className = 'result-icon';
-
-                        if (result.pass) {
-                            box.classList.add('correct-ai');
-                            icon.innerText = '✅';
-                            correctCount++;
-                        } else {
-                            box.classList.add('incorrect-ai');
-                            icon.innerText = '❌';
-
-                            // Show Reason
-                            const reason = document.createElement('div');
-                            reason.className = 'ai-reason';
-                            reason.innerText = result.reason || "Try again";
-                            reason.style.cssText = "position:absolute; bottom:-20px; left:0; right:0; text-align:center; font-size:10px; color:#ef4444; background:white; padding:2px; border-radius:4px; border:1px solid #ef4444; box-shadow:0 2px 4px rgba(0,0,0,0.1); z-index:30;";
-                            box.appendChild(reason);
-
-                            // Auto-Reveal
-                            const ghost = box.querySelector('.ghost-answer');
-                            if (ghost) {
-                                ghost.style.opacity = '1';
-                                ghost.style.color = 'rgba(239, 68, 68, 0.4)';
-                            }
-                        }
-                        box.appendChild(icon);
-
-                    } catch (e) {
-                        console.error("AI Error", e);
-                        box.classList.remove('checking');
+                                }
+                            ]
+                        })
+                    });
+                    
+                    const data = await res.json();
+                    box.classList.remove('checking');
+                    
+                    if(data.error) throw new Error(data.error.message);
+                    
+                    let content = data.choices?.[0]?.message?.content || "{}";
+                    // Clean json markdown if present
+                    content = content.replace(/```json/g, '').replace(/```/g, '').trim();
+                    
+                    let result;
+                    try {
+                         result = JSON.parse(content);
+                    } catch(e) {
+                         // Fallback if AI returns non-json text
+                         result = { 
+                             pass: content.toLowerCase().includes('true') || content.toLowerCase().includes('pass'),
+                             reason: content 
+                         };
                     }
 
-                    await new Promise(r => setTimeout(r, 600));
-                }
+                    const icon = document.createElement('div');
+                    icon.className = 'result-icon';
+                    
+                    if(result.pass) {
+                        box.classList.add('correct-ai');
+                        icon.innerText = '✅';
+                        correctCount++;
+                    } else {
+                        box.classList.add('incorrect-ai');
+                        icon.innerText = '❌';
+                        
+                        const reason = document.createElement('div');
+                        reason.className = 'ai-reason';
+                        reason.innerText = result.reason || "Try again";
+                        reason.style.cssText = "position:absolute; bottom:-20px; left:0; right:0; text-align:center; font-size:10px; color:#ef4444; background:white; padding:2px; border-radius:4px; border:1px solid #ef4444; box-shadow:0 2px 4px rgba(0,0,0,0.1); z-index:30;";
+                        box.appendChild(reason);
 
-                loader.style.display = 'none';
-                aiMsg.classList.add('hidden');
-
-                if (totalChecked > 0) {
-                    setTimeout(() => alert(`Teacher says:\n✅ Passed: ${correctCount}\n❌ Needs Work: ${totalChecked - correctCount}`), 500);
+                        const ghost = box.querySelector('.ghost-answer');
+                        if(ghost) {
+                            ghost.style.opacity = '1';
+                            ghost.style.color = 'rgba(239, 68, 68, 0.4)';
+                        }
+                    }
+                    box.appendChild(icon);
+                    
+                } catch(e) {
+                    console.error("AI Error", e);
+                    box.classList.remove('checking');
+                    alert(`AI Error: ${e.message}`);
                 }
+                
+                await new Promise(r => setTimeout(r, 600)); 
             }
+            
+            loader.style.display = 'none';
+            aiMsg.classList.add('hidden');
+            
+            if(totalChecked > 0) {
+                 setTimeout(() => alert(`Teacher says:\n✅ Passed: ${correctCount}\n❌ Needs Work: ${totalChecked - correctCount}`), 500);
+            }
+        }          
 
             // Initialize
             remixTest();
