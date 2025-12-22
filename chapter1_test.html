@@ -784,15 +784,16 @@
                 
                 try {
                      const prompt = `
-                        You are a lenient Japanese teacher.
+                        You are a Japanese teacher grading a student.
                         The student wrote the character: ${expected}.
                         
                         Rules:
-                        1. Pass if it resembles the character (ignore minor flaws).
-                        2. Only Fail if unreadable/wrong character.
+                        1. PASS if the character is legible and correct (ignore bad balance or stroke order).
+                        2. FAIL if it is a scribbled mess, crossed out, or unreadable.
+                        3. FAIL if it is clearly the WRONG character.
                         
                         Return valid JSON:
-                        { "pass": true/false, "reason": "Short reason (max 5 words)" }
+                        { "pass": true/false, "reason": "Short reason (e.g. 'Too messy', 'Wrong shape')" }
                     `;
 
                     const res = await fetch(ALI_ENDPOINT, {
