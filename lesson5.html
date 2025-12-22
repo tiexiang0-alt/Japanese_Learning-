@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第5课：浊音与半浊音 (Ga-Pa) – 盾盾日语全覆盖笔记</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Klee+One:wght@400;600&family=ZCOOL+XiaoWei&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --ga-main: #10b981;
+            /* Emerald */
+            --za-main: #d946ef;
+            /* Fuchsia */
+            --da-main: #f59e0b;
+            /* Amber */
+            --ba-main: #f43f5e;
+            /* Rose */
+            --pa-main: #ec4899;
+            /* Pink */
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .handwriting {
+            font-family: 'Klee One', cursive;
+        }
+
+        .quote {
+            font-family: 'ZCOOL XiaoWei', serif;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.9);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        }
+
+        .mnemonic-tag {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            color: #374151;
+        }
+
+        .teacher-tip {
+            border-left: 4px solid #8b5cf6;
+            background-color: #f3e8ff;
+        }
+
+        .kana-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .kana-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+
+<body class="text-slate-800">
+
+    <!-- Sticky Navigation -->
+    <nav class="sticky top-0 z-50 glass border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <a href="index.html"
+                    class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg">盾</a>
+                <div>
+                    <h1 class="font-black text-slate-900 leading-none">盾盾日语</h1>
+                    <span class="text-[10px] text-indigo-500 font-bold uppercase tracking-widest">Dakuon &
+                        Handakuon</span>
+                </div>
+            </div>
+            <div class="hidden md:flex gap-6 text-sm font-bold">
+                <a href="lesson4.html" class="text-slate-400 hover:text-indigo-600 transition"><- 上一课 (Ya-N)</a>
+                        <a href="#ga-row" class="text-emerald-600 hover:opacity-70 transition">が行</a>
+                        <a href="#za-row" class="text-fuchsia-600 hover:opacity-70 transition">ざ行</a>
+                        <a href="#da-row" class="text-amber-600 hover:opacity-70 transition">だ行</a>
+                        <a href="#ba-row" class="text-rose-600 hover:opacity-70 transition">ば行</a>
+                        <a href="#pa-row" class="text-pink-600 hover:opacity-70 transition">ぱ行</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 py-12">
+        <!-- Lesson Header -->
+        <header class="mb-20 text-center">
+            <h2 class="text-5xl md:text-6xl font-black text-slate-900 mb-6 leading-tight">
+                第5课 – <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-rose-500">点点与圈圈的魔法</span>
+            </h2>
+            <p class="text-xl text-slate-500 max-w-2xl mx-auto">
+                “浊音（两点）让声音变浑厚，半浊音（圈圈）让声音变爆破。掌握这25个音，你的词汇量将翻倍！”
+            </p>
+        </header>
+
+        <!-- Intro Section -->
+        <section class="mb-20">
+            <div class="bg-indigo-50 rounded-[2.5rem] p-10 border border-indigo-100">
+                <h3 class="text-2xl font-black text-indigo-900 mb-6">📝 变换规则一览</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <h4 class="font-bold text-lg mb-4 text-slate-700">浊音 (Dakuon) ゛</h4>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-center gap-3">
+                                <span class="font-mono bg-emerald-100 text-emerald-700 px-2 py-1 rounded">ka</span>
+                                <span>→</span>
+                                <span class="font-mono bg-emerald-600 text-white px-2 py-1 rounded font-bold">ga
+                                    (が)</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="font-mono bg-fuchsia-100 text-fuchsia-700 px-2 py-1 rounded">sa</span>
+                                <span>→</span>
+                                <span class="font-mono bg-fuchsia-600 text-white px-2 py-1 rounded font-bold">za
+                                    (ざ)</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="font-mono bg-amber-100 text-amber-700 px-2 py-1 rounded">ta</span>
+                                <span>→</span>
+                                <span class="font-mono bg-amber-600 text-white px-2 py-1 rounded font-bold">da
+                                    (だ)</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="font-mono bg-rose-100 text-rose-700 px-2 py-1 rounded">ha</span>
+                                <span>→</span>
+                                <span class="font-mono bg-rose-600 text-white px-2 py-1 rounded font-bold">ba (ば)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <h4 class="font-bold text-lg mb-4 text-slate-700">半浊音 (Handakuon) ゜</h4>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-center gap-3">
+                                <span class="font-mono bg-pink-100 text-pink-700 px-2 py-1 rounded">ha</span>
+                                <span>→</span>
+                                <span class="font-mono bg-pink-600 text-white px-2 py-1 rounded font-bold">pa (ぱ)</span>
+                            </li>
+                        </ul>
+                        <p class="mt-6 text-xs text-slate-400">只有 Ha 行可以变身成 Pa 行哦！</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GA ROW -->
+        <section id="ga-row" class="mb-32 scroll-mt-24">
+            <div class="flex items-center gap-4 mb-12">
+                <span
+                    class="px-4 py-1 bg-emerald-600 text-white rounded-full font-bold text-sm tracking-widest uppercase">Ga-Row</span>
+                <h3 class="text-4xl font-black text-slate-900">が行：K → G</h3>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12 text-center">
+                <div
+                    class="p-4 bg-white rounded-xl shadow-sm border border-emerald-100 font-bold text-2xl text-emerald-700">
+                    が (ga)</div>
+                <div
+                    class="p-4 bg-white rounded-xl shadow-sm border border-emerald-100 font-bold text-2xl text-emerald-700">
+                    ぎ (gi)</div>
+                <div
+                    class="p-4 bg-white rounded-xl shadow-sm border border-emerald-100 font-bold text-2xl text-emerald-700">
+                    ぐ (gu)</div>
+                <div
+                    class="p-4 bg-white rounded-xl shadow-sm border border-emerald-100 font-bold text-2xl text-emerald-700">
+                    げ (ge)</div>
+                <div
+                    class="p-4 bg-white rounded-xl shadow-sm border border-emerald-100 font-bold text-2xl text-emerald-700">
+                    ご (go)</div>
+            </div>
+
+            <!-- Ga Vocab -->
+            <div class="bg-emerald-50 rounded-3xl p-8 border border-emerald-100">
+                <h4 class="text-2xl font-black mb-6 text-emerald-900">核心词汇</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-black italic">がいこく</span>
+                            <span class="text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded font-bold">外国</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">Gaikoku ⓪型。平缓上升。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-black italic">ぎんこう</span>
+                            <span class="text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded font-bold">银行</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">Ginkou ⓪型。Ging-kou (长音)。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-black italic">かぐ</span>
+                            <span class="text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded font-bold">家具</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">Kagu ①型。Ka是高的。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ZA ROW -->
+        <section id="za-row" class="mb-32 scroll-mt-24">
+            <div class="flex items-center gap-4 mb-12">
+                <span
+                    class="px-4 py-1 bg-fuchsia-600 text-white rounded-full font-bold text-sm tracking-widest uppercase">Za-Row</span>
+                <h3 class="text-4xl font-black text-slate-900">ざ行：S → Z</h3>
+            </div>
+
+            <div class="teacher-tip p-6 rounded-2xl mb-12 border-l-fuchsia-500 bg-fuchsia-50">
+                <p class="font-bold text-fuchsia-900 mb-2">⚠️ 重点注意：</p>
+                <p class="text-fuchsia-800 text-sm">
+                    <strong>ji (じ)</strong>：Shi (し) 加两点。发音接近 "ji" (鸡)。<br>
+                    虽然是 Z 行，但不是 "Zi" 哦！
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12 text-center">
+                <div
+                    class="p-4 bg-white rounded-xl shadow-sm border border-fuchsia-100 font-bold text-2xl text-fuchsia-700">
+                    ざ (za)</div>
+                <div
+                    class="p-4 bg-white rounded-xl shadow-sm border border-fuchsia-100 font-bold text-2xl text-fuchsia-700 ring-4 ring-fuchsia-200">
+                    じ (ji)</div>
+                <div
+                    class="p-4 bg-white rounded-xl shadow-sm border border-fuchsia-100 font-bold text-2xl text-fuchsia-700">
+                    ず (zu)</div>
+                <div
+                    class="p-4 bg-white rounded-xl shadow-sm border border-fuchsia-100 font-bold text-2xl text-fuchsia-700">
+                    ぜ (ze)</div>
+                <div
+                    class="p-4 bg-white rounded-xl shadow-sm border border-fuchsia-100 font-bold text-2xl text-fuchsia-700">
+                    ぞ (zo)</div>
+            </div>
+
+            <!-- Za Vocab -->
+            <div class="bg-fuchsia-50 rounded-3xl p-8 border border-fuchsia-100">
+                <h4 class="text-2xl font-black mb-6 text-fuchsia-900">核心词汇</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-black italic">ざせき</span>
+                            <span class="text-xs bg-fuchsia-100 text-fuchsia-700 px-2 py-1 rounded font-bold">座席</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">Zaseki (座位)。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-black italic">ふじさん</span>
+                            <span class="text-xs bg-fuchsia-100 text-fuchsia-700 px-2 py-1 rounded font-bold">富士山</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">Fujisan ①型。Fu是有声调的。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-black italic">ちず</span>
+                            <span class="text-xs bg-fuchsia-100 text-fuchsia-700 px-2 py-1 rounded font-bold">地図</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">Chizu ①型。Zu是平的。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DA ROW -->
+        <section id="da-row" class="mb-32 scroll-mt-24">
+            <div class="flex items-center gap-4 mb-12">
+                <span
+                    class="px-4 py-1 bg-amber-600 text-white rounded-full font-bold text-sm tracking-widest uppercase">Da-Row</span>
+                <h3 class="text-4xl font-black text-slate-900">だ行：T → D</h3>
+            </div>
+
+            <div class="teacher-tip p-6 rounded-2xl mb-12 border-l-amber-500 bg-amber-50">
+                <p class="font-bold text-amber-900 mb-2">🤔 两个 Ji 和两个 Zu？</p>
+                <p class="text-amber-800 text-sm">
+                    <strong>ji (ぢ)</strong> 和 <strong>zu (づ)</strong> 的发音和 Z 行的 じ、ず 完全一样！<br>
+                    但在现代日语中，<strong>95%的情况都用 Z 行的 じ 和 ず</strong>。<br>
+                    D 行的这两个只在特定组合（如连浊、重复音）中出现（如 Tsuzuku 続く）。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12 text-center">
+                <div
+                    class="p-4 bg-white rounded-xl shadow-sm border border-amber-100 font-bold text-2xl text-amber-700">
+                    だ (da)</div>
+                <div
+                    class="p-4 bg-slate-100 rounded-xl shadow-sm border border-slate-200 font-bold text-2xl text-slate-400 opacity-60">
+                    ぢ (ji)</div>
+                <div
+                    class="p-4 bg-slate-100 rounded-xl shadow-sm border border-slate-200 font-bold text-2xl text-slate-400 opacity-60">
+                    づ (zu)</div>
+                <div
+                    class="p-4 bg-white rounded-xl shadow-sm border border-amber-100 font-bold text-2xl text-amber-700">
+                    で (de)</div>
+                <div
+                    class="p-4 bg-white rounded-xl shadow-sm border border-amber-100 font-bold text-2xl text-amber-700">
+                    ど (do)</div>
+            </div>
+
+            <!-- Da Vocab -->
+            <div class="bg-amber-50 rounded-3xl p-8 border border-amber-100">
+                <h4 class="text-2xl font-black mb-6 text-amber-900">核心词汇</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-black italic">だいがく</span>
+                            <span class="text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded font-bold">大学</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">Daigaku ⓪型。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-black italic">でんわ</span>
+                            <span class="text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded font-bold">電話</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">Denwa ⓪型。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-black italic">ドア</span>
+                            <span class="text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded font-bold">Door</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">Doa ①型。门。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BA ROW -->
+        <section id="ba-row" class="mb-32 scroll-mt-24">
+            <div class="flex items-center gap-4 mb-12">
+                <span
+                    class="px-4 py-1 bg-rose-600 text-white rounded-full font-bold text-sm tracking-widest uppercase">Ba-Row</span>
+                <h3 class="text-4xl font-black text-slate-900">ば行：H → B</h3>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12 text-center">
+                <div class="p-4 bg-white rounded-xl shadow-sm border border-rose-100 font-bold text-2xl text-rose-700">ば
+                    (ba)</div>
+                <div class="p-4 bg-white rounded-xl shadow-sm border border-rose-100 font-bold text-2xl text-rose-700">び
+                    (bi)</div>
+                <div class="p-4 bg-white rounded-xl shadow-sm border border-rose-100 font-bold text-2xl text-rose-700">ぶ
+                    (bu)</div>
+                <div class="p-4 bg-white rounded-xl shadow-sm border border-rose-100 font-bold text-2xl text-rose-700">べ
+                    (be)</div>
+                <div class="p-4 bg-white rounded-xl shadow-sm border border-rose-100 font-bold text-2xl text-rose-700">ぼ
+                    (bo)</div>
+            </div>
+
+            <!-- Ba Vocab -->
+            <div class="bg-rose-50 rounded-3xl p-8 border border-rose-100">
+                <h4 class="text-2xl font-black mb-6 text-rose-900">核心词汇</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-black italic">いちば</span>
+                            <span class="text-xs bg-rose-100 text-rose-700 px-2 py-1 rounded font-bold">市場</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">Ichiba (市场)。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-black italic">バス</span>
+                            <span class="text-xs bg-rose-100 text-rose-700 px-2 py-1 rounded font-bold">Bus</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">Basu ①型。公交车。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-black italic">べんり</span>
+                            <span class="text-xs bg-rose-100 text-rose-700 px-2 py-1 rounded font-bold">便利</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">Benri ①型。方便。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PA ROW (Handakuon) -->
+        <section id="pa-row" class="mb-32 scroll-mt-24">
+            <div class="flex items-center gap-4 mb-12">
+                <span
+                    class="px-4 py-1 bg-pink-600 text-white rounded-full font-bold text-sm tracking-widest uppercase">Pa-Row</span>
+                <h3 class="text-4xl font-black text-slate-900">ぱ行：H → P (半浊音)</h3>
+            </div>
+
+            <div class="teacher-tip p-6 rounded-2xl mb-12 border-l-pink-500 bg-pink-50">
+                <p class="font-bold text-pink-900 mb-2">💣 爆破音！</p>
+                <p class="text-pink-800 text-sm">
+                    加上小圈圈（半浊点），发音变成 P。<br>
+                    Pa, Pi, Pu, Pe, Po。主要用于外来语（Pandu, Pan）或者拟声词（PikaPika）。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12 text-center">
+                <div class="p-4 bg-white rounded-xl shadow-sm border border-pink-100 font-bold text-2xl text-pink-700">ぱ
+                    (pa)</div>
+                <div class="p-4 bg-white rounded-xl shadow-sm border border-pink-100 font-bold text-2xl text-pink-700">ぴ
+                    (pi)</div>
+                <div class="p-4 bg-white rounded-xl shadow-sm border border-pink-100 font-bold text-2xl text-pink-700">ぷ
+                    (pu)</div>
+                <div class="p-4 bg-white rounded-xl shadow-sm border border-pink-100 font-bold text-2xl text-pink-700">ぺ
+                    (pe)</div>
+                <div class="p-4 bg-white rounded-xl shadow-sm border border-pink-100 font-bold text-2xl text-pink-700">ぽ
+                    (po)</div>
+            </div>
+
+            <!-- Pa Vocab -->
+            <div class="bg-pink-50 rounded-3xl p-8 border border-pink-100">
+                <h4 class="text-2xl font-black mb-6 text-pink-900">核心词汇 (多为外来语)</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-black italic">パンダ</span>
+                            <span class="text-xs bg-pink-100 text-pink-700 px-2 py-1 rounded font-bold">Panda</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">Panda ①型。熊猫。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-black italic">パン</span>
+                            <span class="text-xs bg-pink-100 text-pink-700 px-2 py-1 rounded font-bold">Pan</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">Pan ①型。面包。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-black italic">プロ</span>
+                            <span class="text-xs bg-pink-100 text-pink-700 px-2 py-1 rounded font-bold">Pro</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">Puro ①型。专业的。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-50 py-20 border-t border-slate-200 text-center">
+        <h4 class="font-bold text-slate-900 mb-4">太棒了！你已经解锁了浊音和半浊音！🔓</h4>
+        <p class="text-slate-500 text-sm mb-8 max-w-lg mx-auto">
+            “词汇的世界瞬间变大了！下一步，我们将学习拗音（Yoon）和 促音（Sokuon），那是日语节奏感的关键。”
+        </p>
+        <a href="index.html"
+            class="inline-block px-12 py-4 bg-indigo-600 text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition transform mb-8">
+            回到主页 (Back to Home)
+        </a>
+        <p class="text-[10px] text-slate-300 uppercase tracking-widest font-bold">© 2025 盾盾日语全覆盖教学笔记</p>
+    </footer>
+
+</body>
+
+</html>
