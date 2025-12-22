@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第1课：元音入门 (A-Row) – 盾盾日语全覆盖笔记</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Klee+One:wght@400;600&family=ZCOOL+XiaoWei&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --brand-orange: #f97316;
+            --brand-yellow: #eab308;
+            --brand-dark: #1e293b;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #fff7ed;
+        }
+
+        .handwriting {
+            font-family: 'Klee One', cursive;
+        }
+
+        .quote {
+            font-family: 'ZCOOL XiaoWei', serif;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.9);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        }
+
+        .font-hand {
+            font-family: 'Klee One', cursive;
+        }
+
+        .kana-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .kana-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+
+<body class="text-slate-800">
+
+    <!-- Sticky Navigation -->
+    <nav class="sticky top-0 z-50 glass border-b border-orange-200">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <a href="index.html"
+                    class="w-10 h-10 bg-brand-orange rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg">盾</a>
+                <div>
+                    <h1 class="font-black text-slate-900 leading-none">盾盾日语</h1>
+                    <span class="text-[10px] text-orange-600 font-bold uppercase tracking-widest">Mastering
+                        Vowels</span>
+                </div>
+            </div>
+            <div class="hidden md:flex gap-6 text-sm font-bold">
+                <a href="chapter1.html" class="text-slate-400 hover:text-orange-600 transition"><- 回到章节地图 (Chapter
+                        1)</a>
+                        <a href="#intro" class="text-slate-600 hover:opacity-70 transition">书写系统</a>
+                        <a href="#vowels" class="text-orange-600 hover:opacity-70 transition">元音 (あ行)</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 py-12">
+        <!-- Lesson Header -->
+        <header class="mb-20 text-center">
+            <h2 class="text-5xl md:text-6xl font-black text-slate-900 mb-6 leading-tight">
+                第1课 – <span class="text-brand-orange">五十音的起源</span>
+            </h2>
+            <p class="text-xl text-slate-500 max-w-2xl mx-auto">
+                “一切的开始。掌握这5个元音（A, I, U, E, O），你就掌握了日语发音的50%。”
+            </p>
+        </header>
+
+        <!-- Intro Section -->
+        <section id="intro" class="mb-20">
+            <div class="bg-white rounded-[2.5rem] p-10 border border-orange-100 shadow-xl">
+                <div class="flex items-center gap-4 mb-8">
+                    <span
+                        class="px-4 py-1 bg-slate-800 text-white rounded-full font-bold text-sm tracking-widest uppercase">Overview</span>
+                    <h3 class="text-2xl font-black text-slate-900">日语书写系统：三位一体</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Kanji -->
+                    <div class="bg-orange-50 p-6 rounded-2xl border border-orange-100">
+                        <div class="text-4xl mb-4">汉字</div>
+                        <h4 class="font-bold text-lg mb-2 text-orange-900">Kanji (表意)</h4>
+                        <p class="text-sm text-slate-600">
+                            源自中国。用于实词（名词、动词词根）。<br>
+                            <span class="text-xs text-slate-400">例：私 (Watashi), 食べる (Taberu)</span>
+                        </p>
+                    </div>
+                    <!-- Hiragana -->
+                    <div class="bg-orange-50 p-6 rounded-2xl border border-orange-100">
+                        <div class="text-4xl mb-4 text-orange-600 font-hand">あ</div>
+                        <h4 class="font-bold text-lg mb-2 text-orange-900">平假名 (Hiragana)</h4>
+                        <p class="text-sm text-slate-600">
+                            草书演变。圆润柔和。用于语法功能词、助词。<br>
+                            <span class="text-xs text-slate-400">例：の (no), です (desu)</span>
+                        </p>
+                    </div>
+                    <!-- Katakana -->
+                    <div class="bg-orange-50 p-6 rounded-2xl border border-orange-100">
+                        <div class="text-4xl mb-4 text-orange-600 font-hand">ア</div>
+                        <h4 class="font-bold text-lg mb-2 text-orange-900">片假名 (Katakana)</h4>
+                        <p class="text-sm text-slate-600">
+                            楷书偏旁。棱角分明。用于外来语、强调。<br>
+                            <span class="text-xs text-slate-400">例：コーヒー (Coffee)</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VOWELS SECTION -->
+        <section id="vowels" class="mb-32">
+            <div class="flex items-center gap-4 mb-12">
+                <span
+                    class="px-4 py-1 bg-brand-orange text-white rounded-full font-bold text-sm tracking-widest uppercase">A-Row</span>
+                <h3 class="text-4xl font-black text-slate-900">元音行：开口发声</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- A -->
+                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-brand-orange">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="text-7xl font-black text-orange-600 handwriting">あ</div>
+                        <div class="text-right">
+                            <div class="text-3xl font-bold text-slate-300 text-orange-300">ア</div>
+                            <div class="text-sm font-mono text-orange-400">a</div>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-sm">
+                        <p><strong>口型：</strong>自然张大，像看牙医就在“啊”。</p>
+                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
+                            “安(an)全的安。平假名像写草书的安。片假名是偏旁阝。”
+                        </div>
+                    </div>
+                </div>
+
+                <!-- I -->
+                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-brand-orange">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="text-7xl font-black text-orange-600 handwriting">い</div>
+                        <div class="text-right">
+                            <div class="text-3xl font-bold text-slate-300 text-orange-300">イ</div>
+                            <div class="text-sm font-mono text-orange-400">i</div>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-sm">
+                        <p><strong>口型：</strong>嘴角向两边拉开，微笑。</p>
+                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
+                            “以(yi)前的以。HIRAGANA是左边长右边短。KATAKANA是单人旁。”
+                        </div>
+                    </div>
+                </div>
+
+                <!-- U -->
+                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-brand-orange">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="text-7xl font-black text-orange-600 handwriting">う</div>
+                        <div class="text-right">
+                            <div class="text-3xl font-bold text-slate-300 text-orange-300">ウ</div>
+                            <div class="text-sm font-mono text-orange-400">u</div>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-sm">
+                        <p><strong>重点：</strong>不要撅嘴！嘴唇放松，不圆唇。</p>
+                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
+                            “宇(yu)宙的宇。片假名完全就是宝盖头。”
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E -->
+                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-brand-orange">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="text-7xl font-black text-orange-600 handwriting">え</div>
+                        <div class="text-right">
+                            <div class="text-3xl font-bold text-slate-300 text-orange-300">エ</div>
+                            <div class="text-sm font-mono text-orange-400">e</div>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-sm">
+                        <p><strong>口型：</strong>发“诶？”的音。</p>
+                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
+                            “元(yuan)气。平假名像元字上面一点。片假名就是工地的工。”
+                        </div>
+                    </div>
+                </div>
+
+                <!-- O -->
+                <div class="kana-card glass rounded-[2rem] p-8 border-l-4 border-l-brand-orange">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="text-7xl font-black text-orange-600 handwriting">お</div>
+                        <div class="text-right">
+                            <div class="text-3xl font-bold text-slate-300 text-orange-300">オ</div>
+                            <div class="text-sm font-mono text-orange-400">o</div>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-sm">
+                        <p><strong>口型：</strong>嘴巴呈圆形，发“哦”。</p>
+                        <div class="mnemonic-tag p-3 rounded-xl font-bold italic">
+                            “于(yu)->o。平假名有点像‘o’字加一点。片假名像才华的才。”
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Vocab -->
+            <div class="bg-orange-50 rounded-3xl p-8 border border-orange-100 mt-12">
+                <h4 class="text-2xl font-black mb-6 text-orange-900">核心词汇</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-black italic">あい (ai)</span>
+                            <span class="text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded font-bold">愛</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">爱。①型。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-black italic">うえ (ue)</span>
+                            <span class="text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded font-bold">上</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">上面。⓪型。</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <span class="text-2xl font-black italic">あおい (aoi)</span>
+                            <span class="text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded font-bold">青い</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">蓝色的。②型。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-50 py-20 border-t border-slate-200 text-center">
+        <h4 class="font-bold text-slate-900 mb-4">第一步已经迈出！</h4>
+        <p class="text-slate-500 text-sm mb-8 max-w-lg mx-auto">
+            元音是所有日语发音的基础。所有的辅音（K, S, T...）都是为了辅助元音而存在的。
+        </p>
+        <a href="lesson2.html"
+            class="inline-block px-12 py-4 bg-brand-orange text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition transform mb-8">
+            进入下一课：Lesson 2 (Ka-Ta) ->
+        </a>
+        <p class="text-[10px] text-slate-300 uppercase tracking-widest font-bold">© 2025 盾盾日语全覆盖教学笔记</p>
+    </footer>
+
+</body>
+
+</html>
