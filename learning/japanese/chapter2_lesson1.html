@@ -798,25 +798,25 @@
                     <div class="flex justify-between items-start">
                         <div>
                             <span class="text-3xl font-bold text-slate-800">彼女 <span
-                                    class="text-lg text-purple-400">🔊</span> <span <div
-                                    class="text-purple-400 font-bold mt-2 text-xl tracking-widest">
-                                    <span class="pitch-container">
-                                        か
-                                        <div class="pitch-line" style="left: 100%; right: 0;"></div>
-                                    </span>
-                                    <span class="pitch-container">
-                                        のじょ
-                                        <div class="pitch-line"></div>
-                                        <div class="pitch-down"></div>
-                                    </span>
+                                    class="text-lg text-purple-400">🔊</span></span>
+                            <div class="text-purple-400 font-bold mt-2 text-xl tracking-widest">
+                                <span class="pitch-container">
+                                    か
+                                    <div class="pitch-line" style="left: 100%; right: 0;"></div>
+                                </span>
+                                <span class="pitch-container">
+                                    のじょ
+                                    <div class="pitch-line"></div>
+                                    <div class="pitch-down"></div>
+                                </span>
+                            </div>
                         </div>
+                        <span
+                            class="px-3 py-1 bg-white/80 text-slate-800 border border-slate-300 text-xs rounded-full font-bold">TYPE
+                            ①</span>
                     </div>
-                    <span
-                        class="px-3 py-1 bg-white/80 text-slate-800 border border-slate-300 text-xs rounded-full font-bold">TYPE
-                        ①</span>
+                    <p class="text-slate-500 text-sm mt-4">She / Girlfriend</p>
                 </div>
-                <p class="text-slate-500 text-sm mt-4">She / Girlfriend</p>
-        </div>
         </div>
 
         <!-- Personal Pronouns Nuance -->
@@ -1239,38 +1239,60 @@
 
                 <div class="space-y-8">
                     <!-- Yoshida -->
+                    <!-- Li: Yoshida-san desu ka -->
                     <div class="flex gap-4 items-end group cursor-pointer" onclick="playAudio('text_2_1')">
                         <div
-                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-slate-800 font-black text-xl shadow-lg border border-slate-300">
-                            吉</div>
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-slate-800 font-black text-xl shadow-lg border border-slate-300">
+                            李</div>
                         <div class="chat-bubble chat-left group-hover:scale-[1.02] transition-transform">
-                            <p class="text-lg font-bold">李さんですか。 🔊</p>
-                            <p class="text-slate-500 text-sm mt-2">Are you Mr. Li?</p>
+                            <p class="text-lg font-bold">吉田さんですか。 🔊</p>
+                            <p class="text-slate-500 text-sm mt-2">Are you Mr. Yoshida?</p>
                         </div>
                     </div>
 
-                    <!-- Mori -->
+                    <!-- Mori: Iie... -->
                     <div class="flex gap-4 flex-row-reverse items-end group cursor-pointer"
                         onclick="playAudio('text_2_2')">
                         <div
                             class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-slate-800 font-black text-xl shadow-lg border border-slate-300">
                             森</div>
                         <div class="chat-bubble chat-right group-hover:scale-[1.02] transition-transform">
-                            <p class="text-lg font-bold">いいえ、李じゃありません。森です。 🔊</p>
-                            <p class="text-indigo-100/70 text-sm mt-2">No, I'm not Li.
-                                I'm Mori.</p>
+                            <p class="text-lg font-bold">いいえ、吉田じゃありません。森です。 🔊</p>
+                            <p class="text-indigo-100/70 text-sm mt-2">No, I'm not Yoshida. I'm Mori.</p>
                         </div>
                     </div>
 
-                    <!-- Yoshida -->
+                    <!-- Li: Ah, Sumimasen -->
                     <div class="flex gap-4 items-end group cursor-pointer" onclick="playAudio('text_2_3')">
                         <div
-                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-slate-800 font-black text-xl shadow-lg border border-slate-300">
-                            吉</div>
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-slate-800 font-black text-xl shadow-lg border border-slate-300">
+                            李</div>
                         <div class="chat-bubble chat-left group-hover:scale-[1.02] transition-transform">
-                            <p class="text-lg font-bold">あ、すいません。人違いでした。 🔊</p>
-                            <p class="text-slate-500 text-sm mt-2">Oh, sorry. I mistook
-                                you for someone else.</p>
+                            <p class="text-lg font-bold">あ、森さんですか。どうもすみません。 🔊</p>
+                            <p class="text-slate-500 text-sm mt-2">Ah, Mr. Mori? I'm very sorry.</p>
+                        </div>
+                    </div>
+
+                    <!-- Mori: Iie -->
+                    <div class="flex gap-4 flex-row-reverse items-end group cursor-pointer"
+                        onclick="playAudio('text_2_4')">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-slate-800 font-black text-xl shadow-lg border border-slate-300">
+                            森</div>
+                        <div class="chat-bubble chat-right group-hover:scale-[1.02] transition-transform">
+                            <p class="text-lg font-bold">いいえ。どうぞよろしくお願いします。 🔊</p>
+                            <p class="text-indigo-100/70 text-sm mt-2">No problem. Nice to meet you.</p>
+                        </div>
+                    </div>
+
+                    <!-- Li: Li Xiuli desu -->
+                    <div class="flex gap-4 items-end group cursor-pointer" onclick="playAudio('text_2_5')">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-slate-800 font-black text-xl shadow-lg border border-slate-300">
+                            李</div>
+                        <div class="chat-bubble chat-left group-hover:scale-[1.02] transition-transform">
+                            <p class="text-lg font-bold">李秀麗です。こちらこそ。 🔊</p>
+                            <p class="text-slate-500 text-sm mt-2">I'm Li Xiuli. Likewise.</p>
                         </div>
                     </div>
                 </div>

@@ -114,22 +114,17 @@ async def main():
     # --- 4. Text / Dialogues ---
     dialogues = [
         # Scene 1
-        {"id": "text_1_1", "text": "J C企画の小野さんですか。", "voice": VOICE_MALE_1}, # Li
+        {"id": "text_1_1", "text": "J C企画の小野さんですか。", "voice": VOICE_FEMALE_1}, # Li (Female)
         {"id": "text_1_2", "text": "はい、小野です。李さんですか。", "voice": VOICE_FEMALE_1}, # Ono
-        {"id": "text_1_3", "text": "はい、李です。はじめまして。", "voice": VOICE_MALE_1}, # Li
+        {"id": "text_1_3", "text": "はい、李です。はじめまして。", "voice": VOICE_FEMALE_1}, # Li (Female)
         {"id": "text_1_4", "text": "はじめまして、小野あつこです。よろしくお願いします。", "voice": VOICE_FEMALE_1}, # Ono
 
         # Scene 2
-        {"id": "text_2_1", "text": "李さんですか。", "voice": VOICE_MALE_1}, # Yoshida
-        {"id": "text_2_2", "text": "いいえ、李じゃありません。森です。", "voice": VOICE_FEMALE_1}, # Mori (Wait, Mori is Male in book usually, let's Stick to Male for Mori for this context or check text. Text implies 'Mori' answers. Usually Mori is male. Let's use Malevoice for Mori)
-        # correction: Mori is often male in standard japanese. Let's use Male.
-        # Actually in Standard Japanese (Minna no Nihongo etc), names vary. But let's assume standard male.
-        # Re-reading HTML: Mori-chan implies female or cute? Wait.
-        # HTML says: "Mori" icon is purple. 
-        # HTML Text: "いいえ、李じゃありません。森です。"
-        # Let's use Male for Mori to be safe as "Mori-san" is distinct from "Ono-san" (female).
-        {"id": "text_2_2", "text": "いいえ、李じゃありません。森です。", "voice": VOICE_MALE_1}, 
-        {"id": "text_2_3", "text": "あ、すいません。人違いでした。", "voice": VOICE_MALE_1}, # Yoshida
+        {"id": "text_2_1", "text": "吉田さんですか。", "voice": VOICE_FEMALE_1}, # Li (Female)
+        {"id": "text_2_2", "text": "いいえ、吉田じゃありません。森です。", "voice": VOICE_MALE_1}, # Mori (Male)
+        {"id": "text_2_3", "text": "あ、森さんですか。どうもすみません。", "voice": VOICE_FEMALE_1}, # Li (Female)
+        {"id": "text_2_4", "text": "いいえ。どうぞよろしくお願いします。", "voice": VOICE_MALE_1}, # Mori (Male)
+        {"id": "text_2_5", "text": "李秀麗です。こちらこそ。", "voice": VOICE_FEMALE_1}, # Li (Female)
 
         # Scene 3 (Narrator & Dialogues)
         {"id": "scene3_narrator", "text": "ハイ、はじめまして！私は田中です。日本人です。これは父と母です。あの人は友達の林くんです。彼は学生じゃありません。会社員です。社員です。", "voice": VOICE_FEMALE_1}, # Tanaka (Female?) "Watashi" used. Let's use Female.
