@@ -242,10 +242,10 @@
         <!-- Audio Player Script -->
         <script>
             function playAudio(filename) {
-                // Placeholder - audio files not yet generated for Lesson 2
-                console.log(`Playing audio: assets/audio/lesson2/${filename}.mp3`);
-                // const audio = new Audio(`assets/audio/lesson2/${filename}.mp3`);
-                // audio.play().catch(e => console.error("Audio play failed:", e));
+                const audioPath = `assets/audio/lesson2/${filename}.mp3`;
+                // console.log(`Playing audio: ${audioPath}`);
+                const audio = new Audio(audioPath);
+                audio.play().catch(e => console.error("Audio play failed:", e));
             }
         </script>
 
@@ -289,7 +289,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-3xl font-bold text-slate-800">本</span>
-                            <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                                <button onclick="playAudio('hon')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -302,7 +306,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-3xl font-bold text-slate-800">鞄</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('kaban')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -315,7 +323,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-3xl font-bold text-slate-800">鉛筆</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('enpitsu')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -328,7 +340,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-3xl font-bold text-slate-800">傘</span>
-                            <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                                <button onclick="playAudio('kasa')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -341,7 +357,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-3xl font-bold text-slate-800">靴</span>
-                            <span class="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-lg">②</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-lg">②</span>
+                                <button onclick="playAudio('kutsu')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -354,7 +374,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-3xl font-bold text-slate-800">新聞</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('shinbun')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -377,7 +401,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">パソコン</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('pasokon')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <p class="text-sm text-teal-600 mb-1">Personal Computer</p>
                         <p class="text-lg font-medium text-slate-700">个人电脑</p>
@@ -386,7 +414,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">カメラ</span>
-                            <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                                <button onclick="playAudio('kamera')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <p class="text-sm text-teal-600 mb-1">Camera</p>
                         <p class="text-lg font-medium text-slate-700">照相机</p>
@@ -395,7 +427,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">テレビ</span>
-                            <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                                <button onclick="playAudio('terebi')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <p class="text-sm text-teal-600 mb-1">テレビ</p>
                         <p class="text-lg font-medium text-slate-700">电视机</p>
@@ -404,7 +440,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">ニュース</span>
-                            <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                                <button onclick="playAudio('nyuusu')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <p class="text-sm text-teal-600 mb-1">ニュース</p>
                         <p class="text-lg font-medium text-slate-700">新闻 (TV News)</p>
@@ -423,7 +463,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-3xl font-bold text-slate-800">机</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('tsukue')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -436,7 +480,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-3xl font-bold text-slate-800">椅子</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('isu')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -449,7 +497,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-3xl font-bold text-slate-800">鍵</span>
-                            <span class="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-lg">②</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-lg">②</span>
+                                <button onclick="playAudio('kagi')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -462,7 +514,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-3xl font-bold text-slate-800">時計</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('tokei')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -475,7 +531,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-3xl font-bold text-slate-800">手帳</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('techou')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -488,7 +548,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-3xl font-bold text-slate-800">写真</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('shashin')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -511,7 +575,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-3xl font-bold text-slate-800">車</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('kuruma')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -524,7 +592,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-3xl font-bold text-slate-800">自転車</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('jitensha')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -537,7 +609,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">お土産</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('omiyage')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -550,7 +626,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">名産品</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('meisanhin')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -563,7 +643,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">シルク</span>
-                            <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                                <button onclick="playAudio('shiruku')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -576,7 +660,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">ハンカチ</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('hankachi')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -589,7 +677,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">自動車</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">②</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">②</span>
+                                <button onclick="playAudio('jidousha')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -602,7 +694,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">プレゼント</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">②</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">②</span>
+                                <button onclick="playAudio('purezento')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -625,7 +721,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">会社</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('kaisha')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -638,7 +738,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">方</span>
-                            <span class="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-lg">②</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-lg">②</span>
+                                <button onclick="playAudio('kata')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -651,7 +755,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">人</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('hito')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -664,7 +772,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">母</span>
-                            <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                                <button onclick="playAudio('haha')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -677,7 +789,11 @@
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">家族</span>
-                            <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                                <button onclick="playAudio('kazoku')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
@@ -715,8 +831,14 @@
                     <!-- Names -->
                     <div class="glass-panel p-6 bg-slate-50">
                         <div class="space-y-2">
-                            <div class="flex justify-between"><span class="font-bold">長島</span> <span
-                                    class="text-xs text-indigo-500">②</span></div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center gap-2">
+                                    <span class="font-bold">長島</span>
+                                    <span class="text-xs text-indigo-500">②</span>
+                                </div>
+                                <button onclick="playAudio('nagashima')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                             <p class="text-sm text-slate-500 mb-1">ながしま</p>
                             <p class="text-xs text-slate-400 mt-2">Nagashima (Surname)</p>
                         </div>
@@ -768,53 +890,101 @@
                     <div class="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
                         <div class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition">
                             <p class="text-3xl font-black text-slate-800 mb-1">0</p>
-                            <p class="text-xs text-slate-500 font-mono">ゼロ / れい</p>
+                            <div class="flex justify-center items-center gap-1">
+                                <p class="text-xs text-slate-500 font-mono">ゼロ / れい</p>
+                                <button onclick="playAudio('zero')"
+                                    class="text-slate-400 hover:text-indigo-500 transition text-xs">🔊</button>
+                            </div>
                         </div>
                         <div class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition">
                             <p class="text-3xl font-black text-slate-800 mb-1">1</p>
-                            <p class="text-xs text-slate-500 font-mono">いち</p>
+                            <div class="flex justify-center items-center gap-1">
+                                <p class="text-xs text-slate-500 font-mono">いち</p>
+                                <button onclick="playAudio('ichi')"
+                                    class="text-slate-400 hover:text-indigo-500 transition text-xs">🔊</button>
+                            </div>
                         </div>
                         <div class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition">
                             <p class="text-3xl font-black text-slate-800 mb-1">2</p>
-                            <p class="text-xs text-slate-500 font-mono">に</p>
+                            <div class="flex justify-center items-center gap-1">
+                                <p class="text-xs text-slate-500 font-mono">に</p>
+                                <button onclick="playAudio('ni')"
+                                    class="text-slate-400 hover:text-indigo-500 transition text-xs">🔊</button>
+                            </div>
                         </div>
                         <div class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition">
                             <p class="text-3xl font-black text-slate-800 mb-1">3</p>
-                            <p class="text-xs text-slate-500 font-mono">さん</p>
+                            <div class="flex justify-center items-center gap-1">
+                                <p class="text-xs text-slate-500 font-mono">さん</p>
+                                <button onclick="playAudio('san')"
+                                    class="text-slate-400 hover:text-indigo-500 transition text-xs">🔊</button>
+                            </div>
                         </div>
                         <div class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition">
                             <p class="text-3xl font-black text-slate-800 mb-1">4</p>
-                            <p class="text-xs text-slate-500 font-mono">よん / し</p>
+                            <div class="flex justify-center items-center gap-1">
+                                <p class="text-xs text-slate-500 font-mono">よん / し</p>
+                                <button onclick="playAudio('yon')"
+                                    class="text-slate-400 hover:text-indigo-500 transition text-xs">🔊</button>
+                            </div>
                         </div>
                         <div class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition">
                             <p class="text-3xl font-black text-slate-800 mb-1">5</p>
-                            <p class="text-xs text-slate-500 font-mono">ご</p>
+                            <div class="flex justify-center items-center gap-1">
+                                <p class="text-xs text-slate-500 font-mono">ご</p>
+                                <button onclick="playAudio('go')"
+                                    class="text-slate-400 hover:text-indigo-500 transition text-xs">🔊</button>
+                            </div>
                         </div>
                         <div class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition">
                             <p class="text-3xl font-black text-slate-800 mb-1">6</p>
-                            <p class="text-xs text-slate-500 font-mono">roku</p>
+                            <div class="flex justify-center items-center gap-1">
+                                <p class="text-xs text-slate-500 font-mono">ろく</p>
+                                <button onclick="playAudio('roku')"
+                                    class="text-slate-400 hover:text-indigo-500 transition text-xs">🔊</button>
+                            </div>
                         </div>
                         <div class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition">
                             <p class="text-3xl font-black text-slate-800 mb-1">7</p>
-                            <p class="text-xs text-slate-500 font-mono">nana / shichi</p>
+                            <div class="flex justify-center items-center gap-1">
+                                <p class="text-xs text-slate-500 font-mono">なな / しち</p>
+                                <button onclick="playAudio('nana')"
+                                    class="text-slate-400 hover:text-indigo-500 transition text-xs">🔊</button>
+                            </div>
                         </div>
                         <div class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition">
                             <p class="text-3xl font-black text-slate-800 mb-1">8</p>
-                            <p class="text-xs text-slate-500 font-mono">はち</p>
+                            <div class="flex justify-center items-center gap-1">
+                                <p class="text-xs text-slate-500 font-mono">はち</p>
+                                <button onclick="playAudio('hachi')"
+                                    class="text-slate-400 hover:text-indigo-500 transition text-xs">🔊</button>
+                            </div>
                         </div>
                         <div class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition">
                             <p class="text-3xl font-black text-slate-800 mb-1">9</p>
-                            <p class="text-xs text-slate-500 font-mono">きゅう / く</p>
+                            <div class="flex justify-center items-center gap-1">
+                                <p class="text-xs text-slate-500 font-mono">きゅう / く</p>
+                                <button onclick="playAudio('kyuu')"
+                                    class="text-slate-400 hover:text-indigo-500 transition text-xs">🔊</button>
+                            </div>
                         </div>
                         <div
                             class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition col-span-2 md:col-span-1">
                             <p class="text-3xl font-black text-indigo-600 mb-1">10</p>
-                            <p class="text-xs text-slate-500 font-mono">じゅう</p>
+                            <div class="flex justify-center items-center gap-1">
+                                <p class="text-xs text-slate-500 font-mono">じゅう</p>
+                                <button onclick="playAudio('juu')"
+                                    class="text-slate-400 hover:text-indigo-500 transition text-xs">🔊</button>
+                            </div>
                         </div>
                         <div
                             class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition col-span-2 md:col-span-2">
                             <p class="text-3xl font-black text-indigo-600 mb-1">100</p>
-                            <p class="text-xs text-slate-500 font-mono">ひゃく</p>
+                            <div class="flex justify-center items-center gap-1">
+                                <p class="text-xs text-slate-500 font-mono">ひゃく</p>
+                                <button onclick="playAudio('hyaku')"
+                                    class="text-slate-400 hover:text-indigo-500 transition text-xs">🔊</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -831,7 +1001,11 @@
                     <div class="glass-panel p-6 bg-slate-50/50 hover:bg-white transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">バッグ</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">①</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">①</span>
+                                <button onclick="playAudio('baggu')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <p class="text-sm text-slate-500 mb-1">バッグ</p>
                         <p class="text-lg font-medium text-slate-600">包 (Bag - Fashion)</p>
@@ -840,7 +1014,11 @@
                     <div class="glass-panel p-6 bg-slate-50/50 hover:bg-white transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">靴下</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">②</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">②</span>
+                                <button onclick="playAudio('kutsushita')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <p class="text-sm text-slate-500 mb-1">くつした</p>
                         <p class="text-lg font-medium text-slate-600">袜子 (Socks)</p>
@@ -849,7 +1027,11 @@
                     <div class="glass-panel p-6 bg-slate-50/50 hover:bg-white transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">ケータイ</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('keitai')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <p class="text-sm text-slate-500 mb-1">ケータイ</p>
                         <p class="text-lg font-medium text-slate-600">手机 (Mobile)</p>
@@ -858,7 +1040,11 @@
                     <div class="glass-panel p-6 bg-slate-50/50 hover:bg-white transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">テーブル</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('teeburu')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <p class="text-sm text-slate-500 mb-1">テーブル</p>
                         <p class="text-lg font-medium text-slate-600">餐桌 (Table)</p>
@@ -867,7 +1053,11 @@
                     <div class="glass-panel p-6 bg-slate-50/50 hover:bg-white transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">腕時計</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('udedokei')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <p class="text-sm text-slate-500 mb-1">うでどけい</p>
                         <p class="text-lg font-medium text-slate-600">手表 (Wristwatch)</p>
@@ -876,7 +1066,11 @@
                     <div class="glass-panel p-6 bg-slate-50/50 hover:bg-white transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">漫画</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('manga')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <p class="text-sm text-slate-500 mb-1">まんが</p>
                         <p class="text-lg font-medium text-slate-600">漫画 (Comics)</p>
@@ -885,7 +1079,11 @@
                     <div class="glass-panel p-6 bg-slate-50/50 hover:bg-white transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">教科書</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">③</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">③</span>
+                                <button onclick="playAudio('kyoukasho')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <p class="text-sm text-slate-500 mb-1">きょうかしょ</p>
                         <p class="text-lg font-medium text-slate-600">教科书 (Textbook)</p>
@@ -894,7 +1092,11 @@
                     <div class="glass-panel p-6 bg-slate-50/50 hover:bg-white transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">手紙</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('tegami')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <p class="text-sm text-slate-500 mb-1">てがみ</p>
                         <p class="text-lg font-medium text-slate-600">信 (Letter)</p>
@@ -903,7 +1105,11 @@
                     <div class="glass-panel p-6 bg-slate-50/50 hover:bg-white transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">会社員</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">③</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">③</span>
+                                <button onclick="playAudio('kaishain')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <p class="text-sm text-slate-500 mb-1">かいしゃいん</p>
                         <p class="text-lg font-medium text-slate-600">公司职员 (Employee)</p>
@@ -912,7 +1118,11 @@
                     <div class="glass-panel p-6 bg-slate-50/50 hover:bg-white transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-2xl font-bold text-slate-800">お母さん</span>
-                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">②</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">②</span>
+                                <button onclick="playAudio('okaasan')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                         </div>
                         <p class="text-sm text-slate-500 mb-1">おかあさん</p>
                         <p class="text-lg font-medium text-slate-600">母亲 (Mother - Polite)</p>
@@ -921,6 +1131,9 @@
                     <div class="glass-panel p-6 bg-slate-50/50 hover:bg-white transition">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-xl font-bold text-slate-800">シルクのハンカチ</span>
+                            <button onclick="playAudio('shiruku_no_hankachi')"
+                                class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+
                         </div>
                         <p class="text-sm text-slate-500 mb-1">シルクのハンカチ</p>
                         <p class="text-lg font-medium text-slate-600">丝绸手帕</p>
@@ -937,22 +1150,38 @@
                 <div class="glass-panel p-8 bg-lime-50/30">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="bg-white/60 p-4 rounded-2xl">
-                            <p class="text-xl font-bold text-slate-800 mb-1">どうぞ</p>
+                            <div class="flex justify-between items-center mb-1">
+                                <p class="text-xl font-bold text-slate-800">どうぞ</p>
+                                <button onclick="playAudio('expr_douzo')"
+                                    class="text-slate-400 hover:text-lime-500 transition">🔊</button>
+                            </div>
                             <p class="text-sm text-lime-600 font-bold">どうぞ</p>
                             <p class="text-slate-600 text-sm">Please / Here you go (Offering something)</p>
                         </div>
                         <div class="bg-white/60 p-4 rounded-2xl">
-                            <p class="text-xl font-bold text-slate-800 mb-1">どうも</p>
+                            <div class="flex justify-between items-center mb-1">
+                                <p class="text-xl font-bold text-slate-800">どうも</p>
+                                <button onclick="playAudio('expr_doumo')"
+                                    class="text-slate-400 hover:text-lime-500 transition">🔊</button>
+                            </div>
                             <p class="text-sm text-lime-600 font-bold">どうも</p>
                             <p class="text-slate-600 text-sm">Thanks (Casual/Short for Arigatou)</p>
                         </div>
                         <div class="bg-white/60 p-4 rounded-2xl">
-                            <p class="text-xl font-bold text-slate-800 mb-1">おいくつですか。</p>
+                            <div class="flex justify-between items-center mb-1">
+                                <p class="text-xl font-bold text-slate-800">おいくつですか。</p>
+                                <button onclick="playAudio('expr_oikutsu')"
+                                    class="text-slate-400 hover:text-lime-500 transition">🔊</button>
+                            </div>
                             <p class="text-sm text-lime-600 font-bold">おいくつですか。</p>
                             <p class="text-slate-600 text-sm">How old are you? (Polite)</p>
                         </div>
                         <div class="bg-white/60 p-4 rounded-2xl">
-                            <p class="text-xl font-bold text-slate-800 mb-1">何歳ですか。</p>
+                            <div class="flex justify-between items-center mb-1">
+                                <p class="text-xl font-bold text-slate-800">何歳ですか。</p>
+                                <button onclick="playAudio('expr_nansai')"
+                                    class="text-slate-400 hover:text-lime-500 transition">🔊</button>
+                            </div>
                             <p class="text-sm text-lime-600 font-bold">なんさいですか。</p>
                             <p class="text-slate-600 text-sm">How old are you? (Standard)</p>
                         </div>
@@ -989,6 +1218,8 @@
                     <div class="p-6 bg-white/60 rounded-3xl border border-slate-200 flex items-center justify-between">
                         <div>
                             <p class="text-xl font-bold text-slate-800"><span class="text-indigo-600">これ</span>は 本です。
+                                <button onclick="playAudio('gram_01_1')"
+                                    class="text-slate-400 hover:text-indigo-500 transition ml-2">🔊</button>
                             </p>
                             <p class="text-slate-500 text-sm mt-1">This is a book. (Item near speaker)</p>
                         </div>
@@ -996,6 +1227,8 @@
                     <div class="p-6 bg-white/60 rounded-3xl border border-slate-200 flex items-center justify-between">
                         <div>
                             <p class="text-xl font-bold text-slate-800"><span class="text-indigo-600">それ</span>は 鞄です。
+                                <button onclick="playAudio('gram_01_2')"
+                                    class="text-slate-400 hover:text-indigo-500 transition ml-2">🔊</button>
                             </p>
                             <p class="text-slate-500 text-sm mt-1">That is a bag. (Item near listener)</p>
                         </div>
@@ -1037,6 +1270,8 @@
                 <div class="space-y-4">
                     <div class="p-6 bg-white/60 rounded-3xl border border-slate-200">
                         <p class="text-xl font-bold text-slate-800"><span class="text-rose-600">この</span>カメラは スミスのです。
+                            <button onclick="playAudio('gram_02_1')"
+                                class="text-slate-400 hover:text-rose-500 transition ml-2">🔊</button>
                         </p>
                         <p class="text-slate-500 text-sm mt-1">This camera is Smith's.</p>
                     </div>
@@ -1063,19 +1298,34 @@
 
                 <div class="space-y-4">
                     <div class="p-6 bg-white/60 rounded-3xl border border-slate-200">
-                        <p class="text-xl font-bold text-slate-800">私の 本</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-xl font-bold text-slate-800">私の 本</p>
+                            <button onclick="playAudio('gram_03_1')"
+                                class="text-slate-400 hover:text-slate-600 transition">🔊</button>
+                        </div>
                         <p class="text-slate-500 text-sm mt-1">My book (Possession)</p>
                     </div>
                     <div class="p-6 bg-white/60 rounded-3xl border border-slate-200">
-                        <p class="text-xl font-bold text-slate-800">日本語の 先生</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-xl font-bold text-slate-800">日本語の 先生</p>
+                            <button onclick="playAudio('gram_03_2')"
+                                class="text-slate-400 hover:text-slate-600 transition">🔊</button>
+                        </div>
                         <p class="text-slate-500 text-sm mt-1">Japanese Teacher (Attribute)</p>
                     </div>
                     <div class="p-6 bg-white/60 rounded-3xl border border-slate-200">
-                        <p class="text-xl font-bold text-slate-800">中国の お土産</p>
+                        <div class="flex justify-between items-center">
+                            <p class="text-xl font-bold text-slate-800">中国の お土産</p>
+                            <button onclick="playAudio('gram_03_3')"
+                                class="text-slate-400 hover:text-slate-600 transition">🔊</button>
+                        </div>
                         <p class="text-slate-500 text-sm mt-1">Souvenir from China (Attribute)</p>
                     </div>
                     <div class="p-6 bg-white/60 rounded-3xl border border-slate-200">
-                        <p class="text-xl font-bold text-slate-800">それは <span class="text-indigo-600">私の</span>です。</p>
+                        <p class="text-xl font-bold text-slate-800">それは <span class="text-indigo-600">私の</span>です。
+                            <button onclick="playAudio('gram_03_4')"
+                                class="text-slate-400 hover:text-indigo-500 transition ml-2">🔊</button>
+                        </p>
                         <p class="text-slate-500 text-sm mt-1">That is <span class="font-bold">mine</span>. (Noun
                             ellipsis)</p>
                         <p class="text-xs text-slate-400 mt-1">"Watashi no (hon) desu" -> "Watashi no desu"</p>
@@ -1091,16 +1341,23 @@
                 </div>
                 <div class="space-y-4">
                     <div class="p-6 bg-white/60 rounded-3xl border border-slate-200">
-                        <p class="text-xl font-bold text-slate-800">それは 辞書ですか。</p>
+                        <p class="text-xl font-bold text-slate-800">それは 辞書ですか。
+                            <button onclick="playAudio('gram_04_1')"
+                                class="text-slate-400 hover:text-indigo-500 transition ml-2">🔊</button>
+                        </p>
                         <p class="text-slate-500 text-sm mt-1">Is that a dictionary?</p>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-100">
-                            <p class="text-lg font-bold text-emerald-700">はい、そうです。</p>
+                            <p class="text-lg font-bold text-emerald-700">はい、そうです。 <button
+                                    onclick="playAudio('gram_04_2')"
+                                    class="text-emerald-400 hover:text-emerald-700 transition ml-1">🔊</button></p>
                             <p class="text-xs text-emerald-500">Yes, it is.</p>
                         </div>
                         <div class="p-4 bg-rose-50 rounded-2xl border border-rose-100">
-                            <p class="text-lg font-bold text-rose-700">いいえ、違います。</p>
+                            <p class="text-lg font-bold text-rose-700">いいえ、違います。 <button
+                                    onclick="playAudio('gram_04_3')"
+                                    class="text-rose-400 hover:text-rose-700 transition ml-1">🔊</button></p>
                             <p class="text-xs text-rose-500">No, it isn't.</p>
                         </div>
                     </div>
@@ -1145,11 +1402,15 @@
                 <div class="space-y-4">
                     <div class="p-6 bg-white/60 rounded-3xl border border-slate-200">
                         <p class="text-xl font-bold text-slate-800">森さんの鞄は <span class="text-indigo-600">どれ</span>ですか。
+                            <button onclick="playAudio('gram_05_1')"
+                                class="text-slate-400 hover:text-indigo-500 transition ml-2">🔊</button>
                         </p>
                         <p class="text-slate-500 text-sm mt-1">Which one is Mori-san's bag?</p>
                     </div>
                     <div class="p-6 bg-white/60 rounded-3xl border border-slate-200">
                         <p class="text-xl font-bold text-slate-800">あの方は <span class="text-indigo-600">どなた</span>ですか。
+                            <button onclick="playAudio('gram_05_2')"
+                                class="text-slate-400 hover:text-indigo-500 transition ml-2">🔊</button>
                         </p>
                         <p class="text-slate-500 text-sm mt-1">Who is that gentleman/lady? (Polite)</p>
                     </div>
@@ -1170,31 +1431,64 @@
                 </h2>
                 <div class="space-y-6">
                     <!-- Group 1 -->
+                    <!-- Group 1 -->
                     <div class="bg-white/50 p-4 rounded-xl border-l-4 border-indigo-500">
-                        <p class="font-bold text-slate-700">A: これはテレビですか。</p>
+                        <div class="flex justify-between items-center">
+                            <p class="font-bold text-slate-700">A: これはテレビですか。</p>
+                            <button onclick="playAudio('basic_1_a')"
+                                class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                        </div>
                         <p class="text-slate-500 text-sm mb-2">Is this a TV?</p>
-                        <p class="font-bold text-slate-700">B: いいえ、それはテレビではありません。パソコンです。</p>
+                        <div class="flex justify-between items-center">
+                            <p class="font-bold text-slate-700">B: いいえ、それはテレビではありません。パソコンです。</p>
+                            <button onclick="playAudio('basic_1_b')"
+                                class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                        </div>
                         <p class="text-slate-500 text-sm">No, that is not a TV. It is a PC.</p>
                     </div>
                     <!-- Group 2 -->
                     <div class="bg-white/50 p-4 rounded-xl border-l-4 border-indigo-500">
-                        <p class="font-bold text-slate-700">A: それは何ですか。</p>
+                        <div class="flex justify-between items-center">
+                            <p class="font-bold text-slate-700">A: それは何ですか。</p>
+                            <button onclick="playAudio('basic_2_a')"
+                                class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                        </div>
                         <p class="text-slate-500 text-sm mb-2">What is that?</p>
-                        <p class="font-bold text-slate-700">B: これは日本語の本です。</p>
+                        <div class="flex justify-between items-center">
+                            <p class="font-bold text-slate-700">B: これは日本語の本です。</p>
+                            <button onclick="playAudio('basic_2_b')"
+                                class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                        </div>
                         <p class="text-slate-500 text-sm">This is a Japanese book.</p>
                     </div>
                     <!-- Group 3 -->
                     <div class="bg-white/50 p-4 rounded-xl border-l-4 border-indigo-500">
-                        <p class="font-bold text-slate-700">A: 森さんの鞄はどれですか。</p>
+                        <div class="flex justify-between items-center">
+                            <p class="font-bold text-slate-700">A: 森さんの鞄はどれですか。</p>
+                            <button onclick="playAudio('basic_3_a')"
+                                class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                        </div>
                         <p class="text-slate-500 text-sm mb-2">Which one is Mori-san's bag?</p>
-                        <p class="font-bold text-slate-700">B: あの鞄です。</p>
+                        <div class="flex justify-between items-center">
+                            <p class="font-bold text-slate-700">B: あの鞄です。</p>
+                            <button onclick="playAudio('basic_3_b')"
+                                class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                        </div>
                         <p class="text-slate-500 text-sm">It is that bag (over there).</p>
                     </div>
                     <!-- Group 4 -->
                     <div class="bg-white/50 p-4 rounded-xl border-l-4 border-indigo-500">
-                        <p class="font-bold text-slate-700">A: そのノートは誰のですか。</p>
+                        <div class="flex justify-between items-center">
+                            <p class="font-bold text-slate-700">A: そのノートは誰のですか。</p>
+                            <button onclick="playAudio('basic_4_a')"
+                                class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                        </div>
                         <p class="text-slate-500 text-sm mb-2">Whose notebook is that?</p>
-                        <p class="font-bold text-slate-700">B: 私のです。</p>
+                        <div class="flex justify-between items-center">
+                            <p class="font-bold text-slate-700">B: 私のです。</p>
+                            <button onclick="playAudio('basic_4_b')"
+                                class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                        </div>
                         <p class="text-slate-500 text-sm">It is mine.</p>
                     </div>
                 </div>
@@ -1216,7 +1510,11 @@
                             class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
                             田</div>
                         <div class="chat-bubble chat-left">
-                            <p class="text-lg font-bold">李さん、それは 何ですか。</p>
+                            <div class="flex justify-between items-center gap-2">
+                                <p class="text-lg font-bold">李さん、それは 何ですか。</p>
+                                <button onclick="playAudio('scene1_1')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                             <p class="text-slate-500 text-sm mt-2">Li-san, what is that?</p>
                         </div>
                     </div>
@@ -1226,7 +1524,11 @@
                             class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
                             李</div>
                         <div class="chat-bubble chat-right">
-                            <p class="text-lg font-bold">これですか。これは 家族の 写真です。</p>
+                            <div class="flex justify-between items-center gap-2">
+                                <p class="text-lg font-bold">これですか。これは 家族の 写真です。</p>
+                                <button onclick="playAudio('scene1_2')"
+                                    class="text-white/70 hover:text-white transition">🔊</button>
+                            </div>
                             <p class="text-indigo-100/70 text-sm mt-2">This? This is a family photo.</p>
                         </div>
                     </div>
@@ -1236,7 +1538,11 @@
                             class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
                             田</div>
                         <div class="chat-bubble chat-left">
-                            <p class="text-lg font-bold">この方は <span class="text-indigo-600">どなた</span>ですか。</p>
+                            <div class="flex justify-between items-center gap-2">
+                                <p class="text-lg font-bold">この方は <span class="text-indigo-600">どなた</span>ですか。</p>
+                                <button onclick="playAudio('scene1_3')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                             <p class="text-slate-500 text-sm mt-2">Who is this person? (Polite)</p>
                         </div>
                     </div>
@@ -1246,7 +1552,11 @@
                             class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
                             李</div>
                         <div class="chat-bubble chat-right">
-                            <p class="text-lg font-bold">私の 母です。</p>
+                            <div class="flex justify-between items-center gap-2">
+                                <p class="text-lg font-bold">私の 母です。</p>
+                                <button onclick="playAudio('scene1_4')"
+                                    class="text-white/70 hover:text-white transition">🔊</button>
+                            </div>
                             <p class="text-indigo-100/70 text-sm mt-2"> It's my mother.</p>
                         </div>
                     </div>
@@ -1256,7 +1566,11 @@
                             class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
                             田</div>
                         <div class="chat-bubble chat-left">
-                            <p class="text-lg font-bold">お母さんは <span class="text-indigo-600">おいくつ</span>ですか。</p>
+                            <div class="flex justify-between items-center gap-2">
+                                <p class="text-lg font-bold">お母さんは <span class="text-indigo-600">おいくつ</span>ですか。</p>
+                                <button onclick="playAudio('scene1_5')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                             <p class="text-slate-500 text-sm mt-2">How old is your mother? (Polite)</p>
                         </div>
                     </div>
@@ -1266,7 +1580,11 @@
                             class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
                             李</div>
                         <div class="chat-bubble chat-right">
-                            <p class="text-lg font-bold">52歳です。</p>
+                            <div class="flex justify-between items-center gap-2">
+                                <p class="text-lg font-bold">52歳です。</p>
+                                <button onclick="playAudio('scene1_6')"
+                                    class="text-white/70 hover:text-white transition">🔊</button>
+                            </div>
                             <p class="text-indigo-100/70 text-sm mt-2">She is 52 years old.</p>
                         </div>
                     </div>
@@ -1286,7 +1604,11 @@
                             class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
                             李</div>
                         <div class="chat-bubble chat-left">
-                            <p class="text-lg font-bold">小野さん、これ、どうぞ。</p>
+                            <div class="flex justify-between items-center gap-2">
+                                <p class="text-lg font-bold">小野さん、これ、どうぞ。</p>
+                                <button onclick="playAudio('scene2_1')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                             <p class="text-slate-500 text-sm mt-2">Ono-san, here, please.</p>
                         </div>
                     </div>
@@ -1296,7 +1618,11 @@
                             class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
                             野</div>
                         <div class="chat-bubble chat-right">
-                            <p class="text-lg font-bold">えっ、これは 何ですか。</p>
+                            <div class="flex justify-between items-center gap-2">
+                                <p class="text-lg font-bold">えっ、これは 何ですか。</p>
+                                <button onclick="playAudio('scene2_2')"
+                                    class="text-white/70 hover:text-white transition">🔊</button>
+                            </div>
                             <p class="text-emerald-100/70 text-sm mt-2">Eh? What is this?</p>
                         </div>
                     </div>
@@ -1306,7 +1632,11 @@
                             class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
                             李</div>
                         <div class="chat-bubble chat-left">
-                            <p class="text-lg font-bold">お土産です。シルクのハンカチです。</p>
+                            <div class="flex justify-between items-center gap-2">
+                                <p class="text-lg font-bold">お土産です。シルクのハンカチです。</p>
+                                <button onclick="playAudio('scene2_3')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                             <p class="text-slate-500 text-sm mt-2">It's a souvenir. A silk handkerchief.</p>
                         </div>
                     </div>
@@ -1316,7 +1646,11 @@
                             class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
                             野</div>
                         <div class="chat-bubble chat-right">
-                            <p class="text-lg font-bold">わあ、スワトウのハンカチですか。</p>
+                            <div class="flex justify-between items-center gap-2">
+                                <p class="text-lg font-bold">わあ、スワトウのハンカチですか。</p>
+                                <button onclick="playAudio('scene2_4')"
+                                    class="text-white/70 hover:text-white transition">🔊</button>
+                            </div>
                             <p class="text-emerald-100/70 text-sm mt-2">Wow, is it a Shantou handkerchief?</p>
                         </div>
                     </div>
@@ -1326,7 +1660,11 @@
                             class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
                             李</div>
                         <div class="chat-bubble chat-left">
-                            <p class="text-lg font-bold">ええ。中国の 名産品です。</p>
+                            <div class="flex justify-between items-center gap-2">
+                                <p class="text-lg font-bold">ええ。中国の 名産品です。</p>
+                                <button onclick="playAudio('scene2_5')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
                             <p class="text-slate-500 text-sm mt-2">Yes. It's a famous Chinese product.</p>
                         </div>
                     </div>
@@ -1336,7 +1674,11 @@
                             class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
                             野</div>
                         <div class="chat-bubble chat-right">
-                            <p class="text-lg font-bold">どうも ありがとうございます。</p>
+                            <div class="flex justify-between items-center gap-2">
+                                <p class="text-lg font-bold">どうも ありがとうございます。</p>
+                                <button onclick="playAudio('scene2_6')"
+                                    class="text-white/70 hover:text-white transition">🔊</button>
+                            </div>
                             <p class="text-emerald-100/70 text-sm mt-2">Thank you very much.</p>
                         </div>
                     </div>
@@ -1406,7 +1748,11 @@
                     <span class="text-2xl text-indigo-400 transform transition-transform duration-300">↓</span>
                 </div>
                 <div class="practice-answer">
-                    <p class="text-xl font-bold text-slate-800">これは パソコンです。</p>
+                    <div class="flex justify-between items-center">
+                        <p class="text-xl font-bold text-slate-800">これは パソコンです。</p>
+                        <button onclick="playAudio('ex_1')"
+                            class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                    </div>
                     <p class="text-sm text-slate-500 mt-2">これ は パソコン です。</p>
                 </div>
             </div>
@@ -1422,7 +1768,11 @@
                     <span class="text-2xl text-indigo-400 transform transition-transform duration-300">↓</span>
                 </div>
                 <div class="practice-answer">
-                    <p class="text-xl font-bold text-slate-800">それは 何ですか。</p>
+                    <div class="flex justify-between items-center">
+                        <p class="text-xl font-bold text-slate-800">それは 何ですか。</p>
+                        <button onclick="playAudio('ex_2')"
+                            class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                    </div>
                     <p class="text-sm text-slate-500 mt-2">それ は なん です か。</p>
                 </div>
             </div>
@@ -1437,7 +1787,11 @@
                     <span class="text-2xl text-indigo-400 transform transition-transform duration-300">↓</span>
                 </div>
                 <div class="practice-answer">
-                    <p class="text-xl font-bold text-slate-800">この 傘は 私のです。</p>
+                    <div class="flex justify-between items-center">
+                        <p class="text-xl font-bold text-slate-800">この 傘は 私のです。</p>
+                        <button onclick="playAudio('ex_3')"
+                            class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                    </div>
                     <p class="text-sm text-slate-500 mt-2">この かさ は わたし の です。</p>
                 </div>
             </div>
@@ -1453,10 +1807,14 @@
                     <span class="text-2xl text-indigo-400 transform transition-transform duration-300">↓</span>
                 </div>
                 <div class="practice-answer">
-                    <p class="text-xl font-bold text-slate-800">
-                        尖閣諸島は 中国のです。<br>
-                        蒼井空は 世界のです。
-                    </p>
+                    <div class="flex justify-between items-start">
+                        <p class="text-xl font-bold text-slate-800">
+                            尖閣諸島は 中国のです。<br>
+                            蒼井空は 世界のです。
+                        </p>
+                        <button onclick="playAudio('ex_4')"
+                            class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                    </div>
                     <p class="text-sm text-slate-500 mt-2">せんかくしょとう は ちゅうごく の です。あおい そら は せかい の です。
                     </p>
                 </div>
@@ -1477,8 +1835,13 @@
                 <div class="practice-answer">
                     <p class="text-sm font-bold text-slate-500 mb-2">Substitute with keys/TV/etc:</p>
                     <ul class="list-disc pl-5 space-y-1 text-slate-700">
-                        <li>それは森さんの<span class="text-indigo-600 font-bold">本</span>ではありません。</li>
-                        <li>それは森さんの<span class="text-indigo-600 font-bold">テレビ</span>ではありません。</li>
+                        <li class="flex items-center gap-2">それは森さんの<span
+                                class="text-indigo-600 font-bold">本</span>ではありません。 <button onclick="playAudio('ex_5')"
+                                class="text-slate-400 hover:text-indigo-500 transition text-sm">🔊</button></li>
+                        <li class="flex items-center gap-2">それは森さんの<span
+                                class="text-indigo-600 font-bold">テレビ</span>ではありません。 <button
+                                onclick="playAudio('ex_5b')"
+                                class="text-slate-400 hover:text-indigo-500 transition text-sm">🔊</button></li>
                     </ul>
                 </div>
             </div>
@@ -1495,8 +1858,12 @@
                     <span class="text-2xl text-indigo-400 transform transition-transform duration-300">↓</span>
                 </div>
                 <div class="practice-answer">
-                    <p class="text-lg font-bold text-slate-800">A: それは何ですか。(What is that?)</p>
+                    <p class="text-lg font-bold text-slate-800">A: それは何ですか。(What is that?) <button
+                            onclick="playAudio('ex_6_a')"
+                            class="text-slate-400 hover:text-indigo-500 transition ml-2">🔊</button></p>
                     <p class="text-lg font-bold text-slate-800 mt-2">B: これは [テレビ/本/時計] です。(This is a [TV/Book/Watch].)
+                        <button onclick="playAudio('ex_6_b')"
+                            class="text-slate-400 hover:text-indigo-500 transition ml-2">🔊</button>
                     </p>
                     <p class="text-sm text-slate-500 mt-2">[Use "Kore" to answer "Sore"]</p>
                 </div>
@@ -1512,7 +1879,11 @@
                     <span class="text-2xl text-indigo-400 transform transition-transform duration-300">↓</span>
                 </div>
                 <div class="practice-answer">
-                    <p class="text-xl font-bold text-slate-800">これは誰の傘ですか。</p>
+                    <div class="flex justify-between items-center">
+                        <p class="text-xl font-bold text-slate-800">これは誰の傘ですか。</p>
+                        <button onclick="playAudio('ex_7')"
+                            class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                    </div>
                     <p class="text-sm text-slate-500 mt-1">これ は だれ の かさ です か。</p>
                 </div>
             </div>
@@ -1529,7 +1900,11 @@
                     <span class="text-2xl text-indigo-400 transform transition-transform duration-300">↓</span>
                 </div>
                 <div class="practice-answer">
-                    <p class="text-xl font-bold text-slate-800">あの人は誰ですか。</p>
+                    <div class="flex justify-between items-center">
+                        <p class="text-xl font-bold text-slate-800">あの人は誰ですか。</p>
+                        <button onclick="playAudio('ex_8')"
+                            class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                    </div>
                     <p class="text-sm text-slate-500 mt-1">あの ひと は だれ です か。</p>
                 </div>
             </div>
@@ -1551,8 +1926,12 @@
                     <span class="text-2xl text-indigo-400 transform transition-transform duration-300">↓</span>
                 </div>
                 <div class="practice-answer">
-                    <p class="text-xl font-bold text-slate-800">Answer: <span class="text-indigo-600">なん</span>
-                    </p>
+                    <div class="flex justify-between items-center">
+                        <p class="text-xl font-bold text-slate-800">Answer: <span class="text-indigo-600">なん</span>
+                        </p>
+                        <button onclick="playAudio('ex_9')"
+                            class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                    </div>
                     <p class="text-sm text-slate-500 mt-1">それ は <span class="font-bold underline">なん</span> です か。
                         (What is that?)</p>
                 </div>
@@ -1570,7 +1949,11 @@
                     <span class="text-2xl text-indigo-400 transform transition-transform duration-300">↓</span>
                 </div>
                 <div class="practice-answer">
-                    <p class="text-xl font-bold text-slate-800">Answer: <span class="text-indigo-600">は</span></p>
+                    <div class="flex justify-between items-center">
+                        <p class="text-xl font-bold text-slate-800">Answer: <span class="text-indigo-600">は</span></p>
+                        <button onclick="playAudio('ex_10')"
+                            class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                    </div>
                     <p class="text-sm text-slate-500 mt-1">これ <span class="font-bold underline">は</span> ほん です。
                         (This is a book.)</p>
                 </div>
@@ -1589,11 +1972,14 @@
                 </div>
                 <div class="practice-answer">
                     <div class="space-y-2">
-                        <p class="text-lg font-bold text-slate-800">A: いいえ、私のでは ありません。</p>
+                        <p class="text-lg font-bold text-slate-800">A: いいえ、私のでは ありません。 <button
+                                onclick="playAudio('ex_11_a')"
+                                class="text-slate-400 hover:text-indigo-500 transition ml-2">🔊</button></p>
                         <p class="text-sm text-slate-500">いいえ、わたし の では ありません。 (No, it's not mine.)</p>
                         <hr class="border-slate-200 my-2">
                         <p class="text-lg font-bold text-slate-800">B: この 鞄は？ (What about this bag?)</p>
-                        <p class="text-lg font-bold text-slate-800">A: それは 私のです。</p>
+                        <p class="text-lg font-bold text-slate-800">A: それは 私のです。 <button onclick="playAudio('ex_11_b')"
+                                class="text-slate-400 hover:text-indigo-500 transition ml-2">🔊</button></p>
                         <p class="text-sm text-slate-500">それ は わたし の です。 (That is mine.)</p>
                     </div>
                 </div>
