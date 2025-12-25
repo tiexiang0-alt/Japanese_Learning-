@@ -1146,7 +1146,47 @@
         </div>
 
         <!-- 3. Text Section -->
+        <!-- 3. Text Section -->
         <div id="content-text" class="hidden max-w-4xl mx-auto space-y-12">
+
+            <!-- Basic Text (Kihon Bun) -->
+            <div class="glass-panel p-10 relative overflow-hidden">
+                <h2 class="text-3xl font-black text-slate-800 mb-8 flex items-center gap-4">
+                    <span class="bg-indigo-500 px-4 py-1 rounded-xl text-sm text-white">BASIC</span>
+                    基本课文 <span class="text-lg font-normal text-slate-500">(Basic Dialogues)</span>
+                </h2>
+                <div class="space-y-6">
+                    <!-- Group 1 -->
+                    <div class="bg-white/50 p-4 rounded-xl border-l-4 border-indigo-500">
+                        <p class="font-bold text-slate-700">A: これはテレビですか。</p>
+                        <p class="text-slate-500 text-sm mb-2">Is this a TV?</p>
+                        <p class="font-bold text-slate-700">B: いいえ、それはテレビではありません。パソコンです。</p>
+                        <p class="text-slate-500 text-sm">No, that is not a TV. It is a PC.</p>
+                    </div>
+                    <!-- Group 2 -->
+                    <div class="bg-white/50 p-4 rounded-xl border-l-4 border-indigo-500">
+                        <p class="font-bold text-slate-700">A: それは何ですか。</p>
+                        <p class="text-slate-500 text-sm mb-2">What is that?</p>
+                        <p class="font-bold text-slate-700">B: これは日本語の本です。</p>
+                        <p class="text-slate-500 text-sm">This is a Japanese book.</p>
+                    </div>
+                    <!-- Group 3 -->
+                    <div class="bg-white/50 p-4 rounded-xl border-l-4 border-indigo-500">
+                        <p class="font-bold text-slate-700">A: 森さんの鞄はどれですか。</p>
+                        <p class="text-slate-500 text-sm mb-2">Which one is Mori-san's bag?</p>
+                        <p class="font-bold text-slate-700">B: あの鞄です。</p>
+                        <p class="text-slate-500 text-sm">It is that bag (over there).</p>
+                    </div>
+                    <!-- Group 4 -->
+                    <div class="bg-white/50 p-4 rounded-xl border-l-4 border-indigo-500">
+                        <p class="font-bold text-slate-700">A: そのノートは誰のですか。</p>
+                        <p class="text-slate-500 text-sm mb-2">Whose notebook is that?</p>
+                        <p class="font-bold text-slate-700">B: 私のです。</p>
+                        <p class="text-slate-500 text-sm">It is mine.</p>
+                    </div>
+                </div>
+            </div>
+
             <!-- Scene 01 -->
             <div class="glass-panel p-10 relative overflow-hidden">
                 <div class="absolute -top-10 -right-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl"></div>
@@ -1183,8 +1223,8 @@
                             class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
                             田</div>
                         <div class="chat-bubble chat-left">
-                            <p class="text-lg font-bold">それは 誰ですか。</p>
-                            <p class="text-slate-500 text-sm mt-2">Who is that?</p>
+                            <p class="text-lg font-bold">この方は <span class="text-indigo-600">どなた</span>ですか。</p>
+                            <p class="text-slate-500 text-sm mt-2">Who is this person? (Polite)</p>
                         </div>
                     </div>
                     <!-- Li -->
@@ -1193,7 +1233,7 @@
                             class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
                             李</div>
                         <div class="chat-bubble chat-right">
-                            <p class="text-lg font-bold">母です。</p>
+                            <p class="text-lg font-bold">私の 母です。</p>
                             <p class="text-indigo-100/70 text-sm mt-2"> It's my mother.</p>
                         </div>
                     </div>
@@ -1203,8 +1243,18 @@
                             class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
                             田</div>
                         <div class="chat-bubble chat-left">
-                            <p class="text-lg font-bold">あ、そうですか。</p>
-                            <p class="text-slate-500 text-sm mt-2">Ah, is that so.</p>
+                            <p class="text-lg font-bold">お母さんは <span class="text-indigo-600">おいくつ</span>ですか。</p>
+                            <p class="text-slate-500 text-sm mt-2">How old is your mother? (Polite)</p>
+                        </div>
+                    </div>
+                    <!-- Li -->
+                    <div class="flex gap-4 flex-row-reverse items-end">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
+                            李</div>
+                        <div class="chat-bubble chat-right">
+                            <p class="text-lg font-bold">52歳です。</p>
+                            <p class="text-indigo-100/70 text-sm mt-2">She is 52 years old.</p>
                         </div>
                     </div>
                 </div>
@@ -1223,18 +1273,18 @@
                             class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
                             李</div>
                         <div class="chat-bubble chat-left">
-                            <p class="text-lg font-bold">田中さん、どうぞ。</p>
-                            <p class="text-slate-500 text-sm mt-2">Tanaka-san, here you go.</p>
+                            <p class="text-lg font-bold">小野さん、これ、どうぞ。</p>
+                            <p class="text-slate-500 text-sm mt-2">Ono-san, here, please.</p>
                         </div>
                     </div>
-                    <!-- Tanaka -->
+                    <!-- Ono (New Character Icon?) - Using Tanaka's icon style but maybe Green/Teal? I'll use Tanaka's for now or generic -->
                     <div class="flex gap-4 flex-row-reverse items-end">
                         <div
-                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
-                            田</div>
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
+                            野</div>
                         <div class="chat-bubble chat-right">
                             <p class="text-lg font-bold">えっ、これは 何ですか。</p>
-                            <p class="text-indigo-100/70 text-sm mt-2">Eh? What is this?</p>
+                            <p class="text-emerald-100/70 text-sm mt-2">Eh? What is this?</p>
                         </div>
                     </div>
                     <!-- Li -->
@@ -1243,18 +1293,38 @@
                             class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
                             李</div>
                         <div class="chat-bubble chat-left">
-                            <p class="text-lg font-bold">お土産です。中国の お茶です。</p>
-                            <p class="text-slate-500 text-sm mt-2">It's a souvenir. Chinese tea.</p>
+                            <p class="text-lg font-bold">お土産です。シルクのハンカチです。</p>
+                            <p class="text-slate-500 text-sm mt-2">It's a souvenir. A silk handkerchief.</p>
                         </div>
                     </div>
-                    <!-- Tanaka -->
+                    <!-- Ono -->
                     <div class="flex gap-4 flex-row-reverse items-end">
                         <div
-                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
-                            田</div>
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
+                            野</div>
                         <div class="chat-bubble chat-right">
-                            <p class="text-lg font-bold">わあ、ありがとうございます。</p>
-                            <p class="text-indigo-100/70 text-sm mt-2">Wow, thank you very much.</p>
+                            <p class="text-lg font-bold">わあ、スワトウのハンカチですか。</p>
+                            <p class="text-emerald-100/70 text-sm mt-2">Wow, is it a Shantou handkerchief?</p>
+                        </div>
+                    </div>
+                    <!-- Li -->
+                    <div class="flex gap-4 items-end">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
+                            李</div>
+                        <div class="chat-bubble chat-left">
+                            <p class="text-lg font-bold">ええ。中国の 名産品です。</p>
+                            <p class="text-slate-500 text-sm mt-2">Yes. It's a famous Chinese product.</p>
+                        </div>
+                    </div>
+                    <!-- Ono -->
+                    <div class="flex gap-4 flex-row-reverse items-end">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
+                            野</div>
+                        <div class="chat-bubble chat-right">
+                            <p class="text-lg font-bold">どうも ありがとうございます。</p>
+                            <p class="text-emerald-100/70 text-sm mt-2">Thank you very much.</p>
                         </div>
                     </div>
                 </div>
