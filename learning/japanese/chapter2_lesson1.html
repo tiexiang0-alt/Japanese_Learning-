@@ -94,6 +94,14 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
 
+        /* Ruby Text Styling */
+        rt {
+            color: #818cf8;
+            /* indigo-400 */
+            font-size: 0.6em;
+            font-weight: 500;
+        }
+
         .tab-btn.active::after {
             content: '';
             position: absolute;
@@ -235,6 +243,22 @@
         </div>
     </nav>
 
+    <!-- Hero / Cover Image -->
+    <div class="max-w-6xl mx-auto px-4 md:px-6 mb-8">
+        <div class="rounded-[40px] overflow-hidden shadow-2xl relative h-64 md:h-96 w-full">
+            <img src="assets/images/lesson1/cover.png" alt="Lesson 1 Cover" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent flex items-end p-8 md:p-12">
+                <div>
+                    <span
+                        class="bg-indigo-500 text-white px-4 py-1 rounded-full text-sm font-bold mb-4 inline-block shadow-lg">Start
+                        Here</span>
+                    <h2 class="text-3xl md:text-5xl font-black text-white drop-shadow-lg">第一課：李さんは中国人です</h2>
+                    <p class="text-white/90 font-medium mt-2 text-lg">Introduction & Nationalities</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <main class="max-w-6xl mx-auto px-4 md:px-6">
 
@@ -325,6 +349,20 @@
                             </div>
                             <p class="text-xs text-slate-500 mt-2">注意：「国」在这里读浊音 (ごく)。</p>
                         </div>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">中 (Middle) + 国 (Country) + 人 (Person)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">音读词 (Onyomi)。源自古汉语发音。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">"ちゅう" 听起来像中文的 "中" (Zhong) 的变音。</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Japan -->
@@ -362,6 +400,22 @@
                                 <span class="bg-rose-500/20 px-2 py-0.5 rounded text-rose-100">人 (じん)</span>
                             </div>
                         </div>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">日 (Sun) + 本 (Origin/Root) + 人</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">音读 (Ni-Hon)。"日出之国" (Land of the Rising Sun)。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">"に" (你) "ほん" (红) → <span
+                                        class="text-rose-400">你红</span>了！(You
+                                    are popular/red!).</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- South Korea -->
@@ -397,6 +451,20 @@
                             <p class="text-xs text-emerald-800">Note: The "Koku" (国) here is unvoiced (こく), unlike
                                 China's voiced (ごく).</p>
                         </div>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">韩 (Korea) + 国 + 人</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">音读 (Kan-koku)。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">"かん" 发音接近 "韩" (Han) 的第三声。</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- USA -->
@@ -422,8 +490,21 @@
                                 class="px-3 py-1 bg-white/80 text-slate-800 border border-slate-300 text-xs rounded-full font-bold">TYPE
                                 ④</span>
                         </div>
-                        <p class="text-slate-500 text-sm italic">Katakana for foreign names. Use 「～人」 (jin) for any
-                            nationality (e.g., タイ人 Tai-jin).</p>
+                        <p class="text-slate-500 text-sm italic">USA + Person (Jin)</p>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">アメリカ (America) + 人</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">外来语 (Gairaigo)。直接音译自英语。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">这就是 "アメリカ" 的日式发音。</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Switzerland -->
@@ -449,6 +530,20 @@
                                 ①</span>
                         </div>
                         <p class="text-slate-500 text-sm italic">Switzerland (スイス)</p>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">片假名单词。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">来自法语 "Suisse"。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">读音类似 "スイス" (苏是)。</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- France -->
@@ -473,34 +568,138 @@
                                 ⓪</span>
                         </div>
                         <p class="text-slate-500 text-sm italic">France (フランス)</p>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">片假名单词。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">来自法语 "France"。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">"ふ" (腐) "らんす" (烂思) -> <span
+                                        class="text-blue-500">腐烂的丝绸</span>
+                                    (开个玩笑)。其实很像英语发音。</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
             </section>
 
             <!-- Teacher's Strategy Note -->
-            <div class="glass-panel p-8 bg-gradient-to-r from-amber-50 to-orange-50 border-l-8 border-orange-400 my-8">
-                <h3 class="text-xl font-bold text-orange-800 flex items-center gap-3 mb-4">
-                    👩‍🏫 豆豆老师的锦囊妙计 (Teacher's Strategy)
-                </h3>
-                <div class="space-y-4 text-slate-700 text-sm">
-                    <p>
-                        <strong class="text-orange-600">1. 分字记忆法 (Split & Conquer):</strong>
-                        Don't just memorize the whole word. Break it down! <br>
-                        Example: <span class="bg-white px-2 py-0.5 rounded border border-orange-200">中国人
-                            (ちゅうごくじん)</span>
-                        → <span class="font-bold">中 (ちゅう)</span> + <span class="font-bold">国 (ごく)</span> + <span
-                            class="font-bold">人 (じん)</span>.
-                        <br>Note the difference: China is <span class="text-rose-500 font-bold">ごく (Go-ku)</span>, but
-                        Korea
-                        is <span class="text-indigo-500 font-bold">こく (Ko-ku)</span>.
-                    </p>
-                    <p>
-                        <strong class="text-orange-600">2. 作业规范 (Homework Protocol):</strong>
-                        Copy each word 10 times (Kanji + Kana). Read the text aloud for 15-20 mins daily.
-                    </p>
+            <div
+                class="glass-panel p-8 bg-gradient-to-r from-amber-50 to-orange-50 border-l-8 border-orange-400 my-8 flex flex-col md:flex-row gap-6 items-start">
+                <div class="shrink-0">
+                    <img src="assets/images/lesson1/sensei.png" alt="Doudou Sensei"
+                        class="w-24 h-24 rounded-full border-4 border-white shadow-lg">
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-orange-800 flex items-center gap-3 mb-4">
+                        👩‍🏫 豆豆老师的锦囊妙计 (Teacher's Strategy)
+                    </h3>
+                    <div class="space-y-4 text-slate-700 text-sm">
+                        <p>
+                            <strong class="text-orange-600">1. 分字记忆法 (Split & Conquer):</strong>
+                            Don't just memorize the whole word. Break it down! <br>
+                            Example: <span class="bg-white px-2 py-0.5 rounded border border-orange-200">中国人
+                                (ちゅうごくじん)</span>
+                            → <span class="font-bold">中 (ちゅう)</span> + <span class="font-bold">国 (ごく)</span> + <span
+                                class="font-bold">人 (じん)</span>.
+                            <br>Note the difference: China is <span class="text-rose-500 font-bold">ごく (Go-ku)</span>,
+                            but
+                            Korea
+                            is <span class="text-indigo-500 font-bold">こく (Ko-ku)</span>.
+                        </p>
+                        <p>
+                            <strong class="text-orange-600">2. 作业规范 (Homework Protocol):</strong>
+                            Copy each word 10 times (Kanji + Kana). Read the text aloud for 15-20 mins daily.
+                        </p>
+                    </div>
                 </div>
             </div>
+
+            <!-- Roles & Organizations -->
+            <!-- Supplementary Vocabulary (Bonus) -->
+            <section class="space-y-6 mb-12">
+                <h3
+                    class="text-2xl font-black text-slate-800 mb-6 pl-4 border-l-8 border-teal-500 flex items-center gap-3">
+                    ✨ 补充词汇 <span class="text-sm font-normal text-slate-500">(Bonus Vocabulary)</span>
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Seito -->
+                    <div class="glass-panel p-5 group cursor-pointer hover:bg-teal-50/50 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-xl font-bold text-slate-800">生徒 <span
+                                    class="text-sm font-normal text-slate-500">(せいと)</span></span>
+                            <span class="text-teal-600 font-bold text-xs uppercase">Education</span>
+                        </div>
+                        <p class="text-slate-600 text-sm mt-2">Pupil (Middle/High School). <br><span
+                                class="text-xs text-slate-400">College students are 学生 (Gakusei).</span></p>
+                    </div>
+
+                    <!-- Dokushin -->
+                    <div class="glass-panel p-5 group cursor-pointer hover:bg-teal-50/50 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-xl font-bold text-slate-800">独身 <span
+                                    class="text-sm font-normal text-slate-500">(どくしん)</span></span>
+                            <span class="text-teal-600 font-bold text-xs uppercase">Status</span>
+                        </div>
+                        <p class="text-slate-600 text-sm mt-2">Single / Unmarried.<br>
+                            <span class="text-xs text-slate-400">Example: 独身ですか？(Are you single?)</span>
+                        </p>
+                    </div>
+
+                    <!-- Ikemen -->
+                    <div class="glass-panel p-5 group cursor-pointer hover:bg-teal-50/50 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-xl font-bold text-slate-800">イケメン</span>
+                            <span class="text-teal-600 font-bold text-xs uppercase">Slang</span>
+                        </div>
+                        <p class="text-slate-600 text-sm mt-2">Handsome Guy / Hunk.<br>
+                            <span class="text-xs text-slate-400">Ex: 彼はイケメンです。(He is a hottie.)</span>
+                        </p>
+                    </div>
+
+                    <!-- Peking Daigaku -->
+                    <div class="glass-panel p-5 group cursor-pointer hover:bg-teal-50/50 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-xl font-bold text-slate-800">北京大学 <span
+                                    class="text-sm font-normal text-slate-500">(ペキンだいがく)</span></span>
+                            <span class="text-teal-600 font-bold text-xs uppercase">Place</span>
+                        </div>
+                        <p class="text-slate-600 text-sm mt-2">Peking University.<br>
+                            <span class="text-xs text-slate-400">Contrast with London/Tokyo Univ.</span>
+                        </p>
+                    </div>
+
+                    <!-- Akamon -->
+                    <div class="glass-panel p-5 group cursor-pointer hover:bg-teal-50/50 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-xl font-bold text-slate-800">赤門 <span
+                                    class="text-sm font-normal text-slate-500">(あかもん)</span></span>
+                            <span class="text-teal-600 font-bold text-xs uppercase">Landmark</span>
+                        </div>
+                        <p class="text-slate-600 text-sm mt-2">The Red Gate.<br>
+                            <span class="text-xs text-slate-400">Famous gate of Tokyo University.</span>
+                        </p>
+                    </div>
+
+                    <!-- Chuuou Shokudou -->
+                    <div class="glass-panel p-5 group cursor-pointer hover:bg-teal-50/50 transition">
+                        <div class="flex justify-between items-start">
+                            <span class="text-xl font-bold text-slate-800">中央食堂 <span
+                                    class="text-sm font-normal text-slate-500">(ちゅうおうしょくどう)</span></span>
+                            <span class="text-teal-600 font-bold text-xs uppercase">Place</span>
+                        </div>
+                        <p class="text-slate-600 text-sm mt-2">Central Cafeteria.<br>
+                            <span class="text-xs text-slate-400">Famous cheap eats at Toudai.</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
 
             <!-- Roles & Organizations -->
             <section class="space-y-6">
@@ -517,6 +716,20 @@
                                     class="text-base font-normal text-slate-500">(せんせい)</span></span>
                             <span class="text-amber-600 font-bold">③</span>
                         </div>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">先 (Before/Ahead) + 生 (Born)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">"出生由于我之前" (One born before me) = 长者/老师。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">Sensei -> "せん" (Sen) 和中文 "先" 发音一模一样。</span>
+                            </div>
+                        </div>
                         <p class="text-slate-500 text-sm mt-2">Teacher / Doctor</p>
                     </div>
 
@@ -531,6 +744,21 @@
                         <p class="text-slate-500 text-sm mt-2">Student (College+). <span
                                 class="text-xs text-rose-500 block mt-1">💡 Tip: Middle/High schoolers are <span
                                     class="font-bold">生徒 (せいと)</span>.</span></p>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">学 (Learning) + 生 (Person/Student)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">音读词。Gaku-sei。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">"がく" (嘎古) -> <span class="text-indigo-500">尬骨</span>
+                                    (学习太累，骨头都尬了)。也可联想 "高考" (Gao-Kao) -> Gaku。</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Ryuugakusei -->
@@ -542,6 +770,20 @@
                             <span class="text-amber-600 font-bold">④</span>
                         </div>
                         <p class="text-slate-500 text-sm mt-2">International Student</p>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">留 (Stay) + 学 (Study) + 生</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">音读词。Ryuu-gaku-sei。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">"りゅう" (流) -> 留。发音很近。留学生在外 "流" 浪。</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Kenkyuuin -->
@@ -553,6 +795,16 @@
                             <span class="text-amber-600 font-bold">③</span>
                         </div>
                         <p class="text-slate-500 text-sm mt-2">Researcher</p>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">研究 (Research) + 員 (Member)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">"けんきゅう" (啃球) -> 研究员在那啃球。</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Daigaku -->
@@ -564,6 +816,16 @@
                             <span class="text-amber-600 font-bold">⓪</span>
                         </div>
                         <p class="text-slate-500 text-sm mt-2">University</p>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">大 (Big) + 学 (School/Study)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">"だいがく" (带尬裤) -> 大学生带尬裤。</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Kaishain -->
@@ -575,6 +837,16 @@
                             <span class="text-amber-600 font-bold">③</span>
                         </div>
                         <p class="text-slate-500 text-sm mt-2">Office Worker</p>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">会社 (Company) + 員 (Member)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">"かいしゃいん" (开下印) -> 公司职员开下打印机。</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Shain -->
@@ -586,6 +858,16 @@
                             <span class="text-amber-600 font-bold">①</span>
                         </div>
                         <p class="text-slate-500 text-sm mt-2">Employee (Generic)</p>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">社 (Company) + 員 (Member)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">"しゃいん" (下印) -> 职员下印。</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Kyouju -->
@@ -597,6 +879,16 @@
                             <span class="text-amber-600 font-bold">⓪</span>
                         </div>
                         <p class="text-slate-500 text-sm mt-2">Professor</p>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">教 (Teach) + 授 (Instruct)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">"きょうじゅ" (求救) -> 这题不会，向教授求救。</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Isha -->
@@ -608,6 +900,16 @@
                             <span class="text-amber-600 font-bold">⓪</span>
                         </div>
                         <p class="text-slate-500 text-sm mt-2">Doctor</p>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">医 (Medicine) + 者 (Person)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">"いしゃ" (一下) -> 医生扎一下就好。</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Buchou -->
@@ -619,6 +921,16 @@
                             <span class="text-amber-600 font-bold">⓪</span>
                         </div>
                         <p class="text-slate-500 text-sm mt-2">Dept. Manager</p>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">部 (Dept) + 長 (Chief)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">"ぶちょう" (不愁) -> 部长不愁钱。</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Kachou -->
@@ -630,6 +942,16 @@
                             <span class="text-amber-600 font-bold">⓪</span>
                         </div>
                         <p class="text-slate-500 text-sm mt-2">Section Chief</p>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">課 (Section) + 長 (Chief)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">"かちょう" (卡愁) -> 科长卡在中间很愁。</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -641,35 +963,65 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div class="glass-panel p-4 text-center cursor-pointer hover:scale-105 transition"
                         onclick="playAudio('chichi')">
-                        <p class="text-lg font-bold text-slate-800">父 (Chichi) 🔊</p>
+                        <p class="text-lg font-bold text-slate-800">父 (ちち) 🔊</p>
                         <p class="text-xs text-slate-500">My Father (Formal Introduction). <span
                                 class="text-xs text-rose-400 block">Call him: お父さん (おとうさん)</span></p>
+                        <div class="mt-2 text-[10px] text-slate-400 text-left border-t border-slate-100 pt-2">
+                            <span class="block"><strong class="text-slate-500">构词:</strong> 谦逊语 (Humble)</span>
+                            <span class="block mt-1"><strong class="text-amber-500">记忆:</strong> "ちち" ->
+                                爸爸吃迟了。</span>
+                        </div>
                     </div>
                     <div class="glass-panel p-4 text-center cursor-pointer hover:scale-105 transition"
                         onclick="playAudio('haha')">
-                        <p class="text-lg font-bold text-slate-800">母 (Haha) 🔊</p>
+                        <p class="text-lg font-bold text-slate-800">母 (はは) 🔊</p>
                         <p class="text-xs text-slate-500">My Mother (Formal Introduction). <span
                                 class="text-xs text-rose-400 block">Call her: お母さん (おかあさん)</span></p>
+                        <div class="mt-2 text-[10px] text-slate-400 text-left border-t border-slate-100 pt-2">
+                            <span class="block"><strong class="text-slate-500">构词:</strong> 谦逊语 (Humble)</span>
+                            <span class="block mt-1"><strong class="text-amber-500">记忆:</strong> "はは" ->
+                                妈妈哈哈大笑。</span>
+                        </div>
                     </div>
                     <div class="glass-panel p-4 text-center cursor-pointer hover:scale-105 transition"
                         onclick="playAudio('tomodachi')">
-                        <p class="text-lg font-bold text-slate-800">友達 (Tomodachi) 🔊</p>
+                        <p class="text-lg font-bold text-slate-800">友達 (ともだち) 🔊</p>
                         <p class="text-xs text-slate-500">Friend</p>
+                        <div class="mt-2 text-[10px] text-slate-400 text-left border-t border-slate-100 pt-2">
+                            <span class="block"><strong class="text-slate-500">构词:</strong> 友 (とも) + 達 (だち)</span>
+                            <span class="block mt-1"><strong class="text-amber-500">记忆:</strong> "とも" (土膜) ->
+                                朋友玩泥巴。</span>
+                        </div>
                     </div>
                     <div class="glass-panel p-4 text-center cursor-pointer hover:scale-105 transition"
                         onclick="playAudio('hito')">
-                        <p class="text-lg font-bold text-slate-800">人 (Hito) 🔊</p>
+                        <p class="text-lg font-bold text-slate-800">人 (ひと) 🔊</p>
                         <p class="text-xs text-slate-500">Person</p>
+                        <div class="mt-2 text-[10px] text-slate-400 text-left border-t border-slate-100 pt-2">
+                            <span class="block"><strong class="text-slate-500">构词:</strong> 训读 (Kun)</span>
+                            <span class="block mt-1"><strong class="text-amber-500">记忆:</strong> "ひと" (吸头) ->
+                                人有头。</span>
+                        </div>
                     </div>
                     <div class="glass-panel p-4 text-center cursor-pointer hover:scale-105 transition"
                         onclick="playAudio('dare')">
-                        <p class="text-lg font-bold text-slate-800">誰 (Dare) 🔊</p>
+                        <p class="text-lg font-bold text-slate-800">誰 (だれ) 🔊</p>
                         <p class="text-xs text-slate-500">Who (Casual)</p>
+                        <div class="mt-2 text-[10px] text-slate-400 text-left border-t border-slate-100 pt-2">
+                            <span class="block"><strong class="text-slate-500">构词:</strong> 疑问词</span>
+                            <span class="block mt-1"><strong class="text-amber-500">记忆:</strong> "だれ" (大类) ->
+                                谁是大类？</span>
+                        </div>
                     </div>
                     <div class="glass-panel p-4 text-center cursor-pointer hover:scale-105 transition"
                         onclick="playAudio('donata')">
                         <p class="text-lg font-bold text-slate-800">どなた (Donata) 🔊</p>
                         <p class="text-xs text-slate-500">Who (Polite)</p>
+                        <div class="mt-2 text-[10px] text-slate-400 text-left border-t border-slate-100 pt-2">
+                            <span class="block"><strong class="text-slate-500">构词:</strong> 疑问词 (Polite)</span>
+                            <span class="block mt-1"><strong class="text-amber-500">记忆:</strong> "どなた" (多那塔) ->
+                                哪位是多那塔？</span>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -740,6 +1092,20 @@
                         </div>
                         <p class="text-slate-500 text-sm mt-4">The standard, polite "I" for both
                             men and women.</p>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">私 (Private/Me)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">训读 (Kun'yomi)。作为公家场合的谦称。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">"わた" (挖他) -> 我去挖他。Wa ~ "我" (Wo) 的变音。</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Anata -->
@@ -766,6 +1132,20 @@
                         </div>
                         <p class="text-slate-500 text-sm mt-4">"You". Note: Often used by wives to address husbands
                             (Darling/Honey). Avoid using if you know the person's name.</p>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">彼 (Far side) + 方 (Direction) -> 那边 -> 您</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">原指 "那边" (Over there)。以此代指对方以示尊敬（不直呼其名）。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">"あなた" (阿娜塔) -> 亲爱的。</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Kare -->
@@ -773,177 +1153,257 @@
                         <div class="flex justify-between items-start">
                             <div>
                                 <span class="text-3xl font-bold text-slate-800">彼 <span
-                                        class="text-lg text-purple-400">🔊</span> <span <div
-                                        class="text-purple-400 font-bold mt-2 text-xl tracking-widest">
-                                        <span class="pitch-container">
-                                            か
-                                            <div class="pitch-line" style="left: 100%; right: 0;"></div>
-                                        </span>
-                                        <span class="pitch-container">
-                                            れ
-                                            <div class="pitch-line"></div>
-                                            <div class="pitch-down"></div>
-                                        </span>
+                                        class="text-lg text-purple-400">🔊</span></span>
+                                <div class="text-purple-400 font-bold mt-2 text-xl tracking-widest">
+                                    <span class="pitch-container">
+                                        か
+                                        <div class="pitch-line" style="left: 100%; right: 0;"></div>
+                                    </span>
+                                    <span class="pitch-container">
+                                        れ
+                                        <div class="pitch-line"></div>
+                                        <div class="pitch-down"></div>
+                                    </span>
+                                </div>
+                            </div>
+                            <span
+                                class="px-3 py-1 bg-white/80 text-slate-800 border border-slate-300 text-xs rounded-full font-bold">TYPE
+                                ①</span>
+                        </div>
+                        <p class="text-slate-500 text-sm mt-4">He / Boyfriend</p>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">彼 (He/That)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">"Ka-re" (咖喱) -> 他吃咖喱。</span>
                             </div>
                         </div>
-                        <span
-                            class="px-3 py-1 bg-white/80 text-slate-800 border border-slate-300 text-xs rounded-full font-bold">TYPE
-                            ①</span>
                     </div>
-                    <p class="text-slate-500 text-sm mt-4">He / Boyfriend</p>
-                </div>
 
-                <!-- Kanojo -->
-                <div class="glass-panel p-6 group cursor-pointer" onclick="playAudio('kanojo')">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <span class="text-3xl font-bold text-slate-800">彼女 <span
-                                    class="text-lg text-purple-400">🔊</span></span>
-                            <div class="text-purple-400 font-bold mt-2 text-xl tracking-widest">
-                                <span class="pitch-container">
-                                    か
-                                    <div class="pitch-line" style="left: 100%; right: 0;"></div>
-                                </span>
-                                <span class="pitch-container">
-                                    のじょ
-                                    <div class="pitch-line"></div>
-                                    <div class="pitch-down"></div>
-                                </span>
+                    <!-- Kanojo -->
+                    <div class="glass-panel p-6 group cursor-pointer" onclick="playAudio('kanojo')">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-3xl font-bold text-slate-800">彼女 <span
+                                        class="text-lg text-purple-400">🔊</span></span>
+                                <div class="text-purple-400 font-bold mt-2 text-xl tracking-widest">
+                                    <span class="pitch-container">
+                                        か
+                                        <div class="pitch-line" style="left: 100%; right: 0;"></div>
+                                    </span>
+                                    <span class="pitch-container">
+                                        のじょ
+                                        <div class="pitch-line"></div>
+                                        <div class="pitch-down"></div>
+                                    </span>
+                                </div>
+                            </div>
+                            <span
+                                class="px-3 py-1 bg-white/80 text-slate-800 border border-slate-300 text-xs rounded-full font-bold">TYPE
+                                ①</span>
+                        </div>
+                        <p class="text-slate-500 text-sm mt-4">She / Girlfriend</p>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">彼 (That) + 女 (Woman)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">明治时代创造的词（对应 She）。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">"Kano-jo" (卡弄丢) -> 她把卡弄丢了。</span>
                             </div>
                         </div>
-                        <span
-                            class="px-3 py-1 bg-white/80 text-slate-800 border border-slate-300 text-xs rounded-full font-bold">TYPE
-                            ①</span>
                     </div>
-                    <p class="text-slate-500 text-sm mt-4">She / Girlfriend</p>
                 </div>
-        </div>
 
-        <!-- Personal Pronouns Nuance -->
-        <div class="bg-slate-100 p-6 rounded-[40px] border border-slate-200">
-            <h4 class="text-amber-600 font-bold mb-4 flex items-center gap-2">👨‍🏫
-                自称的性别平衡 (Personal Pronoun Nuance)</h4>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="p-4 bg-white/60 rounded-2xl">
-                    <p class="text-slate-800 font-bold cursor-pointer" onclick="playAudio('ore')">俺 (おれ) 🔊</p>
-                    <p class="text-xs text-slate-500">Very masculine, used with friends
-                        (same/lower status).</p>
-                </div>
-                <div class="p-4 bg-white/60 rounded-2xl">
-                    <p class="text-slate-800 font-bold cursor-pointer" onclick="playAudio('boku')">僕 (ぼく) 🔊</p>
-                    <p class="text-xs text-slate-500">Humble/soft masculine. Common for
-                        boys and young men.</p>
-                </div>
-                <div class="p-4 bg-white/60 rounded-2xl">
-                    <p class="text-slate-800 font-bold cursor-pointer" onclick="playAudio('atashi')">あたし (あたし) 🔊</p>
-                    <p class="text-xs text-slate-500">Very feminine, "cute" nuance. Use
-                        with caution in business.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Names Grid -->
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-8">
-            <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('ri')">
-                <p class="text-slate-800 font-bold text-lg">李 <span class="text-xs text-purple-300">り</span></p>
-            </button>
-            <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('ou')">
-                <p class="text-slate-800 font-bold text-lg">王 <span class="text-xs text-purple-300">おう</span> 🔊
-                </p>
-            </button>
-            <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('chou')">
-                <p class="text-slate-800 font-bold text-lg">张 <span class="text-xs text-purple-300">ちょう</span> 🔊
-                </p>
-            </button>
-            <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('mori')">
-                <p class="text-slate-800 font-bold text-lg">森 <span class="text-xs text-purple-300">もり</span> 🔊
-                </p>
-            </button>
-            <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('ono')">
-                <p class="text-slate-800 font-bold text-lg">小野 <span class="text-xs text-purple-300">おの</span> 🔊
-                </p>
-            </button>
-            <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('hayashi')">
-                <p class="text-slate-800 font-bold text-lg">林 <span class="text-xs text-purple-300">はやし</span> 🔊
-                </p>
-            </button>
-            <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('yoshida')">
-                <p class="text-slate-800 font-bold text-lg">吉田 <span class="text-xs text-purple-300">よしだ</span> 🔊
-                </p>
-            </button>
-            <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('tanaka')">
-                <p class="text-slate-800 font-bold text-lg">田中 <span class="text-xs text-purple-300">たなか</span> 🔊
-                </p>
-            </button>
-            <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('nakamura')">
-                <p class="text-slate-800 font-bold text-lg">中村 <span class="text-xs text-purple-300">なかむら</span> 🔊
-                </p>
-            </button>
-            <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('kimu')">
-                <p class="text-slate-800 font-bold text-lg">金 <span class="text-xs text-purple-300">キム</span> 🔊
-                </p>
-            </button>
-            <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('dyupon')">
-                <p class="text-slate-800 font-bold text-lg">デュポン <span class="text-xs text-purple-300">Dupon</span> 🔊
-                </p>
-            </button>
-            <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('sumisu')">
-                <p class="text-slate-800 font-bold text-lg">スミス <span class="text-xs text-purple-300">Smith</span> 🔊
-                </p>
-            </button>
-            <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('jonson')">
-                <p class="text-slate-800 font-bold text-lg">ジョンソン <span class="text-xs text-purple-300">Johnson</span>
-                    🔊
-                </p>
-            </button>
-        </div>
-        </section>
-
-        <!-- Key Phrases -->
-        <section class="space-y-6">
-            <h3 class="text-2xl font-black text-slate-800 mb-6 pl-4 border-l-8 border-rose-500 flex items-center gap-3">
-                💬 核心应答 <span class="text-sm font-normal text-slate-500">(Common
-                    Phrases)</span>
-            </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="glass-panel p-8 flex flex-col items-center justify-center gap-4 cursor-pointer"
-                    onclick="playAudio('hai_iie')">
-                    <div
-                        class="text-4xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
-                        はい / いいえ <span class="text-2xl text-emerald-400">🔊</span>
+                <!-- Personal Pronouns Nuance -->
+                <div class="bg-slate-100 p-6 rounded-[40px] border border-slate-200">
+                    <h4 class="text-amber-600 font-bold mb-4 flex items-center gap-2">👨‍🏫
+                        自称的性别平衡 (Personal Pronoun Nuance)</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-4 bg-white/60 rounded-2xl">
+                            <p class="text-slate-800 font-bold cursor-pointer" onclick="playAudio('ore')">俺 (おれ) 🔊
+                            </p>
+                            <p class="text-xs text-slate-500">Very masculine, used with friends
+                                (same/lower status).</p>
+                        </div>
+                        <div class="p-4 bg-white/60 rounded-2xl">
+                            <p class="text-slate-800 font-bold cursor-pointer" onclick="playAudio('boku')">僕 (ぼく) 🔊
+                            </p>
+                            <p class="text-xs text-slate-500">Humble/soft masculine. Common for
+                                boys and young men.</p>
+                        </div>
+                        <div class="p-4 bg-white/60 rounded-2xl">
+                            <p class="text-slate-800 font-bold cursor-pointer" onclick="playAudio('atashi')">あたし
+                                (あたし)
+                                🔊
+                            </p>
+                            <p class="text-xs text-slate-500">Very feminine, "cute" nuance. Use
+                                with caution in business.</p>
+                        </div>
                     </div>
-                    <p class="text-slate-500">Yes / No</p>
                 </div>
-                <div class="glass-panel p-8 flex flex-col items-center justify-center gap-4 cursor-pointer"
-                    onclick="playAudio('hajimemashite')">
-                    <div class="text-3xl font-bold text-slate-800">はじめまして <span
-                            class="text-lg text-indigo-500">🔊</span></div>
-                    <p class="text-slate-500">Pleased to meet you (1st time)</p>
+
+                <!-- Names Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-8">
+                    <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('ri')">
+                        <p class="text-slate-800 font-bold text-lg">李 <span class="text-xs text-purple-300">り</span>
+                        </p>
+                    </button>
+                    <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('ou')">
+                        <p class="text-slate-800 font-bold text-lg">王 <span class="text-xs text-purple-300">おう</span> 🔊
+                        </p>
+                    </button>
+                    <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('chou')">
+                        <p class="text-slate-800 font-bold text-lg">张 <span class="text-xs text-purple-300">ちょう</span>
+                            🔊
+                        </p>
+                    </button>
+                    <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('mori')">
+                        <p class="text-slate-800 font-bold text-lg">森 <span class="text-xs text-purple-300">もり</span> 🔊
+                        </p>
+                    </button>
+                    <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('ono')">
+                        <p class="text-slate-800 font-bold text-lg">小野 <span class="text-xs text-purple-300">おの</span>
+                            🔊
+                        </p>
+                    </button>
+                    <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('hayashi')">
+                        <p class="text-slate-800 font-bold text-lg">林 <span class="text-xs text-purple-300">はやし</span>
+                            🔊
+                        </p>
+                    </button>
+                    <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('yoshida')">
+                        <p class="text-slate-800 font-bold text-lg">吉田 <span class="text-xs text-purple-300">よしだ</span>
+                            🔊
+                        </p>
+                    </button>
+                    <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('tanaka')">
+                        <p class="text-slate-800 font-bold text-lg">田中 <span class="text-xs text-purple-300">たなか</span>
+                            🔊
+                        </p>
+                    </button>
+                    <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('nakamura')">
+                        <p class="text-slate-800 font-bold text-lg">中村 <span class="text-xs text-purple-300">なかむら</span>
+                            🔊
+                        </p>
+                    </button>
+                    <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('kimu')">
+                        <p class="text-slate-800 font-bold text-lg">金 <span class="text-xs text-purple-300">キム</span> 🔊
+                        </p>
+                    </button>
+                    <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('dyupon')">
+                        <p class="text-slate-800 font-bold text-lg">デュポン <span
+                                class="text-xs text-purple-300">Dupon</span>
+                            🔊
+                        </p>
+                    </button>
+                    <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('sumisu')">
+                        <p class="text-slate-800 font-bold text-lg">スミス <span
+                                class="text-xs text-purple-300">Smith</span>
+                            🔊
+                        </p>
+                    </button>
+                    <button class="glass-panel p-4 text-center hover:scale-105" onclick="playAudio('jonson')">
+                        <p class="text-slate-800 font-bold text-lg">ジョンソン <span
+                                class="text-xs text-purple-300">Johnson</span>
+                            🔊
+                        </p>
+                    </button>
                 </div>
-                <div class="glass-panel p-8 flex flex-col items-center justify-center gap-4 cursor-pointer"
-                    onclick="playAudio('douzo')">
-                    <div class="text-3xl font-bold text-slate-800">どうぞ <span class="text-lg text-indigo-500">🔊</span>
+            </section>
+
+            <!-- Key Phrases -->
+            <section class="space-y-6">
+                <h3
+                    class="text-2xl font-black text-slate-800 mb-6 pl-4 border-l-8 border-rose-500 flex items-center gap-3">
+                    💬 核心应答 <span class="text-sm font-normal text-slate-500">(Common
+                        Phrases)</span>
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="glass-panel p-8 flex flex-col items-center justify-center gap-4 cursor-pointer"
+                        onclick="playAudio('hai_iie')">
+                        <div
+                            class="text-4xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+                            はい / いいえ <span class="text-2xl text-emerald-400">🔊</span>
+                        </div>
+                        <p class="text-slate-500">Yes / No</p>
+                        <div class="mt-2 text-[10px] text-slate-400 text-left border-t border-slate-100 pt-2 w-full">
+                            <span class="block"><strong class="text-slate-500">构词:</strong> 感叹词 / 否定词</span>
+                            <span class="block mt-1"><strong class="text-amber-500">记忆:</strong> "Hai" (嗨) ->
+                                嗨，是的。 "Iie" (伊-埃) -> 摇头音。</span>
+                        </div>
                     </div>
-                    <p class="text-slate-500">Please / After you</p>
+                    <div class="glass-panel p-8 flex flex-col items-center justify-center gap-4 cursor-pointer"
+                        onclick="playAudio('hajimemashite')">
+                        <div class="text-3xl font-bold text-slate-800">はじめまして <span
+                                class="text-lg text-indigo-500">🔊</span></div>
+                        <p class="text-slate-500">Pleased to meet you (1st time)</p>
+                        <div class="mt-2 text-[10px] text-slate-400 text-left border-t border-slate-100 pt-2 w-full">
+                            <span class="block"><strong class="text-slate-500">构词:</strong> 始める (Start) + まして
+                                (Te-form)</span>
+                            <span class="block mt-1"><strong class="text-amber-500">记忆:</strong> "Hajime" (哈吉乃) ->
+                                第一次见面哈吉。</span>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-8 flex flex-col items-center justify-center gap-4 cursor-pointer"
+                        onclick="playAudio('douzo')">
+                        <div class="text-3xl font-bold text-slate-800">どうぞ <span
+                                class="text-lg text-indigo-500">🔊</span>
+                        </div>
+                        <p class="text-slate-500">Please / After you</p>
+                        <div class="mt-2 text-[10px] text-slate-400 text-left border-t border-slate-100 pt-2 w-full">
+                            <span class="block"><strong class="text-slate-500">构词:</strong> 副词 (Adverb)</span>
+                            <span class="block mt-1"><strong class="text-amber-500">记忆:</strong> "Douzo" (多走) ->
+                                请多走几步/请进。</span>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-8 flex flex-col items-center justify-center gap-4 cursor-pointer"
+                        onclick="playAudio('yoroshiku')">
+                        <div class="text-2xl font-bold text-indigo-600">よろしくお願いします <span class="text-lg">🔊</span>
+                        </div>
+                        <p class="text-slate-500 text-xs">Nice to meet you (Formal)</p>
+                        <div class="mt-2 text-[10px] text-slate-400 text-left border-t border-slate-100 pt-2 w-full">
+                            <span class="block"><strong class="text-slate-500">构词:</strong> 宜しい (Good) +
+                                Adverb</span>
+                            <span class="block mt-1"><strong class="text-amber-500">记忆:</strong> "You-Rou-Shi-Ku"
+                                (有肉喜库)
+                                ->
+                                有肉吃很高兴，请多关照。</span>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-8 flex flex-col items-center justify-center gap-4 cursor-pointer"
+                        onclick="playAudio('wakarimashita')">
+                        <div class="text-2xl font-bold text-emerald-600">分かりました / 分かりません</div>
+                        <p class="text-slate-500 text-xs text-center">Understood / Don't Understand<br><span
+                                class="text-[10px] text-slate-400">Past "mashita" = I get it now.</span></p>
+                        <div class="mt-2 text-[10px] text-slate-400 text-left border-t border-slate-100 pt-2 w-full">
+                            <span class="block"><strong class="text-slate-500">构词:</strong> 分かる (Understand) +
+                                Mashita</span>
+                            <span class="block mt-1"><strong class="text-amber-500">记忆:</strong> "Wakaru" (哇卡) ->
+                                哇卡，懂了。</span>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-8 flex flex-col items-center justify-center gap-4 cursor-pointer"
+                        onclick="playAudio('chigaimasu')">
+                        <div class="text-2xl font-bold text-rose-600">違います</div>
+                        <p class="text-slate-500 text-xs text-center">No, that's wrong / different.</p>
+                        <div class="mt-2 text-[10px] text-slate-400 text-left border-t border-slate-100 pt-2 w-full">
+                            <span class="block"><strong class="text-slate-500">构词:</strong> 違う (Differ) +
+                                Masu</span>
+                            <span class="block mt-1"><strong class="text-amber-500">记忆:</strong> "Chi-Gau" (七高) ->
+                                不对，身高是七高。</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="glass-panel p-8 flex flex-col items-center justify-center gap-4 cursor-pointer"
-                    onclick="playAudio('yoroshiku')">
-                    <div class="text-2xl font-bold text-indigo-600">よろしくお願いします <span class="text-lg">🔊</span></div>
-                    <p class="text-slate-500 text-xs">Nice to meet you (Formal)</p>
-                </div>
-                <div class="glass-panel p-8 flex flex-col items-center justify-center gap-4 cursor-pointer"
-                    onclick="playAudio('wakarimashita')">
-                    <div class="text-2xl font-bold text-emerald-600">分かりました / 分かりません</div>
-                    <p class="text-slate-500 text-xs text-center">Understood / Don't Understand<br><span
-                            class="text-[10px] text-slate-400">Past "mashita" = I get it now.</span></p>
-                </div>
-                <div class="glass-panel p-8 flex flex-col items-center justify-center gap-4 cursor-pointer"
-                    onclick="playAudio('chigaimasu')">
-                    <div class="text-2xl font-bold text-rose-600">違います</div>
-                    <p class="text-slate-500 text-xs text-center">No, that's wrong / different.</p>
-                </div>
-            </div>
-        </section>
+            </section>
         </div>
         <!-- 2. Grammar Section -->
         <div id="content-grammar" class="hidden space-y-12">
@@ -1041,7 +1501,8 @@
                         class="p-6 bg-white/60 rounded-3xl border border-slate-200 flex items-center justify-between group hover:border-rose-400 transition">
                         <div>
                             <p class="text-xl font-bold text-slate-800">私<span class="text-rose-600">は</span>アメリカ人<span
-                                    class="text-rose-600">では ありません</span>。</p>
+                                    class="text-rose-600">では ありません</span>。
+                            </p>
                             <p class="text-slate-500 text-sm mt-1">我不是美国人 (Formal)。</p>
                         </div>
                         <button onclick="playAudio('grammar_2_2')"
@@ -1178,9 +1639,8 @@
                 <div class="space-y-8">
                     <!-- Li -->
                     <div class="flex gap-4 items-end group cursor-pointer" onclick="playAudio('text_1_1')">
-                        <div
-                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-slate-800 font-black text-xl shadow-lg border border-slate-300">
-                            李</div>
+                        <img src="assets/images/lesson1/li.png" alt="Li"
+                            class="w-16 h-16 rounded-2xl shadow-lg border-2 border-white hover:scale-110 transition-transform duration-300">
                         <div class="chat-bubble chat-left group-hover:scale-[1.02] transition-transform">
                             <p class="text-lg font-bold">JC企画の 小野さんですか。 🔊</p>
                             <p class="text-slate-500 text-sm mt-2">Is this Ms. Ono from
@@ -1191,9 +1651,8 @@
                     <!-- Ono -->
                     <div class="flex gap-4 flex-row-reverse items-end group cursor-pointer"
                         onclick="playAudio('text_1_2')">
-                        <div
-                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-slate-800 font-black text-xl shadow-lg border border-slate-300">
-                            小野</div>
+                        <img src="assets/images/lesson1/ono.png" alt="Ono"
+                            class="w-16 h-16 rounded-2xl shadow-lg border-2 border-white hover:scale-110 transition-transform duration-300">
                         <div class="chat-bubble chat-right group-hover:scale-[1.02] transition-transform">
                             <p class="text-lg font-bold">はい、小野です。李さんですか。 🔊</p>
                             <p class="text-indigo-100/70 text-sm mt-2">Yes, I'm Ono. Are
@@ -1203,9 +1662,8 @@
 
                     <!-- Li -->
                     <div class="flex gap-4 items-end group cursor-pointer" onclick="playAudio('text_1_3')">
-                        <div
-                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-slate-800 font-black text-xl shadow-lg border border-slate-300">
-                            李</div>
+                        <img src="assets/images/lesson1/li.png" alt="Li"
+                            class="w-16 h-16 rounded-2xl shadow-lg border-2 border-white hover:scale-110 transition-transform duration-300">
                         <div class="chat-bubble chat-left group-hover:scale-[1.02] transition-transform">
                             <p class="text-lg font-bold">はい、李です。はじめまして。 🔊</p>
                             <p class="text-slate-500 text-sm mt-2">Yes, I'm Li. Nice
@@ -1216,9 +1674,8 @@
                     <!-- Ono -->
                     <div class="flex gap-4 flex-row-reverse items-end group cursor-pointer"
                         onclick="playAudio('text_1_4')">
-                        <div
-                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-slate-800 font-black text-xl shadow-lg border border-slate-300">
-                            小野</div>
+                        <img src="assets/images/lesson1/ono.png" alt="Ono"
+                            class="w-16 h-16 rounded-2xl shadow-lg border-2 border-white hover:scale-110 transition-transform duration-300">
                         <div class="chat-bubble chat-right group-hover:scale-[1.02] transition-transform">
                             <p class="text-lg font-bold">はじめまして、小野あつこです。よろしくお願いします。 🔊</p>
                             <p class="text-indigo-100/70 text-sm mt-2">Nice to meet you,
@@ -1241,9 +1698,8 @@
                     <!-- Yoshida -->
                     <!-- Li: Yoshida-san desu ka -->
                     <div class="flex gap-4 items-end group cursor-pointer" onclick="playAudio('text_2_1')">
-                        <div
-                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-slate-800 font-black text-xl shadow-lg border border-slate-300">
-                            李</div>
+                        <img src="assets/images/lesson1/li.png" alt="Li"
+                            class="w-16 h-16 rounded-2xl shadow-lg border-2 border-white hover:scale-110 transition-transform duration-300">
                         <div class="chat-bubble chat-left group-hover:scale-[1.02] transition-transform">
                             <p class="text-lg font-bold">吉田さんですか。 🔊</p>
                             <p class="text-slate-500 text-sm mt-2">Are you Mr. Yoshida?</p>
@@ -1253,9 +1709,8 @@
                     <!-- Mori: Iie... -->
                     <div class="flex gap-4 flex-row-reverse items-end group cursor-pointer"
                         onclick="playAudio('text_2_2')">
-                        <div
-                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-slate-800 font-black text-xl shadow-lg border border-slate-300">
-                            森</div>
+                        <img src="assets/images/lesson1/mori.png" alt="Mori"
+                            class="w-16 h-16 rounded-2xl shadow-lg border-2 border-white hover:scale-110 transition-transform duration-300">
                         <div class="chat-bubble chat-right group-hover:scale-[1.02] transition-transform">
                             <p class="text-lg font-bold">いいえ、吉田じゃありません。森です。 🔊</p>
                             <p class="text-indigo-100/70 text-sm mt-2">No, I'm not Yoshida. I'm Mori.</p>
@@ -1264,9 +1719,8 @@
 
                     <!-- Li: Ah, Sumimasen -->
                     <div class="flex gap-4 items-end group cursor-pointer" onclick="playAudio('text_2_3')">
-                        <div
-                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-slate-800 font-black text-xl shadow-lg border border-slate-300">
-                            李</div>
+                        <img src="assets/images/lesson1/li.png" alt="Li"
+                            class="w-16 h-16 rounded-2xl shadow-lg border-2 border-white hover:scale-110 transition-transform duration-300">
                         <div class="chat-bubble chat-left group-hover:scale-[1.02] transition-transform">
                             <p class="text-lg font-bold">あ、森さんですか。どうもすみません。 🔊</p>
                             <p class="text-slate-500 text-sm mt-2">Ah, Mr. Mori? I'm very sorry.</p>
@@ -1276,9 +1730,8 @@
                     <!-- Mori: Iie -->
                     <div class="flex gap-4 flex-row-reverse items-end group cursor-pointer"
                         onclick="playAudio('text_2_4')">
-                        <div
-                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-slate-800 font-black text-xl shadow-lg border border-slate-300">
-                            森</div>
+                        <img src="assets/images/lesson1/mori.png" alt="Mori"
+                            class="w-16 h-16 rounded-2xl shadow-lg border-2 border-white hover:scale-110 transition-transform duration-300">
                         <div class="chat-bubble chat-right group-hover:scale-[1.02] transition-transform">
                             <p class="text-lg font-bold">いいえ。どうぞよろしくお願いします。 🔊</p>
                             <p class="text-indigo-100/70 text-sm mt-2">No problem. Nice to meet you.</p>
@@ -1287,9 +1740,8 @@
 
                     <!-- Li: Li Xiuli desu -->
                     <div class="flex gap-4 items-end group cursor-pointer" onclick="playAudio('text_2_5')">
-                        <div
-                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-slate-800 font-black text-xl shadow-lg border border-slate-300">
-                            李</div>
+                        <img src="assets/images/lesson1/li.png" alt="Li"
+                            class="w-16 h-16 rounded-2xl shadow-lg border-2 border-white hover:scale-110 transition-transform duration-300">
                         <div class="chat-bubble chat-left group-hover:scale-[1.02] transition-transform">
                             <p class="text-lg font-bold">李秀麗です。こちらこそ。 🔊</p>
                             <p class="text-slate-500 text-sm mt-2">I'm Li Xiuli. Likewise.</p>
@@ -1310,7 +1762,8 @@
                 </h2>
                 <div class="mb-6 p-4 bg-amber-50 rounded-xl border border-amber-200 text-sm text-amber-800 flex gap-2">
                     <span>💡</span>
-                    <p>This challenge text contains <strong>EVERY</strong> vocabulary word from Lesson 1. Read it aloud!
+                    <p>This challenge text contains <strong>EVERY</strong> vocabulary word from Lesson 1. Read it
+                        aloud!
                     </p>
                 </div>
 
@@ -1326,16 +1779,15 @@
                         </div>
                         <p class="text-lg leading-loose text-slate-800">
                             <span class="font-bold text-indigo-600">ハイ、はじめまして！</span><br>
-                            <span class="ruby">私<rt>わたし</rt></span>は <span class="ruby">田中<rt>たなか</rt></span>です。<span
-                                class="ruby">日本人<rt>にほんじん</rt></span>です。<br>
-                            これは <span class="ruby">父<rt>ちち</rt></span> <span class="text-xs text-slate-400">(My
-                                Father)</span> と <span class="ruby">母<rt>はは</rt></span> <span
-                                class="text-xs text-slate-400">(My Mother)</span> です。<br>
-                            あの <span class="ruby">人<rt>ひと</rt></span>は <span class="ruby">友達<rt>ともだち</rt></span>の <span
-                                class="ruby">林<rt>はやし</rt></span>君(くん)です。<br>
-                            <span class="ruby">彼<rt>かれ</rt></span>は <span class="ruby">学生<rt>がくせい</rt>
-                            </span>じゃありません。<span class="ruby">会社員<rt>かいしゃいん</rt></span>です。<span class="ruby">社員<rt>
-                                    しゃいん</rt></span>です。
+                            <ruby>私<rt>わたし</rt></ruby>は <ruby>田中<rt>たなか</rt></ruby>です。<ruby>日本人<rt>にほんじん</rt>
+                            </ruby>です。<br>
+                            これは <ruby>父<rt>ちち</rt></ruby> <span class="text-xs text-slate-400">(My
+                                Father)</span> と <ruby>母<rt>はは</rt></ruby> <span class="text-xs text-slate-400">(My
+                                Mother)</span> です。<br>
+                            あの <ruby>人<rt>ひと</rt></ruby>は <ruby>友達<rt>ともだち</rt></ruby>の
+                            <ruby>林<rt>はやし</rt></ruby>君(くん)です。<br>
+                            <ruby>彼<rt>かれ</rt></ruby>は <ruby>学生<rt>がくせい</rt></ruby>じゃありません。<ruby>会社員<rt>かいしゃいん</rt>
+                            </ruby>です。<ruby>社員<rt>しゃいん</rt></ruby>です。
                         </p>
                     </div>
 
@@ -1361,7 +1813,8 @@
                                 <span class="text-slate-600">キム (Kim) - 医者 (Doctor)</span>
                             </div>
                             <div class="bg-white p-4 rounded-xl shadow-sm">
-                                <span class="block font-bold text-slate-800 mb-1">🇫🇷 フランス & スイス (France/Swiss)</span>
+                                <span class="block font-bold text-slate-800 mb-1">🇫🇷 フランス & スイス
+                                    (France/Swiss)</span>
                                 <span class="text-slate-600">デュポン (Dupont) - 研究員 (Researcher)</span>
                             </div>
                         </div>
@@ -1379,7 +1832,8 @@
                                 <p
                                     class="bg-white p-4 rounded-xl rounded-tl-none shadow-sm text-slate-800 group-hover:bg-indigo-50 transition-colors">
                                     あの方（かた）は <span class="text-rose-500 font-bold">どなた</span>ですか。<br>
-                                    <span class="text-sm text-slate-400 block mt-1">Who is that polite gentleman?</span>
+                                    <span class="text-sm text-slate-400 block mt-1">Who is that polite
+                                        gentleman?</span>
                                 </p>
                             </div>
                         </div>
@@ -1391,11 +1845,9 @@
                             <div class="space-y-1 text-right w-full">
                                 <p
                                     class="bg-teal-50 p-4 rounded-xl rounded-tr-none shadow-sm text-slate-800 text-left group-hover:bg-teal-100 transition-colors">
-                                    <span class="ruby">中村<rt>なかむら</rt></span> <span class="ruby">教授<rt>きょうじゅ</rt>
-                                    </span>です。<span class="ruby">大学<rt>だいがく</rt></span>の <span class="ruby">先生<rt>せんせい
-                                        </rt></span>です。<br>
-                                    <span class="ruby">彼女<rt>かのじょ</rt></span>は <span class="ruby">森<rt>もり</rt>
-                                    </span>ちゃんです。<br>
+                                    <ruby>中村<rt>なかむら</rt></ruby> <ruby>教授<rt>きょうじゅ</rt></ruby>です。<ruby>大学<rt>だいがく</rt>
+                                    </ruby>の <ruby>先生<rt>せんせい</rt></ruby>です。<br>
+                                    <ruby>彼女<rt>かのじょ</rt></ruby>は <ruby>森<rt>もり</rt></ruby>ちゃんです。<br>
                                     <span class="text-sm text-slate-400 block mt-1">That's Prof. Nakamura. She is
                                         Mori-chan.</span>
                                 </p>
@@ -1413,7 +1865,8 @@
                                     class="bg-white p-4 rounded-xl rounded-tl-none shadow-sm text-slate-800 group-hover:bg-blue-50 transition-colors">
                                     <span class="font-bold text-blue-600">俺 (Ore)</span> は元気です。<br>
                                     <span class="font-bold text-indigo-600">僕 (Boku)</span> も元気です。<br>
-                                    <span class="text-sm text-slate-400 block mt-1">"I (manly)" am good. "I (boyish)" am
+                                    <span class="text-sm text-slate-400 block mt-1">"I (manly)" am good. "I
+                                        (boyish)" am
                                         good too.</span>
                                 </p>
                             </div>
@@ -1437,17 +1890,17 @@
                             onclick="playAudio('scene3_dialogue3_qa')">
                             <div class="flex flex-col gap-2">
                                 <div class="flex justify-between">
-                                    <p class="text-slate-800"><strong>Q:</strong> 小野さん、<span class="ruby">あなた<rt>あなた
-                                            </rt>
-                                        </span>は <span class="ruby">部長<rt>ぶちょう</rt></span>ですか？</p>
+                                    <p class="text-slate-800"><strong>Q:</strong> 小野さん、<ruby>あなた<rt>あなた</rt></ruby>は
+                                        <ruby>部長<rt>ぶちょう</rt></ruby>ですか？
+                                    </p>
                                     <span class="text-slate-400 text-xs">🔊</span>
                                 </div>
-                                <p class="text-indigo-600 font-bold">A: いいえ、違います。<span class="ruby">課長<rt>かちょう</rt>
-                                    </span>です。</p>
-                                <p class="text-slate-800 mt-2"><strong>Q:</strong>じゃ、<span class="ruby">誰<rt>だれ</rt>
-                                    </span>が部長ですか？</p>
-                                <p class="text-indigo-600 font-bold">A: <span class="ruby">吉田<rt>よしだ</rt></span> <span
-                                        class="ruby">様<rt>さま</rt></span>です。</p>
+                                <p class="text-indigo-600 font-bold">A: いいえ、違います。<ruby>課長<rt>かちょう</rt></ruby>です。</p>
+                                <p class="text-slate-800 mt-2"><strong>Q:</strong>じゃ、<ruby>誰<rt>だれ</rt></ruby>が部長ですか？
+                                </p>
+                                <p class="text-indigo-600 font-bold">A: <ruby>吉田<rt>よしだ</rt></ruby>
+                                    <ruby>様<rt>さま</rt></ruby>です。
+                                </p>
                             </div>
                         </div>
 
@@ -1603,7 +2056,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     <div class="space-y-4">
                         <p class="text-slate-600 leading-relaxed">
-                            Japanese language changes based on who you are talking to and about. This is determined by
+                            Japanese language changes based on who you are talking to and about. This is determined
+                            by
                             the concept of "In-Group" (Uchi) and "Out-Group" (Soto).
                         </p>
 
@@ -1667,7 +2121,8 @@
                     <!-- Steps Checklist -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
-                            <h4 class="text-emerald-600 font-bold mb-4 flex items-center gap-2">✅ The Ritual (Do's)</h4>
+                            <h4 class="text-emerald-600 font-bold mb-4 flex items-center gap-2">✅ The Ritual (Do's)
+                            </h4>
                             <ul class="space-y-4">
                                 <li class="flex gap-4 items-start">
                                     <span
@@ -1684,13 +2139,15 @@
                                 <li class="flex gap-4 items-start">
                                     <span
                                         class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs font-bold flex-shrink-0">3</span>
-                                    <p class="text-sm text-slate-600"><strong>Study It:</strong> Look at it carefully.
+                                    <p class="text-sm text-slate-600"><strong>Study It:</strong> Look at it
+                                        carefully.
                                         Confirm their name/title aloud ("Ah, Tanaka-san from Sony...").</p>
                                 </li>
                                 <li class="flex gap-4 items-start">
                                     <span
                                         class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs font-bold flex-shrink-0">4</span>
-                                    <p class="text-sm text-slate-600"><strong>Table Placement:</strong> Place it on the
+                                    <p class="text-sm text-slate-600"><strong>Table Placement:</strong> Place it on
+                                        the
                                         table in front of you (atop your card case) during the meeting.</p>
                                 </li>
                             </ul>
@@ -1702,7 +2159,8 @@
                                 <li class="flex gap-4 items-start">
                                     <span
                                         class="w-6 h-6 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-xs font-bold flex-shrink-0">X</span>
-                                    <p class="text-sm text-slate-600"><strong>Pocketing:</strong> NEVER put it straight
+                                    <p class="text-sm text-slate-600"><strong>Pocketing:</strong> NEVER put it
+                                        straight
                                         into your pocket or wallet. Use a card case.</p>
                                 </li>
                                 <li class="flex gap-4 items-start">
@@ -1714,10 +2172,117 @@
                                 <li class="flex gap-4 items-start">
                                     <span
                                         class="w-6 h-6 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-xs font-bold flex-shrink-0">X</span>
-                                    <p class="text-sm text-slate-600"><strong>Fidgeting:</strong> Don't play with it or
+                                    <p class="text-sm text-slate-600"><strong>Fidgeting:</strong> Don't play with it
+                                        or
                                         bend it.</p>
                                 </li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Culture Section (New) -->
+        <div id="content-culture" class="hidden space-y-12">
+            <div class="glass-panel p-10 relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl"></div>
+
+                <h2 class="text-3xl font-black text-slate-800 mb-6 flex items-center gap-4">
+                    <span class="bg-amber-500 text-white px-4 py-1 rounded-xl text-sm">CULTURE</span>
+                    东京大学与日本高校生活
+                </h2>
+
+                <div class="space-y-8">
+                    <!-- Toudai Intro -->
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="flex-1 space-y-4">
+                            <h3 class="text-2xl font-bold text-indigo-900 border-b-2 border-indigo-100 pb-2">🏫 东京大学
+                                (Tōkyō Daigaku)</h3>
+                            <p class="text-slate-600 leading-relaxed">
+                                简称 <span class="font-bold text-indigo-600">东大 (Tōdai)</span>，是日本最高学府。其标志性的 <span
+                                    class="font-bold text-rose-500">赤門 (Akamon)</span> 原是加贺藩的御守殿门，现在已成为东大的代名词。
+                            </p>
+                            <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+                                <p class="text-sm text-indigo-800">
+                                    <strong>💡 豆豆老师的小知识:</strong><br>
+                                    东大的食堂非常有名，特别是 <span class="font-bold">中央食堂 (Chūō Shokudou)</span>。
+                                    价格非常亲民！例如一份咖喱饭可能只要 300-400 日元（约 15-20 RMB）。
+                                    游客也可以去吃哦！(不过记得自己收拾餐具 Check the "Return Tray" area!)
+                                </p>
+                            </div>
+                        </div>
+                        <div
+                            class="w-full md:w-1/3 h-48 bg-slate-200 rounded-2xl flex items-center justify-center text-slate-400 font-bold">
+                            (Image: Akamon)
+                        </div>
+                    </div>
+
+                    <!-- Student Terms -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="glass-panel p-6 bg-white/60">
+                            <h4 class="font-bold text-slate-800 mb-3 flex items-center gap-2">🎓 学生称呼的区别</h4>
+                            <ul class="space-y-3 text-sm">
+                                <li class="flex items-start gap-2">
+                                    <span
+                                        class="bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded text-xs font-bold shrink-0">学生
+                                        (Gakusei)</span>
+                                    <span class="text-slate-600">主要指 <span class="font-bold">大学生 (Daigakusei)</span>
+                                        及以上的高等教育学生。</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span
+                                        class="bg-rose-100 text-rose-700 px-2 py-0.5 rounded text-xs font-bold shrink-0">生徒
+                                        (Seito)</span>
+                                    <span class="text-slate-600">指 <span class="font-bold">中学生 (Chūgakusei)</span> 和
+                                        <span class="font-bold">高中生 (Kōkōsei)</span>。</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span
+                                        class="bg-amber-100 text-amber-700 px-2 py-0.5 rounded text-xs font-bold shrink-0">児童
+                                        (Jidō)</span>
+                                    <span class="text-slate-600">指 <span class="font-bold">小学生
+                                            (Shōgakusei)</span>。</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="glass-panel p-6 bg-white/60">
+                            <h4 class="font-bold text-slate-800 mb-3 flex items-center gap-2">🏢 公司职级 (Corporate
+                                Hierarchy)</h4>
+                            <div class="space-y-4 relative">
+                                <!-- Line -->
+                                <div class="absolute left-3 top-2 bottom-2 w-0.5 bg-slate-200"></div>
+
+                                <div class="relative pl-8">
+                                    <div
+                                        class="absolute left-1.5 top-1.5 w-3 h-3 bg-indigo-500 rounded-full border-2 border-white">
+                                    </div>
+                                    <p class="font-bold text-indigo-900">社長 (Shachō)</p>
+                                    <p class="text-xs text-slate-500">President / CEO (Top Boss)</p>
+                                </div>
+                                <div class="relative pl-8">
+                                    <div
+                                        class="absolute left-1.5 top-1.5 w-3 h-3 bg-indigo-400 rounded-full border-2 border-white">
+                                    </div>
+                                    <p class="font-bold text-indigo-800">部長 (Buchō)</p>
+                                    <p class="text-xs text-slate-500">Department Manager (Division Head)</p>
+                                </div>
+                                <div class="relative pl-8">
+                                    <div
+                                        class="absolute left-1.5 top-1.5 w-3 h-3 bg-indigo-300 rounded-full border-2 border-white">
+                                    </div>
+                                    <p class="font-bold text-indigo-700">課長 (Kachō)</p>
+                                    <p class="text-xs text-slate-500">Section Chief (Team Leader)</p>
+                                </div>
+                                <div class="relative pl-8">
+                                    <div
+                                        class="absolute left-1.5 top-1.5 w-3 h-3 bg-slate-400 rounded-full border-2 border-white">
+                                    </div>
+                                    <p class="font-bold text-slate-700">社員 (Shain)</p>
+                                    <p class="text-xs text-slate-500">Employee / Staff</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1844,7 +2409,8 @@
 
                     <!-- Part 1: Particles -->
                     <div>
-                        <h4 class="font-bold text-indigo-800 mb-3 border-b border-indigo-200 pb-2">I. 助词填空 (Particles) -
+                        <h4 class="font-bold text-indigo-800 mb-3 border-b border-indigo-200 pb-2">I. 助词填空
+                            (Particles) -
                             Medium</h4>
                         <div class="space-y-2 text-slate-700 bg-white p-4 rounded-xl border border-slate-200">
                             <p>1. 私 <span class="text-slate-300">(__)</span> 中国人です。</p>
@@ -1859,7 +2425,8 @@
 
                     <!-- Part 2: Vocabulary Matching -->
                     <div>
-                        <h4 class="font-bold text-teal-800 mb-3 border-b border-teal-200 pb-2">II. 词汇匹配 (Vocabulary) -
+                        <h4 class="font-bold text-teal-800 mb-3 border-b border-teal-200 pb-2">II. 词汇匹配 (Vocabulary)
+                            -
                             Medium</h4>
                         <div class="grid grid-cols-2 gap-4">
                             <ul
@@ -1883,7 +2450,8 @@
 
                     <!-- Part 3: Grammar Conjugation -->
                     <div>
-                        <h4 class="font-bold text-rose-800 mb-3 border-b border-rose-200 pb-2">III. 句型变换 (Conjugation) -
+                        <h4 class="font-bold text-rose-800 mb-3 border-b border-rose-200 pb-2">III. 句型变换
+                            (Conjugation) -
                             High</h4>
                         <p class="text-xs text-slate-500 mb-2">Change to Negative (Formal & Colloquial).</p>
                         <div class="space-y-3 bg-white p-4 rounded-xl border border-slate-200">
@@ -1912,7 +2480,8 @@
 
                     <!-- Part 4: Sentence Ordering -->
                     <div>
-                        <h4 class="font-bold text-amber-800 mb-3 border-b border-amber-200 pb-2">IV. 排序造句 (Ordering) -
+                        <h4 class="font-bold text-amber-800 mb-3 border-b border-amber-200 pb-2">IV. 排序造句 (Ordering)
+                            -
                             High</h4>
                         <div class="space-y-3 bg-white p-4 rounded-xl border border-slate-200 text-sm">
                             <p>16. [ です / 人 / あの / は / 誰 ] → __________________ ?</p>
@@ -1925,7 +2494,8 @@
 
                     <!-- Part 5: Translation (CN -> JP) -->
                     <div>
-                        <h4 class="font-bold text-indigo-800 mb-3 border-b border-indigo-200 pb-2">V. 中译日 (Translation)
+                        <h4 class="font-bold text-indigo-800 mb-3 border-b border-indigo-200 pb-2">V. 中译日
+                            (Translation)
                             - High</h4>
                         <div class="space-y-3 bg-white p-4 rounded-xl border border-slate-200 text-sm">
                             <p>21. 我是小李。(Watashi wa Li desu.)</p>
@@ -1938,7 +2508,8 @@
 
                     <!-- Part 6: Dialogue Response -->
                     <div>
-                        <h4 class="font-bold text-emerald-800 mb-3 border-b border-emerald-200 pb-2">VI. 场景应答 (Response)
+                        <h4 class="font-bold text-emerald-800 mb-3 border-b border-emerald-200 pb-2">VI. 场景应答
+                            (Response)
                             - High</h4>
                         <div class="space-y-3 bg-white p-4 rounded-xl border border-slate-200 text-sm">
                             <p class="font-bold text-slate-800">Q: はじめまして。 (Hajimemashite)</p>
@@ -1971,17 +2542,20 @@
                                 <strong class="text-white block mb-2 border-b border-slate-600 pb-1">Part I</strong>
                                 1. は<br>2. は <br>3. は, の <br>4. は <br>5. は, の<br><br>
 
-                                <strong class="text-white block mb-2 border-b border-slate-600 pb-1">Part II</strong>
+                                <strong class="text-white block mb-2 border-b border-slate-600 pb-1">Part
+                                    II</strong>
                                 6-C, 7-E, 8-A, 9-D, 10-B<br><br>
 
-                                <strong class="text-white block mb-2 border-b border-slate-600 pb-1">Part III</strong>
+                                <strong class="text-white block mb-2 border-b border-slate-600 pb-1">Part
+                                    III</strong>
                                 11. 私は日本人ではありません。<br>
                                 12. 学生じゃありません。<br>
                                 13. あの人は先生じゃありません。<br>
                                 14. 李さんは課長ではありません。<br>
                                 15. 本じゃありません。<br><br>
 
-                                <strong class="text-white block mb-2 border-b border-slate-600 pb-1">Part IV</strong>
+                                <strong class="text-white block mb-2 border-b border-slate-600 pb-1">Part
+                                    IV</strong>
                                 16. あの人は誰ですか。<br>
                                 17. 私はJC企画の社員です。<br>
                                 18. 李さんは中国人ではありません。<br>
@@ -1995,7 +2569,8 @@
                                 24. あの人は誰ですか。<br>
                                 25. よろしくお願いします。<br><br>
 
-                                <strong class="text-white block mb-2 border-b border-slate-600 pb-1">Part VI</strong>
+                                <strong class="text-white block mb-2 border-b border-slate-600 pb-1">Part
+                                    VI</strong>
                                 26. よろしくお願いします / はじめまして。<br>
                                 27. はい、そうです / はい、中国人です。<br>
                                 28. いいえ、学生じゃありません / いいえ、違います。<br>
