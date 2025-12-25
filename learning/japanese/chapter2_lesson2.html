@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二課：これは本です | Standard Japanese</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Outfit:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* Daytime Light Theme */
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --surface-blur: 20px;
+            --liquid-accent: rgba(99, 102, 241, 0.5);
+            /* Indigo-500 */
+        }
+
+        body {
+            /* Bright, clean gradient */
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+            min-height: 100vh;
+            color: #1e293b;
+            /* Slate-800 */
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient Mesh (Subtle for Light Mode) */
+        .mesh-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            /* Lighter, softer blobs */
+            background:
+                radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(244, 63, 94, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 40%);
+            filter: blur(60px);
+            animation: meshMove 20s ease-in-out infinite alternate;
+        }
+
+        /* Glassmorphism v2 - Daytime Liquid */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            -webkit-backdrop-filter: blur(var(--surface-blur));
+            backdrop-filter: blur(var(--surface-blur));
+            border-bottom: 1px solid var(--glass-border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .glass-panel {
+            background: var(--glass-bg);
+            -webkit-backdrop-filter: blur(var(--surface-blur));
+            backdrop-filter: blur(var(--surface-blur));
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            /* Softer shadow */
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .glass-panel:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.1);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Tabs v2 */
+        .tab-btn {
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 20px;
+            color: #64748b;
+            /* Slate-500 */
+        }
+
+        .tab-btn.active {
+            color: #4f46e5;
+            /* Indigo-600 */
+            background: white;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: 6px;
+            left: 20%;
+            width: 60%;
+            height: 4px;
+            background: var(--liquid-accent);
+            border-radius: 10px;
+            box-shadow: 0 0 15px var(--liquid-accent);
+        }
+
+        /* Pitch Accent Visualization */
+        .pitch-container {
+            display: inline-block;
+            position: relative;
+            padding: 0 4px;
+        }
+
+        .pitch-line {
+            position: absolute;
+            top: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #fbbf24;
+            pointer-events: none;
+        }
+
+        .pitch-down {
+            position: absolute;
+            top: -2px;
+            right: 0;
+            width: 2px;
+            height: 8px;
+            background: #fbbf24;
+        }
+
+        /* Chat Bubbles v2 (Liquid) */
+        .chat-bubble {
+            max-width: 85%;
+            padding: 20px 24px;
+            border-radius: 30px;
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .chat-left {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom-left-radius: 8px;
+            color: #1e293b;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            /* Soft shadow */
+        }
+
+        .chat-right {
+            background: rgba(79, 70, 229, 0.9);
+            /* Darker Indigo */
+            border-bottom-right-radius: 8px;
+            color: white;
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.2);
+        }
+
+        /* Teacher's Corner (Pro-Tip v2) */
+        .teacher-corner {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(245, 158, 11, 0.15));
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            border-left: 8px solid #fbbf24;
+            padding: 24px;
+            border-radius: 20px;
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Practice v2 */
+        .practice-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 30px 30px;
+        }
+
+        .practice-item.open .practice-answer {
+            max-height: 500px;
+            padding: 20px;
+        }
+
+        .text-slate-600 {
+            color: #475569;
+        }
+
+        .text-slate-500 {
+            color: #64748b;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body class="pb-20">
+    <div class="mesh-gradient"></div>
+
+    <!-- Navigation -->
+    <nav class="glass-nav px-6 py-4 mb-8">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <a href="chapter2.html"
+                    class="w-10 h-10 bg-white text-indigo-600 rounded-xl flex items-center justify-center font-bold shadow-sm hover:scale-105 transition"
+                    title="Back to Dashboard">←</a>
+                <div>
+                    <h1 class="text-lg font-bold text-slate-800">第二課 (Lesson 2)</h1>
+                    <p class="text-xs text-slate-500 font-medium tracking-wide">これは本です (This is a book)</p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex gap-2">
+                <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-bold">Standard Japanese
+                    Vol 1</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 md:px-6">
+
+        <!-- Audio Player Script -->
+        <script>
+            function playAudio(filename) {
+                // Placeholder - audio files not yet generated for Lesson 2
+                console.log(`Playing audio: assets/audio/lesson2/${filename}.mp3`);
+                // const audio = new Audio(`assets/audio/lesson2/${filename}.mp3`);
+                // audio.play().catch(e => console.error("Audio play failed:", e));
+            }
+        </script>
+
+        <!-- Tabs Navigation -->
+        <div
+            class="glass-panel p-2 flex justify-between md:justify-start gap-2 mb-8 overflow-x-auto sticky top-24 z-40 shadow-sm">
+            <button onclick="switchTab('vocab')" id="tab-vocab"
+                class="tab-btn active px-6 py-3 rounded-xl font-bold text-slate-600 hover:bg-white/600 whitespace-nowrap">
+                📚 单词 Vocabulary
+            </button>
+            <button onclick="switchTab('grammar')" id="tab-grammar"
+                class="tab-btn px-6 py-3 rounded-xl font-bold text-slate-600 hover:bg-white/600 whitespace-nowrap">
+                🧠 语法 Grammar
+            </button>
+            <button onclick="switchTab('text')" id="tab-text"
+                class="tab-btn px-6 py-3 rounded-xl font-bold text-slate-600 hover:bg-white/600 whitespace-nowrap">
+                💬 课文 Text
+            </button>
+            <button onclick="switchTab('culture')" id="tab-culture"
+                class="tab-btn px-6 py-3 rounded-xl font-bold text-slate-600 hover:bg-white/600 whitespace-nowrap">
+                🌸 文化 Culture
+            </button>
+            <button onclick="switchTab('practice')" id="tab-practice"
+                class="tab-btn px-6 py-3 rounded-xl font-bold text-slate-600 hover:bg-white/600 whitespace-nowrap">
+                ✍️ 练习 Practice
+            </button>
+        </div>
+
+
+        <!-- 1. Vocabulary Section -->
+        <div id="content-vocab" class="space-y-12">
+
+            <!-- Items -->
+            <section class="space-y-6">
+                <h3
+                    class="text-2xl font-black text-slate-800 mb-6 pl-4 border-l-8 border-indigo-500 flex items-center gap-3">
+                    📘 事物与用品 <span class="text-sm font-normal text-slate-500">(Items & Objects)</span>
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Book -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-3xl font-bold text-slate-800">本</span>
+                            <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">hon</p>
+                                <p class="text-lg font-medium text-indigo-600">书 (Book)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Bag -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-3xl font-bold text-slate-800">鞄</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">kaban</p>
+                                <p class="text-lg font-medium text-emerald-600">包 (Bag)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pencil -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-3xl font-bold text-slate-800">鉛筆</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">enpitsu</p>
+                                <p class="text-lg font-medium text-slate-600">铅笔 (Pencil)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Umbrella -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-3xl font-bold text-slate-800">傘</span>
+                            <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">kasa</p>
+                                <p class="text-lg font-medium text-blue-600">伞 (Umbrella)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Shoes -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-3xl font-bold text-slate-800">靴</span>
+                            <span class="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-lg">②</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">kutsu</p>
+                                <p class="text-lg font-medium text-orange-600">鞋 (Shoes)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Newspaper -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-3xl font-bold text-slate-800">新聞</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">shinbun</p>
+                                <p class="text-lg font-medium text-slate-600">报纸 (Newspaper)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Electronic/Office -->
+            <section class="space-y-6">
+                <h3
+                    class="text-2xl font-black text-slate-800 mb-6 pl-4 border-l-8 border-teal-500 flex items-center gap-3">
+                    💻 电子与办公 <span class="text-sm font-normal text-slate-500">(Electronics & Office)</span>
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- PC -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-2xl font-bold text-slate-800">パソコン</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                        </div>
+                        <p class="text-sm text-teal-600 mb-1">Personal Computer</p>
+                        <p class="text-lg font-medium text-slate-700">个人电脑</p>
+                    </div>
+                    <!-- Camera -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-2xl font-bold text-slate-800">カメラ</span>
+                            <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                        </div>
+                        <p class="text-sm text-teal-600 mb-1">Camera</p>
+                        <p class="text-lg font-medium text-slate-700">照相机</p>
+                    </div>
+                    <!-- TV -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-2xl font-bold text-slate-800">テレビ</span>
+                            <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                        </div>
+                        <p class="text-sm text-teal-600 mb-1">Television</p>
+                        <p class="text-lg font-medium text-slate-700">电视机</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Furniture & Daily Items -->
+            <section class="space-y-6">
+                <h3
+                    class="text-2xl font-black text-slate-800 mb-6 pl-4 border-l-8 border-amber-500 flex items-center gap-3">
+                    🪑 家具与生活用品 <span class="text-sm font-normal text-slate-500">(Furniture & Daily Items)</span>
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Desk -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-3xl font-bold text-slate-800">机</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">tsukue</p>
+                                <p class="text-lg font-medium text-slate-600">桌子 (Desk)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Chair -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-3xl font-bold text-slate-800">椅子</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">isu</p>
+                                <p class="text-lg font-medium text-slate-600">椅子 (Chair)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Key -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-3xl font-bold text-slate-800">鍵</span>
+                            <span class="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-lg">②</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">kagi</p>
+                                <p class="text-lg font-medium text-orange-600">钥匙 (Key)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Watch -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-3xl font-bold text-slate-800">時計</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">tokei</p>
+                                <p class="text-lg font-medium text-slate-600">钟表 (Watch)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pocket Notebook -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-3xl font-bold text-slate-800">手帳</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">techou</p>
+                                <p class="text-lg font-medium text-slate-600">记事本 (Planner)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Photo -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-3xl font-bold text-slate-800">写真</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">shashin</p>
+                                <p class="text-lg font-medium text-slate-600">照片 (Photo)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vehicles & Souvenirs -->
+            <section class="space-y-6">
+                <h3
+                    class="text-2xl font-black text-slate-800 mb-6 pl-4 border-l-8 border-pink-500 flex items-center gap-3">
+                    🎁 特产与交通 <span class="text-sm font-normal text-slate-500">(Gifts & Vehicles)</span>
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Car -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-3xl font-bold text-slate-800">車</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">kuruma</p>
+                                <p class="text-lg font-medium text-slate-600">车 (Car)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Bicycle -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-3xl font-bold text-slate-800">自転車</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">jitensha</p>
+                                <p class="text-lg font-medium text-slate-600">自行车 (Bicycle)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Souvenir -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-2xl font-bold text-slate-800">お土産</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">omiyage</p>
+                                <p class="text-lg font-medium text-slate-600">特产 (Souvenir)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Specialty -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-2xl font-bold text-slate-800">名産品</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">meisanhin</p>
+                                <p class="text-lg font-medium text-slate-600">名产 (Specialty)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Silk -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-2xl font-bold text-slate-800">シルク</span>
+                            <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">shiruku</p>
+                                <p class="text-lg font-medium text-indigo-600">丝绸 (Silk)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Handkerchief -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-2xl font-bold text-slate-800">ハンカチ</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">hankachi</p>
+                                <p class="text-lg font-medium text-slate-600">手绢 (Handkerchief)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- People & Places -->
+            <section class="space-y-6">
+                <h3
+                    class="text-2xl font-black text-slate-800 mb-6 pl-4 border-l-8 border-violet-500 flex items-center gap-3">
+                    👥 人物与地点 <span class="text-sm font-normal text-slate-500">(People & Places)</span>
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Company -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-2xl font-bold text-slate-800">会社</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">kaisha</p>
+                                <p class="text-lg font-medium text-slate-600">公司 (Company)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Person (Polite) -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-2xl font-bold text-slate-800">方</span>
+                            <span class="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-lg">②</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">kata</p>
+                                <p class="text-lg font-medium text-orange-600">位/人 (Person - Polite)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Person -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-2xl font-bold text-slate-800">人</span>
+                            <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">hito</p>
+                                <p class="text-lg font-medium text-slate-600">人 (Person)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mother -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-2xl font-bold text-slate-800">母</span>
+                            <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">haha</p>
+                                <p class="text-lg font-medium text-indigo-600">母亲 (Mother - Humble)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Family -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-2xl font-bold text-slate-800">家族</span>
+                            <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded-lg">①</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">kazoku</p>
+                                <p class="text-lg font-medium text-indigo-600">家族 (Family)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Languages -->
+                    <div class="glass-panel p-6 bg-slate-50">
+                        <div class="space-y-2">
+                            <div class="flex justify-between"><span class="font-bold">日本語</span> <span
+                                    class="text-xs text-slate-500">⓪</span></div>
+                            <div class="flex justify-between"><span class="font-bold">中国語</span> <span
+                                    class="text-xs text-slate-500">⓪</span></div>
+                            <p class="text-xs text-slate-400 mt-2">Japanese / Chinese Language</p>
+                        </div>
+                    </div>
+                    <!-- Places -->
+                    <div class="glass-panel p-6 bg-slate-50">
+                        <div class="space-y-2">
+                            <div class="flex justify-between"><span class="font-bold">日本</span> <span
+                                    class="text-xs text-orange-500">②</span></div>
+                            <div class="flex justify-between"><span class="font-bold">東京</span> <span
+                                    class="text-xs text-slate-500">⓪</span></div>
+                            <div class="flex justify-between"><span class="font-bold">スワトウ</span> <span
+                                    class="text-xs text-orange-500">②</span></div>
+                            <p class="text-xs text-slate-400 mt-2">Japan / Tokyo / Shantou</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Demonstratives -->
+            <section class="space-y-6">
+                <h3
+                    class="text-2xl font-black text-slate-800 mb-6 pl-4 border-l-8 border-rose-500 flex items-center gap-3">
+                    👉 指示代词 <span class="text-sm font-normal text-slate-500">(Demonstratives)</span>
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="glass-panel p-6 bg-rose-50 border-rose-100">
+                        <h4 class="text-xl font-bold text-rose-600 mb-2">近称 (Near)</h4>
+                        <div class="space-y-2">
+                            <p class="text-3xl font-black text-slate-800">これ</p>
+                            <p class="text-sm text-slate-500">此 (This)</p>
+                            <p class="text-xs text-rose-400">Speaker's domain</p>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 bg-amber-50 border-amber-100">
+                        <h4 class="text-xl font-bold text-amber-600 mb-2">中称 (Middle)</h4>
+                        <div class="space-y-2">
+                            <p class="text-3xl font-black text-slate-800">それ</p>
+                            <p class="text-sm text-slate-500">其 (That)</p>
+                            <p class="text-xs text-amber-400">Listener's domain</p>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 bg-blue-50 border-blue-100">
+                        <h4 class="text-xl font-bold text-blue-600 mb-2">远称 (Far)</h4>
+                        <div class="space-y-2">
+                            <p class="text-3xl font-black text-slate-800">あれ</p>
+                            <p class="text-sm text-slate-500">彼 (That over there)</p>
+                            <p class="text-xs text-blue-400">Far from both</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Numbers -->
+            <section class="space-y-6">
+                <h3
+                    class="text-2xl font-black text-slate-800 mb-6 pl-4 border-l-8 border-cyan-500 flex items-center gap-3">
+                    🔢 数字 <span class="text-sm font-normal text-slate-500">(Numbers)</span>
+                </h3>
+                <div class="glass-panel p-8">
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
+                        <div class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition">
+                            <p class="text-3xl font-black text-slate-800 mb-1">0</p>
+                            <p class="text-xs text-slate-500 font-mono">zero / rei</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition">
+                            <p class="text-3xl font-black text-slate-800 mb-1">1</p>
+                            <p class="text-xs text-slate-500 font-mono">ichi</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition">
+                            <p class="text-3xl font-black text-slate-800 mb-1">2</p>
+                            <p class="text-xs text-slate-500 font-mono">ni</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition">
+                            <p class="text-3xl font-black text-slate-800 mb-1">3</p>
+                            <p class="text-xs text-slate-500 font-mono">san</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition">
+                            <p class="text-3xl font-black text-slate-800 mb-1">4</p>
+                            <p class="text-xs text-slate-500 font-mono">yon / shi</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition">
+                            <p class="text-3xl font-black text-slate-800 mb-1">5</p>
+                            <p class="text-xs text-slate-500 font-mono">go</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition">
+                            <p class="text-3xl font-black text-slate-800 mb-1">6</p>
+                            <p class="text-xs text-slate-500 font-mono">roku</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition">
+                            <p class="text-3xl font-black text-slate-800 mb-1">7</p>
+                            <p class="text-xs text-slate-500 font-mono">nana / shichi</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition">
+                            <p class="text-3xl font-black text-slate-800 mb-1">8</p>
+                            <p class="text-xs text-slate-500 font-mono">hachi</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition">
+                            <p class="text-3xl font-black text-slate-800 mb-1">9</p>
+                            <p class="text-xs text-slate-500 font-mono">kyuu / ku</p>
+                        </div>
+                        <div
+                            class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition col-span-2 md:col-span-1">
+                            <p class="text-3xl font-black text-indigo-600 mb-1">10</p>
+                            <p class="text-xs text-slate-500 font-mono">juu</p>
+                        </div>
+                        <div
+                            class="p-4 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition col-span-2 md:col-span-2">
+                            <p class="text-3xl font-black text-indigo-600 mb-1">100</p>
+                            <p class="text-xs text-slate-500 font-mono">hyaku</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- 2. Grammar Section -->
+        <div id="content-grammar" class="hidden space-y-16">
+
+            <!-- Pattern 1: Demonstratives -->
+            <div class="glass-panel p-8">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="text-4xl">👉</span>
+                    <h2 class="text-3xl font-black text-slate-800">句型 01：指示代词 (There, That, That over there)</h2>
+                </div>
+
+                <div class="bg-indigo-500/10 border border-indigo-500/30 rounded-3xl p-8 mb-8">
+                    <div class="flex items-center gap-4 text-3xl font-bold flex-wrap text-slate-800">
+                        <span class="text-indigo-600">これ / それ / あれ</span>
+                        <span class="text-indigo-400 bg-white/80 px-4 py-2 rounded-2xl border border-slate-300">は</span>
+                        <span>[名词]</span>
+                        <span
+                            class="text-indigo-400 bg-white/80 px-4 py-2 rounded-2xl border border-slate-300">です</span>
+                    </div>
+                    <p class="mt-4 text-slate-600">
+                        "This/That is [Noun]."
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="p-6 bg-white/60 rounded-3xl border border-slate-200 flex items-center justify-between">
+                        <div>
+                            <p class="text-xl font-bold text-slate-800"><span class="text-indigo-600">これ</span>は 本です。
+                            </p>
+                            <p class="text-slate-500 text-sm mt-1">This is a book. (Item near speaker)</p>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white/60 rounded-3xl border border-slate-200 flex items-center justify-between">
+                        <div>
+                            <p class="text-xl font-bold text-slate-800"><span class="text-indigo-600">それ</span>は 鞄です。
+                            </p>
+                            <p class="text-slate-500 text-sm mt-1">That is a bag. (Item near listener)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pattern 2: Ko-no, So-no, A-no -->
+            <div class="glass-panel p-8">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="text-4xl">🔗</span>
+                    <h2 class="text-3xl font-black text-slate-800">句型 02：连体词 (This X, That X)</h2>
+                </div>
+
+                <div class="teacher-corner mb-8">
+                    <h4 class="text-amber-600 font-bold mb-2">💡 语法点拨</h4>
+                    <p class="text-slate-600 text-sm">
+                        <span class="font-bold">これ</span> 是代词，单独作主语。 <br>
+                        <span class="font-bold">この</span> 是连体词，<span class="text-red-500 font-bold">必须</span>接名词，不能单独使用。
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="p-6 bg-white/60 rounded-3xl border border-slate-200">
+                        <p class="text-xl font-bold text-slate-800"><span class="text-rose-600">この</span>カメラは スミスのです。
+                        </p>
+                        <p class="text-slate-500 text-sm mt-1">This camera is Smith's.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pattern 3: Noun no Noun -->
+            <div class="glass-panel p-8">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="text-4xl">🖇️</span>
+                    <h2 class="text-3xl font-black text-slate-800">句型 03：所属关系 (Noun1 の Noun2)</h2>
+                </div>
+
+                <div class="bg-indigo-500/10 border border-indigo-500/30 rounded-3xl p-8 mb-8">
+                    <div class="flex items-center gap-4 text-3xl font-bold flex-wrap text-slate-800">
+                        <span>[名词1]</span>
+                        <span class="text-indigo-400 bg-white/80 px-4 py-2 rounded-2xl border border-slate-300">の</span>
+                        <span>[名词2]</span>
+                    </div>
+                    <p class="mt-4 text-slate-600">
+                        Indicates possession (Noun1's Noun2) or attribute (Noun2 of Noun1).
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="p-6 bg-white/60 rounded-3xl border border-slate-200">
+                        <p class="text-xl font-bold text-slate-800">私の 本</p>
+                        <p class="text-slate-500 text-sm mt-1">My book (Possession)</p>
+                    </div>
+                    <div class="p-6 bg-white/60 rounded-3xl border border-slate-200">
+                        <p class="text-xl font-bold text-slate-800">日本語の 先生</p>
+                        <p class="text-slate-500 text-sm mt-1">Japanese Teacher (Attribute)</p>
+                    </div>
+                    <div class="p-6 bg-white/60 rounded-3xl border border-slate-200">
+                        <p class="text-xl font-bold text-slate-800">中国の お土産</p>
+                        <p class="text-slate-500 text-sm mt-1">Souvenir from China (Attribute)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pattern 4: Questions -->
+            <div class="glass-panel p-8">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="text-4xl">❓</span>
+                    <h2 class="text-3xl font-black text-slate-800">句型 04：一般疑问句</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="p-6 bg-white/60 rounded-3xl border border-slate-200">
+                        <p class="text-xl font-bold text-slate-800">それは 辞書ですか。</p>
+                        <p class="text-slate-500 text-sm mt-1">Is that a dictionary?</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-100">
+                            <p class="text-lg font-bold text-emerald-700">はい、そうです。</p>
+                            <p class="text-xs text-emerald-500">Yes, it is.</p>
+                        </div>
+                        <div class="p-4 bg-rose-50 rounded-2xl border border-rose-100">
+                            <p class="text-lg font-bold text-rose-700">いいえ、違います。</p>
+                            <p class="text-xs text-rose-500">No, it isn't.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 3. Text Section -->
+        <div id="content-text" class="hidden max-w-4xl mx-auto space-y-12">
+            <!-- Scene 01 -->
+            <div class="glass-panel p-10 relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl"></div>
+
+                <h2 class="text-3xl font-black text-slate-800 mb-10 flex items-center gap-4">
+                    <span class="bg-indigo-500 px-4 py-1 rounded-xl text-sm text-white">SCENE 01</span>
+                    家族の写真 <span class="text-lg font-normal text-slate-500">(Family Photo)</span>
+                </h2>
+
+                <div class="space-y-8">
+                    <!-- Tanaka -->
+                    <div class="flex gap-4 items-end">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
+                            田</div>
+                        <div class="chat-bubble chat-left">
+                            <p class="text-lg font-bold">李さん、それは 何ですか。</p>
+                            <p class="text-slate-500 text-sm mt-2">Li-san, what is that?</p>
+                        </div>
+                    </div>
+                    <!-- Li -->
+                    <div class="flex gap-4 flex-row-reverse items-end">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
+                            李</div>
+                        <div class="chat-bubble chat-right">
+                            <p class="text-lg font-bold">これですか。これは 家族の 写真です。</p>
+                            <p class="text-indigo-100/70 text-sm mt-2">This? This is a family photo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scene 02 -->
+            <div class="glass-panel p-10 relative overflow-hidden mt-12">
+                <h2 class="text-3xl font-black text-slate-800 mb-10 flex items-center gap-4">
+                    <span class="bg-teal-500 px-4 py-1 rounded-xl text-sm text-white">SCENE 02</span>
+                    お土産 <span class="text-lg font-normal text-slate-500">(Souvenir)</span>
+                </h2>
+                <div class="space-y-8">
+                    <!-- Li -->
+                    <div class="flex gap-4 items-end">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
+                            李</div>
+                        <div class="chat-bubble chat-left">
+                            <p class="text-lg font-bold">田中さん、どうぞ。</p>
+                            <p class="text-slate-500 text-sm mt-2">Tanaka-san, here you go.</p>
+                        </div>
+                    </div>
+                    <!-- Tanaka -->
+                    <div class="flex gap-4 flex-row-reverse items-end">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
+                            田</div>
+                        <div class="chat-bubble chat-right">
+                            <p class="text-lg font-bold">えっ、これは 何ですか。</p>
+                            <p class="text-indigo-100/70 text-sm mt-2">Eh? What is this?</p>
+                        </div>
+                    </div>
+                    <!-- Li -->
+                    <div class="flex gap-4 items-end">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-400 to-pink-600 flex items-center justify-center text-white font-black text-xl shadow-lg">
+                            李</div>
+                        <div class="chat-bubble chat-left">
+                            <p class="text-lg font-bold">お土産です。中国の お茶です。</p>
+                            <p class="text-slate-500 text-sm mt-2">It's a souvenir. Chinese tea.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Culture Section -->
+        <div id="content-culture" class="hidden space-y-12">
+            <div class="glass-panel p-8 animate-float relative overflow-hidden group">
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="md:w-1/3">
+                        <div class="text-6xl text-center mb-4">🎁</div>
+                        <h3 class="text-2xl font-black text-slate-800 text-center">お土産 (Omiyage)</h3>
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            在日本文化中，"Omiyage" (土特产/伴手礼) 扮演着非常重要的角色。出差或旅游归来时，给同事、朋友和家人带礼物是必不可少的礼仪。
+                        </p>
+                        <p class="text-slate-600 leading-relaxed">
+                            注意单词前的 <strong>"お (o)"</strong>。这是一个敬语前缀 (Polite Prefix)，加在名词前表示郑重和客气。例如：<br>
+                            - <span class="font-bold">お</span>土産 (Omiyage)<br>
+                            - <span class="font-bold">お</span>茶 (Ocha)<br>
+                            - <span class="font-bold">お</span>金 (Okane - Money)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Practice Section -->
+        <div id="content-practice" class="hidden space-y-8">
+            <h3 class="text-2xl font-black text-slate-800 mb-6 flex items-center gap-3">
+                ✍️ 句型练习 <span class="text-sm font-normal text-slate-500">(Drills)</span>
+            </h3>
+
+            <!-- EX 1 -->
+            <div class="glass-panel p-0 overflow-hidden practice-item">
+                <div class="p-6 cursor-pointer flex justify-between items-center bg-white/50 hover:bg-white transition"
+                    onclick="togglePractice(this)">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-500 uppercase tracking-widest">Exercise 1</span>
+                        <p class="text-lg font-bold text-slate-800 mt-1">Translate: "This is a computer."</p>
+                    </div>
+                    <span class="text-2xl text-indigo-400 transform transition-transform duration-300">↓</span>
+                </div>
+                <div class="practice-answer">
+                    <p class="text-xl font-bold text-slate-800">これは パソコンです。</p>
+                    <p class="text-sm text-slate-500 mt-2">Kore wa pasokon desu.</p>
+                </div>
+            </div>
+
+            <!-- EX 2 -->
+            <div class="glass-panel p-0 overflow-hidden practice-item">
+                <div class="p-6 cursor-pointer flex justify-between items-center bg-white/50 hover:bg-white transition"
+                    onclick="togglePractice(this)">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-500 uppercase tracking-widest">Exercise 2</span>
+                        <p class="text-lg font-bold text-slate-800 mt-1">Translate: "What is that?" (Near listener)</p>
+                    </div>
+                    <span class="text-2xl text-indigo-400 transform transition-transform duration-300">↓</span>
+                </div>
+                <div class="practice-answer">
+                    <p class="text-xl font-bold text-slate-800">それは 何ですか。</p>
+                    <p class="text-sm text-slate-500 mt-2">Sore wa nan desu ka.</p>
+                </div>
+            </div>
+            <!-- EX 3 -->
+            <div class="glass-panel p-0 overflow-hidden practice-item">
+                <div class="p-6 cursor-pointer flex justify-between items-center bg-white/50 hover:bg-white transition"
+                    onclick="togglePractice(this)">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-500 uppercase tracking-widest">Exercise 3</span>
+                        <p class="text-lg font-bold text-slate-800 mt-1">Translate: "This umbrella is mine."</p>
+                    </div>
+                    <span class="text-2xl text-indigo-400 transform transition-transform duration-300">↓</span>
+                </div>
+                <div class="practice-answer">
+                    <p class="text-xl font-bold text-slate-800">この 傘は 私のです。</p>
+                    <p class="text-sm text-slate-500 mt-2">Kono kasa wa watashi no desu.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        // Simple Tab Switching Logic
+        function switchTab(tabId) {
+            // Hide all contents
+            ['vocab', 'grammar', 'text', 'culture', 'practice'].forEach(id => {
+                document.getElementById('content-' + id).classList.add('hidden');
+                document.getElementById('tab-' + id).classList.remove('active');
+            });
+
+            // Show selected
+            document.getElementById('content-' + tabId).classList.remove('hidden');
+            document.getElementById('tab-' + tabId).classList.add('active');
+        }
+
+        // Practice Accordion
+        function togglePractice(element) {
+            const parent = element.parentElement;
+            const arrow = element.querySelector('span:last-child');
+
+            if (parent.classList.contains('open')) {
+                parent.classList.remove('open');
+                arrow.style.transform = 'rotate(0deg)';
+                arrow.textContent = '↓';
+            } else {
+                parent.classList.add('open');
+                arrow.style.transform = 'rotate(180deg)';
+                arrow.textContent = '↑';
+            }
+        }
+    </script>
+</body>
+
+</html>
