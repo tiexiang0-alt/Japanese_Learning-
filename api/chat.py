@@ -5,9 +5,8 @@ import urllib.error
 import os
 
 # Configuration
-API_KEY = "AIzaSyANEpdPzKlnII7-Xzp2bJvBFJitPD1AEdY"
-# Updated model name to be more specific to avoid 404s
-GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={API_KEY}"
+API_KEY = "sk-89914a06e57d465a841b92d1ea15cdf0"
+DASHSCOPE_URL = "https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation"
 
 class handler(BaseHTTPRequestHandler):
     def do_POST(self):
@@ -20,61 +19,48 @@ class handler(BaseHTTPRequestHandler):
             client_data = json.loads(post_data.decode('utf-8'))
             user_message = client_data.get('message', '')
 
-            # Construct Gemini request
+            # Construct DashScope request
             payload = {
-                "system_instruction": {
-                    "parts": [
-                        { "text": "You are a helpful and encouraging Japanese language tutor. The user is a beginner learning from 'Minna no Nihongo'. Analyze their quiz answers, explain any mistakes simply, and provide a short, motivating grade/comment. Keep your response concise (under 200 words) and friendly." }
+                "model": "qwen-turbo",
+                "input": {
+                    "messages": [
+                        {
+                            "role": "system",
+                            "content": "You are a helpful and encouraging Japanese language tutor. The user is a beginner learning from 'Minna no Nihongo'. Analyze their quiz answers, explain any mistakes simply, and provide a short, motivating grade/comment. Keep your response concise (under 200 words) and friendly."
+                        },
+                        {
+                            "role": "user",
+                            "content": user_message
+                        }
                     ]
                 },
-                "contents": [
-                    {
-                        "role": "user",
-                        "parts": [
-                            { "text": user_message }
-                        ]
-                    }
-                ]
+                "parameters": {
+                    "result_format": "message"
+                }
             }
 
-            # Send request to Google Gemini
+            # Send request to DashScope
             headers = {
+                "Authorization": f"Bearer {API_KEY}",
                 "Content-Type": "application/json"
             }
             
             req = urllib.request.Request(
-                GEMINI_URL,
+                DASHSCOPE_URL,
                 data=json.dumps(payload).encode('utf-8'),
                 headers=headers,
                 method='POST'
             )
 
             with urllib.request.urlopen(req) as response:
-                api_response_data = json.loads(response.read().decode('utf-8'))
+                api_response = response.read()
                 
-                # Extract text from Gemini response structure
-                try:
-                    ai_text = api_response_data['candidates'][0]['content']['parts'][0]['text']
-                    # Format to match client expectation: { "output": { "text": "..." } }
-                    client_response = {
-                        "output": {
-                            "text": ai_text
-                        }
-                    }
-                except (KeyError, IndexError):
-                    client_response = {
-                        "output": {
-                            "text": "Error parsing Gemini response."
-                        },
-                        "debug": api_response_data
-                    }
-
                 # Send response back to client
                 self.send_response(200)
                 self.send_header('Content-Type', 'application/json')
-                self.send_header('Access-Control-Allow-Origin', '*')
+                self.send_header('Access-Control-Allow-Origin', '*')  # CORS
                 self.end_headers()
-                self.wfile.write(json.dumps(client_response).encode('utf-8'))
+                self.wfile.write(api_response)
 
         except urllib.error.HTTPError as e:
             self.send_response(e.code)
