@@ -2757,12 +2757,35 @@
                             </div>
                         </div>
 
-                        <!-- Submit Button -->
+                        <!-- Submit Button & AI -->
                         <div class="mt-8 flex flex-col items-center gap-4">
-                            <button onclick="checkFinalChallenge()"
-                                class="px-8 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold rounded-full shadow-lg hover:scale-105 active:scale-95 transition-transform">✅
-                                Check Answers</button>
+                            <div class="flex gap-4">
+                                <button onclick="checkFinalChallenge()"
+                                    class="px-8 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold rounded-full shadow-lg hover:scale-105 active:scale-95 transition-transform">✅
+                                    Check Answers</button>
+                                <button onclick="askAITutor()"
+                                    class="px-8 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold rounded-full shadow-lg hover:scale-105 active:scale-95 transition-transform flex items-center gap-2">
+                                    🤖 Ask AI Tutor
+                                </button>
+                            </div>
                             <div id="final-score" class="hidden text-xl font-bold text-slate-800"></div>
+
+                            <!-- AI Response Area -->
+                            <div id="ai-response-area"
+                                class="hidden w-full max-w-2xl mt-6 p-6 bg-slate-800 rounded-2xl border border-slate-700 shadow-2xl relative overflow-hidden">
+                                <div
+                                    class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 to-cyan-400">
+                                </div>
+                                <h3 class="text-emerald-400 font-bold text-lg mb-2 flex items-center gap-2">
+                                    <span class="text-2xl">🤖</span> Sensei's Feedback
+                                </h3>
+                                <div id="ai-content"
+                                    class="text-slate-200 text-sm leading-relaxed whitespace-pre-line font-sans">
+                                    Thinking...
+                                </div>
+                                <button onclick="document.getElementById('ai-response-area').classList.add('hidden')"
+                                    class="absolute top-4 right-4 text-slate-500 hover:text-white transition">✕</button>
+                            </div>
                         </div>
 
 
@@ -2900,6 +2923,54 @@
                 }
             });
             return correctCount;
+        }
+
+        async function askAITutor() {
+            const inputs = document.querySelectorAll('.challenge-input');
+            const responseArea = document.getElementById('ai-response-area');
+            const contentDiv = document.getElementById('ai-content');
+
+            // Show loading state
+            responseArea.classList.remove('hidden');
+            contentDiv.innerHTML = '<span class="animate-pulse">Thinking... 🧠</span>';
+            contentDiv.classList.add('animate-pulse');
+
+            // Gather User Answers
+            let promptText = "Here are my quiz answers. Please grade them and explain any mistakes:\n";
+            inputs.forEach((input, index) => {
+                const qText = input.previousElementSibling ? input.previousElementSibling.innerText : `Q${index + 1}`;
+                const uAnswer = input.value || "(No Answer)";
+                const cAnswer = input.dataset.answer.split('/')[0];
+                promptText += `${index + 1}. My Answer: ${uAnswer} (Correct: ${cAnswer})\n`;
+            });
+
+            try {
+                const response = await fetch('http://localhost:8000/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message: promptText })
+                });
+
+                const data = await response.json();
+
+                if (data.output && data.output.text) {
+                    contentDiv.innerHTML = data.output.text; // Main response from DashScope
+                } else if (data.error) {
+                    contentDiv.innerHTML = `<span class="text-red-400">Error: ${data.error}</span><br>Make sure python ai_server.py is running!`;
+                } else {
+                    contentDiv.innerHTML = "Received unexpected response format.";
+                }
+            } catch (err) {
+                console.error(err);
+                contentDiv.innerHTML = `<span class="text-red-400">Connection Failed!</span><br>
+                1. Open Terminal<br>
+                2. Run: <code>python3 learning/japanese/ai_server.py</code><br>
+                3. Try again.`;
+            } finally {
+                contentDiv.classList.remove('animate-pulse');
+            }
         }
     </script>
 </body>
