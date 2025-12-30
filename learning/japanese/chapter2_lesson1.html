@@ -2429,9 +2429,9 @@
 
                 <div class="grid grid-cols-1 gap-6">
                     <!-- Drill 1: Substitution -->
-                    <div class="practice-item glass-panel overflow-hidden border border-slate-200">
-                        <button onclick="togglePractice(this)"
-                            class="w-full p-8 flex justify-between items-center text-left hover:bg-white/60 transition">
+                    <!-- Drill 1: Substitution -->
+                    <div class="practice-item glass-panel overflow-hidden border border-slate-200" id="drill-01">
+                        <div class="w-full p-8 flex flex-col gap-4">
                             <div>
                                 <span
                                     class="px-2 py-0.5 bg-indigo-500/20 text-indigo-600 rounded text-[10px] font-bold uppercase mb-2 block w-max">TYPE
@@ -2439,88 +2439,104 @@
                                 <h3 class="text-xl font-bold text-slate-800">替换练习 (Substitution)</h3>
                                 <p class="text-slate-500 text-sm mt-1">Example: A / B → AはBです。</p>
                             </div>
-                            <span class="practice-toggle text-slate-500 text-2xl transition-transform">▼</span>
-                        </button>
-                        <div class="practice-answer">
-                            <div class="space-y-4">
+
+                            <div class="space-y-4 mt-2">
                                 <div
-                                    class="p-4 bg-white/60 rounded-2xl flex justify-between items-center border border-slate-200">
-                                    <span class="text-slate-800">1. 森 / 学生</span>
-                                    <span class="text-indigo-600 font-bold">森さんは学生です。</span>
+                                    class="p-4 bg-white/60 rounded-2xl flex flex-col md:flex-row md:items-center gap-2 border border-slate-200">
+                                    <span class="text-slate-800 font-medium w-32">1. 森 / 学生</span>
+                                    <input type="text"
+                                        class="drill-input flex-1 border-b-2 border-indigo-200 focus:border-indigo-500 outline-none text-indigo-700 bg-transparent px-2 transition"
+                                        data-answer="森さんは学生です/森さんは学生です。">
                                 </div>
                                 <div
-                                    class="p-4 bg-white/60 rounded-2xl flex justify-between items-center border border-slate-200">
-                                    <span class="text-slate-800">2. 小野 / 会社員</span>
-                                    <span class="text-indigo-600 font-bold">小野さんは会社員です。</span>
+                                    class="p-4 bg-white/60 rounded-2xl flex flex-col md:flex-row md:items-center gap-2 border border-slate-200">
+                                    <span class="text-slate-800 font-medium w-32">2. 小野 / 会社員</span>
+                                    <input type="text"
+                                        class="drill-input flex-1 border-b-2 border-indigo-200 focus:border-indigo-500 outline-none text-indigo-700 bg-transparent px-2 transition"
+                                        data-answer="小野さんは会社員です/小野さんは会社員です。">
                                 </div>
+                            </div>
+
+                            <div class="flex items-center gap-4 mt-2">
+                                <button onclick="checkDrill('drill-01')"
+                                    class="px-6 py-2 bg-indigo-500 text-white font-bold rounded-full text-sm hover:bg-indigo-600 transition">Check</button>
+                                <span class="drill-score font-bold text-indigo-600 hidden"></span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Drill 2: Negative -->
-                    <div class="practice-item glass-panel overflow-hidden border border-slate-200">
-                        <button onclick="togglePractice(this)"
-                            class="w-full p-8 flex justify-between items-center text-left hover:bg-white/60 transition">
+                    <!-- Drill 2: Negative -->
+                    <div class="practice-item glass-panel overflow-hidden border border-slate-200" id="drill-02">
+                        <div class="w-full p-8 flex flex-col gap-4">
                             <div>
                                 <span
                                     class="px-2 py-0.5 bg-rose-500/20 text-rose-600 rounded text-[10px] font-bold uppercase mb-2 block w-max">TYPE
                                     02</span>
                                 <h3 class="text-xl font-bold text-slate-800">否定变换 (Negation)</h3>
-                                <p class="text-slate-500 text-sm mt-1">Convert positive to negative
-                                    (Colloquial).</p>
+                                <p class="text-slate-500 text-sm mt-1">Convert positive to negative (Colloquial).</p>
                             </div>
-                            <span class="practice-toggle text-slate-500 text-2xl transition-transform">▼</span>
-                        </button>
-                        <div class="practice-answer">
-                            <div class="space-y-4">
+
+                            <div class="space-y-4 mt-2">
                                 <div
-                                    class="p-4 bg-white/60 rounded-2xl flex justify-between items-center border border-slate-200">
-                                    <span class="text-slate-800">田中さんは中国人です。</span>
-                                    <span class="text-rose-600 font-bold">...じゃありません。</span>
+                                    class="p-4 bg-white/60 rounded-2xl flex flex-col md:flex-row md:items-center gap-2 border border-slate-200">
+                                    <span class="text-slate-800 font-medium">田中さんは中国人です。</span>
+                                    <span class="text-rose-400">→</span>
+                                    <input type="text"
+                                        class="drill-input flex-1 border-b-2 border-rose-200 focus:border-rose-500 outline-none text-rose-700 bg-transparent px-2 transition"
+                                        data-answer="田中さんは中国人じゃありません/田中さんは中国人じゃありません。/中国人じゃありません/中国人じゃありません。">
                                 </div>
+                            </div>
+
+                            <div class="flex items-center gap-4 mt-2">
+                                <button onclick="checkDrill('drill-02')"
+                                    class="px-6 py-2 bg-rose-500 text-white font-bold rounded-full text-sm hover:bg-rose-600 transition">Check</button>
+                                <span class="drill-score font-bold text-rose-600 hidden"></span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Drill 3: Interrogative -->
-                    <div class="practice-item glass-panel overflow-hidden border border-slate-200">
-                        <button onclick="togglePractice(this)"
-                            class="w-full p-8 flex justify-between items-center text-left hover:bg-white/60 transition">
+                    <!-- Drill 3: Interrogative -->
+                    <div class="practice-item glass-panel overflow-hidden border border-slate-200" id="drill-03">
+                        <div class="w-full p-8 flex flex-col gap-4">
                             <div>
                                 <span
                                     class="px-2 py-0.5 bg-amber-500/20 text-amber-600 rounded text-[10px] font-bold uppercase mb-2 block w-max">TYPE
                                     03</span>
                                 <h3 class="text-xl font-bold text-slate-800">提问专家 (Questioning)</h3>
-                                <p class="text-slate-500 text-sm mt-1">Form questions for given
-                                    subjects.</p>
+                                <p class="text-slate-500 text-sm mt-1">Form questions for given subjects.</p>
                             </div>
-                            <span class="practice-toggle text-slate-500 text-2xl transition-transform">▼</span>
-                        </button>
-                        <div class="practice-answer">
-                            <div class="space-y-4">
-                                <div class="p-4 bg-white/60 rounded-2xl border border-slate-200">
-                                    <div class="flex justify-between items-center mb-2">
-                                        <span class="text-slate-800 font-medium">王さん / 留学生</span>
-                                        <button class="text-xs bg-amber-100 text-amber-600 px-2 py-1 rounded"
-                                            onclick="this.nextElementSibling.classList.remove('hidden')">Show
-                                            Answer</button>
-                                        <span class="hidden text-amber-600 font-bold">王さんは留学生ですか。</span>
+
+                            <div class="space-y-4 mt-2">
+                                <div class="p-4 bg-white/60 rounded-2xl border border-slate-200 space-y-3">
+                                    <div class="flex flex-col md:flex-row md:items-center gap-2">
+                                        <span class="text-slate-800 font-medium w-40">1. 王さん / 留学生</span>
+                                        <input type="text"
+                                            class="drill-input flex-1 border-b-2 border-amber-200 focus:border-amber-500 outline-none text-amber-700 bg-transparent px-2 transition"
+                                            data-answer="王さんは留学生ですか/王さんは留学生ですか。">
                                     </div>
-                                    <div class="flex justify-between items-center mb-2 pt-2 border-t border-slate-100">
-                                        <span class="text-slate-800 font-medium">森さん / 学生</span>
-                                        <button class="text-xs bg-amber-100 text-amber-600 px-2 py-1 rounded"
-                                            onclick="this.nextElementSibling.classList.remove('hidden')">Show
-                                            Answer</button>
-                                        <span class="hidden text-amber-600 font-bold">森さんは学生ですか。</span>
+                                    <div
+                                        class="flex flex-col md:flex-row md:items-center gap-2 pt-2 border-t border-slate-100">
+                                        <span class="text-slate-800 font-medium w-40">2. 森さん / 学生</span>
+                                        <input type="text"
+                                            class="drill-input flex-1 border-b-2 border-amber-200 focus:border-amber-500 outline-none text-amber-700 bg-transparent px-2 transition"
+                                            data-answer="森さんは学生ですか/森さんは学生ですか。">
                                     </div>
-                                    <div class="flex justify-between items-center pt-2 border-t border-slate-100">
-                                        <span class="text-slate-800 font-medium">キムさん / 中国人</span>
-                                        <button class="text-xs bg-amber-100 text-amber-600 px-2 py-1 rounded"
-                                            onclick="this.nextElementSibling.classList.remove('hidden')">Show
-                                            Answer</button>
-                                        <span class="hidden text-amber-600 font-bold">キムさんは中国人ですか。</span>
+                                    <div
+                                        class="flex flex-col md:flex-row md:items-center gap-2 pt-2 border-t border-slate-100">
+                                        <span class="text-slate-800 font-medium w-40">3. キムさん / 中国人</span>
+                                        <input type="text"
+                                            class="drill-input flex-1 border-b-2 border-amber-200 focus:border-amber-500 outline-none text-amber-700 bg-transparent px-2 transition"
+                                            data-answer="キムさんは中国人ですか/キムさんは中国人ですか。">
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="flex items-center gap-4 mt-2">
+                                <button onclick="checkDrill('drill-03')"
+                                    class="px-6 py-2 bg-amber-500 text-white font-bold rounded-full text-sm hover:bg-amber-600 transition">Check</button>
+                                <span class="drill-score font-bold text-amber-600 hidden"></span>
                             </div>
                         </div>
                     </div>
@@ -2840,8 +2856,28 @@
     <script>
         function checkFinalChallenge() {
             const inputs = document.querySelectorAll('.challenge-input');
-            let correctCount = 0;
+            const correctCount = validateInputs(inputs);
 
+            const scoreDiv = document.getElementById('final-score');
+            scoreDiv.textContent = `Score: ${correctCount} / ${inputs.length}`;
+            scoreDiv.classList.remove('hidden');
+            scoreDiv.classList.add('block', 'animate-bounce');
+            setTimeout(() => scoreDiv.classList.remove('animate-bounce'), 1000);
+        }
+
+        function checkDrill(drillId) {
+            const container = document.getElementById(drillId);
+            const inputs = container.querySelectorAll('.drill-input');
+            const correctCount = validateInputs(inputs);
+
+            const scoreSpan = container.querySelector('.drill-score');
+            scoreSpan.textContent = `Score: ${correctCount}/${inputs.length}`;
+            scoreSpan.classList.remove('hidden');
+        }
+
+        // Helper function for validation
+        function validateInputs(inputs) {
+            let correctCount = 0;
             inputs.forEach(input => {
                 const userVal = input.value.trim().replace(/[。\.]$/, ''); // Remove trailing period
                 const answers = input.dataset.answer.split('/');
@@ -2854,21 +2890,16 @@
 
                 if (isCorrect) {
                     // Success styling
-                    input.classList.remove('border-slate-300', 'border-red-500', 'bg-red-50');
+                    input.classList.remove('border-slate-300', 'border-red-500', 'bg-red-50', 'border-indigo-200', 'border-rose-200', 'border-amber-200');
                     input.classList.add('border-emerald-500', 'text-emerald-600', 'bg-emerald-50', 'font-bold');
                     correctCount++;
                 } else {
                     // Error styling
-                    input.classList.remove('border-slate-300', 'border-emerald-500', 'bg-emerald-50');
+                    input.classList.remove('border-slate-300', 'border-emerald-500', 'bg-emerald-50', 'border-indigo-200', 'border-rose-200', 'border-amber-200');
                     input.classList.add('border-red-500', 'bg-red-50');
                 }
             });
-
-            const scoreDiv = document.getElementById('final-score');
-            scoreDiv.textContent = `Score: ${correctCount} / ${inputs.length}`;
-            scoreDiv.classList.remove('hidden');
-            scoreDiv.classList.add('block', 'animate-bounce');
-            setTimeout(() => scoreDiv.classList.remove('animate-bounce'), 1000);
+            return correctCount;
         }
     </script>
 </body>
