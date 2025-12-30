@@ -2945,7 +2945,8 @@
             });
 
             try {
-                const response = await fetch('http://localhost:8000/api/chat', {
+                // Use relative path for Vercel (works locally if using vercel dev or proxy)
+                const response = await fetch('/api/chat', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -2958,16 +2959,15 @@
                 if (data.output && data.output.text) {
                     contentDiv.innerHTML = data.output.text; // Main response from DashScope
                 } else if (data.error) {
-                    contentDiv.innerHTML = `<span class="text-red-400">Error: ${data.error}</span><br>Make sure python ai_server.py is running!`;
+                    contentDiv.innerHTML = `<span class="text-red-400">Error: ${data.error}</span>`;
                 } else {
                     contentDiv.innerHTML = "Received unexpected response format.";
                 }
             } catch (err) {
                 console.error(err);
                 contentDiv.innerHTML = `<span class="text-red-400">Connection Failed!</span><br>
-                1. Open Terminal<br>
-                2. Run: <code>python3 learning/japanese/ai_server.py</code><br>
-                3. Try again.`;
+                For Local: Run <code>python3 learning/japanese/ai_server.py</code> (and ensure proxy is configured)<br>
+                For Vercel: Ensure <code>api/chat.py</code> is working.`;
             } finally {
                 contentDiv.classList.remove('animate-pulse');
             }
