@@ -40,6 +40,14 @@ async def main():
         {"id": "isha", "text": "医者", "voice": VOICE_FEMALE_1},
         {"id": "buchou", "text": "部長", "voice": VOICE_FEMALE_1},
         {"id": "kachou", "text": "課长", "voice": VOICE_FEMALE_1},
+        
+        # Supplementary Vocabulary (New)
+        {"id": "seito", "text": "生徒", "voice": VOICE_FEMALE_1},
+        {"id": "dokushin", "text": "独身", "voice": VOICE_FEMALE_1},
+        {"id": "ikemen", "text": "イケメン", "voice": VOICE_FEMALE_1},
+        {"id": "pekin_daigaku", "text": "北京大学", "voice": VOICE_FEMALE_1},
+        {"id": "akamon", "text": "赤門", "voice": VOICE_FEMALE_1},
+        {"id": "chuuou_shokudou", "text": "中央食堂", "voice": VOICE_FEMALE_1},
 
         # Family & People
         {"id": "chichi", "text": "父", "voice": VOICE_MALE_1},
@@ -138,6 +146,14 @@ async def main():
         {"id": "scene3_dialogue3_qa", "text": "小野さん、あなたは部長ですか？いいえ、違います。課長です。じゃ、誰が部長ですか？吉田様です。", "voice": VOICE_FEMALE_1}, # Combined Q&A
 
         {"id": "scene3_closing", "text": "どうぞよろしくお願いします！", "voice": VOICE_FEMALE_1},
+
+        # Scene 4 (Campus Chat)
+        {"id": "scene4_1", "text": "あれは赤門ですか。", "voice": VOICE_FEMALE_1}, # Li
+        {"id": "scene4_2", "text": "はい、東京大学の赤門です。", "voice": VOICE_FEMALE_1}, # Ono
+        {"id": "scene4_3", "text": "あの人は大 学生ですか。", "voice": VOICE_FEMALE_1}, # Li (Daigakusei?) No, "Daigakusei desu ka" or "Gakusei" in text? Text said "Daigakusei".
+        {"id": "scene4_4", "text": "いいえ、生徒です。高校生です。", "voice": VOICE_FEMALE_1}, # Ono
+        {"id": "scene4_5", "text": "へえ、イケメンですね。", "voice": VOICE_FEMALE_1}, # Li
+        {"id": "scene4_6", "text": "はい。彼は独身ですよ。", "voice": VOICE_FEMALE_1}, # Ono
     ]
     for item in dialogues:
         tasks.append(generate_audio(item["text"], item["voice"], os.path.join(OUTPUT_DIR, f"{item['id']}.mp3")))

@@ -632,70 +632,83 @@
                     <!-- Seito -->
                     <div class="glass-panel p-5 group cursor-pointer hover:bg-teal-50/50 transition">
                         <div class="flex justify-between items-start">
-                            <span class="text-xl font-bold text-slate-800">生徒 <span
-                                    class="text-sm font-normal text-slate-500">(せいと)</span></span>
+                            <span class="text-xl font-bold text-slate-800">生徒 <button onclick="playAudio('seito')"
+                                    class="text-lg text-teal-400 hover:scale-110 transition inline-block ml-1">🔊</button>
+                                <span class="text-sm font-normal text-slate-500">(せいと)</span></span>
                             <span class="text-teal-600 font-bold text-xs uppercase">Education</span>
                         </div>
-                        <p class="text-slate-600 text-sm mt-2">Pupil (Middle/High School). <br><span
-                                class="text-xs text-slate-400">College students are 学生 (Gakusei).</span></p>
-                    </div>
-
-                    <!-- Dokushin -->
+                        <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                            Pupil (Middle/High School).<br>
+                            <span class="text-slate-400 text-xs">College students are 学生 (Gakusei).</span>
+                        </p>
+                    </div> <!-- Dokushin -->
                     <div class="glass-panel p-5 group cursor-pointer hover:bg-teal-50/50 transition">
                         <div class="flex justify-between items-start">
-                            <span class="text-xl font-bold text-slate-800">独身 <span
-                                    class="text-sm font-normal text-slate-500">(どくしん)</span></span>
+                            <span class="text-xl font-bold text-slate-800">独身 <button onclick="playAudio('dokushin')"
+                                    class="text-lg text-teal-400 hover:scale-110 transition inline-block ml-1">🔊</button>
+                                <span class="text-sm font-normal text-slate-500">(どくしん)</span></span>
                             <span class="text-teal-600 font-bold text-xs uppercase">Status</span>
                         </div>
-                        <p class="text-slate-600 text-sm mt-2">Single / Unmarried.<br>
-                            <span class="text-xs text-slate-400">Example: 独身ですか？(Are you single?)</span>
+                        <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                            Single / Unmarried.<br>
+                            <span class="text-slate-400 text-xs">Example: 独身ですか？ (Are you single?)</span>
                         </p>
                     </div>
 
                     <!-- Ikemen -->
                     <div class="glass-panel p-5 group cursor-pointer hover:bg-teal-50/50 transition">
                         <div class="flex justify-between items-start">
-                            <span class="text-xl font-bold text-slate-800">イケメン</span>
+                            <span class="text-xl font-bold text-slate-800">イケメン <button onclick="playAudio('ikemen')"
+                                    class="text-lg text-teal-400 hover:scale-110 transition inline-block ml-1">🔊</button></span>
                             <span class="text-teal-600 font-bold text-xs uppercase">Slang</span>
                         </div>
-                        <p class="text-slate-600 text-sm mt-2">Handsome Guy / Hunk.<br>
-                            <span class="text-xs text-slate-400">Ex: 彼はイケメンです。(He is a hottie.)</span>
+                        <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                            Handsome Guy / Hunk.<br>
+                            <span class="text-slate-400 text-xs">Ex: 彼はイケメンです。(He is a hottie.)</span>
                         </p>
                     </div>
 
                     <!-- Peking Daigaku -->
                     <div class="glass-panel p-5 group cursor-pointer hover:bg-teal-50/50 transition">
                         <div class="flex justify-between items-start">
-                            <span class="text-xl font-bold text-slate-800">北京大学 <span
-                                    class="text-sm font-normal text-slate-500">(ペキンだいがく)</span></span>
+                            <span class="text-xl font-bold text-slate-800">北京大学 <button
+                                    onclick="playAudio('pekin_daigaku')"
+                                    class="text-lg text-teal-400 hover:scale-110 transition inline-block ml-1">🔊</button>
+                                <span class="text-sm font-normal text-slate-500">(ペキンだいがく)</span></span>
                             <span class="text-teal-600 font-bold text-xs uppercase">Place</span>
                         </div>
-                        <p class="text-slate-600 text-sm mt-2">Peking University.<br>
-                            <span class="text-xs text-slate-400">Contrast with London/Tokyo Univ.</span>
+                        <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                            Peking University.<br>
+                            <span class="text-slate-400 text-xs">Contrast with London/Tokyo Univ.</span>
                         </p>
                     </div>
 
                     <!-- Akamon -->
                     <div class="glass-panel p-5 group cursor-pointer hover:bg-teal-50/50 transition">
                         <div class="flex justify-between items-start">
-                            <span class="text-xl font-bold text-slate-800">赤門 <span
-                                    class="text-sm font-normal text-slate-500">(あかもん)</span></span>
+                            <span class="text-xl font-bold text-slate-800">赤門 <button onclick="playAudio('akamon')"
+                                    class="text-lg text-teal-400 hover:scale-110 transition inline-block ml-1">🔊</button>
+                                <span class="text-sm font-normal text-slate-500">(あかもん)</span></span>
                             <span class="text-teal-600 font-bold text-xs uppercase">Landmark</span>
                         </div>
-                        <p class="text-slate-600 text-sm mt-2">The Red Gate.<br>
-                            <span class="text-xs text-slate-400">Famous gate of Tokyo University.</span>
+                        <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                            The Red Gate.<br>
+                            <span class="text-slate-400 text-xs">Famous gate of Tokyo University.</span>
                         </p>
                     </div>
 
                     <!-- Chuuou Shokudou -->
                     <div class="glass-panel p-5 group cursor-pointer hover:bg-teal-50/50 transition">
                         <div class="flex justify-between items-start">
-                            <span class="text-xl font-bold text-slate-800">中央食堂 <span
-                                    class="text-sm font-normal text-slate-500">(ちゅうおうしょくどう)</span></span>
+                            <span class="text-xl font-bold text-slate-800">中央食堂 <button
+                                    onclick="playAudio('chuuou_shokudou')"
+                                    class="text-lg text-teal-400 hover:scale-110 transition inline-block ml-1">🔊</button>
+                                <span class="text-sm font-normal text-slate-500">(ちゅうおうしょくどう)</span></span>
                             <span class="text-teal-600 font-bold text-xs uppercase">Place</span>
                         </div>
-                        <p class="text-slate-600 text-sm mt-2">Central Cafeteria.<br>
-                            <span class="text-xs text-slate-400">Famous cheap eats at Toudai.</span>
+                        <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                            Central Cafeteria.<br>
+                            <span class="text-slate-400 text-xs">Famous cheap eats at Toudai.</span>
                         </p>
                     </div>
                 </div>
@@ -1642,7 +1655,8 @@
                         <img src="assets/images/lesson1/li.png" alt="Li"
                             class="w-16 h-16 rounded-2xl shadow-lg border-2 border-white hover:scale-110 transition-transform duration-300">
                         <div class="chat-bubble chat-left group-hover:scale-[1.02] transition-transform">
-                            <p class="text-lg font-bold">JC企画の 小野さんですか。 🔊</p>
+                            <p class="text-lg font-bold">JC企画<span class="text-teal-500">の</span> 小野さんです<span
+                                    class="text-amber-500">か</span>。 🔊</p>
                             <p class="text-slate-500 text-sm mt-2">Is this Ms. Ono from
                                 JC Kikaku?</p>
                         </div>
@@ -1654,7 +1668,7 @@
                         <img src="assets/images/lesson1/ono.png" alt="Ono"
                             class="w-16 h-16 rounded-2xl shadow-lg border-2 border-white hover:scale-110 transition-transform duration-300">
                         <div class="chat-bubble chat-right group-hover:scale-[1.02] transition-transform">
-                            <p class="text-lg font-bold">はい、小野です。李さんですか。 🔊</p>
+                            <p class="text-lg font-bold">はい、小野です。李さんです<span class="text-amber-500">か</span>。 🔊</p>
                             <p class="text-indigo-100/70 text-sm mt-2">Yes, I'm Ono. Are
                                 you Mr. Li?</p>
                         </div>
@@ -1701,7 +1715,7 @@
                         <img src="assets/images/lesson1/li.png" alt="Li"
                             class="w-16 h-16 rounded-2xl shadow-lg border-2 border-white hover:scale-110 transition-transform duration-300">
                         <div class="chat-bubble chat-left group-hover:scale-[1.02] transition-transform">
-                            <p class="text-lg font-bold">吉田さんですか。 🔊</p>
+                            <p class="text-lg font-bold">吉田さんです<span class="text-amber-500">か</span>。 🔊</p>
                             <p class="text-slate-500 text-sm mt-2">Are you Mr. Yoshida?</p>
                         </div>
                     </div>
@@ -1712,7 +1726,7 @@
                         <img src="assets/images/lesson1/mori.png" alt="Mori"
                             class="w-16 h-16 rounded-2xl shadow-lg border-2 border-white hover:scale-110 transition-transform duration-300">
                         <div class="chat-bubble chat-right group-hover:scale-[1.02] transition-transform">
-                            <p class="text-lg font-bold">いいえ、吉田じゃありません。森です。 🔊</p>
+                            <p class="text-lg font-bold">いいえ、吉田<span class="text-rose-500">じゃありません</span>。森です。 🔊</p>
                             <p class="text-indigo-100/70 text-sm mt-2">No, I'm not Yoshida. I'm Mori.</p>
                         </div>
                     </div>
@@ -1722,7 +1736,7 @@
                         <img src="assets/images/lesson1/li.png" alt="Li"
                             class="w-16 h-16 rounded-2xl shadow-lg border-2 border-white hover:scale-110 transition-transform duration-300">
                         <div class="chat-bubble chat-left group-hover:scale-[1.02] transition-transform">
-                            <p class="text-lg font-bold">あ、森さんですか。どうもすみません。 🔊</p>
+                            <p class="text-lg font-bold">あ、森さんです<span class="text-amber-500">か</span>。どうもすみません。 🔊</p>
                             <p class="text-slate-500 text-sm mt-2">Ah, Mr. Mori? I'm very sorry.</p>
                         </div>
                     </div>
@@ -1751,6 +1765,100 @@
             </div>
 
             <!-- Scene 03: Grand Summary -->
+
+            <!-- Scene 04: Campus Chat (New Vocab Integration) -->
+            <div class="glass-panel p-10 relative overflow-hidden ring-4 ring-rose-50 mt-12">
+                <div class="absolute top-0 right-0 p-4 opacity-10 font-black text-9xl text-rose-200">BONUS</div>
+
+                <h2 class="text-3xl font-black text-slate-800 mb-6 flex items-center gap-4">
+                    <span
+                        class="bg-gradient-to-r from-rose-400 to-orange-400 text-white px-4 py-1 rounded-xl text-sm shadow-lg shadow-rose-200">SCENE
+                        04</span>
+                    学園生活 <span class="text-lg font-normal text-slate-500">(Campus Chat)</span>
+                </h2>
+                <div class="mb-6 p-4 bg-white/60 rounded-xl border border-rose-100 text-sm text-slate-600">
+                    <p><strong>Goal:</strong> Use the supplementary words! (<span class="text-rose-500 font-bold">赤門,
+                            生徒, 独身, イケメン</span>)</p>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Li: Akamon question -->
+                    <div class="flex gap-4 items-end group cursor-pointer" onclick="playAudio('scene4_1')">
+                        <img src="assets/images/lesson1/li.png" alt="Li"
+                            class="w-16 h-16 rounded-2xl shadow-lg border-2 border-white hover:scale-110 transition-transform duration-300">
+                        <div class="chat-bubble chat-left group-hover:scale-[1.02] transition-transform">
+                            <p class="text-lg font-bold">
+                                あれは <span class="text-rose-500">赤門 (Akamon)</span> ですか。
+                            </p>
+                            <p class="text-slate-500 text-sm mt-2">Is that the Red Gate?</p>
+                        </div>
+                    </div>
+
+                    <!-- Ono: Yes, Toudai -->
+                    <div class="flex gap-4 flex-row-reverse items-end group cursor-pointer"
+                        onclick="playAudio('scene4_2')">
+                        <img src="assets/images/lesson1/ono.png" alt="Ono"
+                            class="w-16 h-16 rounded-2xl shadow-lg border-2 border-white hover:scale-110 transition-transform duration-300">
+                        <div class="chat-bubble chat-right group-hover:scale-[1.02] transition-transform">
+                            <p class="text-lg font-bold">
+                                はい、<span class="text-indigo-600">東京大学 (Toudai)</span> の赤門です。
+                            </p>
+                            <p class="text-indigo-100/70 text-sm mt-2">Yes, it's Tokyo University's Red Gate.</p>
+                        </div>
+                    </div>
+
+                    <!-- Li: Student? -->
+                    <div class="flex gap-4 items-end group cursor-pointer" onclick="playAudio('scene4_3')">
+                        <img src="assets/images/lesson1/li.png" alt="Li"
+                            class="w-16 h-16 rounded-2xl shadow-lg border-2 border-white hover:scale-110 transition-transform duration-300">
+                        <div class="chat-bubble chat-left group-hover:scale-[1.02] transition-transform">
+                            <p class="text-lg font-bold">
+                                あの人は 大学生ですか。
+                            </p>
+                            <p class="text-slate-500 text-sm mt-2">Is that person a college student?</p>
+                        </div>
+                    </div>
+
+                    <!-- Ono: No, Seito -->
+                    <div class="flex gap-4 flex-row-reverse items-end group cursor-pointer"
+                        onclick="playAudio('scene4_4')">
+                        <img src="assets/images/lesson1/ono.png" alt="Ono"
+                            class="w-16 h-16 rounded-2xl shadow-lg border-2 border-white hover:scale-110 transition-transform duration-300">
+                        <div class="chat-bubble chat-right group-hover:scale-[1.02] transition-transform">
+                            <p class="text-lg font-bold">
+                                いいえ、<span class="text-teal-600">生徒 (Seito)</span> です。高校生です。
+                            </p>
+                            <p class="text-indigo-100/70 text-sm mt-2">No, a pupil (high schooler).</p>
+                        </div>
+                    </div>
+
+                    <!-- Li: Ikemen -->
+                    <div class="flex gap-4 items-end group cursor-pointer" onclick="playAudio('scene4_5')">
+                        <img src="assets/images/lesson1/li.png" alt="Li"
+                            class="w-16 h-16 rounded-2xl shadow-lg border-2 border-white hover:scale-110 transition-transform duration-300">
+                        <div class="chat-bubble chat-left group-hover:scale-[1.02] transition-transform">
+                            <p class="text-lg font-bold">
+                                へえ、<span class="text-amber-500">イケメン</span> ですね。
+                            </p>
+                            <p class="text-slate-500 text-sm mt-2">Wow, he's a hunk.</p>
+                        </div>
+                    </div>
+
+                    <!-- Ono: Dokushin -->
+                    <div class="flex gap-4 flex-row-reverse items-end group cursor-pointer"
+                        onclick="playAudio('scene4_6')">
+                        <img src="assets/images/lesson1/ono.png" alt="Ono"
+                            class="w-16 h-16 rounded-2xl shadow-lg border-2 border-white hover:scale-110 transition-transform duration-300">
+                        <div class="chat-bubble chat-right group-hover:scale-[1.02] transition-transform">
+                            <p class="text-lg font-bold">
+                                はい。彼は <span class="text-purple-500">独身 (Dokushin)</span> ですよ。
+                            </p>
+                            <p class="text-indigo-100/70 text-sm mt-2">Yes. He is single, you know.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="glass-panel p-10 relative overflow-hidden ring-4 ring-indigo-50 mt-12">
                 <div class="absolute top-0 right-0 p-4 opacity-10 font-black text-9xl text-indigo-200">FINAL</div>
 
@@ -1779,14 +1887,19 @@
                         </div>
                         <p class="text-lg leading-loose text-slate-800">
                             <span class="font-bold text-indigo-600">ハイ、はじめまして！</span><br>
-                            <ruby>私<rt>わたし</rt></ruby>は <ruby>田中<rt>たなか</rt></ruby>です。<ruby>日本人<rt>にほんじん</rt>
+                            <ruby>私<rt>わたし</rt></ruby><span class="text-indigo-600 font-bold">は</span> <ruby>田中<rt>たなか
+                                </rt></ruby>です。<ruby>日本人<rt>にほんじん</rt>
                             </ruby>です。<br>
-                            これは <ruby>父<rt>ちち</rt></ruby> <span class="text-xs text-slate-400">(My
+                            これ<span class="text-indigo-600 font-bold">は</span> <ruby>父<rt>ちち</rt></ruby> <span
+                                class="text-xs text-slate-400">(My
                                 Father)</span> と <ruby>母<rt>はは</rt></ruby> <span class="text-xs text-slate-400">(My
                                 Mother)</span> です。<br>
-                            あの <ruby>人<rt>ひと</rt></ruby>は <ruby>友達<rt>ともだち</rt></ruby>の
+                            あの <ruby>人<rt>ひと</rt></ruby><span class="text-indigo-600 font-bold">は</span> <ruby>友達<rt>
+                                    ともだち</rt></ruby><span class="text-teal-500 font-bold">の</span>
                             <ruby>林<rt>はやし</rt></ruby>君(くん)です。<br>
-                            <ruby>彼<rt>かれ</rt></ruby>は <ruby>学生<rt>がくせい</rt></ruby>じゃありません。<ruby>会社員<rt>かいしゃいん</rt>
+                            <ruby>彼<rt>かれ</rt></ruby><span class="text-indigo-600 font-bold">は</span> <ruby>学生<rt>がくせい
+                                </rt></ruby><span class="text-rose-500 font-bold">じゃありません</span>。<ruby>会社員<rt>かいしゃいん
+                                </rt>
                             </ruby>です。<ruby>社員<rt>しゃいん</rt></ruby>です。
                         </p>
                     </div>
@@ -1831,7 +1944,9 @@
                             <div class="space-y-1 w-full">
                                 <p
                                     class="bg-white p-4 rounded-xl rounded-tl-none shadow-sm text-slate-800 group-hover:bg-indigo-50 transition-colors">
-                                    あの方（かた）は <span class="text-rose-500 font-bold">どなた</span>ですか。<br>
+                                    あの方（かた）<span class="text-indigo-600 font-bold">は</span> <span
+                                        class="text-rose-500 font-bold">どなた</span>です<span
+                                        class="text-amber-500 font-bold">か</span>。<br>
                                     <span class="text-sm text-slate-400 block mt-1">Who is that polite
                                         gentleman?</span>
                                 </p>
@@ -1846,8 +1961,11 @@
                                 <p
                                     class="bg-teal-50 p-4 rounded-xl rounded-tr-none shadow-sm text-slate-800 text-left group-hover:bg-teal-100 transition-colors">
                                     <ruby>中村<rt>なかむら</rt></ruby> <ruby>教授<rt>きょうじゅ</rt></ruby>です。<ruby>大学<rt>だいがく</rt>
-                                    </ruby>の <ruby>先生<rt>せんせい</rt></ruby>です。<br>
-                                    <ruby>彼女<rt>かのじょ</rt></ruby>は <ruby>森<rt>もり</rt></ruby>ちゃんです。<br>
+                                    </ruby><span class="text-teal-500 font-bold">の</span> <ruby>先生<rt>せんせい</rt>
+                                    </ruby>です。<br>
+                                    <ruby>彼女<rt>かのじょ</rt></ruby><span class="text-indigo-600 font-bold">は</span> <ruby>森
+                                        <rt>もり</rt>
+                                    </ruby>ちゃんです。<br>
                                     <span class="text-sm text-slate-400 block mt-1">That's Prof. Nakamura. She is
                                         Mori-chan.</span>
                                 </p>
@@ -1863,8 +1981,10 @@
                             <div class="space-y-1 w-full">
                                 <p
                                     class="bg-white p-4 rounded-xl rounded-tl-none shadow-sm text-slate-800 group-hover:bg-blue-50 transition-colors">
-                                    <span class="font-bold text-blue-600">俺 (Ore)</span> は元気です。<br>
-                                    <span class="font-bold text-indigo-600">僕 (Boku)</span> も元気です。<br>
+                                    <span class="font-bold text-blue-600">俺 (Ore)</span> <span
+                                        class="text-indigo-600 font-bold">は</span>元気です。<br>
+                                    <span class="font-bold text-indigo-600">僕 (Boku)</span> <span
+                                        class="text-indigo-600 font-bold">も</span>元気です。<br>
                                     <span class="text-sm text-slate-400 block mt-1">"I (manly)" am good. "I
                                         (boyish)" am
                                         good too.</span>
@@ -1879,7 +1999,8 @@
                             <div class="space-y-1 text-right w-full">
                                 <p
                                     class="bg-pink-50 p-4 rounded-xl rounded-tr-none shadow-sm text-slate-800 text-left group-hover:bg-pink-100 transition-colors">
-                                    <span class="font-bold text-pink-600">あたし (Atashi)</span> は小野です。<br>
+                                    <span class="font-bold text-pink-600">あたし (Atashi)</span> <span
+                                        class="text-indigo-600 font-bold">は</span>小野です。<br>
                                     <span class="text-sm text-slate-400 block mt-1">"I (girly)" am Ono.</span>
                                 </p>
                             </div>
@@ -1890,13 +2011,16 @@
                             onclick="playAudio('scene3_dialogue3_qa')">
                             <div class="flex flex-col gap-2">
                                 <div class="flex justify-between">
-                                    <p class="text-slate-800"><strong>Q:</strong> 小野さん、<ruby>あなた<rt>あなた</rt></ruby>は
-                                        <ruby>部長<rt>ぶちょう</rt></ruby>ですか？
+                                    <p class="text-slate-800"><strong>Q:</strong> 小野さん、<ruby>あなた<rt>あなた</rt></ruby><span
+                                            class="text-indigo-600 font-bold">は</span>
+                                        <ruby>部長<rt>ぶちょう</rt></ruby>です<span class="text-amber-500 font-bold">か</span>？
                                     </p>
                                     <span class="text-slate-400 text-xs">🔊</span>
                                 </div>
                                 <p class="text-indigo-600 font-bold">A: いいえ、違います。<ruby>課長<rt>かちょう</rt></ruby>です。</p>
-                                <p class="text-slate-800 mt-2"><strong>Q:</strong>じゃ、<ruby>誰<rt>だれ</rt></ruby>が部長ですか？
+                                <p class="text-slate-800 mt-2"><strong>Q:</strong>じゃ、<ruby>誰<rt>だれ</rt></ruby><span
+                                        class="text-indigo-600 font-bold">が</span>部長です<span
+                                        class="text-amber-500 font-bold">か</span>？
                                 </p>
                                 <p class="text-indigo-600 font-bold">A: <ruby>吉田<rt>よしだ</rt></ruby>
                                     <ruby>様<rt>さま</rt></ruby>です。
