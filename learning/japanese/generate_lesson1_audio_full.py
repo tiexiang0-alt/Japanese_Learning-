@@ -39,7 +39,7 @@ async def main():
         {"id": "kyouju", "text": "教授", "voice": VOICE_FEMALE_1},
         {"id": "isha", "text": "医者", "voice": VOICE_FEMALE_1},
         {"id": "buchou", "text": "部長", "voice": VOICE_FEMALE_1},
-        {"id": "kachou", "text": "課长", "voice": VOICE_FEMALE_1},
+        {"id": "kachou", "text": "課長", "voice": VOICE_FEMALE_1},
         
         # Supplementary Vocabulary (New)
         {"id": "seito", "text": "生徒", "voice": VOICE_FEMALE_1},
