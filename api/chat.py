@@ -6,7 +6,8 @@ import os
 
 # Configuration
 API_KEY = "AIzaSyANEpdPzKlnII7-Xzp2bJvBFJitPD1AEdY"
-GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={API_KEY}"
+# Updated model name to be more specific to avoid 404s
+GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={API_KEY}"
 
 class handler(BaseHTTPRequestHandler):
     def do_POST(self):
@@ -20,7 +21,6 @@ class handler(BaseHTTPRequestHandler):
             user_message = client_data.get('message', '')
 
             # Construct Gemini request
-            # Using system_instruction for better persona adherence
             payload = {
                 "system_instruction": {
                     "parts": [

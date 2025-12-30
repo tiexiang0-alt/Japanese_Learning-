@@ -7,7 +7,7 @@ import os
 
 PORT = 8000
 API_KEY = "AIzaSyANEpdPzKlnII7-Xzp2bJvBFJitPD1AEdY"
-GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={API_KEY}"
+GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={API_KEY}"
 
 class AiProxyHandler(http.server.SimpleHTTPRequestHandler):
     def do_POST(self):
