@@ -67,6 +67,9 @@ vocab_list = [
     {"id": "okaasan", "text": "お母さん", "voice": VOICE_FEMALE_1},
     {"id": "shiruku_no_hankachi", "text": "シルクのハンカチ", "voice": VOICE_FEMALE_1},
     {"id": "nagashima", "text": "長島", "voice": VOICE_FEMALE_1},
+    {"id": "nouto", "text": "ノート", "voice": VOICE_FEMALE_1},
+    {"id": "borupen", "text": "ボールペン", "voice": VOICE_FEMALE_1},
+    {"id": "shaapupenshiru", "text": "シャープペンシル", "voice": VOICE_FEMALE_1},
 
     # Numbers
     {"id": "zero", "text": "ゼロ", "voice": VOICE_FEMALE_1},

@@ -1239,6 +1239,75 @@
                             </div>
                         </div>
                     </div>
+                    <!-- 11-99 Logic -->
+                    <div class="mt-8 pt-6 border-t border-slate-200">
+                        <h4 class="text-xl font-bold text-slate-700 mb-4">🔢 11 - 99 计数逻辑 (Counting Logic)</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <!-- Tens -->
+                            <div class="bg-indigo-50/50 p-6 rounded-2xl">
+                                <p class="text-sm font-bold text-indigo-500 mb-2 uppercase tracking-wide">The Tens (10,
+                                    20... 90)</p>
+                                <div class="grid grid-cols-2 gap-2 text-sm">
+                                    <div class="flex justify-between p-2 bg-white rounded-lg"><span>10</span> <span
+                                            class="font-bold text-slate-700">Juu</span></div>
+                                    <div class="flex justify-between p-2 bg-white rounded-lg"><span>20</span> <span
+                                            class="font-bold text-slate-700">Ni-juu</span></div>
+                                    <div class="flex justify-between p-2 bg-white rounded-lg"><span>30</span> <span
+                                            class="font-bold text-slate-700">San-juu</span></div>
+                                    <div class="flex justify-between p-2 bg-white rounded-lg"><span>40</span> <span
+                                            class="font-bold text-slate-700">Yon-juu</span></div>
+                                    <div class="flex justify-between p-2 bg-white rounded-lg"><span>50</span> <span
+                                            class="font-bold text-slate-700">Go-juu</span></div>
+                                    <div class="flex justify-between p-2 bg-white rounded-lg"><span>60</span> <span
+                                            class="font-bold text-slate-700">Roku-juu</span></div>
+                                    <div class="flex justify-between p-2 bg-white rounded-lg"><span>70</span> <span
+                                            class="font-bold text-slate-700">Nana-juu</span></div>
+                                    <div class="flex justify-between p-2 bg-white rounded-lg"><span>80</span> <span
+                                            class="font-bold text-slate-700">Hachi-juu</span></div>
+                                    <div class="flex justify-between p-2 bg-white rounded-lg"><span>90</span> <span
+                                            class="font-bold text-slate-700">Kyuu-juu</span></div>
+                                </div>
+                            </div>
+                            <!-- Combinations -->
+                            <div class="bg-amber-50/50 p-6 rounded-2xl">
+                                <p class="text-sm font-bold text-amber-600 mb-2 uppercase tracking-wide">Combinations
+                                    (Example: 24, 73)</p>
+                                <div class="space-y-4">
+                                    <div class="p-3 bg-white rounded-xl border border-slate-200">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <span class="text-2xl font-black text-slate-800">21</span>
+                                            <span class="text-slate-400">=</span>
+                                            <span class="bg-indigo-100 text-indigo-700 px-2 rounded">20 (Ni-juu)</span>
+                                            <span class="text-slate-400">+</span>
+                                            <span class="bg-amber-100 text-amber-700 px-2 rounded">1 (Ichi)</span>
+                                        </div>
+                                        <p class="font-bold text-slate-600">Ni-juu Ichi</p>
+                                    </div>
+                                    <div class="p-3 bg-white rounded-xl border border-slate-200">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <span class="text-2xl font-black text-slate-800">46</span>
+                                            <span class="text-slate-400">=</span>
+                                            <span class="bg-indigo-100 text-indigo-700 px-2 rounded">40 (Yon-juu)</span>
+                                            <span class="text-slate-400">+</span>
+                                            <span class="bg-amber-100 text-amber-700 px-2 rounded">6 (Roku)</span>
+                                        </div>
+                                        <p class="font-bold text-slate-600">Yon-juu Roku</p>
+                                    </div>
+                                    <div class="p-3 bg-white rounded-xl border border-slate-200">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <span class="text-2xl font-black text-slate-800">99</span>
+                                            <span class="text-slate-400">=</span>
+                                            <span class="bg-indigo-100 text-indigo-700 px-2 rounded">90
+                                                (Kyuu-juu)</span>
+                                            <span class="text-slate-400">+</span>
+                                            <span class="bg-amber-100 text-amber-700 px-2 rounded">9 (Kyuu)</span>
+                                        </div>
+                                        <p class="font-bold text-slate-600">Kyuu-juu Kyuu</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -1388,9 +1457,47 @@
 
                         </div>
                         <p class="text-sm text-slate-500 mb-1">シルクのハンカチ</p>
-                        <p class="text-lg font-medium text-slate-600">丝绸手帕</p>
+                        <!-- Notebook -->
+                        <div class="glass-panel p-6 bg-slate-50/50 hover:bg-white transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-2xl font-bold text-slate-800">ノート</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">①</span>
+                                    <button onclick="playAudio('nouto')"
+                                        class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-500 mb-1">ノート</p>
+                            <p class="text-lg font-medium text-slate-600">笔记本 (Notebook)</p>
+                        </div>
+                        <!-- Ballpoint Pen -->
+                        <div class="glass-panel p-6 bg-slate-50/50 hover:bg-white transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-2xl font-bold text-slate-800">ボールペン</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                    <button onclick="playAudio('borupen')"
+                                        class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-500 mb-1">ボールペン</p>
+                            <p class="text-lg font-medium text-slate-600">圆珠笔 (Ballpoint Pen)</p>
+                        </div>
+                        <!-- Mech Pencil -->
+                        <div class="glass-panel p-6 bg-slate-50/50 hover:bg-white transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-xl font-bold text-slate-800">シャープペンシル</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">④</span>
+                                    <button onclick="playAudio('shaapupenshiru')"
+                                        class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-500 mb-1">シャープペンシル</p>
+                            <p class="text-lg font-medium text-slate-600">自动铅笔 (Mechanical Pencil)</p>
+                            <p class="text-xs text-slate-400 mt-1">Short: シャーペン</p>
+                        </div>
                     </div>
-                </div>
             </section>
 
             <!-- Teacher's Corner: Useful Expressions -->
