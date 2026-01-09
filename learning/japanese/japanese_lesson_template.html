@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- REPLACE: Lesson Title -->
+    <title>第X课：课程标题 – 盾盾日语全覆盖笔记</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Klee+One:wght@400;600&family=ZCOOL+XiaoWei&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Custom Styles & Animation */
+        :root {
+            /* REPLACE: Theme Colors if needed */
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --glass-surface: rgba(255, 255, 255, 0.65);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            /* Optional: Add colorful background blobs */
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #1d1d1f;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: var(--glass-surface);
+            -webkit-backdrop-filter: blur(24px);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            border-radius: 24px;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.45);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 32px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .glass-panel:hover {
+            transform: translateY(-4px) scale(1.01);
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+            border-color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Tab Navigation */
+        .tab-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            box-shadow: 0 8px 16px rgba(99, 102, 241, 0.25);
+            transform: translateY(-1px);
+        }
+
+        /* Chat Bubbles */
+        .chat-bubble {
+            max-width: 80%;
+            padding: 1.5rem;
+            border-radius: 24px;
+            position: relative;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .chat-left {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-right {
+            background: rgba(238, 242, 255, 0.9);
+            border: 1px solid rgba(199, 210, 254, 0.5);
+            border-bottom-right-radius: 4px;
+            text-align: right;
+        }
+
+        /* Pitch Accent */
+        .pitch-container {
+            position: relative;
+            display: inline-block;
+            margin: 0 2px;
+        }
+
+        .pitch-line {
+            position: absolute;
+            top: -5px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: currentColor;
+        }
+
+        .pitch-down {
+            position: absolute;
+            top: -5px;
+            right: 0;
+            width: 2px;
+            height: 8px;
+            background-color: currentColor;
+        }
+
+        /* Practice Drills */
+        .practice-item {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="text-slate-800 pb-20">
+
+    <!-- Sticky Navigation -->
+    <nav class="sticky top-4 z-50 mx-4 mb-8">
+        <div class="glass max-w-7xl mx-auto px-6 py-4 flex justify-between items-center bg-white/60">
+            <div class="flex items-center gap-3">
+                <a href="index.html"
+                    class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg hover:scale-105 transition"
+                    title="Exit Learning">盾</a>
+                <div>
+                    <h1 class="font-black text-slate-900 leading-none">盾盾日语</h1>
+                    <!-- REPLACE: Chapter Subtitle -->
+                    <span class="text-[10px] text-indigo-500 font-bold uppercase tracking-widest">Lesson Template</span>
+                </div>
+            </div>
+            <div class="hidden md:flex gap-4 text-sm font-bold items-center">
+                <a href="chapter1.html"
+                    class="flex items-center gap-2 px-4 py-2 bg-indigo-50 text-indigo-600 rounded-full hover:bg-indigo-100 transition">
+                    <span>🗺️</span> 章节地图 (Chapter Map)
+                </a>
+                <a href="index.html"
+                    class="flex items-center gap-2 px-4 py-2 text-slate-500 hover:text-slate-800 transition">
+                    <span>🚪</span> 退出学习 (Exit)
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="max-w-4xl mx-auto text-center mb-12 px-4">
+        <!-- REPLACE: Lesson Title & Desc -->
+        <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
+            第X课 – <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">课程核心主题</span>
+        </h2>
+        <p class="text-xl text-slate-500 max-w-2xl mx-auto">
+            “这里是课程的一句话简短介绍或引言。”
+        </p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 md:px-6">
+
+        <!-- Audio Player Script -->
+        <script>
+            function playAudio(filename) {
+                // REPLACE: Updated audio path for this lesson
+                const lessonId = 'lessonX';
+                const audio = new Audio(`assets/audio/${lessonId}/${filename}.mp3`);
+                audio.play().catch(e => console.error("Audio play failed:", e));
+            }
+        </script>
+
+        <!-- Tabs Navigation -->
+        <div
+            class="glass-panel p-2 flex justify-between md:justify-start gap-2 mb-8 overflow-x-auto sticky top-24 z-40 shadow-sm">
+            <button onclick="switchTab('vocab')" id="tab-vocab"
+                class="tab-btn active px-6 py-3 rounded-xl font-bold text-slate-600 hover:bg-white/60 whitespace-nowrap">
+                📚 单词 Vocabulary
+            </button>
+            <button onclick="switchTab('grammar')" id="tab-grammar"
+                class="tab-btn px-6 py-3 rounded-xl font-bold text-slate-600 hover:bg-white/60 whitespace-nowrap">
+                🧠 语法 Grammar
+            </button>
+            <button onclick="switchTab('text')" id="tab-text"
+                class="tab-btn px-6 py-3 rounded-xl font-bold text-slate-600 hover:bg-white/60 whitespace-nowrap">
+                💬 课文 Text
+            </button>
+            <button onclick="switchTab('culture')" id="tab-culture"
+                class="tab-btn px-6 py-3 rounded-xl font-bold text-slate-600 hover:bg-white/60 whitespace-nowrap">
+                🌸 文化 Culture
+            </button>
+            <button onclick="switchTab('practice')" id="tab-practice"
+                class="tab-btn px-6 py-3 rounded-xl font-bold text-slate-600 hover:bg-white/60 whitespace-nowrap">
+                ✍️ 练习 Practice
+            </button>
+        </div>
+
+        <!-- 1. Vocabulary Section -->
+        <div id="content-vocab" class="space-y-12">
+            <!-- Grid Template -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- TEMPLATE: Vocab Item -->
+                <div class="glass-panel p-6 group cursor-pointer" onclick="playAudio('vocab_filename')">
+                    <div class="flex justify-between items-start">
+                        <span class="text-xl font-bold text-slate-800">单词 <span
+                                class="text-lg text-indigo-500">🔊</span> <span
+                                class="text-base font-normal text-slate-500">(kana)</span></span>
+                        <span class="text-amber-600 font-bold">⓪</span>
+                    </div>
+                    <p class="text-slate-500 text-sm mt-2">English Meaning</p>
+                    <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                        <div class="flex items-start gap-2 text-xs">
+                            <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                            <span class="text-slate-600">Details...</span>
+                        </div>
+                        <div class="flex items-start gap-2 text-xs">
+                            <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                            <span class="text-slate-600">Mnemonic...</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more vocab cards here -->
+            </div>
+
+            <!-- Teacher's Corner -->
+            <div class="bg-indigo-50 p-8 rounded-[3rem] border border-indigo-100">
+                <h3 class="text-2xl font-black text-indigo-900 mb-6 flex items-center gap-3">
+                    👨‍🏫 老师的重点笔记 (Teacher's Corner)
+                </h3>
+                <!-- Content -->
+            </div>
+        </div>
+
+        <!-- 2. Grammar Section -->
+        <div id="content-grammar" class="hidden space-y-12">
+            <!-- TEMPLATE: Grammar Pattern -->
+            <div class="glass-panel p-8 relative overflow-hidden">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="text-4xl">💎</span>
+                    <h2 class="text-3xl font-black text-slate-800">句型 01：[Pattern Name]</h2>
+                </div>
+
+                <div class="bg-indigo-500/10 border border-indigo-500/30 rounded-3xl p-8 mb-8 backdrop-blur-sm">
+                    <div class="flex items-center gap-4 text-3xl font-bold flex-wrap text-slate-800">
+                        <span>A</span>
+                        <span class="text-indigo-600 bg-white/80 px-4 py-2 rounded-2xl border border-slate-300">は</span>
+                        <span>B</span>
+                        <span
+                            class="text-indigo-600 bg-white/80 px-4 py-2 rounded-2xl border border-slate-300">です</span>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Example Sentence -->
+                    <div
+                        class="p-6 bg-white/60 rounded-3xl border border-slate-200 flex items-center justify-between group hover:border-indigo-400 transition">
+                        <div>
+                            <p class="text-xl font-bold text-slate-800">例句文本<span class="text-indigo-600">关键点</span>。
+                            </p>
+                            <p class="text-slate-500 text-sm mt-1">Translation.</p>
+                        </div>
+                        <button onclick="playAudio('grammar_audio_1')"
+                            class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center hover:bg-indigo-600 hover:text-white transition">🔊</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Text Section -->
+        <div id="content-text" class="hidden max-w-4xl mx-auto space-y-12">
+            <!-- TEMPLATE: Scene -->
+            <div class="glass-panel p-10 relative overflow-hidden">
+                <h2 class="text-3xl font-black text-slate-800 mb-10 flex items-center gap-4">
+                    <span class="bg-indigo-500 px-4 py-1 rounded-xl text-sm text-white">SCENE 01</span>
+                    场景标题 <span class="text-lg font-normal text-slate-500">(English Title)</span>
+                </h2>
+
+                <div class="space-y-8">
+                    <!-- Dialogue Left -->
+                    <div class="flex gap-4 items-end group cursor-pointer" onclick="playAudio('text_1_1')">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-gray-200 flex items-center justify-center font-bold text-gray-500">
+                            Img</div>
+                        <div class="chat-bubble chat-left group-hover:scale-[1.02] transition-transform">
+                            <p class="text-lg font-bold">日语文本 🔊</p>
+                            <p class="text-slate-500 text-sm mt-2">Translation</p>
+                        </div>
+                    </div>
+
+                    <!-- Dialogue Right -->
+                    <div class="flex gap-4 flex-row-reverse items-end group cursor-pointer"
+                        onclick="playAudio('text_1_2')">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-gray-200 flex items-center justify-center font-bold text-gray-500">
+                            Img</div>
+                        <div class="chat-bubble chat-right group-hover:scale-[1.02] transition-transform">
+                            <p class="text-lg font-bold">日语文本 🔊</p>
+                            <p class="text-indigo-100/70 text-sm mt-2">Translation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Culture Section -->
+        <div id="content-culture" class="hidden space-y-12">
+            <!-- TEMPLATE: Culture Card -->
+            <div class="glass-panel p-8">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="text-5xl">🗾</span>
+                    <div>
+                        <h2 class="text-3xl font-black text-slate-800">文化标题</h2>
+                        <p class="text-slate-500">English Title</p>
+                    </div>
+                </div>
+                <!-- Content... -->
+                <p class="text-slate-600 leading-relaxed">
+                    Culture description text...
+                </p>
+            </div>
+        </div>
+
+        <!-- 5. Practice Section -->
+        <div id="content-practice" class="hidden space-y-8">
+            <div class="glass-panel p-10">
+                <h2 class="text-3xl font-black text-slate-800 mb-10 border-b border-slate-200 pb-4">
+                    ✍️ 练习 (Drills)
+                </h2>
+
+                <!-- TEMPLATE: Drill Item -->
+                <div class="practice-item glass-panel overflow-hidden border border-slate-200" id="drill-template">
+                    <div class="w-full p-8 flex flex-col gap-4">
+                        <div>
+                            <span
+                                class="px-2 py-0.5 bg-indigo-500/20 text-indigo-600 rounded text-[10px] font-bold uppercase mb-2 block w-max">TYPE
+                                01</span>
+                            <h3 class="text-xl font-bold text-slate-800">练习标题</h3>
+                            <p class="text-slate-500 text-sm mt-1">Instructions...</p>
+                        </div>
+
+                        <div class="space-y-4 mt-2">
+                            <div
+                                class="p-4 bg-white/60 rounded-2xl flex flex-col md:flex-row md:items-center gap-2 border border-slate-200">
+                                <span class="text-slate-800 font-medium w-32">Question</span>
+                                <input type="text"
+                                    class="drill-input flex-1 border-b-2 border-indigo-200 focus:border-indigo-500 outline-none text-indigo-700 bg-transparent px-2 transition"
+                                    data-answer="Answer/AltAnswer">
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 mt-2">
+                            <button onclick="checkDrill('drill-template')"
+                                class="px-6 py-2 bg-indigo-500 text-white font-bold rounded-full text-sm hover:bg-indigo-600 transition">Check</button>
+                            <span class="drill-score font-bold text-indigo-600 hidden"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('tab-' + tabId).classList.add('active');
+            ['vocab', 'grammar', 'text', 'culture', 'practice'].forEach(id => {
+                const el = document.getElementById('content-' + id);
+                if (el) el.classList.add('hidden');
+            });
+            document.getElementById('content-' + tabId).classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Drill Checker Logic
+        function checkDrill(drillId) {
+            const container = document.getElementById(drillId);
+            const inputs = container.querySelectorAll('.drill-input');
+            let correctCount = 0;
+            inputs.forEach(input => {
+                const userVal = input.value.trim().replace(/[。\.]$/, '');
+                const answers = input.dataset.answer.split('/');
+                const isCorrect = answers.some(ans => {
+                    const cleanAns = ans.trim().replace(/[。\.]$/, '');
+                    return userVal.toLowerCase() === cleanAns.toLowerCase();
+                });
+                if (isCorrect) {
+                    input.classList.remove('border-slate-300', 'border-red-500', 'bg-red-50');
+                    input.classList.add('border-emerald-500', 'text-emerald-600', 'bg-emerald-50', 'font-bold');
+                    correctCount++;
+                } else {
+                    input.classList.remove('border-slate-300', 'border-emerald-500', 'bg-emerald-50');
+                    input.classList.add('border-red-500', 'bg-red-50');
+                }
+            });
+            const scoreSpan = container.querySelector('.drill-score');
+            scoreSpan.textContent = `Score: ${correctCount}/${inputs.length}`;
+            scoreSpan.classList.remove('hidden');
+        }
+
+        // Initialize
+        window.onload = function () {
+            switchTab('vocab');
+        };
+    </script>
+</body>
+
+</html>

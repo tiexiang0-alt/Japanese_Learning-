@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 8 Unit 6 Comprehensive Assessment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Crimson Pro"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        exam: {
+                            paper: '#ffffff',
+                            ink: '#1a1a1a',
+                            accent: '#2563eb', // Academic Blue
+                            subtle: '#64748b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+
+        body {
+            background-color: #525659;
+            /* PDF Viewer Background */
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            font-family: 'Times New Roman', serif;
+            /* Classic Exam Font */
+        }
+
+        .page-container {
+            width: 210mm;
+            min-height: 297mm;
+            /* A4 Height */
+            margin: 20px auto;
+            background: white;
+            padding: 12mm 10mm;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        @media print {
+            body {
+                background: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .page-container {
+                width: 210mm;
+                min-height: 297mm;
+                height: auto;
+                margin: 0;
+                padding: 10mm 8mm;
+                box-shadow: none;
+                page-break-after: always;
+            }
+
+            .page-container:last-child {
+                page-break-after: auto;
+            }
+
+            .no-print {
+                display: none;
+            }
+
+            .exam-columns {
+                column-count: 1;
+            }
+
+            .break-col {
+                break-after: auto;
+            }
+        }
+
+        /* Two Column Layout with Divider */
+        .exam-columns {
+            column-count: 2;
+            column-gap: 10mm;
+            column-rule: 1px dashed #ccc;
+            text-align: justify;
+        }
+
+        /* Question Typography */
+        .question-block {
+            margin-bottom: 0.8em;
+            break-inside: avoid;
+            font-size: 10.5pt;
+            /* Standard Exam Font Size */
+            line-height: 1.4;
+        }
+
+        .question-num {
+            font-weight: bold;
+            margin-right: 0.2em;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            /* Default 2 columns A/B, C/D */
+            gap: 2px 8px;
+            margin-top: 4px;
+            margin-left: 1em;
+            font-size: 10.5pt;
+        }
+
+        .options-grid.grid-cols-4 {
+            grid-template-columns: repeat(4, 1fr);
+            /* Single row A B C D */
+        }
+
+        .options-grid.grid-cols-1 {
+            grid-template-columns: 1fr;
+            /* Stacked vertical */
+        }
+
+        .section-header {
+            background-color: #eee;
+            border-top: 2px solid #000;
+            border-bottom: 1px solid #000;
+            padding: 4px 8px;
+            margin: 12px 0 8px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 11pt;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            break-after: avoid;
+        }
+
+        .section-header:first-of-type {
+            margin-top: 0;
+        }
+
+        .break-col {
+            break-after: column;
+        }
+
+        .cloze-blank {
+            display: inline-block;
+            min-width: 2.5em;
+            border-bottom: 1px solid #000;
+            text-align: center;
+            font-weight: bold;
+            line-height: 1.2;
+            margin: 0 2px;
+        }
+
+        /* Visual Tweaks */
+        .riddle-box {
+            border: 1px solid #000;
+            margin-bottom: 1em;
+        }
+
+        .riddle-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .riddle-item {
+            padding: 6px;
+            border-right: 1px solid #000;
+            border-bottom: 1px solid #000;
+        }
+
+        .riddle-grid:last-child .riddle-item {
+            border-bottom: none;
+        }
+
+        .riddle-item:nth-child(2n) {
+            border-right: none;
+        }
+
+        p.indent-8 {
+            text-indent: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Control Bar -->
+    <div class="fixed top-4 right-4 no-print flex gap-2 z-50">
+        <button onclick="window.print()"
+            class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-700 font-medium flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z">
+                </path>
+            </svg>
+            Print
+        </button>
+    </div>
+
+    <!-- Page 1 -->
+    <div class="page-container">
+        <!-- Header -->
+        <div class="text-center border-b-2 border-gray-100 pb-6 mb-8">
+            <div class="inline-block bg-gray-900 text-white text-xs px-2 py-0.5 rounded mb-2">Unit 6</div>
+            <h1 class="text-3xl font-bold text-gray-900 font-sans tracking-tight mb-2">English Grade 8 • Unit 6
+                Assessment</h1>
+            <div class="flex justify-center gap-8 text-sm text-gray-500 font-medium">
+                <span>⏱ Time: 90 mins</span>
+                <span>💯 Total Score: 110</span>
+                <span>👤 Student Name: ____________</span>
+            </div>
+        </div>
+
+        <div class="exam-columns">
+            <!-- Left Column: Part 1, 2, 3 -->
+            <div class="break-col">
+
+                <!-- Part 1: Listening -->
+                <div class="section-header">
+                    <span>I. Listening Comprehension</span>
+                    <span>20 points</span>
+                </div>
+                <div
+                    class="bg-gray-100 p-4 mb-4 border border-gray-300 text-sm flex gap-2 items-center italic text-gray-600">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z">
+                        </path>
+                    </svg>
+                    <span>Questions 1-20 are listening comprehension tasks. Please refer to the "Unit 6 Themed Listening
+                        Training" audio material and separate answer sheet.</span>
+                </div>
+
+                <!-- Part 2: Single Choice -->
+                <div class="section-header">
+                    <span>II. Single Choice</span>
+                    <span>10 points</span>
+                </div>
+
+                <!-- Question 21 -->
+                <div class="question-block">
+                    <p>
+                        <span class="question-num">21.</span> —My father's job is to build more beautiful and useful
+                        bridges for people.<br>
+                        <span class="pl-4 block mt-1">—I guess he must be a(n) __________.</span>
+                    </p>
+                    <div class="options-grid">
+                        <div>A. scientist</div>
+                        <div>B. computer programmer</div>
+                        <div>C. engineer</div>
+                        <div>D. tour guide</div>
+                    </div>
+                </div>
+
+                <!-- Question 22 -->
+                <div class="question-block">
+                    <p>
+                        <span class="question-num">22.</span> —Excuse me, sir. You can't smoke here.<br>
+                        <span class="pl-4 block mt-1">—Sorry, I didn't see the sign. I'll __________ my cigarette at
+                            once.</span>
+                    </p>
+                    <div class="options-grid">
+                        <div>A. put away</div>
+                        <div>B. put out</div>
+                        <div>C. put up</div>
+                        <div>D. put off</div>
+                    </div>
+                </div>
+
+                <!-- Question 23 -->
+                <div class="question-block">
+                    <p>
+                        <span class="question-num">23.</span> Mr Black, you are becoming healthier and healthier. Please
+                        keep on __________ .
+                    </p>
+                    <div class="options-grid grid-cols-4">
+                        <div>A. ran</div>
+                        <div>B. to run</div>
+                        <div>C. runs</div>
+                        <div>D. running</div>
+                    </div>
+                </div>
+
+                <!-- Question 24 -->
+                <div class="question-block">
+                    <p>
+                        <span class="question-num">24.</span> —Tina doesn't want people to talk about her weight.<br>
+                        <span class="pl-4 block mt-1">—She must __________ hearing people say that.</span>
+                    </p>
+                    <div class="options-grid">
+                        <div>A. be tired of</div>
+                        <div>B. be pleased with</div>
+                        <div>C. be excited about</div>
+                        <div>D. be worried about</div>
+                    </div>
+                </div>
+
+                <!-- Question 25 -->
+                <div class="question-block">
+                    <p>
+                        <span class="question-num">25.</span> —What are you saving money for?<br>
+                        <span class="pl-4 block mt-1">—Father's Day is around the corner. I __________ a gift for my
+                            father.</span>
+                    </p>
+                    <div class="options-grid">
+                        <div>A. bought</div>
+                        <div>B. buy</div>
+                        <div>C. am buying</div>
+                        <div>D. am going to buy</div>
+                    </div>
+                </div>
+
+                <!-- Question 26 -->
+                <div class="question-block">
+                    <p>
+                        <span class="question-num">26.</span> —Our monitor keeps all his things in good order.<br>
+                        <span class="pl-4 block mt-1">—That's true. He's so __________, and we should learn from
+                            him.</span>
+                    </p>
+                    <div class="options-grid">
+                        <div>A. creative</div>
+                        <div>B. generous</div>
+                        <div>C. modest</div>
+                        <div>D. organized</div>
+                    </div>
+                </div>
+
+                <!-- Question 27 -->
+                <div class="question-block">
+                    <p>
+                        <span class="question-num">27.</span> —I think it's hard for us to realize our dreams.<br>
+                        <span class="pl-4 block mt-1">—Yes, but we will make them come true if we __________
+                            them.</span>
+                    </p>
+                    <div class="options-grid">
+                        <div>A. find out</div>
+                        <div>B. stick to</div>
+                        <div>C. look up to</div>
+                        <div>D. show up</div>
+                    </div>
+                </div>
+
+                <!-- Question 28 -->
+                <div class="question-block">
+                    <p>
+                        <span class="question-num">28.</span> Jack's father was very happy because Jack __________ an
+                        "A" in the Chinese exam.
+                    </p>
+                    <div class="options-grid">
+                        <div>A. lost</div>
+                        <div>B. designed</div>
+                        <div>C. missed</div>
+                        <div>D. achieved</div>
+                    </div>
+                </div>
+
+                <!-- Question 29 -->
+                <div class="question-block">
+                    <p>
+                        <span class="question-num">29.</span> —The doctor won't take any advice during the operation. He
+                        is arrogant (傲慢的)!<br>
+                        <span class="pl-4 block mt-1">—I don't agree. Maybe he is just too __________ of himself.</span>
+                    </p>
+                    <div class="options-grid">
+                        <div>A. honest</div>
+                        <div>B. mean</div>
+                        <div>C. confident</div>
+                        <div>D. modest</div>
+                    </div>
+                </div>
+
+                <!-- Question 30 -->
+                <div class="question-block">
+                    <p>
+                        <span class="question-num">30.</span> —Will it be sunny tomorrow?<br>
+                        <span class="pl-4 block mt-1">—__________ . I am going to have a trip to Hong Kong then.</span>
+                    </p>
+                    <div class="options-grid">
+                        <div>A. Yes, I hope so</div>
+                        <div>B. No, I hope not</div>
+                        <div>C. Yes, it is</div>
+                        <div>D. No, it won't</div>
+                    </div>
+                </div>
+
+                <!-- Part 3: Cloze Test -->
+                <div class="section-header">
+                    <span>III. Cloze Test</span>
+                    <span>15 points</span>
+                </div>
+
+                <div class="mb-4 text-justify leading-relaxed">
+                    <p class="indent-8">
+                        When I was in Grade Eight, I worried a lot about my future. Every day, I thought, "What am I
+                        going to do when I leave <span class="cloze-blank">31</span>?" I wasn't excited about the
+                        future. I just felt very <span class="cloze-blank">32</span>. One reason was that I found
+                        studies <span class="cloze-blank">33</span>. I often couldn't follow my teachers in class and
+                        never got good <span class="cloze-blank">34</span>.
+                    </p>
+                    <p class="indent-8 mt-1">
+                        When I think back to those times now, I remember that sometimes I didn't <span
+                            class="cloze-blank">35</span> homework on time. This went on for a long time, <span
+                            class="cloze-blank">36</span> near the end of the year something happened. I <span
+                            class="cloze-blank">37</span> knew what my dream job was. I love animals and I <span
+                            class="cloze-blank">38</span> to become an animal doctor! To do that, I had to go to a good
+                        university. And to go to a good university, I had to do well in my <span
+                            class="cloze-blank">39</span>.
+                    </p>
+                    <p class="indent-8 mt-1">
+                        From Grade Nine on, I <span class="cloze-blank">40</span> to work hard. I listened <span
+                            class="cloze-blank">41</span> the teacher carefully in class. I studied for hours at home
+                        and my parents even told me to work <span class="cloze-blank">42</span>! At the end of that
+                        year, I <span class="cloze-blank">43</span> a prize for my good grades. My family were very
+                        happy for me and I felt <span class="cloze-blank">44</span>.
+                    </p>
+                    <p class="indent-8 mt-1">
+                        Now I feel confident and I'm <span class="cloze-blank">45</span> the future!
+                    </p>
+                </div>
+
+                <!-- Cloze Options -->
+                <div class="options-grid grid-cols-1 font-serif text-sm">
+                    <!-- 31-35 -->
+                    <div><span class="question-num">31.</span> A. home &nbsp; B. office &nbsp; C. school &nbsp; D. town
+                    </div>
+                    <div><span class="question-num">32.</span> A. glad &nbsp; B. scared &nbsp; C. angry &nbsp; D. fresh
+                    </div>
+                    <div><span class="question-num">33.</span> A. tidy &nbsp; B. right &nbsp; C. difficult &nbsp; D.
+                        friendly</div>
+                    <div><span class="question-num">34.</span> A. luck &nbsp; B. ideas &nbsp; C. service &nbsp; D.
+                        grades</div>
+                    <div><span class="question-num">35.</span> A. finish &nbsp; B. print &nbsp; C. share &nbsp; D.
+                        choose</div>
+                    <!-- 36-40 -->
+                    <div><span class="question-num">36.</span> A. so &nbsp; B. but &nbsp; C. if &nbsp; D. or</div>
+                    <div><span class="question-num">37.</span> A. quickly &nbsp; B. easily &nbsp; C. suddenly &nbsp; D.
+                        comfortably</div>
+                    <div><span class="question-num">38.</span> A. waited &nbsp; B. learned &nbsp; C. helped &nbsp; D.
+                        decided</div>
+                    <div><span class="question-num">39.</span> A. studies &nbsp; B. jobs &nbsp; C. programs &nbsp; D.
+                        photos</div>
+                    <div><span class="question-num">40.</span> A. led &nbsp; B. started &nbsp; C. advised &nbsp; D.
+                        stopped</div>
+                    <!-- 41-45 -->
+                    <div><span class="question-num">41.</span> A. in &nbsp; B. to &nbsp; C. at &nbsp; D. for</div>
+                    <div><span class="question-num">42.</span> A. less &nbsp; B. worse &nbsp; C. louder &nbsp; D. faster
+                    </div>
+                    <div><span class="question-num">43.</span> A. saw &nbsp; B. kept &nbsp; C. won &nbsp; D. found</div>
+                    <div><span class="question-num">44.</span> A. sorry &nbsp; B. surprised &nbsp; C. worried &nbsp; D.
+                        great</div>
+                    <div><span class="question-num">45.</span> A. looking at &nbsp; B. looking for &nbsp; C. looking
+                        back on &nbsp; D. looking forward to</div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Part 4 -->
+            <div>
+                <!-- Part 4: Reading Comprehension -->
+                <div class="section-header mt-0">
+                    <span>IV. Reading Comprehension</span>
+                    <span>30 points</span>
+                </div>
+
+                <!-- Section A: Riddles -->
+                <h3 class="font-bold text-gray-800 mb-2 px-2 border-l-4 border-gray-800">A</h3>
+                <div class="riddle-box bg-white">
+                    <div class="riddle-grid">
+                        <div class="riddle-item">
+                            <h4 class="font-bold text-sm">Riddle 1</h4>
+                            <p class="text-sm leading-snug">I carry a big bag every day. There are letters and parcels
+                                in the bag. I take <span class="font-bold underline">them</span> to people. Who am I?
+                            </p>
+                        </div>
+                        <div class="riddle-item">
+                            <h4 class="font-bold text-sm">Riddle 2</h4>
+                            <p class="text-sm leading-snug">I wear a uniform. I catch thieves. I make sure the
+                                neighborhood is safe. Who am I?</p>
+                        </div>
+                    </div>
+                    <div class="riddle-grid">
+                        <div class="riddle-item">
+                            <h4 class="font-bold text-sm">Riddle 3</h4>
+                            <p class="text-sm leading-snug">I work on a bus. I drive it around every day. I take people
+                                to different places. Who am I?</p>
+                        </div>
+                        <div class="riddle-item">
+                            <h4 class="font-bold text-sm">Riddle 4</h4>
+                            <p class="text-sm leading-snug">I work in a shop. Many children come to the shop. They buy
+                                sweets and chocolate. Who am I?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Riddle Questions 46-50 -->
+                <div class="question-block">
+                    <p><span class="question-num">46.</span> What does the underlined word "<span
+                            class="font-bold">them</span>" in Riddle 1 refer to?</p>
+                    <div class="options-grid">
+                        <div>A. Big bags</div>
+                        <div>B. Letters and parcels</div>
+                        <div>C. People</div>
+                        <div>D. Riddles</div>
+                    </div>
+                </div>
+                <div class="question-block">
+                    <p><span class="question-num">47.</span> What is the answer to Riddle 2?</p>
+                    <div class="options-grid">
+                        <div>A. A teacher</div>
+                        <div>B. An engineer</div>
+                        <div>C. A waiter</div>
+                        <div>D. A policeman</div>
+                    </div>
+                </div>
+                <div class="question-block">
+                    <p><span class="question-num">48.</span> Where does the person in Riddle 3 work?</p>
+                    <div class="options-grid">
+                        <div>A. On a bus</div>
+                        <div>B. In a zoo</div>
+                        <div>C. At an airport</div>
+                        <div>D. On a farm</div>
+                    </div>
+                </div>
+                <div class="question-block">
+                    <p><span class="question-num">49.</span> What is probably the shop in Riddle 4?</p>
+                    <div class="options-grid">
+                        <div>A. A bookstore</div>
+                        <div>B. A fruit store</div>
+                        <div>C. A flower store</div>
+                        <div>D. A candy store</div>
+                    </div>
+                </div>
+                <div class="question-block">
+                    <p><span class="question-num">50.</span> What are the riddles about?</p>
+                    <div class="options-grid">
+                        <div>A. Children</div>
+                        <div>B. Parents</div>
+                        <div>C. Jobs</div>
+                        <div>D. Places</div>
+                    </div>
+                </div>
+
+                <!-- Section B: Story -->
+                <h3 class="font-bold text-gray-800 mb-2 px-2 border-l-4 border-gray-800 mt-6">B</h3>
+                <div class="mb-4 font-serif text-sm leading-relaxed text-justify bg-white rounded">
+                    <div
+                        class="float-right ml-3 mb-1 bg-gray-100 p-2 text-xs italic text-gray-500 w-32 border border-gray-200">
+                        <span class="bg-black text-white px-1 mr-1 not-italic font-bold">Original</span> Follow Your
+                        Dream is a famous show in America.
+                    </div>
+                    <p class="indent-8 mb-2">
+                        <span class="italic font-bold">Follow Your Dream</span> is a famous show in America. It is
+                        mainly for children. It is designed to help children to follow their dreams. Many children came
+                        to take part in the show.
+                    </p>
+                    <p class="indent-8 mb-2">
+                        One day, a seven-year-old girl named Mary came to the show. During the show, the host James
+                        asked Mary, "Hi, Mary! Welcome! What would you like to be when you grow up?"
+                    </p>
+                    <p class="indent-8 mb-2">
+                        "I want to be a pilot!" said little Mary.
+                    </p>
+                    <p class="indent-8 mb-2">
+                        "Being a pilot is really cool. Let's suppose (假设) that one day you are driving a plane above the
+                        Pacific Ocean, but your plane doesn't have enough fuel (燃料). What would you do?" James asked.
+                    </p>
+                    <p class="indent-8 mb-2">
+                        Everyone there was waiting for the little girl's answer. Mary thought for a few minutes and then
+                        said, "I would tell all the passengers to tie their seat belts first. And then I will jump out
+                        of the plane with my parachute (降落伞)."
+                    </p>
+                    <p class="indent-8 mb-2">
+                        Everyone was surprised. James was also surprised at the answer and couldn't believe that the
+                        answer came from such a lovely girl. However, he then saw the tears rolling (滚动) down the little
+                        girl's face. So he asked, "Why would you do that?"
+                    </p>
+                    <p class="indent-8">
+                        "Because I will go to get fuel and then I will come back to save my passengers," said Mary.
+                    </p>
+                </div>
+
+                <!-- Story Questions 51-55 -->
+                <div class="question-block">
+                    <p><span class="question-num">51.</span> Who is the show <span class="italic">Follow Your
+                            Dream</span> mainly for?</p>
+                    <div class="options-grid">
+                        <div>A. The old</div>
+                        <div>B. Children</div>
+                        <div>C. Parents</div>
+                        <div>D. Teachers</div>
+                    </div>
+                </div>
+                <div class="question-block">
+                    <p><span class="question-num">52.</span> What does the little girl want to be when she grows up?</p>
+                    <div class="options-grid">
+                        <div>A. A host</div>
+                        <div>B. A scientist</div>
+                        <div>C. A teacher</div>
+                        <div>D. A pilot</div>
+                    </div>
+                </div>
+                <div class="question-block">
+                    <p><span class="question-num">53.</span> The little girl wants to jump out of the plane to
+                        _________.</p>
+                    <div class="options-grid grid-cols-1">
+                        <div>A. escape (逃跑) from the plane</div>
+                        <div>B. find the nearest airport</div>
+                        <div>C. find enough fuel for the plane</div>
+                        <div>D. get enough food for her passengers</div>
+                    </div>
+                </div>
+                <div class="question-block">
+                    <p><span class="question-num">54.</span> Why did people feel surprised after they heard the little
+                        girl's answer?</p>
+                    <div class="options-grid grid-cols-1">
+                        <div>A. Because her answer was wrong.</div>
+                        <div>B. Because the little girl was sorry for the passengers on her plane.</div>
+                        <div>C. Because they misunderstood (误会) her.</div>
+                        <div>D. Because the little girl didn't know how to answer the question.</div>
+                    </div>
+                </div>
+                <div class="question-block">
+                    <p><span class="question-num">55.</span> What do you think of the little girl?</p>
+                    <div class="options-grid">
+                        <div>A. She is kind.</div>
+                        <div>B. She is shy.</div>
+                        <div>C. She is patient.</div>
+                        <div>D. She is humorous.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2 -->
+    <div class="page-container">
+        <!-- Header (Simplified) -->
+        <div class="border-b-2 border-gray-100 pb-4 mb-8 flex justify-between items-center text-gray-400 text-sm">
+            <span>Unit 6 Comprehensive Assessment</span>
+            <span>Page 2 / 2</span>
+        </div>
+
+        <div class="exam-columns">
+            <!-- Left Column: Part 4C & Part 5 -->
+            <div class="break-col font-serif">
+                <!-- Section C: Dream Formula -->
+                <h3 class="font-bold text-gray-800 mb-2 px-2 border-l-4 border-gray-800 font-sans">C</h3>
+                <div class="mb-4 text-sm leading-relaxed text-justify">
+                    <p class="indent-8 mb-2">
+                        Each of us has dreams and goals for our future. What makes us study and make progress each day
+                        is closely connected with our personal dream and goal.
+                    </p>
+                    <p class="indent-8 mb-2">
+                        Why do you have dreams and goals, but you still end up with nothing? What separates (<span
+                            class="italic">使分开</span>) successful people from the dreamers is their persistent (<span
+                            class="italic">锲而不舍的</span>) action. When you learn your lessons in school, you must work
+                        hard and not give up. You will often find some of your lessons very hard. Try and keep trying,
+                        and you'll be sure to successfully deal with any difficulty you meet with. If we have a hard
+                        lesson today, let us try our best to learn it well and then we shall be prepared for a harder
+                        one tomorrow.
+                    </p>
+                    <p class="indent-8 mb-2">
+                        This is the famous formula (<span class="italic">公式</span>) for success:
+                    </p>
+                    <div
+                        class="my-4 p-3 bg-blue-50 border border-blue-100 rounded text-center font-bold text-blue-800 text-xs md:text-sm">
+                        Dream > Believe > Achieve
+                    </div>
+                    <p class="indent-8 mb-2">
+                        Most people have what they want (Dream) and think they can realize their dreams (Believe). And
+                        then they do nothing. They just imagine their dreams can come true. When they get tired of
+                        waiting and lose a lot, they get bored. They say angrily how terrible their life is.
+                    </p>
+                    <p class="indent-8 mb-2">
+                        I personally believe that if you really want to achieve your dreams and goals in life, you have
+                        to add one thing to your success formula:
+                    </p>
+                    <div
+                        class="my-4 p-3 bg-blue-50 border border-blue-100 rounded text-center font-bold text-blue-800 text-xs md:text-sm shadow-sm ring-2 ring-blue-200">
+                        Dream > Believe > <span class="text-red-500 text-lg">Act</span> > Achieve
+                    </div>
+                    <p class="indent-8 mb-2">
+                        For me, act is the most important thing for success, and that's to Take Persistent Action (Act).
+                        If you say, "I can't do it," and give up, you can never do anything valuable. However, "I'll
+                        try" creates wonders. Let's remember that there will be <span
+                            class="font-bold underline">obstacles</span> in our life. We must face them bravely and
+                        solve them. Success is not something that falls from the sky. Most successful people made their
+                        dreams come true because of their persistent action.
+                    </p>
+                    <p class="indent-8">
+                        Please remember: Action is the bridge that connects our dreams and goals to reality.
+                    </p>
+                </div>
+
+                <!-- Questions 56-60 -->
+                <div class="question-block">
+                    <p><span class="question-num">56.</span> What should you do when you find your lessons very hard?
+                    </p>
+                    <div class="options-grid grid-cols-1">
+                        <div>A. Ask people for help.</div>
+                        <div>B. Try and keep trying.</div>
+                        <div>C. Get ready to create wonders.</div>
+                        <div>D. Prepare for a harder one.</div>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <p><span class="question-num">57.</span> What does the writer add to the famous formula?</p>
+                    <div class="options-grid">
+                        <div>A. Act.</div>
+                        <div>B. Feel.</div>
+                        <div>C. Connect.</div>
+                        <div>D. Create.</div>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <p><span class="question-num">58.</span> What does the underlined word "<span
+                            class="font-bold">obstacles</span>" mean?</p>
+                    <div class="options-grid">
+                        <div>A. Dangers.</div>
+                        <div>B. Imaginations.</div>
+                        <div>C. Wonders.</div>
+                        <div>D. Difficulties.</div>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <p><span class="question-num">59.</span> <span class="border border-gray-400 px-1 text-xs">New
+                            Method</span> Why does the writer use the formula “Dream > Believe > Act > Achieve”?</p>
+                    <div class="options-grid grid-cols-1">
+                        <div>A. To support his idea.</div>
+                        <div>B. To ask readers to explain it.</div>
+                        <div>C. To show what his goals are.</div>
+                        <div>D. To compare it with a bridge.</div>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <p><span class="question-num">60.</span> Which of the following can be the best title for the
+                        passage?</p>
+                    <div class="options-grid grid-cols-1">
+                        <div>A. Doing Something Valuable</div>
+                        <div>B. Studying Hard and Making Progress</div>
+                        <div>C. Realizing Dreams with Persistent Action</div>
+                        <div>D. Separating Successful People from Dreamers</div>
+                    </div>
+                </div>
+
+                <!-- Part 5: Vocabulary -->
+                <div class="section-header">
+                    <span>V. Vocabulary & Grammar</span>
+                    <span>10 points</span>
+                </div>
+                <div
+                    class="bg-gray-50 border border-gray-100 p-2 rounded text-sm font-serif leading-loose text-justify mb-4">
+                    <p class="indent-8">
+                        My friend Jane and I have lots of hobbies and interests. We really like going to the cinema at
+                        weekends. Both of <span class="font-bold text-blue-600">61.__________</span> (we) like listening
+                        to music and we also like dancing at parties if the music is really good! Jane is <span
+                            class="font-bold text-blue-600">62.__________</span> (good) at music than me. The Year of
+                        2025 has already come, so we make a New <span
+                            class="font-bold text-blue-600">63.__________</span> (year) resolution. We are going to take
+                        <span class="font-bold text-blue-600">64.__________</span> a new hobby like playing the guitar.
+                        We like different <span class="font-bold text-blue-600">65.__________</span> (sport) — Jane
+                        often goes running in the park in the morning, but I like playing soccer.
+                    </p>
+                    <p class="indent-8 mt-1">
+                        Last term, I tried my best <span class="font-bold text-blue-600">66.__________</span> (make) the
+                        soccer team. And I helped the team win many games. Besides, I am interested in art. I want to be
+                        an artist <span class="font-bold text-blue-600">67.__________</span> I grow up. So I keep on
+                        <span class="font-bold text-blue-600">68.__________</span> (practice) painting pictures in my
+                        free time, but Jane’s favorite subject is English because she enjoys singing English songs.
+                        There’s one thing we dislike — playing computer games! It is really <span
+                            class="font-bold text-blue-600">69.__________</span> (meaning). I hope our dreams <span
+                            class="font-bold text-blue-600">70.__________</span> (come) true next year!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right Column: Part 6 & 7 -->
+            <div class="font-serif">
+                <!-- Part 6: Dialogue -->
+                <div class="section-header mt-0">
+                    <span>VI. Dialogue Completion</span>
+                    <span>10 points</span>
+                </div>
+                <div class="mb-6 text-sm font-serif space-y-3 bg-white border-l-2 border-gray-200 pl-4 w-full">
+                    <p><span class="font-bold">A:</span> Hi, Cindy. I know you like playing the violin in your free
+                        time. <span class="font-bold text-blue-600">71. ____________________</span>?</p>
+                    <p><span class="font-bold">B:</span> No. I planned to be a violinist before, but now I hope to be a
+                        doctor like Zhong Nanshan to save people. He is a hero in my heart. <span
+                            class="font-bold text-blue-600">72. ____________________</span>?</p>
+                    <p><span class="font-bold">A:</span> Well, I want to protect cultural relics (<span
+                            class="italic">保护文物</span>) like Fan Jinshi when I grow up.</p>
+                    <p><span class="font-bold">B:</span> That sounds great. <span class="font-bold text-blue-600">73.
+                            ____________________</span>?</p>
+                    <p><span class="font-bold">A:</span> I am going to study history at university.</p>
+                    <p><span class="font-bold">B:</span> <span class="font-bold text-blue-600">74.
+                            ____________________</span>.</p>
+                    <p><span class="font-bold">A:</span> Thank you. I am sure my dream can come true because I never
+                        give up.</p>
+                    <p><span class="font-bold">B:</span> You are right. <span class="font-bold text-blue-600">75.
+                            ____________________</span>.</p>
+                </div>
+
+                <!-- Part 7: Writing -->
+                <div class="section-header">
+                    <span>VII. Writing</span>
+                    <span>25 points</span>
+                </div>
+                <div class="mb-4 text-sm font-serif">
+                    <p class="font-bold mb-2">Prompt:</p>
+                    <p class="mb-2">青春, 是心里有火, 眼里有光。你们都有幸遇见这样的时代, 但是时代更有幸遇见这样的你们。</p>
+                    <p class="mb-4">青春路上, 你对未来职业的憧憬是什么? 请你以 "I want to be a/an ______" 为题写一篇短文。</p>
+
+                    <ul class="list-disc pl-5 space-y-1 text-xs text-gray-600 mb-4">
+                        <li>词数 80 左右;</li>
+                        <li>请根据以上的提示和要求, 结合自己的实际情况表达你的观点, 并适当发挥;</li>
+                        <li>文中不得出现真实的人名、校名和地名;</li>
+                        <li>字迹工整, 语言流畅, 表达正确, 逻辑清晰。</li>
+                    </ul>
+                </div>
+
+                <div class="text-center font-bold text-lg mb-4 border-b border-gray-300 pb-2 mx-6">
+                    I want to be a/an ____________________
+                </div>
+
+                <!-- Lined Paper -->
+                <div class="border border-gray-300 p-6 bg-white rounded-sm shadow-inner"
+                    style="background-image: linear-gradient(#e5e7eb 1px, transparent 1px); background-size: 100% 1.5rem; line-height: 1.5rem;">
+                    <p class="text-center font-bold text-lg mb-2" style="background-color: transparent;">My Dream</p>
+                    <p class="text-transparent">.</p>
+                    <p class="text-transparent">.</p>
+                    <p class="text-transparent">.</p>
+                    <p class="text-transparent">.</p>
+                    <p class="text-transparent">.</p>
+                    <p class="text-transparent">.</p>
+                    <p class="text-transparent">.</p>
+                    <p class="text-transparent">.</p>
+                    <p class="text-transparent">.</p>
+                    <p class="text-transparent">.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center text-xs text-gray-400 mt-8">
+            End of Assessment • Good Luck!
+        </div>
+    </div>
+</body>
+
+</html>
