@@ -272,6 +272,11 @@
                 class="tab-btn px-6 py-3 rounded-xl font-bold text-slate-600 hover:bg-white/600 whitespace-nowrap">
                 ✍️ 练习 Practice
             </button>
+            <button onclick="switchTab('exam')" id="tab-exam"
+                class="tab-btn px-6 py-3 rounded-xl font-bold text-slate-600 hover:bg-white/600 whitespace-nowrap">
+                📝 Exam (試験)
+            </button>
+
         </div>
 
 
@@ -285,6 +290,132 @@
                     📘 事物与用品 <span class="text-sm font-normal text-slate-500">(Items & Objects)</span>
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Dictionary -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-2xl font-bold text-slate-800">辞書</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">①</span>
+                                <button onclick="playAudio('jisho')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">じしょ</p>
+                                <p class="text-lg font-medium text-slate-600">词典 (Dictionary)</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">辞 (Words) + 書 (Book)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">汉字词 (Kango)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">辞書で言葉を調べます。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">これは私の辞書です。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_辞書')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Magazine -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-2xl font-bold text-slate-800">雑誌</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('zasshi')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">ざっし</p>
+                                <p class="text-lg font-medium text-slate-600">杂志 (Magazine)</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">雑 (Misc) + 誌 (Record)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">汉字词 (Kango)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">雑誌は面白いです。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">雑誌を読みます。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_雑誌')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Telephone -->
+                    <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-2xl font-bold text-slate-800">電話</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg">⓪</span>
+                                <button onclick="playAudio('denwa')"
+                                    class="text-slate-400 hover:text-indigo-500 transition">🔊</button>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-sm text-slate-500 font-mono">でんわ</p>
+                                <p class="text-lg font-medium text-slate-600">电话 (Telephone)</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">電 (Electricity) + 話 (Talk)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">汉字词 (Kango)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">電話で話します。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">電話をかけます。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_電話')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Book -->
                     <div class="glass-panel p-6 group cursor-pointer hover:bg-white/80 transition">
                         <div class="flex justify-between items-start mb-2">
@@ -314,6 +445,17 @@
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"ほん" (红) -> 这本书是红色的。</span>
                             </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">これは本です。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_本')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
+                            </div>
                         </div>
                     </div>
                     <!-- Bag -->
@@ -338,8 +480,23 @@
                                 <span class="text-slate-600">鞄 (革 Leather + 包 Wrap)</span>
                             </div>
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">汉字词 (Kango)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"かばん" (卡板) -> 包里装着卡板。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">それは鞄です。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_鞄')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -365,8 +522,23 @@
                                 <span class="text-slate-600">鉛 (Lead) + 筆 (Brush/Pen)</span>
                             </div>
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">汉字词 (Kango)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"えん" (圆) "ぴつ" (笔) -> 圆珠笔的反义词是铅笔。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">これは私の鉛筆です。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_鉛筆')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -392,8 +564,23 @@
                                 <span class="text-slate-600">伞 (Umbrella)</span>
                             </div>
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">和语 (Wago)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"かさ" (卡萨) -> 卡萨布兰卡的雨伞。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">あれは誰の傘ですか。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_傘')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -419,8 +606,23 @@
                                 <span class="text-slate-600">革 (Leather) + 化 (Change) -> 靴</span>
                             </div>
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">和语 (Wago)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"くつ" (裤子) -> 穿鞋还要穿裤子。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">この靴はいくらですか。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_靴')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -446,8 +648,23 @@
                                 <span class="text-slate-600">新 (New) + 聞 (Hear) -> News</span>
                             </div>
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">汉字词 (Kango)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"しん" (新) "ぶん" (闻) -> 新闻。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">新聞を読みます。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_新聞')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                             <div class="flex items-start gap-2 text-xs mt-2 pt-2 border-t border-slate-200/50">
                                 <span class="font-bold text-indigo-500 w-8 shrink-0">辨析</span>
@@ -483,8 +700,23 @@
                                 <span class="text-slate-600">Pasonal Computer (缩略语)</span>
                             </div>
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">外来语 (Gairaigo)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"ぱそこん" (怕搜空) -> 怕搜索是空的。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">これは新しいパソコンです。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_パソコン')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -502,8 +734,27 @@
                         <p class="text-lg font-medium text-slate-700">照相机</p>
                         <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">Camera</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">外来语 (Gairaigo)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"かめら" -> 咔嚓 (Ka) 没了 (Mera)。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">このカメラは高いです。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_カメラ')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -521,8 +772,27 @@
                         <p class="text-lg font-medium text-slate-700">电视机</p>
                         <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">Television</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">外来语 (Gairaigo)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"てれび" (特别) -> 电视特别好看。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">テレビを見ます。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_テレビ')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -540,8 +810,27 @@
                         <p class="text-lg font-medium text-slate-700">新闻 (TV News)</p>
                         <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">News</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">外来语 (Gairaigo)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"にゅーす" (牛死) -> 大新闻！</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">ニュースを聞きます。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_ニュース')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -573,8 +862,27 @@
                         </div>
                         <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">木 (Wood) + 几 (Desk)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">和语 (Wago)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"つくえ" (错位) -> 桌子放错位了。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">机の上に本があります。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_机')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -596,8 +904,27 @@
                         </div>
                         <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">木 (Wood) + 奇 (Strange?)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">汉字词 (Kango)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"いす" (意思) -> 这把椅子很有意思。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">椅子に座ってください。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_椅子')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -619,8 +946,27 @@
                         </div>
                         <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">金 (Metal) + 建 (Build)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">和语 (Wago)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"かぎ" (卡吉) -> 钥匙卡住了。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">鍵を失くしました。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_鍵')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -646,8 +992,23 @@
                                 <span class="text-slate-600">时 (Time) + 计 (Measure)</span>
                             </div>
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">汉字词 (Kango)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"とけい" (偷窥) -> 偷窥时间。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">この時計はおしゃれです。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_時計')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -673,8 +1034,23 @@
                                 <span class="text-slate-600">手 (Hand) + 帳 (Notebook)</span>
                             </div>
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">汉字词 (Kango)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"てちょう" (特稠) -> 手帐写的特稠密。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">手帳に書きます。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_手帳')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -700,8 +1076,23 @@
                                 <span class="text-slate-600">写 (Copy) + 真 (Truth/Reality)</span>
                             </div>
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">汉字词 (Kango)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"しゃしん" (下身/像新) -> 照片很像新的。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">写真を撮ります。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_写真')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -733,8 +1124,27 @@
                         </div>
                         <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">象形 (Pictograph)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">和语 (Wago)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"くる" (苦) "ま" (吗) -> 学车很苦吗？(Driving school is hard!)</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">車で行きます。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_車')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -760,8 +1170,23 @@
                                 <span class="text-slate-600">自 (Self) + 転 (Turn) + 車</span>
                             </div>
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">汉字词 (Kango)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"じてんしゃ" (急停下) -> 自行车急停下。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">自転車に乗ります。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_自転車')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -787,8 +1212,23 @@
                                 <span class="text-slate-600">土 (Local) + 産 (Product)</span>
                             </div>
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">和语 (Wago)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"おみやげ" (噢! 咪呀给) -> 噢! 咪呀(猫)给的礼物。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">お土産を買いました。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_お土産')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -814,8 +1254,23 @@
                                 <span class="text-slate-600">名 (Famous) + 産 (Product) + 品 (Item)</span>
                             </div>
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">汉字词 (Kango)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"めいさん" (美山) -> 美山的名产。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">これは地元の名産品です。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_名産品')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -837,8 +1292,27 @@
                         </div>
                         <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">Silk</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">外来语 (Gairaigo)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"しるく" (洗路裤) -> 丝绸洗路裤。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">シルクのハンカチです。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_シルク')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -860,8 +1334,27 @@
                         </div>
                         <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">Handkerchief</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">外来语 (Gairaigo)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"はんかち" (汗卡去) -> 擦汗卡去了。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">ハンカチを使います。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_ハンカチ')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -887,8 +1380,23 @@
                                 <span class="text-slate-600">自 (Self) + 動 (Move) + 車</span>
                             </div>
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">汉字词 (Kango)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"じどうしゃ" (激动下) -> 开汽车激动下。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">自動車を運転します。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_自動車')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -910,8 +1418,27 @@
                         </div>
                         <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">Present</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">外来语 (Gairaigo)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"ぷれぜんと" (普雷曾偷) -> 礼物普雷曾偷过。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">これは母へのプレゼントです。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_プレゼント')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -947,8 +1474,23 @@
                                 <span class="text-slate-600">会 (Meet) + 社 (Shrine/Co.)</span>
                             </div>
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">汉字词 (Kango)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"かいしゃ" (开夏) -> 公司夏天开。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">会社で働きます。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_会社')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -970,8 +1512,27 @@
                         </div>
                         <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">象形 (Direction/Person)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">和语 (Wago)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"かた" (卡他) -> 那位先生卡他。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">この方はどなたですか。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_方')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -993,8 +1554,26 @@
                         </div>
                         <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">象形 (Person)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">和语 (Wago)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"ひと" (吸头) -> 人有头。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">あの人は誰ですか。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_人')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -1016,8 +1595,27 @@
                         </div>
                         <div class="mt-4 pt-3 border-t border-slate-200/50 space-y-2">
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">象形 (Pictograph)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">和语 (Wago)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"はは" (哈哈) -> 妈妈哈哈笑。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">母は元気です。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_母')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -1043,8 +1641,23 @@
                                 <span class="text-slate-600">家 (House) + 族 (Tribe)</span>
                             </div>
                             <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">汉字词 (Kango)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-600">"かぞく" (卡族) -> 家族都有卡。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">家族は3人です。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_家族')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -1398,9 +2011,23 @@
                                 <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
                                 <span class="text-slate-500">English "Bag"</span>
                             </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">外来语 (Gairaigo)</span>
+                            </div>
                             <div class="flex items-start gap-2 text-[10px]">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-500">"baggu" (八个) -> 买八个包包。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">そのバッグは素敵ですね。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_バッグ')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -1417,9 +2044,31 @@
                         <p class="text-sm text-slate-500 mb-1">くつした</p>
                         <p class="text-lg font-medium text-slate-600">袜子 (Socks)</p>
                         <div class="mt-2 pt-2 border-t border-slate-200/50 space-y-1">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">靴 (Shoe) + 下 (Under)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">和语 (Wago)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">靴下を履きます。</span>
+                            </div>
                             <div class="flex items-start gap-2 text-[10px]">
                                 <span class="font-bold text-indigo-400 w-8 shrink-0">逻辑</span>
                                 <span class="text-slate-500">靴 (Shoes) + 下 (Under) = 穿在鞋下的东西</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">靴下を履きます。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_靴下')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -1440,9 +2089,23 @@
                                 <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
                                 <span class="text-slate-500">携帯 (Portable)</span>
                             </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">外来语 (Gairaigo)</span>
+                            </div>
                             <div class="flex items-start gap-2 text-[10px]">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-500">"keitai" (K带) -> 带着K (Key) 出门。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">ケータイでメールします。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_ケータイ')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -1463,9 +2126,23 @@
                                 <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
                                 <span class="text-slate-500">English "Table"</span>
                             </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">外来语 (Gairaigo)</span>
+                            </div>
                             <div class="flex items-start gap-2 text-[10px]">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-500">"teeburu" (特别露) -> 这个餐桌特别露骨 (Design)。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">テーブルを片付けます。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_テーブル')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -1486,9 +2163,23 @@
                                 <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
                                 <span class="text-slate-500">腕 (Arm) + 時計 (Watch)</span>
                             </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">汉字词 (Kango)</span>
+                            </div>
                             <div class="flex items-start gap-2 text-[10px]">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-500">"udedokei" -> 戴在手腕 (Ude) 上的时计 (Tokei)。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">腕時計をしています。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_腕時計')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -1509,9 +2200,23 @@
                                 <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
                                 <span class="text-slate-500">漫 (Random) + 画 (Pic)</span>
                             </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">汉字词 (Kango)</span>
+                            </div>
                             <div class="flex items-start gap-2 text-[10px]">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-500">"manga" (忙啊) -> 看漫画很忙啊。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">漫画を読みます。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_漫画')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -1532,9 +2237,23 @@
                                 <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
                                 <span class="text-slate-500">教 (Teach) + 科 (Subj) + 書</span>
                             </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">汉字词 (Kango)</span>
+                            </div>
                             <div class="flex items-start gap-2 text-[10px]">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-500">"kyoukasho" -> 教科书上考卡手 (Kyokasho)。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">トムさんの教科書です。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_教科書')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -1555,9 +2274,23 @@
                                 <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
                                 <span class="text-slate-500">手 (Hand) + 紙 (Paper)</span>
                             </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">汉字词 (Kango)</span>
+                            </div>
                             <div class="flex items-start gap-2 text-[10px]">
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-500">"tegami" (特轧迷) -> 手写的信特别让影迷 (ga-mi) 着迷。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">日本から手紙が来ました。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_手紙')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -1578,6 +2311,25 @@
                                 <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
                                 <span class="text-slate-500">会社 (Company) + 員 (Member)</span>
                             </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">汉字词 (Kango)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">会社員になります。</span>
+                            </div>
+
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">田中さんは会社員です。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_会社員')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
+                            </div>
                         </div>
                     </div>
                     <!-- Mother Polite -->
@@ -1593,6 +2345,16 @@
                         <p class="text-sm text-slate-500 mb-1">おかあさん</p>
                         <p class="text-lg font-medium text-slate-600">母亲 (Mother - Polite)</p>
                         <div class="mt-2 pt-2 border-t border-slate-200/50 space-y-1">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">お(Hon)+母(Mother)+さん</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">和语 (Wago)</span>
+                            </div>
+
+
                             <div class="flex items-start gap-2 text-[10px]">
                                 <span class="font-bold text-rose-400 w-8 shrink-0">发音</span>
                                 <span class="text-slate-500">O-kaa-sa-n (Unvoiced 'sa' sometimes)</span>
@@ -1601,6 +2363,16 @@
                                 <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                 <span class="text-slate-500">Ok-Ka-San: "Okay? Ka? Son?" (Mother asking if son is
                                     ok).</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">お母さんによろしく。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_お母さん')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -1613,6 +2385,31 @@
 
                         </div>
                         <p class="text-sm text-slate-500 mb-1">シルクのハンカチ</p>
+                        <p class="text-lg font-medium text-slate-600">真丝手帕 (Silk Handkerchief)</p>
+                        <div class="mt-2 pt-2 border-t border-slate-200/50 space-y-1">
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                <span class="text-slate-600">Silk + Handkerchief</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                <span class="text-slate-600">外来语 (Gairaigo)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
+                                <span class="text-slate-600">シルクは柔らかいです。</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs">
+                                <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                    <span class="flex-1">シルクのハンカチです。</span>
+                                    <button onclick="event.stopPropagation(); playAudio('vocab_usage_シルク')"
+                                        class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                        🔊
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
                         <!-- Notebook -->
                         <div class="glass-panel p-6 bg-slate-50/50 hover:bg-white transition">
                             <div class="flex justify-between items-start mb-2">
@@ -1626,6 +2423,16 @@
                             <p class="text-sm text-slate-500 mb-1">ノート</p>
                             <p class="text-lg font-medium text-slate-600">笔记本 (Notebook)</p>
                             <div class="mt-2 pt-2 border-t border-slate-200/50 space-y-1">
+                                <div class="flex items-start gap-2 text-xs">
+                                    <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
+                                    <span class="text-slate-600">Note (book)</span>
+                                </div>
+                                <div class="flex items-start gap-2 text-xs">
+                                    <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                    <span class="text-slate-600">外来语 (Gairaigo)</span>
+                                </div>
+
+
                                 <div class="flex items-start gap-2 text-[10px]">
                                     <span class="font-bold text-rose-400 w-8 shrink-0">发音</span>
                                     <span class="text-slate-500">No-<span class="font-bold">t(o)</span> (The 'to' is
@@ -1634,6 +2441,16 @@
                                 <div class="flex items-start gap-2 text-[10px]">
                                     <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                     <span class="text-slate-500">"nouto" (No头) -> 没有头绪，记笔记。</span>
+                                </div>
+                                <div class="flex items-start gap-2 text-xs">
+                                    <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                    <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                        <span class="flex-1">ノートを貸してください。</span>
+                                        <button onclick="event.stopPropagation(); playAudio('vocab_usage_ノート')"
+                                            class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                            🔊
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -1654,9 +2471,23 @@
                                     <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
                                     <span class="text-slate-500">Ball + Pen</span>
                                 </div>
+                                <div class="flex items-start gap-2 text-xs">
+                                    <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                    <span class="text-slate-600">外来语 (Gairaigo)</span>
+                                </div>
                                 <div class="flex items-start gap-2 text-[10px]">
                                     <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                     <span class="text-slate-500">"borupen" -> 博鲁(Ball) 喷(Pen)墨水。</span>
+                                </div>
+                                <div class="flex items-start gap-2 text-xs">
+                                    <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                    <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                        <span class="flex-1">黒いボールペンです。</span>
+                                        <button onclick="event.stopPropagation(); playAudio('vocab_usage_ボールペン')"
+                                            class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                            🔊
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -1678,9 +2509,23 @@
                                     <span class="font-bold text-slate-400 w-8 shrink-0">构词</span>
                                     <span class="text-slate-500">Sharp + Pencil</span>
                                 </div>
+                                <div class="flex items-start gap-2 text-xs">
+                                    <span class="font-bold text-slate-400 w-8 shrink-0">词源</span>
+                                    <span class="text-slate-600">和制英语 (Wasei)</span>
+                                </div>
                                 <div class="flex items-start gap-2 text-[10px]">
                                     <span class="font-bold text-amber-500 w-8 shrink-0">记忆</span>
                                     <span class="text-slate-500">"shaapu" (Sharp) -> 笔尖很尖 (Sharp)。</span>
+                                </div>
+                                <div class="flex items-start gap-2 text-xs">
+                                    <span class="font-bold text-emerald-500 w-8 shrink-0">用法</span>
+                                    <span class="text-slate-600 flex items-center gap-2 flex-1">
+                                        <span class="flex-1">それはシャープペンシルですね。</span>
+                                        <button onclick="event.stopPropagation(); playAudio('vocab_usage_シャープペンシル')"
+                                            class="w-6 h-6 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center hover:bg-emerald-100 hover:scale-110 transition shadow-sm ml-2 shrink-0">
+                                            🔊
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -2578,13 +3423,112 @@
 
         </div>
 
+
+        <!-- 6. Exam Section -->
+        <div id="content-exam" class="hidden space-y-8">
+            <div class="glass-panel p-8 text-center">
+                <h2 class="text-3xl font-black text-slate-800 mb-4">JLPT N5 Practice Test</h2>
+                <p class="text-slate-600 mb-8">Test your mastery of Lesson 2 vocabulary and grammar.</p>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <div class="p-4 bg-indigo-50 rounded-xl">
+                        <div class="text-2xl font-bold text-indigo-600">30</div>
+                        <div class="text-xs text-slate-500">Vocabulary</div>
+                    </div>
+                    <div class="p-4 bg-emerald-50 rounded-xl">
+                        <div class="text-2xl font-bold text-emerald-600">30</div>
+                        <div class="text-xs text-slate-500">Grammar</div>
+                    </div>
+                    <div class="p-4 bg-amber-50 rounded-xl">
+                        <div class="text-2xl font-bold text-amber-600">20</div>
+                        <div class="text-xs text-slate-500">Context</div>
+                    </div>
+                    <div class="p-4 bg-pink-50 rounded-xl">
+                        <div class="text-2xl font-bold text-pink-600">20</div>
+                        <div class="text-xs text-slate-500">Listening</div>
+                    </div>
+                </div>
+
+                <button onclick="startExam()"
+                    class="px-8 py-4 bg-indigo-600 text-white font-bold rounded-xl shadow-lg hover:bg-indigo-700 transition transform hover:scale-105">
+                    Start Exam
+                </button>
+            </div>
+
+            <!-- Quiz Container (Hidden initially) -->
+            <div id="quiz-container" class="hidden space-y-6">
+                <!-- Progress Bar -->
+                <div class="w-full bg-slate-200 rounded-full h-2.5">
+                    <div id="quiz-progress" class="bg-indigo-600 h-2.5 rounded-full" style="width: 0%"></div>
+                </div>
+
+                <!-- Question Card -->
+                <div class="glass-panel p-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <span id="question-tag"
+                            class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-bold uppercase tracking-wider">VOCAB</span>
+                        <span id="question-counter" class="text-slate-400 font-mono text-sm">1/100</span>
+                    </div>
+
+                    <h3 id="question-text" class="text-2xl font-bold text-slate-800 mb-8 leading-relaxed">Question
+                        text...</h3>
+
+                    <div id="options-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Options injected here -->
+                    </div>
+
+                    <!-- Feedback -->
+                    <div id="feedback-area" class="hidden mt-6 p-4 rounded-xl">
+                        <p id="feedback-text" class="font-bold"></p>
+                        <p id="feedback-explanation" class="text-sm mt-2"></p>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="flex justify-between">
+                    <button onclick="quitExam()" class="text-slate-400 hover:text-red-500 font-bold px-4">Quit</button>
+                    <button id="next-btn" onclick="nextQuestion()"
+                        class="hidden px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition shadow-lg">
+                        Next Question →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Results (Hidden) -->
+            <div id="quiz-results" class="hidden text-center glass-panel p-12">
+                <div
+                    class="w-24 h-24 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl">
+                    🏆
+                </div>
+                <h2 class="text-3xl font-bold text-slate-800 mb-2">Exam Complete!</h2>
+                <p class="text-slate-500 mb-8">Here is your performance report</p>
+
+                <div class="text-6xl font-black text-indigo-600 mb-8" id="final-score">85%</div>
+
+                <div class="grid grid-cols-2 gap-4 max-w-md mx-auto mb-8">
+                    <div class="p-4 bg-white rounded-xl border border-slate-100">
+                        <div class="text-sm text-slate-500">Correct</div>
+                        <div class="text-xl font-bold text-emerald-600" id="result-correct">85</div>
+                    </div>
+                    <div class="p-4 bg-white rounded-xl border border-slate-100">
+                        <div class="text-sm text-slate-500">Wrong</div>
+                        <div class="text-xl font-bold text-red-500" id="result-wrong">15</div>
+                    </div>
+                </div>
+
+                <button onclick="location.reload()"
+                    class="px-8 py-3 bg-slate-800 text-white font-bold rounded-xl hover:bg-slate-700 transition">
+                    Back to Lesson
+                </button>
+            </div>
+        </div>
     </main>
 
     <script>
         // Simple Tab Switching Logic
         function switchTab(tabId) {
             // Hide all contents
-            ['vocab', 'grammar', 'text', 'culture', 'practice'].forEach(id => {
+            ['vocab', 'grammar', 'text', 'culture', 'practice', 'exam'].forEach(id => {
                 document.getElementById('content-' + id).classList.add('hidden');
                 document.getElementById('tab-' + id).classList.remove('active');
             });
@@ -2608,6 +3552,1359 @@
                 arrow.style.transform = 'rotate(180deg)';
                 arrow.textContent = '↑';
             }
+        }
+    </script>
+    <script>
+        const LESSON2_TEST_DATA = {
+            "vocabulary": [
+                {
+                    "type": "vocab_reading",
+                    "question": "What is the reading for <span class='text-indigo-600 font-bold'> 本 </span>?",
+                    "options": [
+                        "ノート",
+                        "ほん",
+                        "とけい",
+                        "パソコン"
+                    ],
+                    "answer": "ほん",
+                    "explanation": "本 reads as ほん (Book)."
+                },
+                {
+                    "type": "vocab_reading",
+                    "question": "What is the reading for <span class='text-indigo-600 font-bold'> 車 </span>?",
+                    "options": [
+                        "ノート",
+                        "くるま",
+                        "パソコン",
+                        "にほんご"
+                    ],
+                    "answer": "くるま",
+                    "explanation": "車 reads as くるま (Car)."
+                },
+                {
+                    "type": "vocab_reading",
+                    "question": "What is the reading for <span class='text-indigo-600 font-bold'> パソコン </span>?",
+                    "options": [
+                        "てちょう",
+                        "えんぴつ",
+                        "パソコン",
+                        "かぎ"
+                    ],
+                    "answer": "パソコン",
+                    "explanation": "パソコン reads as パソコン (PC)."
+                },
+                {
+                    "type": "vocab_reading",
+                    "question": "What is the reading for <span class='text-indigo-600 font-bold'> 英語 </span>?",
+                    "options": [
+                        "ノート",
+                        "ボールペン",
+                        "コーヒー",
+                        "えいご"
+                    ],
+                    "answer": "えいご",
+                    "explanation": "英語 reads as えいご (English Language)."
+                },
+                {
+                    "type": "vocab_reading",
+                    "question": "What is the reading for <span class='text-indigo-600 font-bold'> ラジオ </span>?",
+                    "options": [
+                        "いす",
+                        "とけい",
+                        "じてんしゃ",
+                        "ラジオ"
+                    ],
+                    "answer": "ラジオ",
+                    "explanation": "ラジオ reads as ラジオ (Radio)."
+                },
+                {
+                    "type": "vocab_reading",
+                    "question": "What is the reading for <span class='text-indigo-600 font-bold'> 鉛筆 </span>?",
+                    "options": [
+                        "ざっし",
+                        "えんぴつ",
+                        "カメラ",
+                        "カード"
+                    ],
+                    "answer": "えんぴつ",
+                    "explanation": "鉛筆 reads as えんぴつ (Pencil)."
+                },
+                {
+                    "type": "vocab_reading",
+                    "question": "What is the reading for <span class='text-indigo-600 font-bold'> 手帳 </span>?",
+                    "options": [
+                        "てちょう",
+                        "なん",
+                        "しんぶん",
+                        "ボールペン"
+                    ],
+                    "answer": "てちょう",
+                    "explanation": "手帳 reads as てちょう (Pocket Notebook)."
+                },
+                {
+                    "type": "vocab_reading",
+                    "question": "What is the reading for <span class='text-indigo-600 font-bold'> 車 </span>?",
+                    "options": [
+                        "めいし",
+                        "いす",
+                        "ボールペン",
+                        "くるま"
+                    ],
+                    "answer": "くるま",
+                    "explanation": "車 reads as くるま (Car)."
+                },
+                {
+                    "type": "vocab_reading",
+                    "question": "What is the reading for <span class='text-indigo-600 font-bold'> 鉛筆 </span>?",
+                    "options": [
+                        "カード",
+                        "えんぴつ",
+                        "テレビ",
+                        "いす"
+                    ],
+                    "answer": "えんぴつ",
+                    "explanation": "鉛筆 reads as えんぴつ (Pencil)."
+                },
+                {
+                    "type": "vocab_reading",
+                    "question": "What is the reading for <span class='text-indigo-600 font-bold'> 鍵 </span>?",
+                    "options": [
+                        "チョコレート",
+                        "とけい",
+                        "かぎ",
+                        "おみやげ"
+                    ],
+                    "answer": "かぎ",
+                    "explanation": "鍵 reads as かぎ (Key)."
+                },
+                {
+                    "type": "vocab_reading",
+                    "question": "What is the reading for <span class='text-indigo-600 font-bold'> 雑誌 </span>?",
+                    "options": [
+                        "じてんしゃ",
+                        "くるま",
+                        "ボールペン",
+                        "ざっし"
+                    ],
+                    "answer": "ざっし",
+                    "explanation": "雑誌 reads as ざっし (Magazine)."
+                },
+                {
+                    "type": "vocab_reading",
+                    "question": "What is the reading for <span class='text-indigo-600 font-bold'> 鞄 </span>?",
+                    "options": [
+                        "かぎ",
+                        "かばん",
+                        "かさ",
+                        "てちょう"
+                    ],
+                    "answer": "かばん",
+                    "explanation": "鞄 reads as かばん (Bag)."
+                },
+                {
+                    "type": "vocab_reading",
+                    "question": "What is the reading for <span class='text-indigo-600 font-bold'> 英語 </span>?",
+                    "options": [
+                        "コーヒー",
+                        "じしょ",
+                        "じてんしゃ",
+                        "えいご"
+                    ],
+                    "answer": "えいご",
+                    "explanation": "英語 reads as えいご (English Language)."
+                },
+                {
+                    "type": "vocab_reading",
+                    "question": "What is the reading for <span class='text-indigo-600 font-bold'> 鞄 </span>?",
+                    "options": [
+                        "テレビ",
+                        "コーヒー",
+                        "かばん",
+                        "くるま"
+                    ],
+                    "answer": "かばん",
+                    "explanation": "鞄 reads as かばん (Bag)."
+                },
+                {
+                    "type": "vocab_reading",
+                    "question": "What is the reading for <span class='text-indigo-600 font-bold'> 車 </span>?",
+                    "options": [
+                        "くるま",
+                        "テレビ",
+                        "じてんしゃ",
+                        "かさ"
+                    ],
+                    "answer": "くるま",
+                    "explanation": "車 reads as くるま (Car)."
+                },
+                {
+                    "type": "vocab_meaning",
+                    "question": "What does <span class='text-indigo-600 font-bold'> えいご </span> mean?",
+                    "options": [
+                        "English Language",
+                        "Notebook",
+                        "Magazine",
+                        "Umbrella"
+                    ],
+                    "answer": "English Language",
+                    "explanation": "えいご means English Language (英語)."
+                },
+                {
+                    "type": "vocab_meaning",
+                    "question": "What does <span class='text-indigo-600 font-bold'> かばん </span> mean?",
+                    "options": [
+                        "Business Card",
+                        "Japanese Language",
+                        "English Language",
+                        "Bag"
+                    ],
+                    "answer": "Bag",
+                    "explanation": "かばん means Bag (鞄)."
+                },
+                {
+                    "type": "vocab_meaning",
+                    "question": "What does <span class='text-indigo-600 font-bold'> かさ </span> mean?",
+                    "options": [
+                        "Umbrella",
+                        "Key",
+                        "Card",
+                        "Camera"
+                    ],
+                    "answer": "Umbrella",
+                    "explanation": "かさ means Umbrella (傘)."
+                },
+                {
+                    "type": "vocab_meaning",
+                    "question": "What does <span class='text-indigo-600 font-bold'> かさ </span> mean?",
+                    "options": [
+                        "Notebook",
+                        "So/True",
+                        "Key",
+                        "Umbrella"
+                    ],
+                    "answer": "Umbrella",
+                    "explanation": "かさ means Umbrella (傘)."
+                },
+                {
+                    "type": "vocab_meaning",
+                    "question": "What does <span class='text-indigo-600 font-bold'> おみやげ </span> mean?",
+                    "options": [
+                        "Pencil",
+                        "Souvenir",
+                        "Business Card",
+                        "Coffee"
+                    ],
+                    "answer": "Souvenir",
+                    "explanation": "おみやげ means Souvenir (お土産)."
+                },
+                {
+                    "type": "vocab_meaning",
+                    "question": "What does <span class='text-indigo-600 font-bold'> ノート </span> mean?",
+                    "options": [
+                        "Souvenir",
+                        "Notebook",
+                        "English Language",
+                        "Coffee"
+                    ],
+                    "answer": "Notebook",
+                    "explanation": "ノート means Notebook (ノート)."
+                },
+                {
+                    "type": "vocab_meaning",
+                    "question": "What does <span class='text-indigo-600 font-bold'> かぎ </span> mean?",
+                    "options": [
+                        "Chair",
+                        "Key",
+                        "Umbrella",
+                        "So/True"
+                    ],
+                    "answer": "Key",
+                    "explanation": "かぎ means Key (鍵)."
+                },
+                {
+                    "type": "vocab_meaning",
+                    "question": "What does <span class='text-indigo-600 font-bold'> テレビ </span> mean?",
+                    "options": [
+                        "Chocolate",
+                        "TV",
+                        "Notebook",
+                        "Key"
+                    ],
+                    "answer": "TV",
+                    "explanation": "テレビ means TV (テレビ)."
+                },
+                {
+                    "type": "vocab_meaning",
+                    "question": "What does <span class='text-indigo-600 font-bold'> つくえ </span> mean?",
+                    "options": [
+                        "Chocolate",
+                        "Watch/Clock",
+                        "Bag",
+                        "Desk"
+                    ],
+                    "answer": "Desk",
+                    "explanation": "つくえ means Desk (机)."
+                },
+                {
+                    "type": "vocab_meaning",
+                    "question": "What does <span class='text-indigo-600 font-bold'> えんぴつ </span> mean?",
+                    "options": [
+                        "TV",
+                        "Notebook",
+                        "Pencil",
+                        "English Language"
+                    ],
+                    "answer": "Pencil",
+                    "explanation": "えんぴつ means Pencil (鉛筆)."
+                },
+                {
+                    "type": "vocab_meaning",
+                    "question": "What does <span class='text-indigo-600 font-bold'> いす </span> mean?",
+                    "options": [
+                        "Coffee",
+                        "Book",
+                        "English Language",
+                        "Chair"
+                    ],
+                    "answer": "Chair",
+                    "explanation": "いす means Chair (椅子)."
+                },
+                {
+                    "type": "vocab_meaning",
+                    "question": "What does <span class='text-indigo-600 font-bold'> ほん </span> mean?",
+                    "options": [
+                        "Car",
+                        "Book",
+                        "Ballpoint Pen",
+                        "Business Card"
+                    ],
+                    "answer": "Book",
+                    "explanation": "ほん means Book (本)."
+                },
+                {
+                    "type": "vocab_meaning",
+                    "question": "What does <span class='text-indigo-600 font-bold'> にほんご </span> mean?",
+                    "options": [
+                        "Chair",
+                        "Key",
+                        "Camera",
+                        "Japanese Language"
+                    ],
+                    "answer": "Japanese Language",
+                    "explanation": "にほんご means Japanese Language (日本語)."
+                },
+                {
+                    "type": "vocab_meaning",
+                    "question": "What does <span class='text-indigo-600 font-bold'> とけい </span> mean?",
+                    "options": [
+                        "Pencil",
+                        "Car",
+                        "Watch/Clock",
+                        "Pocket Notebook"
+                    ],
+                    "answer": "Watch/Clock",
+                    "explanation": "とけい means Watch/Clock (時計)."
+                },
+                {
+                    "type": "vocab_meaning",
+                    "question": "What does <span class='text-indigo-600 font-bold'> かばん </span> mean?",
+                    "options": [
+                        "Bicycle",
+                        "Key",
+                        "PC",
+                        "Bag"
+                    ],
+                    "answer": "Bag",
+                    "explanation": "かばん means Bag (鞄)."
+                }
+            ],
+            "grammar": [
+                {
+                    "type": "grammar_particle",
+                    "question": "( &nbsp;&nbsp; ) 鞄は あなたのですか。",
+                    "options": [
+                        "その",
+                        "あれ",
+                        "それ",
+                        "これ"
+                    ],
+                    "answer": "その",
+                    "explanation": "Pattern: Demonstratives modifying nouns"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "これは ( &nbsp;&nbsp; ) ですか。",
+                    "options": [
+                        "いつ",
+                        "どこ",
+                        "何",
+                        "誰"
+                    ],
+                    "answer": "何",
+                    "explanation": "Pattern: Asking 'What'"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "それは ( &nbsp;&nbsp; ) の 鍵ですか。",
+                    "options": [
+                        "どちら",
+                        "どこ",
+                        "誰",
+                        "何"
+                    ],
+                    "answer": "何",
+                    "explanation": "Pattern: Asking 'What'"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "この傘は ( &nbsp;&nbsp; ) のですか。",
+                    "options": [
+                        "あなた",
+                        "これ",
+                        "わたし",
+                        "それ"
+                    ],
+                    "answer": "あなた",
+                    "explanation": "Pattern: Asking about possession"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "( &nbsp;&nbsp; ) は 本です。",
+                    "options": [
+                        "その",
+                        "これ",
+                        "あの",
+                        "どの"
+                    ],
+                    "answer": "これ",
+                    "explanation": "Pattern: Demonstratives behaving as nouns"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "( &nbsp;&nbsp; ) 鞄は あなたのですか。",
+                    "options": [
+                        "その",
+                        "あれ",
+                        "それ",
+                        "これ"
+                    ],
+                    "answer": "その",
+                    "explanation": "Pattern: Demonstratives modifying nouns"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "あれは 日本語( &nbsp;&nbsp; ) 先生です。",
+                    "options": [
+                        "も",
+                        "が",
+                        "の",
+                        "は"
+                    ],
+                    "answer": "の",
+                    "explanation": "Pattern: Particle 'no' for possession"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "( &nbsp;&nbsp; ) は 本です。",
+                    "options": [
+                        "あの",
+                        "どの",
+                        "これ",
+                        "その"
+                    ],
+                    "answer": "これ",
+                    "explanation": "Pattern: Demonstratives behaving as nouns"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "これは ( &nbsp;&nbsp; ) ですか。",
+                    "options": [
+                        "何",
+                        "どこ",
+                        "いつ",
+                        "誰"
+                    ],
+                    "answer": "何",
+                    "explanation": "Pattern: Asking 'What'"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "これは ( &nbsp;&nbsp; ) ですか。",
+                    "options": [
+                        "誰",
+                        "何",
+                        "いつ",
+                        "どこ"
+                    ],
+                    "answer": "何",
+                    "explanation": "Pattern: Asking 'What'"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "それは 田中さん( &nbsp;&nbsp; ) 傘ですか。",
+                    "options": [
+                        "を",
+                        "に",
+                        "は",
+                        "の"
+                    ],
+                    "answer": "の",
+                    "explanation": "Pattern: Particle 'no' for possession"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "この傘は ( &nbsp;&nbsp; ) のですか。",
+                    "options": [
+                        "これ",
+                        "あなた",
+                        "わたし",
+                        "それ"
+                    ],
+                    "answer": "あなた",
+                    "explanation": "Pattern: Asking about possession"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "これは ( &nbsp;&nbsp; ) ですか。",
+                    "options": [
+                        "どこ",
+                        "いつ",
+                        "何",
+                        "誰"
+                    ],
+                    "answer": "何",
+                    "explanation": "Pattern: Asking 'What'"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "それは 田中さん( &nbsp;&nbsp; ) 傘ですか。",
+                    "options": [
+                        "を",
+                        "の",
+                        "は",
+                        "に"
+                    ],
+                    "answer": "の",
+                    "explanation": "Pattern: Particle 'no' for possession"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "( &nbsp;&nbsp; ) 鞄は あなたのですか。",
+                    "options": [
+                        "これ",
+                        "その",
+                        "それ",
+                        "あれ"
+                    ],
+                    "answer": "その",
+                    "explanation": "Pattern: Demonstratives modifying nouns"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "それは ( &nbsp;&nbsp; ) の 鍵ですか。",
+                    "options": [
+                        "誰",
+                        "何",
+                        "どこ",
+                        "どちら"
+                    ],
+                    "answer": "何",
+                    "explanation": "Pattern: Asking 'What'"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "この傘は ( &nbsp;&nbsp; ) のですか。",
+                    "options": [
+                        "それ",
+                        "わたし",
+                        "これ",
+                        "あなた"
+                    ],
+                    "answer": "あなた",
+                    "explanation": "Pattern: Asking about possession"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "( &nbsp;&nbsp; ) は 本です。",
+                    "options": [
+                        "これ",
+                        "その",
+                        "どの",
+                        "あの"
+                    ],
+                    "answer": "これ",
+                    "explanation": "Pattern: Demonstratives behaving as nouns"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "それは 田中さん( &nbsp;&nbsp; ) 傘ですか。",
+                    "options": [
+                        "の",
+                        "に",
+                        "は",
+                        "を"
+                    ],
+                    "answer": "の",
+                    "explanation": "Pattern: Particle 'no' for possession"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "( &nbsp;&nbsp; ) 本は 私のです。",
+                    "options": [
+                        "この",
+                        "これ",
+                        "あれ",
+                        "それ"
+                    ],
+                    "answer": "この",
+                    "explanation": "Pattern: Demonstratives modifying nouns"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "( &nbsp;&nbsp; ) 人は 誰ですか。",
+                    "options": [
+                        "これ",
+                        "それ",
+                        "あの",
+                        "あれ"
+                    ],
+                    "answer": "あの",
+                    "explanation": "Pattern: Demonstratives modifying nouns"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "これは 私( &nbsp;&nbsp; ) 本です。",
+                    "options": [
+                        "か",
+                        "の",
+                        "は",
+                        "も"
+                    ],
+                    "answer": "の",
+                    "explanation": "Pattern: Particle 'no' for possession"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "( &nbsp;&nbsp; ) 本は 私のです。",
+                    "options": [
+                        "これ",
+                        "あれ",
+                        "それ",
+                        "この"
+                    ],
+                    "answer": "この",
+                    "explanation": "Pattern: Demonstratives modifying nouns"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "それは 田中さん( &nbsp;&nbsp; ) 傘ですか。",
+                    "options": [
+                        "を",
+                        "に",
+                        "の",
+                        "は"
+                    ],
+                    "answer": "の",
+                    "explanation": "Pattern: Particle 'no' for possession"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "( &nbsp;&nbsp; ) 本は 私のです。",
+                    "options": [
+                        "あれ",
+                        "この",
+                        "これ",
+                        "それ"
+                    ],
+                    "answer": "この",
+                    "explanation": "Pattern: Demonstratives modifying nouns"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "この傘は ( &nbsp;&nbsp; ) のですか。",
+                    "options": [
+                        "それ",
+                        "あなた",
+                        "わたし",
+                        "これ"
+                    ],
+                    "answer": "あなた",
+                    "explanation": "Pattern: Asking about possession"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "( &nbsp;&nbsp; ) 人は 誰ですか。",
+                    "options": [
+                        "これ",
+                        "あの",
+                        "それ",
+                        "あれ"
+                    ],
+                    "answer": "あの",
+                    "explanation": "Pattern: Demonstratives modifying nouns"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "それは ( &nbsp;&nbsp; ) の 鍵ですか。",
+                    "options": [
+                        "どこ",
+                        "どちら",
+                        "何",
+                        "誰"
+                    ],
+                    "answer": "何",
+                    "explanation": "Pattern: Asking 'What'"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "それは 田中さん( &nbsp;&nbsp; ) 傘ですか。",
+                    "options": [
+                        "に",
+                        "を",
+                        "の",
+                        "は"
+                    ],
+                    "answer": "の",
+                    "explanation": "Pattern: Particle 'no' for possession"
+                },
+                {
+                    "type": "grammar_particle",
+                    "question": "あれは 日本語( &nbsp;&nbsp; ) 先生です。",
+                    "options": [
+                        "は",
+                        "も",
+                        "が",
+                        "の"
+                    ],
+                    "answer": "の",
+                    "explanation": "Pattern: Particle 'no' for possession"
+                }
+            ],
+            "context": [
+                {
+                    "type": "context_dialogue",
+                    "question": "A: ありがとうございます。<br>B: ( &nbsp;&nbsp; )。",
+                    "options": [
+                        "はい、そうです",
+                        "違います",
+                        "お願いします",
+                        "いいえ、どういたしまして"
+                    ],
+                    "answer": "いいえ、どういたしまして",
+                    "explanation": "Response to Thank you: You're welcome."
+                },
+                {
+                    "type": "context_dialogue",
+                    "question": "A: これはテレホンカードですか。<br>B: いいえ、( &nbsp;&nbsp; )。",
+                    "options": [
+                        "そうです",
+                        "これです",
+                        "違います",
+                        "はい"
+                    ],
+                    "answer": "違います",
+                    "explanation": "Negative response: 'No, it isn't' (Iie, chigaimasu)."
+                },
+                {
+                    "type": "context_dialogue",
+                    "question": "A: これはテレホンカードですか。<br>B: いいえ、( &nbsp;&nbsp; )。",
+                    "options": [
+                        "はい",
+                        "そうです",
+                        "これです",
+                        "違います"
+                    ],
+                    "answer": "違います",
+                    "explanation": "Negative response: 'No, it isn't' (Iie, chigaimasu)."
+                },
+                {
+                    "type": "context_dialogue",
+                    "question": "A: この本はあなたのですか。<br>B: いいえ、( &nbsp;&nbsp; ) のではありません。",
+                    "options": [
+                        "誰",
+                        "あなた",
+                        "私",
+                        "何"
+                    ],
+                    "answer": "私",
+                    "explanation": "Negative interaction."
+                },
+                {
+                    "type": "context_dialogue",
+                    "question": "A: これはテレホンカードですか。<br>B: いいえ、( &nbsp;&nbsp; )。",
+                    "options": [
+                        "違います",
+                        "そうです",
+                        "はい",
+                        "これです"
+                    ],
+                    "answer": "違います",
+                    "explanation": "Negative response: 'No, it isn't' (Iie, chigaimasu)."
+                },
+                {
+                    "type": "context_dialogue",
+                    "question": "A: この本はあなたのですか。<br>B: いいえ、( &nbsp;&nbsp; ) のではありません。",
+                    "options": [
+                        "何",
+                        "誰",
+                        "私",
+                        "あなた"
+                    ],
+                    "answer": "私",
+                    "explanation": "Negative interaction."
+                },
+                {
+                    "type": "context_dialogue",
+                    "question": "A: ありがとうございます。<br>B: ( &nbsp;&nbsp; )。",
+                    "options": [
+                        "違います",
+                        "はい、そうです",
+                        "お願いします",
+                        "いいえ、どういたしまして"
+                    ],
+                    "answer": "いいえ、どういたしまして",
+                    "explanation": "Response to Thank you: You're welcome."
+                },
+                {
+                    "type": "context_dialogue",
+                    "question": "A: これはテレホンカードですか。<br>B: いいえ、( &nbsp;&nbsp; )。",
+                    "options": [
+                        "そうです",
+                        "これです",
+                        "違います",
+                        "はい"
+                    ],
+                    "answer": "違います",
+                    "explanation": "Negative response: 'No, it isn't' (Iie, chigaimasu)."
+                },
+                {
+                    "type": "context_dialogue",
+                    "question": "A: これはテレホンカードですか。<br>B: いいえ、( &nbsp;&nbsp; )。",
+                    "options": [
+                        "そうです",
+                        "これです",
+                        "はい",
+                        "違います"
+                    ],
+                    "answer": "違います",
+                    "explanation": "Negative response: 'No, it isn't' (Iie, chigaimasu)."
+                },
+                {
+                    "type": "context_dialogue",
+                    "question": "A: ありがとうございます。<br>B: ( &nbsp;&nbsp; )。",
+                    "options": [
+                        "違います",
+                        "いいえ、どういたしまして",
+                        "お願いします",
+                        "はい、そうです"
+                    ],
+                    "answer": "いいえ、どういたしまして",
+                    "explanation": "Response to Thank you: You're welcome."
+                },
+                {
+                    "type": "context_dialogue",
+                    "question": "A: ありがとうございます。<br>B: ( &nbsp;&nbsp; )。",
+                    "options": [
+                        "お願いします",
+                        "はい、そうです",
+                        "違います",
+                        "いいえ、どういたしまして"
+                    ],
+                    "answer": "いいえ、どういたしまして",
+                    "explanation": "Response to Thank you: You're welcome."
+                },
+                {
+                    "type": "context_dialogue",
+                    "question": "A: この本はあなたのですか。<br>B: いいえ、( &nbsp;&nbsp; ) のではありません。",
+                    "options": [
+                        "私",
+                        "誰",
+                        "何",
+                        "あなた"
+                    ],
+                    "answer": "私",
+                    "explanation": "Negative interaction."
+                },
+                {
+                    "type": "context_dialogue",
+                    "question": "A: それは誰の傘ですか。<br>B: ( &nbsp;&nbsp; ) のです。",
+                    "options": [
+                        "私",
+                        "あれ",
+                        "これ",
+                        "それ"
+                    ],
+                    "answer": "私",
+                    "explanation": "Possession answer: 'Watashi no desu' (It's mine)."
+                },
+                {
+                    "type": "context_dialogue",
+                    "question": "A: それは誰の傘ですか。<br>B: ( &nbsp;&nbsp; ) のです。",
+                    "options": [
+                        "私",
+                        "これ",
+                        "それ",
+                        "あれ"
+                    ],
+                    "answer": "私",
+                    "explanation": "Possession answer: 'Watashi no desu' (It's mine)."
+                },
+                {
+                    "type": "context_dialogue",
+                    "question": "A: この本はあなたのですか。<br>B: いいえ、( &nbsp;&nbsp; ) のではありません。",
+                    "options": [
+                        "私",
+                        "何",
+                        "誰",
+                        "あなた"
+                    ],
+                    "answer": "私",
+                    "explanation": "Negative interaction."
+                },
+                {
+                    "type": "context_dialogue",
+                    "question": "A: この本はあなたのですか。<br>B: いいえ、( &nbsp;&nbsp; ) のではありません。",
+                    "options": [
+                        "何",
+                        "私",
+                        "誰",
+                        "あなた"
+                    ],
+                    "answer": "私",
+                    "explanation": "Negative interaction."
+                },
+                {
+                    "type": "context_dialogue",
+                    "question": "A: この本はあなたのですか。<br>B: いいえ、( &nbsp;&nbsp; ) のではありません。",
+                    "options": [
+                        "あなた",
+                        "私",
+                        "何",
+                        "誰"
+                    ],
+                    "answer": "私",
+                    "explanation": "Negative interaction."
+                },
+                {
+                    "type": "context_dialogue",
+                    "question": "A: それは誰の傘ですか。<br>B: ( &nbsp;&nbsp; ) のです。",
+                    "options": [
+                        "あれ",
+                        "私",
+                        "これ",
+                        "それ"
+                    ],
+                    "answer": "私",
+                    "explanation": "Possession answer: 'Watashi no desu' (It's mine)."
+                },
+                {
+                    "type": "context_dialogue",
+                    "question": "A: ありがとうございます。<br>B: ( &nbsp;&nbsp; )。",
+                    "options": [
+                        "いいえ、どういたしまして",
+                        "違います",
+                        "はい、そうです",
+                        "お願いします"
+                    ],
+                    "answer": "いいえ、どういたしまして",
+                    "explanation": "Response to Thank you: You're welcome."
+                },
+                {
+                    "type": "context_dialogue",
+                    "question": "A: この本はあなたのですか。<br>B: いいえ、( &nbsp;&nbsp; ) のではありません。",
+                    "options": [
+                        "誰",
+                        "私",
+                        "あなた",
+                        "何"
+                    ],
+                    "answer": "私",
+                    "explanation": "Negative interaction."
+                }
+            ],
+            "listening": [
+                {
+                    "type": "listening_sim",
+                    "question": "🔊 [Audio: ラジオ] <br> Choose the correct Kanji:",
+                    "options": [
+                        "コーヒー",
+                        "語",
+                        "本",
+                        "ラジオ"
+                    ],
+                    "answer": "ラジオ",
+                    "explanation": "Audio said 'ラジオ', which is ラジオ."
+                },
+                {
+                    "type": "listening_sim",
+                    "question": "🔊 [Audio: えんぴつ] <br> Choose the correct Kanji:",
+                    "options": [
+                        "語",
+                        "鉛筆",
+                        "椅子"
+                    ],
+                    "answer": "鉛筆",
+                    "explanation": "Audio said 'えんぴつ', which is 鉛筆."
+                },
+                {
+                    "type": "listening_sim",
+                    "question": "🔊 [Audio: パソコン] <br> Choose the correct Kanji:",
+                    "options": [
+                        "コーヒー",
+                        "テレビ",
+                        "パソコン"
+                    ],
+                    "answer": "パソコン",
+                    "explanation": "Audio said 'パソコン', which is パソコン."
+                },
+                {
+                    "type": "listening_sim",
+                    "question": "🔊 [Audio: チョコレート] <br> Choose the correct Kanji:",
+                    "options": [
+                        "辞書",
+                        "チョコレート",
+                        "傘",
+                        "車"
+                    ],
+                    "answer": "チョコレート",
+                    "explanation": "Audio said 'チョコレート', which is チョコレート."
+                },
+                {
+                    "type": "listening_sim",
+                    "question": "🔊 [Audio: そう] <br> Choose the correct Kanji:",
+                    "options": [
+                        "何",
+                        "日本語",
+                        "そう",
+                        "チョコレート"
+                    ],
+                    "answer": "そう",
+                    "explanation": "Audio said 'そう', which is そう."
+                },
+                {
+                    "type": "listening_sim",
+                    "question": "🔊 [Audio: カード] <br> Choose the correct Kanji:",
+                    "options": [
+                        "カード",
+                        "自転車",
+                        "椅子",
+                        "雑誌"
+                    ],
+                    "answer": "カード",
+                    "explanation": "Audio said 'カード', which is カード."
+                },
+                {
+                    "type": "listening_sim",
+                    "question": "🔊 [Audio: ボールペン] <br> Choose the correct Kanji:",
+                    "options": [
+                        "ラジオ",
+                        "自転車",
+                        "英語",
+                        "ボールペン"
+                    ],
+                    "answer": "ボールペン",
+                    "explanation": "Audio said 'ボールペン', which is ボールペン."
+                },
+                {
+                    "type": "listening_sim",
+                    "question": "🔊 [Audio: ざっし] <br> Choose the correct Kanji:",
+                    "options": [
+                        "チョコレート",
+                        "ラジオ",
+                        "雑誌",
+                        "車"
+                    ],
+                    "answer": "雑誌",
+                    "explanation": "Audio said 'ざっし', which is 雑誌."
+                },
+                {
+                    "type": "listening_sim",
+                    "question": "🔊 [Audio: じしょ] <br> Choose the correct Kanji:",
+                    "options": [
+                        "辞書",
+                        "そう",
+                        "英語",
+                        "鉛筆"
+                    ],
+                    "answer": "辞書",
+                    "explanation": "Audio said 'じしょ', which is 辞書."
+                },
+                {
+                    "type": "listening_sim",
+                    "question": "🔊 [Audio: ざっし] <br> Choose the correct Kanji:",
+                    "options": [
+                        "ラジオ",
+                        "車",
+                        "雑誌",
+                        "ノート"
+                    ],
+                    "answer": "雑誌",
+                    "explanation": "Audio said 'ざっし', which is 雑誌."
+                },
+                {
+                    "type": "listening_sim",
+                    "question": "🔊 [Audio: じてんしゃ] <br> Choose the correct Kanji:",
+                    "options": [
+                        "自転車",
+                        "パソコン",
+                        "鍵",
+                        "名刺"
+                    ],
+                    "answer": "自転車",
+                    "explanation": "Audio said 'じてんしゃ', which is 自転車."
+                },
+                {
+                    "type": "listening_sim",
+                    "question": "🔊 [Audio: ラジオ] <br> Choose the correct Kanji:",
+                    "options": [
+                        "語",
+                        "時計",
+                        "ラジオ",
+                        "名刺"
+                    ],
+                    "answer": "ラジオ",
+                    "explanation": "Audio said 'ラジオ', which is ラジオ."
+                },
+                {
+                    "type": "listening_sim",
+                    "question": "🔊 [Audio: いす] <br> Choose the correct Kanji:",
+                    "options": [
+                        "語",
+                        "ボールペン",
+                        "チョコレート",
+                        "椅子"
+                    ],
+                    "answer": "椅子",
+                    "explanation": "Audio said 'いす', which is 椅子."
+                },
+                {
+                    "type": "listening_sim",
+                    "question": "🔊 [Audio: テレビ] <br> Choose the correct Kanji:",
+                    "options": [
+                        "机",
+                        "語",
+                        "テレビ",
+                        "ボールペン"
+                    ],
+                    "answer": "テレビ",
+                    "explanation": "Audio said 'テレビ', which is テレビ."
+                },
+                {
+                    "type": "listening_sim",
+                    "question": "🔊 [Audio: つくえ] <br> Choose the correct Kanji:",
+                    "options": [
+                        "ラジオ",
+                        "机",
+                        "鉛筆",
+                        "手帳"
+                    ],
+                    "answer": "机",
+                    "explanation": "Audio said 'つくえ', which is 机."
+                },
+                {
+                    "type": "listening_sim",
+                    "question": "🔊 [Audio: ざっし] <br> Choose the correct Kanji:",
+                    "options": [
+                        "日本語",
+                        "手帳",
+                        "そう",
+                        "雑誌"
+                    ],
+                    "answer": "雑誌",
+                    "explanation": "Audio said 'ざっし', which is 雑誌."
+                },
+                {
+                    "type": "listening_sim",
+                    "question": "🔊 [Audio: くるま] <br> Choose the correct Kanji:",
+                    "options": [
+                        "カメラ",
+                        "車",
+                        "鞄",
+                        "テレビ"
+                    ],
+                    "answer": "車",
+                    "explanation": "Audio said 'くるま', which is 車."
+                },
+                {
+                    "type": "listening_sim",
+                    "question": "🔊 [Audio: かばん] <br> Choose the correct Kanji:",
+                    "options": [
+                        "鞄",
+                        "鍵",
+                        "椅子"
+                    ],
+                    "answer": "鞄",
+                    "explanation": "Audio said 'かばん', which is 鞄."
+                },
+                {
+                    "type": "listening_sim",
+                    "question": "🔊 [Audio: テレビ] <br> Choose the correct Kanji:",
+                    "options": [
+                        "お土産",
+                        "チョコレート",
+                        "時計",
+                        "テレビ"
+                    ],
+                    "answer": "テレビ",
+                    "explanation": "Audio said 'テレビ', which is テレビ."
+                },
+                {
+                    "type": "listening_sim",
+                    "question": "🔊 [Audio: つくえ] <br> Choose the correct Kanji:",
+                    "options": [
+                        "チョコレート",
+                        "語",
+                        "カード",
+                        "机"
+                    ],
+                    "answer": "机",
+                    "explanation": "Audio said 'つくえ', which is 机."
+                }
+            ]
+        };
+    </script>
+
+    <script>
+        // Quiz Engine
+        let currentQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let isExamActive = false;
+
+        function startExam() {
+            // Flatten questions
+            // LESSON2_TEST_DATA is defined in injected script
+            if (typeof LESSON2_TEST_DATA === 'undefined') {
+                alert("Error: Test data not loaded.");
+                return;
+            }
+
+            const q = LESSON2_TEST_DATA;
+            currentQuestions = [
+                ...q.vocabulary,
+                ...q.grammar,
+                ...q.context,
+                ...q.listening
+            ];
+
+            // Shuffle full deck? Or keep sections? Let's shuffle for variety exam feel
+            // Fisher-Yates shuffle
+            for (let i = currentQuestions.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [currentQuestions[i], currentQuestions[j]] = [currentQuestions[j], currentQuestions[i]];
+            }
+
+            currentQuestionIndex = 0;
+            score = 0;
+            isExamActive = true;
+
+            // UI Update
+            document.querySelector('.glass-panel.text-center').classList.add('hidden'); // Hide start screen
+            document.getElementById('quiz-container').classList.remove('hidden');
+
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            if (currentQuestionIndex >= currentQuestions.length) {
+                showResults();
+                return;
+            }
+
+            const q = currentQuestions[currentQuestionIndex];
+
+            // Update UI
+            document.getElementById('question-counter').innerText = `${currentQuestionIndex + 1}/${currentQuestions.length}`;
+            document.getElementById('question-tag').innerText = q.type.split('_')[0].toUpperCase();
+            document.getElementById('question-text').innerHTML = q.question;
+
+            // Progress
+            const pct = ((currentQuestionIndex) / currentQuestions.length) * 100;
+            document.getElementById('quiz-progress').style.width = `${pct}%`;
+
+            // Reset state
+            document.getElementById('feedback-area').classList.add('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+
+            const optionsGrid = document.getElementById('options-grid');
+            optionsGrid.innerHTML = '';
+
+            q.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'p-6 text-left rounded-xl border-2 border-slate-100 hover:border-indigo-200 hover:bg-indigo-50 transition font-medium text-slate-700 text-lg group';
+                btn.onclick = () => checkAnswer(opt, q, btn);
+                btn.innerHTML = `<span class="inline-block w-8 h-8 rounded-lg bg-slate-100 text-slate-500 text-sm font-bold flex items-center justify-center mr-3 group-hover:bg-indigo-200 group-hover:text-indigo-700 transition">?</span> ${opt}`;
+                optionsGrid.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selected, question, btnElement) {
+            // Disable all buttons
+            const buttons = document.querySelectorAll('#options-grid button');
+            buttons.forEach(b => b.disabled = true);
+
+            const isCorrect = selected === question.answer;
+
+            if (isCorrect) {
+                score++;
+                btnElement.classList.remove('border-slate-100', 'hover:border-indigo-200', 'hover:bg-indigo-50');
+                btnElement.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-700');
+                btnElement.querySelector('span').classList.add('bg-emerald-200', 'text-emerald-800');
+                btnElement.querySelector('span').innerText = '✓';
+                playSound('correct');
+            } else {
+                btnElement.classList.remove('border-slate-100', 'hover:border-indigo-200', 'hover:bg-indigo-50');
+                btnElement.classList.add('border-red-500', 'bg-red-50', 'text-red-700');
+                btnElement.querySelector('span').classList.add('bg-red-200', 'text-red-800');
+                btnElement.querySelector('span').innerText = '✗';
+
+                // Highlight correct
+                buttons.forEach(b => {
+                    if (b.innerText.includes(question.answer)) { // Simple check, might be risky with substrings
+                        // Better to check data-val if we stored it, but clean text match usually works
+                        b.classList.add('border-emerald-500', 'bg-emerald-50');
+                    }
+                });
+                playSound('wrong');
+            }
+
+            // Show Feedback
+            const fb = document.getElementById('feedback-area');
+            fb.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-red-100', 'text-red-800');
+            fb.classList.add(isCorrect ? 'bg-emerald-100' : 'bg-red-100', isCorrect ? 'text-emerald-800' : 'text-red-800');
+
+            document.getElementById('feedback-text').innerText = isCorrect ? 'Correct! Excellent.' : 'Incorrect.';
+            document.getElementById('feedback-explanation').innerText = question.explanation || "";
+
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            loadQuestion();
+        }
+
+        function showResults() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('quiz-results').classList.remove('hidden');
+
+            const percentage = Math.round((score / currentQuestions.length) * 100);
+            document.getElementById('final-score').innerText = `${percentage}%`;
+            document.getElementById('result-correct').innerText = score;
+            document.getElementById('result-wrong').innerText = currentQuestions.length - score;
+
+            // Simple sound
+            if (percentage >= 80) playSound('victory');
+        }
+
+        function quitExam() {
+            if (confirm("Exit exam? Progress will be lost.")) {
+                location.reload();
+            }
+        }
+
+        function playSound(type) {
+            // Optional: Implement simple beep or use Audio object if assets exist
         }
     </script>
 </body>
